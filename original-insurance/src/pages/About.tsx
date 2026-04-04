@@ -55,7 +55,7 @@ export default function About() {
               className="hidden lg:block"
             >
               <div className="rounded-3xl overflow-hidden ring-1 ring-white/10 shadow-heavy aspect-[4/3]">
-                <img src={images.about.handshake} alt="Handshake after coverage review" className="h-full w-full object-cover" />
+                <img src={images.about.handshake} alt="Professional insurance partnership" className="h-full w-full object-cover" />
               </div>
             </motion.div>
           </div>

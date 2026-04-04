@@ -18,7 +18,7 @@ const SERVICE_TABS = [
     title: "Auto Insurance",
     desc: "From daily drivers to weekend classics — comprehensive coverage with competitive rates and same-day eID cards.",
     img: images.services.auto,
-    alt: "Car keys being handed over",
+    alt: "Premium auto insurance coverage",
     highlights: [
       { title: "Full coverage options", sub: "Liability, comprehensive, collision" },
       { title: "SR-22 filing included", sub: "Fast processing, no hassle" },
@@ -39,7 +39,7 @@ const SERVICE_TABS = [
     title: "Home & Renters Insurance",
     desc: "Protect your dwelling, personal belongings, and liability. Whether you own or rent, we find the right-sized coverage.",
     img: images.services.home,
-    alt: "Modern house with keys",
+    alt: "Comprehensive home insurance protection",
     highlights: [
       { title: "Dwelling & personal property", sub: "Full replacement options" },
       { title: "Liability protection", sub: "Coverage up to $1M+" },
@@ -60,7 +60,7 @@ const SERVICE_TABS = [
     title: "Life Insurance",
     desc: "Term and whole life options that protect your family's future. Affordable premiums with flexible coverage amounts.",
     img: images.services.life,
-    alt: "Family outdoors together",
+    alt: "Family life insurance planning",
     highlights: [
       { title: "Term & whole life", sub: "Options for every budget" },
       { title: "Family protection", sub: "Peace of mind for loved ones" },
@@ -81,7 +81,7 @@ const SERVICE_TABS = [
     title: "Commercial Insurance",
     desc: "Protect your business with general liability, BOP, commercial auto, and workers' compensation coverage.",
     img: images.services.commercial,
-    alt: "Business owner reviewing documents",
+    alt: "Business insurance solutions",
     highlights: [
       { title: "General liability", sub: "Essential business protection" },
       { title: "Business owner's policy", sub: "Bundled coverage & savings" },
@@ -102,7 +102,7 @@ const SERVICE_TABS = [
     title: "Motorcycle Insurance",
     desc: "Coverage for riders with liability, collision, and gear protection. Multi-bike discounts available.",
     img: images.services.motorcycle,
-    alt: "Motorcycle on the road",
+    alt: "Motorcycle insurance coverage",
     highlights: [
       { title: "Liability & collision", sub: "Full protection on the road" },
       { title: "Gear protection", sub: "Helmets, jackets, accessories" },
@@ -123,7 +123,7 @@ const SERVICE_TABS = [
     title: "Recreational Vehicle Insurance",
     desc: "RV, boat, and specialty toys — enjoy the weekend safely with coverage tailored to your adventures.",
     img: images.services.rv,
-    alt: "RV at campsite",
+    alt: "RV and recreational vehicle insurance",
     highlights: [
       { title: "RV & motorhome", sub: "Full-time & part-time coverage" },
       { title: "Boat & watercraft", sub: "On and off the water" },

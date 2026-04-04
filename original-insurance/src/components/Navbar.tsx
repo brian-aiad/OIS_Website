@@ -215,9 +215,9 @@ export default function Navbar() {
                   <a href={site.contact.phoneHref} className="btn btn-outline btn-sm justify-center">
                     Call Us
                   </a>
-                  <NavLink to="/contact" onClick={() => setOpen(false)} className="btn btn-primary btn-sm justify-center">
+                  <button onClick={() => { setOpen(false); openQuoteModal(); }} className="btn btn-primary btn-sm justify-center">
                     Free Quote
-                  </NavLink>
+                  </button>
                 </div>
 
                 <div className="pt-2 text-[12px] text-slate-400 flex items-center gap-2">

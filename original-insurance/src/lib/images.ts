@@ -1,18 +1,18 @@
 /** Centralized image paths — all optimized WebP from /public/images */
 export const images = {
   hero: {
-    meeting: "/images/heroTeam.webp",
+    meeting: "/images/hero-celebration-highfive.webp",
   },
   services: {
-    auto: "/images/autoKeys.webp",
-    home: "/images/homeKeys.webp",
-    life: "/images/familyLife.webp",
-    commercial: "/images/businessOwner.webp",
-    motorcycle: "/images/motorcycle.webp",
-    rv: "/images/rvCamping.webp",
+    auto: "/images/auto-premium.webp",
+    home: "/images/home-modern.webp",
+    life: "/images/life-family.webp",
+    commercial: "/images/commercial-team.webp",
+    motorcycle: "/images/motorcycle-action.webp",
+    rv: "/images/rv-adventure.webp",
   },
   about: {
-    handshake: "/images/handshake.webp",
+    handshake: "/images/hero-friendly-handshake.webp",
   },
   claims: {
     docs: "/images/claimsDocs.webp",

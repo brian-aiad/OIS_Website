@@ -45,7 +45,7 @@ function Hero() {
 
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-500/30 to-transparent" />
 
-      <motion.div style={{ y: bgY }} className="container relative grid lg:grid-cols-2 gap-8 lg:gap-12 items-center pt-24 pb-16 lg:pt-28 lg:pb-16">
+      <motion.div style={{ y: bgY }} className="container relative grid lg:grid-cols-2 gap-10 lg:gap-16 items-center pt-28 pb-20 md:pt-32 md:pb-24 lg:pt-28 lg:pb-20">
         {/* ── Left: Copy ── */}
         <div className="max-w-xl">
           {/* Trust badge pill */}
@@ -145,6 +145,7 @@ function Hero() {
               </motion.span>
             ))}
           </motion.div>
+
         </div>
 
         {/* ── Right: Image with floating elements ── */}
@@ -159,7 +160,7 @@ function Hero() {
 
           <motion.div style={{ y: imgY }} className="relative">
             <div className="rounded-2xl overflow-hidden shadow-heavy ring-1 ring-white/10">
-              <img src={images.hero.meeting} alt="Professional insurance consultation at Original Insurance" className="w-full h-auto object-cover" fetchPriority="high" />
+              <img src={images.hero.meeting} alt="Celebrating insurance success - Original Insurance helps Downey families win" className="w-full h-auto object-cover" fetchPriority="high" />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-950/40 via-transparent to-brand-950/10" />
             </div>
 
@@ -316,12 +317,12 @@ function BentoStats() {
 type Svc = { key: string; title?: string; name?: string; blurb?: string; desc?: string };
 
 const serviceImages: Record<string, { src: string; alt: string }> = {
-  auto: { src: images.services.auto, alt: "Car keys being handed over" },
-  home: { src: images.services.home, alt: "House with keys" },
-  life: { src: images.services.life, alt: "Family outdoors" },
-  commercial: { src: images.services.commercial, alt: "Business documents" },
-  moto: { src: images.services.motorcycle, alt: "Motorcycle on road" },
-  rec: { src: images.services.rv, alt: "RV at campsite" },
+  auto: { src: images.services.auto, alt: "Premium auto insurance coverage" },
+  home: { src: images.services.home, alt: "Comprehensive home insurance protection" },
+  life: { src: images.services.life, alt: "Family life insurance planning" },
+  commercial: { src: images.services.commercial, alt: "Business insurance solutions" },
+  moto: { src: images.services.motorcycle, alt: "Motorcycle insurance coverage" },
+  rec: { src: images.services.rv, alt: "RV and recreational vehicle insurance" },
 };
 
 function ServicesMasonry() {
@@ -408,7 +409,7 @@ function Carriers() {
   const row = [...logos, ...logos];
 
   return (
-    <section className="py-8 bg-white border-y border-slate-100 overflow-hidden">
+    <section className="py-6 bg-white border-y border-slate-100 overflow-hidden">
       <div className="container mb-4">
         <Reveal className="text-center">
           <p className="text-sm text-slate-400">
@@ -458,7 +459,7 @@ function HowItWorks() {
           </p>
         </Reveal>
 
-        <div className="mt-12 max-w-3xl mx-auto relative">
+        <div className="mt-10 max-w-3xl mx-auto relative">
           <div className="absolute left-7 top-0 bottom-0 w-px bg-gradient-to-b from-brand-200 via-brand-300 to-brand-100 hidden md:block" aria-hidden />
 
           <Stagger className="space-y-8 md:space-y-10">
@@ -723,6 +724,65 @@ function FAQ() {
   );
 }
 
+
+/* ═══════════════════════════════════════════════
+   MEET YOUR AGENT — Trust builder
+   ═══════════════════════════════════════════════ */
+function MeetAgent() {
+  return (
+    <section className="sp bg-white">
+      <div className="container">
+        <Reveal className="text-center mb-10">
+          <span className="inline-block bg-brand-50 text-brand-600 px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest mb-4 ring-1 ring-brand-100">Your Local Insurance Experts</span>
+          <h2 className="display-2 text-slate-900">Real people, not call centers</h2>
+        </Reveal>
+
+        <Reveal>
+          <div className="max-w-3xl mx-auto bg-gradient-to-br from-brand-50 to-white rounded-2xl p-6 md:p-8 ring-1 ring-brand-100/60 shadow-soft">
+            <div className="grid md:grid-cols-[auto,1fr] gap-6 md:gap-8 items-center">
+              {/* Agent photo placeholder */}
+              <div className="text-center md:text-left">
+                <div className="relative inline-block">
+                  <div className="w-36 h-36 md:w-44 md:h-44 rounded-2xl bg-brand-800 grid place-items-center shadow-heavy ring-2 ring-brand-200">
+                    <span className="text-5xl md:text-6xl font-black text-white/90">A</span>
+                  </div>
+                  <div className="absolute -bottom-2 -right-2 bg-gold-500 text-brand-950 px-3 py-1 rounded-lg text-[11px] font-bold shadow-md">
+                    25+ Years
+                  </div>
+                </div>
+              </div>
+
+              {/* Agent info */}
+              <div>
+                <div className="text-xl font-bold text-slate-900">Aiman M.</div>
+                <div className="text-brand-600 font-semibold text-sm mb-3">Owner &amp; Licensed Insurance Broker</div>
+
+                <p className="text-slate-600 text-[15px] leading-relaxed mb-4 italic">
+                  &ldquo;I started Original Insurance in 1999 to provide personalised service to Downey families.
+                  We're not a call center — when you call, you talk to me or my team directly.&rdquo;
+                </p>
+
+                <div className="space-y-1.5">
+                  {[
+                    "Licensed in California since 1999",
+                    "Fluent in Arabic, Spanish & English",
+                    "Served thousands of Downey families & businesses",
+                  ].map((t) => (
+                    <div key={t} className="flex items-center gap-2">
+                      <svg className="w-4 h-4 text-emerald-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                      <span className="text-sm text-slate-600">{t}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 /* ═══════════════════════════════════════════════
    STICKY RIBBON
    ═══════════════════════════════════════════════ */
@@ -855,6 +915,7 @@ export default function Home() {
       <ServicesMasonry />
       <Carriers />
       <HowItWorks />
+      <MeetAgent />
       <AboutSplit />
       <Testimonials />
       <ClaimsCTA />

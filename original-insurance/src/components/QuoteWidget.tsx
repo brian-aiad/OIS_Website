@@ -22,7 +22,7 @@ export default function QuoteWidget() {
 
   return (
     <>
-      {/* Floating button — smaller on mobile, avoids sticky ribbon */}
+      {/* Floating button */}
       <motion.button
         onClick={() => setOpen(true)}
         initial={{ scale: 0, opacity: 0 }}
@@ -38,7 +38,7 @@ export default function QuoteWidget() {
         <span className="sm:hidden">Quote</span>
       </motion.button>
 
-      {/* Modal overlay */}
+      {/* Modal overlay — centered popup on ALL devices */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -46,22 +46,22 @@ export default function QuoteWidget() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center p-0 sm:p-4"
+            className="fixed inset-0 z-[60] flex items-center justify-center p-4"
           >
             {/* Backdrop */}
             <div
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
               onClick={() => setOpen(false)}
             />
 
-            {/* Modal — full-height on mobile, centered card on desktop */}
+            {/* Modal — centered card on all screens */}
             <motion.div
-              initial={{ scale: 0.97, opacity: 0, y: 30 }}
+              initial={{ scale: 0.95, opacity: 0, y: 24 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.97, opacity: 0, y: 30 }}
+              exit={{ scale: 0.95, opacity: 0, y: 24 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full h-full sm:h-auto sm:max-w-[560px] lg:max-w-3xl bg-white sm:rounded-2xl shadow-heavy ring-1 ring-slate-200 overflow-hidden"
-              style={{ maxHeight: "100dvh" }}
+              className="relative w-full max-w-md sm:max-w-lg lg:max-w-3xl bg-white rounded-2xl shadow-heavy ring-1 ring-slate-200 overflow-hidden"
+              style={{ maxHeight: "85dvh" }}
             >
               {/* Header */}
               <div className="flex items-center justify-between px-4 py-3 sm:px-5 border-b border-slate-100 bg-white">
@@ -77,7 +77,7 @@ export default function QuoteWidget() {
                 </button>
               </div>
 
-              {/* Iframe — fills remaining space on mobile, fixed height on desktop */}
+              {/* Iframe */}
               <iframe
                 src={QUOTZAL_URL}
                 width="100%"
@@ -85,7 +85,8 @@ export default function QuoteWidget() {
                 allow="clipboard-write"
                 loading="lazy"
                 title="Insurance Quote Request"
-                className="block h-[calc(100dvh-49px)] sm:h-[680px] lg:h-[780px]"
+                className="block w-full"
+                style={{ height: "calc(85dvh - 49px)" }}
               />
             </motion.div>
           </motion.div>

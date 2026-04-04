@@ -25,6 +25,7 @@ export const site = {
     { key: "rec", title: "Recreational", blurb: "RV, boat, and specialty toys — enjoy the weekend safely." },
     { key: "notary", title: "Notary Public", blurb: "Fast, reliable notarization for personal and business documents." },
     { key: "reg", title: "Registration Services", blurb: "Skip the DMV lines. Title transfers, renewals, and plates." },
+    { key: "sr22", title: "SR-22 Filing", blurb: "Fast processing, no hassle. We handle everything with the DMV." },
     { key: "translate", title: "Document Translation", blurb: "Accurate translation in Arabic, Spanish, and English." },
   ],
   faqs: [
