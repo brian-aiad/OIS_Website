@@ -306,7 +306,7 @@ function ServicesMasonry() {
         {img && (
           <div className="img-duotone absolute inset-0">
             <img
-              src={img.src.replace(".webp", "-800w.webp")}
+              src={img.src}
               srcSet={srcset(img.src)}
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
               alt={img.alt}
@@ -500,7 +500,7 @@ function AboutSplit() {
           <Reveal direction="left" className="relative">
             <div className="rounded-3xl overflow-hidden shadow-heavy ring-1 ring-slate-100 aspect-[4/3]">
               <img
-                src={images.about.handshake.replace(".webp", "-800w.webp")}
+                src={images.about.handshake}
                 srcSet={srcset(images.about.handshake)}
                 sizes="(max-width: 1024px) 100vw, 600px"
                 alt="Original Insurance broker shaking hands with a new client in Downey, CA"

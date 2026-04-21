@@ -72,6 +72,15 @@ function startServer() {
 
   const server = createServer((req, res) => {
     let url = req.url.split("?")[0];
+
+    // The Vite build uses base "./" so asset paths in the HTML are relative.
+    // When Playwright loads /insurance/bellflower, the browser resolves
+    // ./assets/foo.js to /insurance/bellflower/assets/foo.js — but the real
+    // files live at /assets/foo.js. Normalize nested paths back to root so
+    // all depth-2+ routes can load their JS/CSS/image bundles correctly.
+    url = url.replace(/^.*(\/assets\/)/, "$1")
+             .replace(/^.*(\/images\/)/, "$1");
+
     let filePath = resolve(DIST, "." + url);
 
     // Try exact file, then file + .html, then fallback to index.html (SPA)
@@ -138,9 +147,10 @@ async function prerender() {
 
     await page.goto(`${origin}${route}`, { waitUntil: "networkidle" });
 
-    // Wait for React to hydrate — networkidle covers most cases,
-    // this extra wait lets useEffect JSON-LD scripts mount
-    await page.waitForTimeout(1200);
+    // Wait for React to fully render — h1 appearing means the lazy chunk
+    // has loaded, the component has mounted, and useEffect has fired.
+    await page.waitForSelector("h1", { timeout: 8000 }).catch(() => {});
+    await page.waitForTimeout(800);
 
     // Grab the full rendered HTML
     let html = await page.content();
