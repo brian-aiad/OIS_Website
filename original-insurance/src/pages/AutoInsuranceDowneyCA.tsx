@@ -247,6 +247,37 @@ export default function AutoInsuranceDowneyCA() {
         </div>
       </section>
 
+      {/* Section 5b: Spanish-intent section */}
+      <section lang="es" className="sp bg-brand-950 text-white">
+        <div className="container max-w-4xl">
+          <Reveal>
+            <h2
+              className="text-3xl md:text-4xl font-bold mb-6"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Seguro de Auto en Downey, California
+            </h2>
+            <div className="prose prose-invert max-w-none">
+              <p className="text-lg text-white/85 leading-relaxed mb-4">
+                En Original Insurance, comparamos más de 30 aseguradoras para encontrar la cobertura que mejor se adapta a su situación — ya sea seguro básico de responsabilidad civil, cobertura completa, o un programa especial para conductores sin licencia californiana o con licencia extranjera.
+              </p>
+              <p className="text-base text-white/80 leading-relaxed mb-4">
+                Nuestro equipo en Downey ofrece servicio completamente en español. Explicamos cada opción de cobertura con claridad, sin terminología confusa, para que usted pueda tomar una decisión informada. Hemos ayudado a miles de familias en el área de Downey, Lynwood, South Gate, y toda el área del sureste del Condado de Los Ángeles a obtener cobertura de auto de manera rápida y accesible.
+              </p>
+              <p className="text-base text-white/80 leading-relaxed mb-4">
+                Si usted ha tenido infracciones de tránsito, necesita un archivo SR-22 para reinstalar su licencia, o es nuevo en California con una licencia de otro país, tenemos opciones disponibles. No es necesario tener número de Seguro Social para obtener cobertura en muchos de nuestros programas. Aceptamos clientes con ITIN y con licencias extranjeras válidas.
+              </p>
+              <p className="text-base text-white/80 leading-relaxed mb-4">
+                Para obtener una cotización el mismo día, llámenos o visítenos en nuestra oficina en 9907-B Paramount Blvd, Downey, CA 90240. Estamos abiertos de lunes a viernes de 10:00 AM a 5:30 PM. También puede solicitar su cotización en línea y nos pondremos en contacto con usted dentro de horas hábiles.
+              </p>
+              <p className="text-sm text-white/60 leading-relaxed italic">
+                Nota: Este contenido fue redactado para hispanohablantes que buscan seguro de auto en Downey. Recomendamos que un hispanohablante nativo revise y perfeccione el texto antes de publicarlo. — Original Insurance Team
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Section 6: Nearby Cities */}
       <section className="sp bg-slate-50">
         <div className="container max-w-4xl">
