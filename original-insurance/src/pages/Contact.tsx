@@ -8,6 +8,7 @@ import { Reveal } from "../components/AnimatedSection";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
+import OfficePhotoBlock from "../components/seo/OfficePhotoBlock";
 
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string;
 
@@ -122,7 +123,7 @@ export default function Contact() {
         title="We're here to help"
         subtitle="Questions about coverage? Need help with a claim? Reach out — we're a real team at 9907-B Paramount Blvd, Downey, just off the 5 freeway. Walk-ins welcome Mon–Fri 10 AM–5:30 PM."
         breadcrumb="Contact"
-        backgroundImage="/images/handshake-800w.webp"
+        backgroundImage="/images/handshake.webp"
       />
 
       {/* ── 3 Contact method cards ── */}
@@ -250,6 +251,13 @@ export default function Contact() {
               })}
             </ul>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ── Office Photo Block ── */}
+      <section className="py-10 bg-white border-b border-slate-100">
+        <div className="container max-w-4xl">
+          <OfficePhotoBlock />
         </div>
       </section>
 
