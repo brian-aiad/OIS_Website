@@ -1,3 +1,8 @@
+/** Generate a simple srcSet string for a single WebP image path */
+export function srcset(src: string): string {
+  return src;
+}
+
 /** Centralized image paths — all optimized WebP from /public/images */
 export const images = {
   hero: {

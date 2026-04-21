@@ -15,6 +15,25 @@ const Services = lazy(() => import("./pages/Services"));
 const Locations = lazy(() => import("./pages/Locations"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
+const Faq = lazy(() => import("./pages/Faq"));
+const CityLanding = lazy(() => import("./pages/CityLanding"));
+const AutoInsuranceDowneyCA = lazy(() => import("./pages/AutoInsuranceDowneyCA"));
+const SR22InsuranceDowney = lazy(() => import("./pages/SR22InsuranceDowney"));
+const NoLicenseInsuranceDowney = lazy(() => import("./pages/NoLicenseInsuranceDowney"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+// Individual localized city pages
+const BellflowerPage = lazy(() => import("./pages/insurance/Bellflower"));
+const NorwalkPage = lazy(() => import("./pages/insurance/Norwalk"));
+const CerritosPage = lazy(() => import("./pages/insurance/Cerritos"));
+const LakewoodPage = lazy(() => import("./pages/insurance/Lakewood"));
+const LynwoodPage = lazy(() => import("./pages/insurance/Lynwood"));
+const ParamountPage = lazy(() => import("./pages/insurance/Paramount"));
+const SouthGatePage = lazy(() => import("./pages/insurance/SouthGate"));
+const WhittierPage = lazy(() => import("./pages/insurance/Whittier"));
+const PicoRiveraPage = lazy(() => import("./pages/insurance/PicoRivera"));
+const MontebelloPage = lazy(() => import("./pages/insurance/Montebello"));
+const CommercePage = lazy(() => import("./pages/insurance/Commerce"));
 
 // Lenis context so ScrollToTop and other components can reset scroll
 export const LenisContext = createContext<React.RefObject<Lenis | null>>({ current: null });
@@ -97,6 +116,25 @@ export default function App() {
                   <Route path="/locations" element={<Locations />} />
                   <Route path="/about" element={<About />} />
                   <Route path="/contact" element={<Contact />} />
+                  <Route path="/faq" element={<Faq />} />
+                  {/* Individual localized city pages (take priority over generic slug route) */}
+                  <Route path="/insurance/bellflower" element={<BellflowerPage />} />
+                  <Route path="/insurance/norwalk" element={<NorwalkPage />} />
+                  <Route path="/insurance/cerritos" element={<CerritosPage />} />
+                  <Route path="/insurance/lakewood" element={<LakewoodPage />} />
+                  <Route path="/insurance/lynwood" element={<LynwoodPage />} />
+                  <Route path="/insurance/paramount" element={<ParamountPage />} />
+                  <Route path="/insurance/south-gate" element={<SouthGatePage />} />
+                  <Route path="/insurance/whittier" element={<WhittierPage />} />
+                  <Route path="/insurance/pico-rivera" element={<PicoRiveraPage />} />
+                  <Route path="/insurance/montebello" element={<MontebelloPage />} />
+                  <Route path="/insurance/commerce" element={<CommercePage />} />
+                  {/* Downey hub + fallback for any unlisted city slug */}
+                  <Route path="/insurance/:citySlug" element={<CityLanding />} />
+                  <Route path="/auto-insurance-downey-ca" element={<AutoInsuranceDowneyCA />} />
+                  <Route path="/sr22-insurance-downey" element={<SR22InsuranceDowney />} />
+                  <Route path="/no-license-auto-insurance-downey" element={<NoLicenseInsuranceDowney />} />
+                  <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>
             </motion.div>
