@@ -8,6 +8,8 @@ import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 import { Counter } from "../components/AnimatedCounter";
 import { MagneticButton } from "../components/MagneticButton";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
+import ReviewBadge from "../components/seo/ReviewBadge";
+import TrustStrip from "../components/seo/TrustStrip";
 
 import storefrontImg from "../assets/storefront.png";
 
@@ -72,6 +74,10 @@ function Hero() {
           >
             No license? No problem.
           </p>
+
+          <div className="mt-5">
+            <ReviewBadge count={47} compact />
+          </div>
 
           <div className="mt-7 flex flex-col sm:flex-row gap-3">
             <MagneticButton as="a" className="inline-block">
@@ -883,6 +889,11 @@ export default function Home() {
       <LocalBusinessSchema />
       <StickyRibbon />
       <Hero />
+      <div className="bg-white border-b border-slate-100 py-4 text-slate-600">
+        <div className="container">
+          <TrustStrip />
+        </div>
+      </div>
       <BentoStats />
       <PopularNeedsHub />
       <ServicesMasonry />

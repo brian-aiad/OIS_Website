@@ -4,6 +4,7 @@ import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
+import TrustStrip from "../components/seo/TrustStrip";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 
 export default function NoLicenseInsuranceDowney() {
@@ -33,6 +34,12 @@ export default function NoLicenseInsuranceDowney() {
           </a>
         </div>
       </PageHero>
+
+      <div className="bg-brand-950 py-4 text-white">
+        <div className="container">
+          <TrustStrip />
+        </div>
+      </div>
 
       {/* Common Scenarios */}
       <section className="sp bg-white">

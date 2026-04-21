@@ -4,6 +4,7 @@ import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
+import TrustStrip from "../components/seo/TrustStrip";
 import { Reveal } from "../components/AnimatedSection";
 
 const NEARBY_CITIES = [
@@ -71,6 +72,12 @@ export default function CommercialAutoInsuranceDowneyPage() {
           </a>
         </div>
       </PageHero>
+
+      <div className="bg-brand-950 py-4 text-white">
+        <div className="container">
+          <TrustStrip />
+        </div>
+      </div>
 
       {/* Section 1: What commercial auto covers */}
       <section className="sp bg-white">

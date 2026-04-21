@@ -4,6 +4,7 @@ import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
+import TrustStrip from "../components/seo/TrustStrip";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 
 export default function SR22InsuranceDowney() {
@@ -35,6 +36,12 @@ export default function SR22InsuranceDowney() {
           </a>
         </div>
       </PageHero>
+
+      <div className="bg-brand-950 py-4 text-white">
+        <div className="container">
+          <TrustStrip />
+        </div>
+      </div>
 
       {/* What is SR-22 */}
       <section className="sp bg-white">

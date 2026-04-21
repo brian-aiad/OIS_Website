@@ -6,6 +6,7 @@ import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 import { Counter } from "../components/AnimatedCounter";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
+import ReviewBadge from "../components/seo/ReviewBadge";
 
 import storefrontImg from "../assets/storefront.png";
 import logoBadge from "../assets/logo-badge.png";
@@ -173,6 +174,10 @@ export default function About() {
               </StaggerChild>
             ))}
           </Stagger>
+
+          <div className="mt-10 flex justify-center">
+            <ReviewBadge count={47} />
+          </div>
         </div>
       </section>
 

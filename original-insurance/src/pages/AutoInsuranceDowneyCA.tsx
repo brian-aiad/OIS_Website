@@ -4,6 +4,7 @@ import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
+import ReviewBadge from "../components/seo/ReviewBadge";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 
 const NEARBY_CITIES = [
@@ -70,6 +71,12 @@ export default function AutoInsuranceDowneyCA() {
       </PageHero>
 
       <TrustStrip />
+
+      <div className="bg-white py-4 border-b border-slate-100">
+        <div className="container flex justify-center">
+          <ReviewBadge count={47} />
+        </div>
+      </div>
 
       {/* Section 1: Cost */}
       <section className="sp bg-white">
