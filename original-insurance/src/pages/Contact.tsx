@@ -7,6 +7,7 @@ import { Icons } from "../components/Icons";
 import { Reveal } from "../components/AnimatedSection";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string;
 
@@ -96,19 +97,8 @@ export default function Contact() {
       description: "Contact Original Insurance Services for a free insurance quote in Downey, CA. Bilingual service in English, Spanish and Arabic.",
       mainEntity: { "@id": "https://originalinsurance.net/#organization" },
     });
-    const crumbEl = document.createElement("script");
-    crumbEl.type = "application/ld+json";
-    crumbEl.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://originalinsurance.net/" },
-        { "@type": "ListItem", position: 2, name: "Contact", item: "https://originalinsurance.net/contact" },
-      ],
-    });
     document.head.appendChild(contactEl);
-    document.head.appendChild(crumbEl);
-    return () => { contactEl.remove(); crumbEl.remove(); };
+    return () => { contactEl.remove(); };
   }, []);
 
   /* FAQ */
@@ -124,6 +114,10 @@ export default function Contact() {
   return (
     <main id="main-content">
       <LocalBusinessSchema url="https://originalinsurance.net/contact" />
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "Contact", url: "https://originalinsurance.net/contact" },
+      ]} />
       <PageHero
         title="We're here to help"
         subtitle="Questions about coverage? Need help with a claim? Reach out — we're a real team at 9907-B Paramount Blvd, Downey, just off the 5 freeway. Walk-ins welcome Mon–Fri 10 AM–5:30 PM."

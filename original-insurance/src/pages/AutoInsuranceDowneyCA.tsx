@@ -5,6 +5,7 @@ import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import ReviewBadge from "../components/seo/ReviewBadge";
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 
 const NEARBY_CITIES = [
@@ -52,6 +53,10 @@ export default function AutoInsuranceDowneyCA() {
   return (
     <main id="main-content">
       <LocalBusinessSchema url="https://originalinsurance.net/auto-insurance-downey-ca" />
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "Auto Insurance Downey CA", url: "https://originalinsurance.net/auto-insurance-downey-ca" },
+      ]} />
 
       <PageHero
         title="Auto Insurance in Downey, CA"

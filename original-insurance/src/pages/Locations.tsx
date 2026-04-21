@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { openQuoteModal } from "../lib/openQuote";
@@ -73,6 +74,10 @@ export default function Locations() {
 
   return (
     <main id="main-content">
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "Location", url: "https://originalinsurance.net/locations" },
+      ]} />
       {/* ── Premium Header ── */}
       <section className="relative hero-mesh overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-400/10 rounded-full blur-3xl" />

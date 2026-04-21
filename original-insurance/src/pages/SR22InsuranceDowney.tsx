@@ -5,6 +5,7 @@ import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import TrustStrip from "../components/seo/TrustStrip";
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 
 export default function SR22InsuranceDowney() {
@@ -18,6 +19,10 @@ export default function SR22InsuranceDowney() {
   return (
     <main id="main-content">
       <LocalBusinessSchema url="https://originalinsurance.net/sr22-insurance-downey" />
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "SR-22 Insurance Downey", url: "https://originalinsurance.net/sr22-insurance-downey" },
+      ]} />
 
       <PageHero
         title="SR-22 Insurance & Same-Day Filing in Downey, CA"

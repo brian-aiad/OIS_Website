@@ -29,24 +29,17 @@ export default function About() {
       description: "Family-owned independent insurance broker in Downey, CA serving Southern California since 1999.",
       mainEntity: { "@id": "https://originalinsurance.net/#organization" },
     });
-    const crumbEl = document.createElement("script");
-    crumbEl.type = "application/ld+json";
-    crumbEl.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://originalinsurance.net/" },
-        { "@type": "ListItem", position: 2, name: "About", item: "https://originalinsurance.net/about" },
-      ],
-    });
     document.head.appendChild(aboutEl);
-    document.head.appendChild(crumbEl);
-    return () => { aboutEl.remove(); crumbEl.remove(); };
+    return () => { aboutEl.remove(); };
   }, []);
 
   return (
     <main id="main-content">
       <LocalBusinessSchema url="https://originalinsurance.net/about" />
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "About", url: "https://originalinsurance.net/about" },
+      ]} />
       <PageHero
         title="Insurance built on relationships"
         subtitle={site.description}

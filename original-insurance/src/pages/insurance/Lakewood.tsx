@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { usePageMeta } from "../../lib/seo";
 import { openQuoteModal } from "../../lib/openQuote";
 import { site } from "../../lib/site";
 import PageHero from "../../components/PageHero";
 import LocalBusinessSchema from "../../components/seo/LocalBusinessSchema";
+import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema";
 import { Reveal } from "../../components/AnimatedSection";
 
 const canonical = "https://originalinsurance.net/insurance/lakewood";
@@ -36,6 +37,10 @@ export default function LakewoodPage() {
   return (
     <main id="main-content">
       <LocalBusinessSchema url={canonical} areaServed={areaServed} />
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "Lakewood Insurance", url: canonical },
+      ]} />
 
       <PageHero
         title="Auto Insurance in Lakewood, CA"

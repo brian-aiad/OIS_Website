@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { NavLink } from "react-router-dom";
 import { openQuoteModal } from "../lib/openQuote";
 import { motion, AnimatePresence } from "framer-motion";
@@ -147,20 +148,6 @@ export default function Services() {
 
   const [activeTab, setActiveTab] = useState("auto");
 
-  useEffect(() => {
-    const el = document.createElement("script");
-    el.type = "application/ld+json";
-    el.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: `${window.location.origin}/` },
-        { "@type": "ListItem", position: 2, name: "Services", item: `${window.location.origin}/services` },
-      ],
-    });
-    document.head.appendChild(el);
-    return () => el.remove();
-  }, []);
 
   const active = SERVICE_TABS.find((t) => t.key === activeTab) || SERVICE_TABS[0];
   const ActiveIcon = active.icon;
@@ -171,6 +158,10 @@ export default function Services() {
 
   return (
     <main id="main-content">
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "Services", url: "https://originalinsurance.net/services" },
+      ]} />
       {/* ── Premium Header ── */}
       <section className="relative hero-mesh overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-400/10 rounded-full blur-3xl" />

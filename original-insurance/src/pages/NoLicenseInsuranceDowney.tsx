@@ -5,6 +5,7 @@ import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import TrustStrip from "../components/seo/TrustStrip";
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 
 export default function NoLicenseInsuranceDowney() {
@@ -18,6 +19,10 @@ export default function NoLicenseInsuranceDowney() {
   return (
     <main id="main-content">
       <LocalBusinessSchema url="https://originalinsurance.net/no-license-auto-insurance-downey" />
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "No-License Insurance Downey", url: "https://originalinsurance.net/no-license-auto-insurance-downey" },
+      ]} />
 
       <PageHero
         title="No-License & International-License Auto Insurance in Downey, CA"
