@@ -32,6 +32,7 @@ const ROUTES = [
   "/auto-insurance-downey-ca",
   "/sr22-insurance-downey",
   "/no-license-auto-insurance-downey",
+  "/commercial-auto-insurance-downey",
   // City landing pages
   "/insurance/downey",
   "/insurance/norwalk",

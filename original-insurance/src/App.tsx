@@ -20,6 +20,7 @@ const CityLanding = lazy(() => import("./pages/CityLanding"));
 const AutoInsuranceDowneyCA = lazy(() => import("./pages/AutoInsuranceDowneyCA"));
 const SR22InsuranceDowney = lazy(() => import("./pages/SR22InsuranceDowney"));
 const NoLicenseInsuranceDowney = lazy(() => import("./pages/NoLicenseInsuranceDowney"));
+const CommercialAutoInsuranceDowney = lazy(() => import("./pages/CommercialAutoInsuranceDowney"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Individual localized city pages
@@ -134,6 +135,7 @@ export default function App() {
                   <Route path="/auto-insurance-downey-ca" element={<AutoInsuranceDowneyCA />} />
                   <Route path="/sr22-insurance-downey" element={<SR22InsuranceDowney />} />
                   <Route path="/no-license-auto-insurance-downey" element={<NoLicenseInsuranceDowney />} />
+                  <Route path="/commercial-auto-insurance-downey" element={<CommercialAutoInsuranceDowney />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>
