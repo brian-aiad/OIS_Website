@@ -7,6 +7,7 @@ import { Counter } from "../components/AnimatedCounter";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import ReviewBadge from "../components/seo/ReviewBadge";
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 
 import storefrontImg from "../assets/storefront.png";
 import logoBadge from "../assets/logo-badge.png";
@@ -44,7 +45,7 @@ export default function About() {
         title="Insurance built on relationships"
         subtitle={site.description}
         breadcrumb="About"
-        backgroundImage="/images/handshake-800w.webp"
+        backgroundImage="/images/handshake.webp"
         overlayGradient="linear-gradient(105deg, rgba(6,14,31,0.92) 0%, rgba(11,30,61,0.82) 50%, rgba(11,30,61,0.65) 100%)"
         imageFilter="contrast(1.08) saturate(0.7) brightness(0.9)"
         rightContent={

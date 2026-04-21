@@ -201,8 +201,39 @@ export default function NorwalkPage() {
         </div>
       </section>
 
-      {/* Section 5: Nearby Cities */}
+      {/* Section 4b: Norwalk Local Context */}
       <section className="sp bg-white">
+        <div className="container max-w-4xl">
+          <Reveal>
+            <h2
+              className="text-3xl md:text-4xl font-bold text-slate-900 mb-6"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Norwalk Roads, Transit, and Auto Insurance Context
+            </h2>
+            <div className="prose prose-slate max-w-none">
+              <p className="text-lg text-slate-600 leading-relaxed mb-4">
+                Norwalk sits at the junction of three major freeways: the 605 (San Gabriel River Freeway) runs along the western edge, the 5 (Santa Ana Freeway) cuts through the center, and the 105 (Century Freeway) forms the northern boundary. For daily commuters, these three corridors offer fast connections to downtown Los Angeles, Long Beach, and the San Gabriel Valley — but they also create high-volume merge zones that affect how carriers price coverage for Norwalk ZIP codes 90650, 90651, and 90652.
+              </p>
+              <p className="text-base text-slate-600 leading-relaxed mb-4">
+                Surface-street traffic in Norwalk is anchored by Alondra Blvd and Firestone Blvd, two east-west arterials that carry heavy commercial and residential traffic throughout the day. Alondra Blvd is particularly important for local trips — connecting Norwalk to Bellflower, Paramount, and Cerritos — and its mix of residential driveways and commercial intersections creates the kind of stop-and-go conditions that increase fender-bender frequency relative to freeway driving. If Alondra Blvd is part of your regular commute, we factor that in when evaluating carrier options.
+              </p>
+              <p className="text-base text-slate-600 leading-relaxed mb-4">
+                The Norwalk/Santa Fe Springs Metrolink station, located near the 5 Freeway, is a key transit hub for commuters riding the 91/Perris Valley Line and the Orange County Line into downtown Los Angeles or toward Riverside. Metrolink users still need to drive or be driven to the station, which means vehicle ownership and insurance remain a practical necessity for most Norwalk households even if they commute by rail for the main leg of their trip. We regularly serve Norwalk clients who park at the Metrolink station during the week and need competitive full coverage for those vehicles.
+              </p>
+              <p className="text-base text-slate-600 leading-relaxed mb-4">
+                Cerritos College — straddling the Norwalk/Cerritos border along Bloomfield Ave — draws thousands of students and staff daily, many of whom are young or first-time insurance buyers. If you are a student, parent of a student, or staff member looking for affordable auto insurance that fits a student's driving profile, we compare options across 30+ carriers and can often find rates significantly better than what you would get going directly to a single-company agent. Young drivers benefit most from shopping multiple carriers because the rate spread for that demographic is wider than for experienced drivers.
+              </p>
+              <p className="text-base text-slate-600 leading-relaxed">
+                Norwalk's residential areas vary from dense apartment corridors near the transit station to quieter single-family neighborhoods east of the 605. ZIP code 90650 covers most of the city's residential areas and generally sees competitive pricing from our carrier network. Drivers with clean records, continuous prior coverage, and vehicles in the mid-range value tier tend to get the strongest results from our shopping process. Those with recent violations, lapses, or SR-22 requirements also have strong options — we access specialty carriers that serve the high-risk segment throughout Southeast LA County.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Section 5: Nearby Cities */}
+      <section className="sp bg-slate-50">
         <div className="container max-w-4xl">
           <Reveal>
             <h2
@@ -252,8 +283,54 @@ export default function NorwalkPage() {
         </div>
       </section>
 
-      {/* CTA Block */}
+      {/* Norwalk Commuter & Student Insurance Guide */}
       <section className="sp bg-slate-50">
+        <div className="container max-w-4xl">
+          <Reveal>
+            <h2
+              className="text-3xl md:text-4xl font-bold text-slate-900 mb-6"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Norwalk Commuter and Student Insurance: What to Know
+            </h2>
+            <div className="space-y-4">
+              {[
+                {
+                  n: "01",
+                  title: "Metrolink commuters still need car insurance",
+                  body: "The Norwalk/Santa Fe Springs Metrolink station handles hundreds of daily boarders on the 91/Perris Valley and Orange County Lines. Even if you commute by rail Monday through Friday, your vehicle sits in the park-and-ride all day — and theft, collision in the lot, and vandalism coverage require active comprehensive and collision policies. We structure policies for park-and-ride vehicles that balance low mileage rates with appropriate physical damage coverage."
+                },
+                {
+                  n: "02",
+                  title: "Cerritos College students: compare rates before defaulting to your parents' policy",
+                  body: "Adding a young driver to a parent's policy is often cheaper than a standalone policy — but not always. Cerritos College students who own their own vehicles can sometimes save by qualifying for good-student discounts, low-mileage programs, or telematics-based rates. We run both scenarios and show you the real numbers, so you're not paying more than necessary for your situation."
+                },
+                {
+                  n: "03",
+                  title: "ZIP 90650 vs 90651/90652: know your rate zone",
+                  body: "Most residential Norwalk is in ZIP 90650. The 90651 and 90652 codes cover smaller geographic areas but may produce different rate profiles depending on the carrier. When we run quotes, we use your exact street address — not just the city name — to get accurate pricing. A one-block difference in address can sometimes matter to certain carriers."
+                },
+                {
+                  n: "04",
+                  title: "The 5/605/105 merge zone affects your premium",
+                  body: "Underwriters use ZIP code and address-level data to estimate accident frequency. Norwalk's position between three major freeways means some carriers price this area slightly above average for LA County. Others — particularly those that weigh individual driving record more heavily than geography — can price Norwalk drivers competitively. Our job is to find which carriers work in your favor."
+                },
+              ].map((item) => (
+                <div key={item.n} className="flex gap-5 bg-white rounded-2xl p-6 ring-1 ring-slate-200 shadow-soft">
+                  <div className="shrink-0 w-10 h-10 rounded-xl bg-brand-800 text-white grid place-items-center text-sm font-extrabold">{item.n}</div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 mb-1">{item.title}</h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">{item.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* CTA Block */}
+      <section className="sp bg-white">
         <div className="container max-w-3xl">
           <Reveal>
             <div className="rounded-2xl bg-gradient-to-br from-brand-950 to-brand-800 p-8 md:p-10 text-center text-white shadow-heavy">

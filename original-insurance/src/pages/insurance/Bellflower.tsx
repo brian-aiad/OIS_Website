@@ -201,8 +201,39 @@ export default function BellflowerPage() {
         </div>
       </section>
 
-      {/* Section 5: Nearby Cities */}
+      {/* Section 4b: Bellflower Local Context */}
       <section className="sp bg-white">
+        <div className="container max-w-4xl">
+          <Reveal>
+            <h2
+              className="text-3xl md:text-4xl font-bold text-slate-900 mb-6"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Bellflower Neighborhoods, Roads, and Your Insurance Rate
+            </h2>
+            <div className="prose prose-slate max-w-none">
+              <p className="text-lg text-slate-600 leading-relaxed mb-4">
+                Bellflower sits at the intersection of two major freeway corridors: the 605 (San Gabriel River Freeway) runs along the city's eastern edge, and the 91 (Artesia Freeway) cuts through the southern portion. The 605/91 interchange near Cerritos Ave is one of the busier interchange points in Southeast LA County, and drivers who regularly use either freeway for their commute will find that their ZIP code and daily route play a measurable role in what carriers charge.
+              </p>
+              <p className="text-base text-slate-600 leading-relaxed mb-4">
+                The two primary ZIP codes in Bellflower — 90706 (north and central) and 90707 (south, near Artesia Blvd) — can produce slightly different rate profiles even for drivers with identical records. Underwriters treat high-traffic corridors like Artesia Blvd and Bellflower Blvd as risk factors, particularly in ZIP code 90707 where surface-street density is higher. If you live near Simms Park or the Artesia Blvd commercial strip, comprehensive coverage for theft and vandalism is worth discussing given the level of foot traffic in those areas.
+              </p>
+              <p className="text-base text-slate-600 leading-relaxed mb-4">
+                Commuters heading north to Downey or west toward Lynwood and South Gate often travel Lakewood Blvd and Long Beach Blvd, two arterials that see heavy volume during rush hours. Those heading east use Artesia Blvd as a connector to the 605. Our team is familiar with these specific routes and can identify carriers that price the Bellflower market competitively for drivers in your exact situation — whether you commute short distances locally or drive longer distances to employment in downtown Los Angeles or the South Bay.
+              </p>
+              <p className="text-base text-slate-600 leading-relaxed mb-4">
+                Bellflower has a substantial working-class and immigrant community, which creates real demand for no-license programs, SR-22 filings, and minimum-liability policies that let residents maintain legal vehicle registration at the lowest possible cost. At the same time, many Bellflower homeowners bundle auto and renters or homeowners insurance — a combination we can often package across the same carrier to unlock multi-policy discounts. Whether you are a renter in the apartment corridors near Bellflower Blvd or a homeowner in the quieter residential streets between Clark Ave and Woodruff Ave, we have options for your situation.
+              </p>
+              <p className="text-base text-slate-600 leading-relaxed">
+                One practical note for Bellflower commuters: California's minimum liability limits (30/60/15) were last updated decades ago, and repair costs for modern vehicles have far outpaced them. A $15,000 property damage limit may not cover the full repair bill for a newer SUV or pickup truck. We take time in every quote session to walk through what the real-world numbers mean, so you can decide whether the cheapest option genuinely fits your risk tolerance or whether slightly higher limits offer much better protection for a modest premium difference.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Section 5: Nearby Cities */}
+      <section className="sp bg-slate-50">
         <div className="container max-w-4xl">
           <Reveal>
             <h2
@@ -252,8 +283,47 @@ export default function BellflowerPage() {
         </div>
       </section>
 
-      {/* CTA Block */}
+      {/* Bellflower ZIP Code Coverage Details */}
       <section className="sp bg-slate-50">
+        <div className="container max-w-4xl">
+          <Reveal>
+            <h2
+              className="text-3xl md:text-4xl font-bold text-slate-900 mb-6"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Bellflower Insurance by ZIP Code: 90706 vs 90707
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-5">
+              <div className="bg-white rounded-2xl p-6 ring-1 ring-slate-200 shadow-soft">
+                <div className="text-xs font-bold uppercase tracking-widest text-brand-700 mb-3">ZIP 90706 — North &amp; Central</div>
+                <ul className="space-y-2 text-sm text-slate-600">
+                  <li className="flex gap-2"><span className="text-gold-500 font-bold">·</span>Residential streets: Clark Ave, Woodruff Ave, Virginia Ave corridor</li>
+                  <li className="flex gap-2"><span className="text-gold-500 font-bold">·</span>Proximity to Lakewood Blvd — primary north-south commute to Downey</li>
+                  <li className="flex gap-2"><span className="text-gold-500 font-bold">·</span>Lower traffic density than 90707 — typically competitive rate profiles</li>
+                  <li className="flex gap-2"><span className="text-gold-500 font-bold">·</span>Simms Park neighborhood — popular family area with active pedestrian traffic</li>
+                  <li className="flex gap-2"><span className="text-gold-500 font-bold">·</span>Good candidate for bundling auto + renters insurance</li>
+                </ul>
+              </div>
+              <div className="bg-white rounded-2xl p-6 ring-1 ring-slate-200 shadow-soft">
+                <div className="text-xs font-bold uppercase tracking-widest text-brand-700 mb-3">ZIP 90707 — South (Artesia Area)</div>
+                <ul className="space-y-2 text-sm text-slate-600">
+                  <li className="flex gap-2"><span className="text-gold-500 font-bold">·</span>Artesia Blvd corridor — high commercial density, more claims activity</li>
+                  <li className="flex gap-2"><span className="text-gold-500 font-bold">·</span>605/91 interchange access — freeway commuters with longer-range exposure</li>
+                  <li className="flex gap-2"><span className="text-gold-500 font-bold">·</span>Higher foot traffic near Artesia commercial strip</li>
+                  <li className="flex gap-2"><span className="text-gold-500 font-bold">·</span>Comprehensive for theft and vandalism is more relevant here</li>
+                  <li className="flex gap-2"><span className="text-gold-500 font-bold">·</span>SR-22 and no-license programs common — we serve this profile well</li>
+                </ul>
+              </div>
+            </div>
+            <p className="mt-5 text-sm text-slate-500 leading-relaxed">
+              Rate differences between ZIP codes in Bellflower can be meaningful — sometimes $20–$40 per month on otherwise identical profiles. We compare actual carrier quotes for your address rather than using a generalized city-level estimate.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* CTA Block */}
+      <section className="sp bg-white">
         <div className="container max-w-3xl">
           <Reveal>
             <div className="rounded-2xl bg-gradient-to-br from-brand-950 to-brand-800 p-8 md:p-10 text-center text-white shadow-heavy">
