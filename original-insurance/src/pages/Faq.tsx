@@ -5,7 +5,6 @@ import { usePageMeta } from "../lib/seo";
 import { openQuoteModal } from "../lib/openQuote";
 import PageHero from "../components/PageHero";
 import FAQSchema from "../components/seo/FAQSchema";
-import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { Reveal } from "../components/AnimatedSection";
 import { Icons } from "../components/Icons";
@@ -158,7 +157,6 @@ export default function Faq() {
   return (
     <main id="main-content">
       <FAQSchema questions={SCHEMA_FAQS} />
-      <LocalBusinessSchema url="https://originalinsurance.net/faq" />
       <BreadcrumbSchema crumbs={[
         { name: "Home", url: "https://originalinsurance.net/" },
         { name: "FAQ", url: "https://originalinsurance.net/faq" },
