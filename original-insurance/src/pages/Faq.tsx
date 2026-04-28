@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { site } from "../lib/site";
 import { usePageMeta } from "../lib/seo";
 import { openQuoteModal } from "../lib/openQuote";
@@ -151,6 +151,12 @@ export default function Faq() {
       "Straight answers for Downey drivers about car insurance cost, SR-22, no-license options, proof of insurance, and claims help.",
     canonical: "https://originalinsurance.net/faq",
   });
+
+  const navigate = useNavigate();
+  const { search } = useLocation();
+  useEffect(() => {
+    if (search) navigate("/faq", { replace: true });
+  }, [search, navigate]);
 
   const [openKey, setOpenKey] = useState<string | null>(null);
 
