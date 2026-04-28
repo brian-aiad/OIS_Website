@@ -6,7 +6,6 @@ import { usePageMeta } from "../lib/seo";
 import { Icons } from "../components/Icons";
 import { Reveal } from "../components/AnimatedSection";
 import PageHero from "../components/PageHero";
-import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import OfficePhotoBlock from "../components/seo/OfficePhotoBlock";
 
@@ -96,7 +95,7 @@ export default function Contact() {
       name: "Contact Original Insurance Services",
       url: "https://originalinsurance.net/contact",
       description: "Contact Original Insurance Services for a free insurance quote in Downey, CA. Bilingual service in English, Spanish and Arabic.",
-      mainEntity: { "@id": "https://originalinsurance.net/#organization" },
+      mainEntity: { "@id": "https://originalinsurance.net/#agency" },
     });
     document.head.appendChild(contactEl);
     return () => { contactEl.remove(); };
@@ -114,7 +113,6 @@ export default function Contact() {
 
   return (
     <main id="main-content">
-      <LocalBusinessSchema url="https://originalinsurance.net/contact" />
       <BreadcrumbSchema crumbs={[
         { name: "Home", url: "https://originalinsurance.net/" },
         { name: "Contact", url: "https://originalinsurance.net/contact" },
