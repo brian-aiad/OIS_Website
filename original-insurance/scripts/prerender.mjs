@@ -9,6 +9,14 @@
  * Usage:  node scripts/prerender.mjs
  */
 
+// Vercel build sandbox lacks the system libs Chromium needs (libnspr4 etc).
+// Skip prerendering there — Vercel serves the React SPA and Google crawls JS.
+// Run locally with `node scripts/prerender.mjs` or `npm run build:full`.
+if (process.env.VERCEL) {
+  console.log("  Skipping prerender on Vercel (run locally for prerendered HTML).");
+  process.exit(0);
+}
+
 import { chromium } from "playwright";
 import { createServer } from "http";
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
