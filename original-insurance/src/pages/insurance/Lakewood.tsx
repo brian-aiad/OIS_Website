@@ -28,9 +28,9 @@ const NEARBY_CITIES = [
 export default function LakewoodPage() {
   usePageMeta({
     title:
-      "Auto Insurance Lakewood CA | Cheap Car Insurance, SR-22 | Original Insurance",
+      "Lakewood Auto Insurance — Bundle Home & Auto | Original",
     description:
-      "Independent insurance broker serving Lakewood, CA. Bundle home and auto for multi-carrier savings. SR-22 filing, no-license programs, bilingual service.",
+      "Lakewood homeowners: bundle home and auto for 10–15% savings. SR-22 filing, no-license programs, 30+ carriers. Downey office minutes via Del Amo. Walk-ins welcome.",
     canonical,
   });
 
@@ -243,6 +243,13 @@ export default function LakewoodPage() {
                 className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
               >
                 No-license auto insurance
+              </Link>
+              <span className="text-slate-300">·</span>
+              <Link
+                to="/about"
+                className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
+              >
+                About our brokerage
               </Link>
             </div>
           </Reveal>

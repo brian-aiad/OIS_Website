@@ -141,8 +141,8 @@ const SERVICE_TABS = [
 
 export default function Services() {
   usePageMeta({
-    title: "Insurance Services | Auto, Home, Life & Business | Original Insurance",
-    description: "Explore our full range of insurance services: auto, home, life, commercial, motorcycle, and RV coverage. Compare 30+ carriers for the best rates in Downey, CA. SR-22 filing available.",
+    title: "Auto, Home & SR-22 Insurance in Downey | Original Insurance",
+    description: "Auto, home, life, SR-22, commercial, renters, motorcycle — we compare 30+ carriers so you get the best fit. Bilingual English, Spanish, Arabic. Same-day eID cards.",
     canonical: "https://originalinsurance.net/services",
   });
 
@@ -241,7 +241,7 @@ export default function Services() {
                 {/* Image side */}
                 <div className="relative">
                   <div className="rounded-2xl overflow-hidden ring-1 ring-slate-200/80 shadow-lifted aspect-[4/3]">
-                    <img src={active.img} alt={active.alt} className="h-full w-full object-cover" loading="lazy" />
+                    <img src={active.img} alt={active.alt} className="h-full w-full object-cover" loading="lazy" width={800} height={600} />
                   </div>
 
                   {/* Floating stats overlay */}

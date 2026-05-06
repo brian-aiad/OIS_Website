@@ -37,9 +37,9 @@ const TRUST_POINTS = [
 export default function ParamountPage() {
   usePageMeta({
     title:
-      "Auto Insurance Paramount CA | Cheap Car Insurance, SR-22 | Original Insurance",
+      "Paramount Auto Insurance — Walk In, Same Day | Original",
     description:
-      "Independent insurance broker serving Paramount, CA. Fast walk-in service — our Downey office is just minutes away on Paramount Blvd. Compare 30+ carriers.",
+      "Paramount drivers: walk in or call — our Downey office is minutes up Paramount Blvd. SR-22, no-license, auto & home. Compare 30+ carriers. Same-day eID cards.",
     canonical,
   });
 
@@ -332,6 +332,13 @@ export default function ParamountPage() {
                 className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
               >
                 No-license auto insurance
+              </Link>
+              <span className="text-slate-300">·</span>
+              <Link
+                to="/about"
+                className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
+              >
+                About our brokerage
               </Link>
             </div>
           </Reveal>

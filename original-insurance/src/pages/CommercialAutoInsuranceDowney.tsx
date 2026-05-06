@@ -4,8 +4,16 @@ import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
+import FAQSchema from "../components/seo/FAQSchema";
 import TrustStrip from "../components/seo/TrustStrip";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
+
+const COMMERCIAL_FAQS = [
+  { q: "What is commercial auto insurance?", a: "Commercial auto insurance covers vehicles used for business, including delivery vehicles, work trucks, and company cars not covered by personal auto policies." },
+  { q: "Do I need commercial auto if I use my personal car for work?", a: "If you use your vehicle for business beyond commuting, your personal policy may not cover accidents during business use. A commercial policy closes that gap." },
+  { q: "What is hired and non-owned auto coverage?", a: "Hired auto covers vehicles your business rents. Non-owned auto covers employee vehicles used for company purposes. Both fill liability gaps in standard policies." },
+  { q: "How much does commercial auto insurance cost in Downey?", a: "Commercial auto premiums vary by vehicle type, use, driver history, and coverage needs. We compare 30+ carriers to find the most competitive rate." },
+];
 import { Reveal } from "../components/AnimatedSection";
 
 const NEARBY_CITIES = [
@@ -46,10 +54,9 @@ const VEHICLE_TYPES = [
 
 export default function CommercialAutoInsuranceDowneyPage() {
   usePageMeta({
-    title:
-      "Commercial Auto Insurance Downey CA | Fleet, Trucks & Business Vehicles | Original Insurance",
+    title: "Commercial Auto Insurance Downey CA | Original Insurance",
     description:
-      "Commercial auto insurance in Downey, CA for fleets, trucks, for-hire vehicles, and business autos. Independent broker with 30+ carriers and same-day proof of insurance.",
+      "Commercial auto in Downey for fleets, trucks, and business vehicles. Compare 30+ carriers for liability, hired/non-owned, BOP bundles. Same-day proof of insurance.",
     canonical:
       "https://originalinsurance.net/commercial-auto-insurance-downey",
   });
@@ -57,6 +64,7 @@ export default function CommercialAutoInsuranceDowneyPage() {
   return (
     <main id="main-content">
       <LocalBusinessSchema />
+      <FAQSchema questions={COMMERCIAL_FAQS} />
       <BreadcrumbSchema crumbs={[
         { name: "Home", url: "https://originalinsurance.net/" },
         { name: "Commercial Auto Insurance Downey", url: "https://originalinsurance.net/commercial-auto-insurance-downey" },

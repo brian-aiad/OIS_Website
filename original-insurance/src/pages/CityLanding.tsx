@@ -149,8 +149,8 @@ export default function CityLanding() {
   const canonical = `https://originalinsurance.net/insurance/${city.slug}`;
 
   usePageMeta({
-    title: `Insurance Broker ${city.name}, CA | Auto, Home, Life & Business | Original Insurance`,
-    description: `Independent insurance broker serving ${city.name}, CA since 1999. Compare 30+ carriers for auto, home, life, and commercial insurance. SR-22 filing, no-license programs, bilingual English / Spanish / Arabic service. Call (310) 538-8666 for a free quote.`,
+    title: `Auto Insurance ${city.name} CA — Same-Day, No License | Original`,
+    description: `Get auto insurance in ${city.name}, CA. Same-day eID cards, SR-22 filing, no-license programs. Compare 30+ carriers with a bilingual broker. Free quote — call or walk in.`,
     canonical,
   });
 

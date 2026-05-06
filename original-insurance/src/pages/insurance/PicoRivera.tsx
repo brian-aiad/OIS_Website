@@ -37,9 +37,9 @@ const TRUST_POINTS = [
 export default function PicoRiveraPage() {
   usePageMeta({
     title:
-      "Auto Insurance Pico Rivera CA | Cheap Car Insurance, SR-22 | Original Insurance",
+      "Pico Rivera Auto Insurance — ITIN OK | Original Insurance",
     description:
-      "Independent insurance broker serving Pico Rivera, CA. Compare top California carriers for auto, SR-22, and no-license coverage. Bilingual service.",
+      "Pico Rivera auto insurance: foreign licenses accepted, ITIN-based policies available, SR-22 same-day. Compare 30+ California carriers. Bilingual broker. Free quote.",
     canonical,
   });
 
@@ -323,6 +323,13 @@ export default function PicoRiveraPage() {
                 className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
               >
                 No-license auto insurance
+              </Link>
+              <span className="text-slate-300">·</span>
+              <Link
+                to="/about"
+                className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
+              >
+                About our brokerage
               </Link>
             </div>
           </Reveal>

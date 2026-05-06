@@ -37,9 +37,9 @@ const TRUST_POINTS = [
 export default function WhittierPage() {
   usePageMeta({
     title:
-      "Auto Insurance Whittier CA | Cheap Car Insurance, SR-22 | Original Insurance",
+      "Whittier Auto Insurance — SR-22, Home Bundle | Original",
     description:
-      "Independent insurance broker serving Whittier, CA. Compare 30+ carriers for auto, home, and SR-22. From Uptown Whittier to East Whittier.",
+      "Whittier auto insurance from Uptown to East Whittier. Compare 30+ carriers — SR-22, home bundles, no-license programs. Bilingual service via the 605.",
     canonical,
   });
 
@@ -323,6 +323,13 @@ export default function WhittierPage() {
                 className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
               >
                 No-license auto insurance
+              </Link>
+              <span className="text-slate-300">·</span>
+              <Link
+                to="/about"
+                className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
+              >
+                About our brokerage
               </Link>
             </div>
           </Reveal>

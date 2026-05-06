@@ -28,9 +28,9 @@ const NEARBY_CITIES = [
 export default function CerritosPage() {
   usePageMeta({
     title:
-      "Auto Insurance Cerritos CA | Cheap Car Insurance, SR-22 | Original Insurance",
+      "Cerritos Auto Insurance — 605 Corridor | Original Insurance",
     description:
-      "Independent insurance broker serving Cerritos, CA. Compare 30+ carriers for auto, home, and SR-22. Bilingual service for Cerritos and southeast LA families.",
+      "Auto insurance for Cerritos drivers in the 605 corridor. Compare 30+ carriers — SR-22, full coverage, no-license options. Bilingual broker just minutes away.",
     canonical,
   });
 
@@ -243,6 +243,13 @@ export default function CerritosPage() {
                 className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
               >
                 No-license auto insurance
+              </Link>
+              <span className="text-slate-300">·</span>
+              <Link
+                to="/about"
+                className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
+              >
+                About our brokerage
               </Link>
             </div>
           </Reveal>

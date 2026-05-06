@@ -30,9 +30,9 @@ const NEARBY_CITIES = [
 export default function BellflowerPage() {
   usePageMeta({
     title:
-      "Auto Insurance Bellflower CA | Cheap Car Insurance, SR-22 | Original Insurance",
+      "Bellflower Auto Insurance — SR-22, No License | Original",
     description:
-      "Independent insurance broker serving Bellflower, CA. Compare 30+ carriers for auto, home, and SR-22 insurance. Same-day quotes and bilingual service.",
+      "Bellflower drivers: compare auto from 30+ carriers. SR-22 same-day, no-license programs, home & auto bundles. Our Downey office is ~7 min south on Lakewood Blvd.",
     canonical,
   });
 
@@ -277,6 +277,13 @@ export default function BellflowerPage() {
                 className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
               >
                 No-license auto insurance
+              </Link>
+              <span className="text-slate-300">·</span>
+              <Link
+                to="/about"
+                className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
+              >
+                About our brokerage
               </Link>
             </div>
           </Reveal>

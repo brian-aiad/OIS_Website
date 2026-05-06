@@ -941,8 +941,8 @@ function ServiceAreas() {
    ═══════════════════════════════════════════════ */
 export default function Home() {
   usePageMeta({
-    title: "Insurance Broker Downey CA | Auto, Home, Commercial, SR-22 | Original Insurance",
-    description: "Independent insurance broker in Downey, CA. Compare 30+ carriers for auto, home, commercial, life, and SR-22 insurance with multilingual local service.",
+    title: "Insurance Broker Downey CA — Free Quote | Original Insurance",
+    description: "Tired of paying too much? We compare 30+ carriers for Downey drivers — auto, home, SR-22, no-license programs. 4.9★ rated, bilingual staff. Free quote in minutes.",
     canonical: "https://originalinsurance.net/",
   });
 

@@ -37,9 +37,9 @@ const TRUST_POINTS = [
 export default function MontebelloPage() {
   usePageMeta({
     title:
-      "Auto Insurance Montebello CA | Cheap Car Insurance, SR-22 | Original Insurance",
+      "Montebello Auto Insurance — 30+ Carriers | Original",
     description:
-      "Independent insurance broker serving Montebello, CA. Compare 30+ carriers for auto, home, and SR-22. English, Spanish, Arabic service.",
+      "Auto insurance for Montebello drivers on the 60 and 710. Compare 30+ California carriers — SR-22, no-license, home bundles. Bilingual broker. Free quote today.",
     canonical,
   });
 
@@ -328,6 +328,13 @@ export default function MontebelloPage() {
                 className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
               >
                 No-license auto insurance
+              </Link>
+              <span className="text-slate-300">·</span>
+              <Link
+                to="/about"
+                className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
+              >
+                About our brokerage
               </Link>
             </div>
           </Reveal>

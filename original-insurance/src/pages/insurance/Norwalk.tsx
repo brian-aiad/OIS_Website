@@ -30,9 +30,9 @@ const NEARBY_CITIES = [
 export default function NorwalkPage() {
   usePageMeta({
     title:
-      "Auto Insurance Norwalk CA | Cheap Car Insurance, SR-22 | Original Insurance",
+      "Norwalk Auto Insurance — SR-22, No License | Original",
     description:
-      "Independent insurance broker serving Norwalk, CA. Compare 30+ carriers for auto, SR-22, and no-license programs. Bilingual service near Cerritos College.",
+      "Norwalk auto insurance from an independent broker. SR-22, no-license, foreign-license programs. Near Cerritos College area. 30+ carriers, bilingual, walk-ins OK.",
     canonical,
   });
 
@@ -277,6 +277,13 @@ export default function NorwalkPage() {
                 className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
               >
                 No-license auto insurance
+              </Link>
+              <span className="text-slate-300">·</span>
+              <Link
+                to="/about"
+                className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
+              >
+                About our brokerage
               </Link>
             </div>
           </Reveal>

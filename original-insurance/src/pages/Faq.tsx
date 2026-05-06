@@ -146,9 +146,9 @@ const SCHEMA_FAQS = FAQ_GROUPS.flatMap((g) =>
 
 export default function Faq() {
   usePageMeta({
-    title: "Downey Auto Insurance FAQ | SR-22, No-License, Cost & Claims | Original Insurance",
+    title: "Insurance FAQ: SR-22, No License, ITIN | Original Insurance",
     description:
-      "Straight answers for Downey drivers about car insurance cost, SR-22, no-license options, proof of insurance, and claims help.",
+      "Straight answers about car insurance in Downey: SR-22 cost & duration, ITIN and no-license coverage, proof of insurance, claims help, and CA minimums explained.",
     canonical: "https://originalinsurance.net/faq",
   });
 
@@ -269,9 +269,20 @@ export default function Faq() {
             </Reveal>
           ))}
 
+          {/* About link */}
+          <Reveal>
+            <p className="mt-10 text-sm text-slate-500 text-center">
+              Looking for background on our brokerage?{" "}
+              <Link to="/about" className="text-brand-700 font-medium hover:underline">
+                Learn about Original Insurance
+              </Link>{" "}
+              — independent broker in Downey since 1999, serving SE LA in English, Spanish, and Arabic.
+            </p>
+          </Reveal>
+
           {/* CTA */}
           <Reveal>
-            <div className="mt-12 rounded-2xl bg-gradient-to-br from-brand-950 to-brand-800 p-8 text-center text-white shadow-heavy">
+            <div className="mt-8 rounded-2xl bg-gradient-to-br from-brand-950 to-brand-800 p-8 text-center text-white shadow-heavy">
               <h3 className="text-2xl font-bold mb-2" style={{ fontFamily: "var(--font-display)" }}>
                 Still have questions?
               </h3>

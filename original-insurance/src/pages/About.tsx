@@ -13,8 +13,8 @@ import logoBadge from "../assets/logo-badge.png";
 
 export default function About() {
   usePageMeta({
-    title: "Independent Insurance Broker in Downey CA Since 1999 | Original Insurance",
-    description: "Learn why Downey drivers choose an independent broker. Compare 30+ carriers with local multilingual service and claims guidance.",
+    title: "Downey's Trusted Broker Since 1999 | Original Insurance",
+    description: "Family-run Downey broker since 1999. We shop 30+ carriers in English, Spanish & Arabic for SE LA families. 4.9★, 85+ verified reviews. Independent, bilingual, zero pressure.",
     canonical: "https://originalinsurance.net/about",
   });
 

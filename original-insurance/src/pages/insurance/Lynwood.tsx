@@ -26,9 +26,9 @@ const NEARBY_CITIES = [
 export default function LynwoodPage() {
   usePageMeta({
     title:
-      "Auto Insurance Lynwood CA | Cheap Car Insurance, SR-22 | Original Insurance",
+      "Lynwood Auto Insurance — Bilingual, SR-22 | Original",
     description:
-      "Independent insurance broker serving Lynwood, CA. Bilingual auto, no-license, and SR-22 insurance. English, Spanish, Arabic service.",
+      "Bilingual auto insurance for Lynwood — English, Spanish, Arabic. SR-22 same day, no-license and ITIN programs, 30+ carriers. Free quote — call or walk in.",
     canonical,
   });
 
@@ -241,6 +241,13 @@ export default function LynwoodPage() {
                 className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
               >
                 No-license auto insurance
+              </Link>
+              <span className="text-slate-300">·</span>
+              <Link
+                to="/about"
+                className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
+              >
+                About our brokerage
               </Link>
             </div>
           </Reveal>
