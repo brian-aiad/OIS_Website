@@ -54,7 +54,7 @@ export default function Locations() {
     el.type = "application/ld+json";
     el.text = JSON.stringify({
       "@context": "https://schema.org", "@type": "InsuranceAgency",
-      name: site.name, url: window.location.origin + "/locations",
+      name: site.name, url: "https://originalinsurance.net/",
       telephone: site.contact.phone, email: site.contact.email,
       address: { "@type": "PostalAddress", streetAddress: site.contact.address,
         addressLocality: "Downey", addressRegion: "CA", postalCode: "90240", addressCountry: "US" },

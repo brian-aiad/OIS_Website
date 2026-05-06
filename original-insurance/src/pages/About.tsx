@@ -5,7 +5,6 @@ import { usePageMeta } from "../lib/seo";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 import { Counter } from "../components/AnimatedCounter";
 import PageHero from "../components/PageHero";
-import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import ReviewBadge from "../components/seo/ReviewBadge";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 
@@ -28,7 +27,7 @@ export default function About() {
       name: "About Original Insurance Services",
       url: "https://originalinsurance.net/about",
       description: "Family-owned independent insurance broker in Downey, CA serving Southern California since 1999.",
-      mainEntity: { "@id": "https://originalinsurance.net/#organization" },
+      mainEntity: { "@id": "https://originalinsurance.net/#agency" },
     });
     document.head.appendChild(aboutEl);
     return () => { aboutEl.remove(); };
@@ -36,7 +35,6 @@ export default function About() {
 
   return (
     <main id="main-content">
-      <LocalBusinessSchema url="https://originalinsurance.net/about" />
       <BreadcrumbSchema crumbs={[
         { name: "Home", url: "https://originalinsurance.net/" },
         { name: "About", url: "https://originalinsurance.net/about" },

@@ -1,18 +1,19 @@
 ---
 name: original-insurance-seo
-description: SEO methodology for originalinsurance.net — a React/Vite SPA deployed on Firebase for an independent insurance broker in Downey, CA. Use this skill whenever working on ANY SEO task for this site including schema markup, sitemap updates, meta tags, city landing pages, FAQ pages, canonical tags, structured data, Google Search Console issues, indexing problems, rich results, or any change that affects how Google crawls or ranks the site.
+description: SEO methodology for originalinsurance.net — a React/Vite SPA deployed on Vercel for an independent insurance broker in Downey, CA. Use this skill whenever working on ANY SEO task for this site including schema markup, sitemap updates, meta tags, city landing pages, FAQ pages, canonical tags, structured data, Google Search Console issues, indexing problems, rich results, or any change that affects how Google crawls or ranks the site.
 ---
 
 # Original Insurance SEO Skill
 
 ## Site Context
 - **URL**: https://originalinsurance.net
-- **Stack**: React 19 + Vite 7 SPA, deployed on Firebase Hosting
+- **Stack**: React 19 + Vite 7 SPA, deployed on Vercel
 - **Business**: Independent insurance broker, Downey CA, est. 1999
 - **Languages**: English, Spanish, Arabic
 - **Build cmd**: `npm run build` (tsc → vite build → node scripts/prerender.mjs)
-- **Deploy cmd**: `firebase deploy --only hosting`
+- **Deploy cmd**: `vercel deploy --prebuilt` (NEVER firebase deploy — Firebase is the old host)
 - **Git branch**: seo/gap-remediation
+- **IMPORTANT**: Prerender runs locally only. Vercel's own build skips it (VERCEL env var check in prerender.mjs). Always build locally first, then `vercel deploy --prebuilt`.
 
 ## Architecture — How SEO Works in This SPA
 
@@ -177,7 +178,7 @@ Sitemap: https://originalinsurance.net/sitemap.xml
 ## After Every SEO Change — Required Steps
 
 ```bash
-# 1. Build (TypeScript + Vite + Playwright prerender — all in one command)
+# 1. Build locally (TypeScript + Vite + Playwright prerender — all in one command)
 npm run build
 
 # 2. Validate schema blocks on built HTML
@@ -185,11 +186,11 @@ grep -o 'data-schema="[^"]*"' dist/index.html
 grep -o 'data-schema="[^"]*"' dist/faq/index.html
 grep -o 'data-schema="[^"]*"' dist/insurance/lynwood/index.html
 
-# 3. Deploy
-firebase deploy --only hosting
+# 3. Deploy to Vercel using prebuilt dist (NEVER firebase deploy)
+vercel deploy --prebuilt
 
 # 4. Commit and push
-git add -p && git commit -m "..." && git push
+git add -p && git commit -m "..." && git push origin HEAD:main
 
 # 5. Request indexing in GSC for changed pages (max 5/day)
 # URL Inspection → paste URL → Request Indexing

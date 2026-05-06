@@ -874,6 +874,69 @@ function PopularNeedsHub() {
 }
 
 /* ═══════════════════════════════════════════════
+   SERVICE AREAS — City landing page hub
+   ═══════════════════════════════════════════════ */
+function ServiceAreas() {
+  const cities = [
+    { name: "Downey", slug: "downey", note: "Our home base — walk-ins welcome" },
+    { name: "Norwalk", slug: "norwalk", note: "Minutes away via the 605" },
+    { name: "Bellflower", slug: "bellflower", note: "Auto & SR-22 specialists" },
+    { name: "Cerritos", slug: "cerritos", note: "605 & 91 corridor coverage" },
+    { name: "Lakewood", slug: "lakewood", note: "Home & auto bundles" },
+    { name: "Paramount", slug: "paramount", note: "Commercial & fleet coverage" },
+    { name: "Lynwood", slug: "lynwood", note: "Multilingual service" },
+    { name: "South Gate", slug: "south-gate", note: "No-license programs available" },
+    { name: "Pico Rivera", slug: "pico-rivera", note: "Foreign-license specialists" },
+    { name: "Montebello", slug: "montebello", note: "Home & renters coverage" },
+    { name: "Commerce", slug: "commerce", note: "Commercial auto & BOP" },
+    { name: "Whittier", slug: "whittier", note: "SR-22 same-day filing" },
+  ];
+
+  return (
+    <section className="sp bg-white" id="service-areas">
+      <div className="container">
+        <Reveal className="text-center max-w-2xl mx-auto">
+          <span className="eyebrow">Service Areas</span>
+          <h2 className="mt-3 display-2 text-slate-900">
+            Serving southeast Los Angeles County
+          </h2>
+          <p className="mt-3 text-slate-500">
+            One call covers the whole region. We compare 30+ carriers for drivers, homeowners, and businesses across 12 cities in the 605 and 91 corridors.
+          </p>
+        </Reveal>
+
+        <Stagger className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3" gap={0.03}>
+          {cities.map((city) => (
+            <StaggerChild key={city.slug}>
+              <NavLink
+                to={`/insurance/${city.slug}`}
+                className="block h-full bg-slate-50 rounded-2xl p-4 ring-1 ring-slate-200/80 hover:ring-brand-300 hover:shadow-soft hover:-translate-y-0.5 transition-all"
+              >
+                <div className="font-bold text-slate-900 text-[15px]">
+                  {city.name}
+                </div>
+                <div className="mt-1 text-[12px] text-slate-500 leading-snug">{city.note}</div>
+                <div className="mt-2 flex items-center gap-1 text-[11px] font-semibold text-brand-700">
+                  See coverage
+                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" /></svg>
+                </div>
+              </NavLink>
+            </StaggerChild>
+          ))}
+        </Stagger>
+
+        <Reveal delay={0.2} className="mt-7 text-center">
+          <NavLink to="/locations" className="btn btn-outline group">
+            View our Downey office location
+            <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" /></svg>
+          </NavLink>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════
    PAGE ASSEMBLY
    ═══════════════════════════════════════════════ */
 export default function Home() {
@@ -902,6 +965,7 @@ export default function Home() {
       <AboutSplit />
       <Testimonials />
       <ClaimsCTA />
+      <ServiceAreas />
       <FAQ />
     </>
   );
