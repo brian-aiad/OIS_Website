@@ -87,6 +87,8 @@ if $DRY_RUN; then
     dryrun "mkdir -p $STATIC_OUT/$reldir && cp $f $STATIC_OUT/$reldir/index.html"
   done
 else
+  # Copy prerendered subdirectory pages (about/, faq/, insurance/*, etc.)
+  # Note: use APP_DIR prefix in path stripping since find gets absolute paths here
   while IFS= read -r -d '' f; do
     reldir="${f#$APP_DIR/dist/}"
     reldir="${reldir%/index.html}"
@@ -94,10 +96,12 @@ else
     cp "$f" "$STATIC_OUT/$reldir/index.html"
     COPIED=$((COPIED + 1))
   done < <(find "$APP_DIR/dist" -mindepth 2 -name "index.html" -print0)
-  # Also copy sitemap and robots (may have been updated)
+  # Copy prerendered root homepage (hard link broken by prerender rewrite)
+  cp "$APP_DIR/dist/index.html" "$STATIC_OUT/index.html"
+  # Also copy sitemap and robots (may have been updated by build)
   cp "$APP_DIR/dist/sitemap.xml" "$STATIC_OUT/sitemap.xml"
   cp "$APP_DIR/dist/robots.txt"  "$STATIC_OUT/robots.txt"
-  ok "Copied $COPIED prerendered pages + sitemap + robots.txt"
+  ok "Copied $COPIED prerendered pages + root + sitemap + robots.txt"
 fi
 
 # ── Step 6: Deploy to production ─────────────────────────────────────────────
