@@ -1,0 +1,104 @@
+# seo-monitor.yml — Daily SEO health check for originalinsurance.net
+#
+# INACTIVE BY DEFAULT. To enable: move this file to .github/workflows/ and
+# configure the NOTIFY_EMAIL secret in GitHub repository settings.
+#
+# What it does:
+#   - Runs verify-live.sh against the live production site once per day
+#   - Opens a GitHub issue if any check fails (visible in your repo Issues tab)
+#   - Optionally sends email via SendGrid if SENDGRID_API_KEY secret is set
+#
+# To enable: this file is already in .github/workflows/ — just set the
+# NOTIFY_EMAIL secret in GitHub → Settings → Secrets → Actions.
+# Leave SENDGRID_API_KEY empty to use GitHub Issues only.
+
+name: SEO Health Monitor
+
+on:
+  schedule:
+    # Run daily at 9 AM UTC (2 AM PT)
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+    # Allow manual trigger from GitHub Actions UI
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Make verify script executable
+        run: chmod +x scripts/verify-live.sh
+
+      - name: Run live verification
+        id: verify
+        run: |
+          bash scripts/verify-live.sh 2>&1 | tee /tmp/verify-output.txt
+          EXIT_CODE=${PIPESTATUS[0]}
+          echo "exit_code=$EXIT_CODE" >> $GITHUB_OUTPUT
+          echo "output<<EOF" >> $GITHUB_OUTPUT
+          cat /tmp/verify-output.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: Open GitHub issue on failure
+        if: steps.verify.outputs.exit_code != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const output = `${{ steps.verify.outputs.output }}`;
+            const title = `[SEO Alert] Live verification failed — ${new Date().toISOString().split('T')[0]}`;
+            const body = `## SEO Health Check Failed\n\nThe daily SEO verification found issues on \`originalinsurance.net\`.\n\n\`\`\`\n${output}\n\`\`\`\n\n**Action required:** Check each ✗ failure above and fix the underlying issue. See \`SEO_CONVENTIONS.md\` for guidance.`;
+
+            // Check if an open issue with same title exists (avoid duplicates)
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'seo-alert',
+            });
+
+            if (issues.data.length === 0) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['seo-alert'],
+              });
+            } else {
+              // Comment on existing open issue instead
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issues.data[0].number,
+                body: `## Daily check — ${new Date().toISOString().split('T')[0]}\n\n\`\`\`\n${output}\n\`\`\``,
+              });
+            }
+
+      - name: Close resolved issue
+        if: steps.verify.outputs.exit_code == '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'seo-alert',
+            });
+            for (const issue of issues.data) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `✅ SEO health check passed on ${new Date().toISOString().split('T')[0]} — closing.`,
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed',
+              });
+            }
