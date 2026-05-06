@@ -89,7 +89,7 @@ export default function AutoInsuranceDowneyCA() {
 
       <div className="bg-white py-4 border-b border-slate-100">
         <div className="container flex justify-center">
-          <ReviewBadge count={47} />
+          <ReviewBadge count={site.reviews.count} />
         </div>
       </div>
 

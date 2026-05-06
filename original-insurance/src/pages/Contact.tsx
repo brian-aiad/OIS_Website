@@ -96,7 +96,7 @@ export default function Contact() {
       {/* 3 contact cards */}
       <section className="relative -mt-2 z-10 pb-12">
         <div className="container">
-          <div className="grid sm:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               {
                 icon: <Icons.Phone className="w-5 h-5" />,
@@ -105,6 +105,18 @@ export default function Contact() {
                 sub: "Mon–Fri 10 AM – 5:30 PM",
                 href: site.contact.phoneHref,
                 accent: true,
+              },
+              {
+                icon: (
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+                  </svg>
+                ),
+                title: "Text Us",
+                detail: site.contact.text,
+                sub: "Fast replies during business hours",
+                href: site.contact.textHref,
+                accent: false,
               },
               {
                 icon: <Icons.Mail className="w-5 h-5" />,

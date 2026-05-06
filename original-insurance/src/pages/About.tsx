@@ -14,7 +14,7 @@ import logoBadge from "../assets/logo-badge.png";
 export default function About() {
   usePageMeta({
     title: "Downey's Trusted Broker Since 1999 | Original Insurance",
-    description: "Family-run Downey broker since 1999. We shop 30+ carriers in English, Spanish & Arabic for SE LA families. 4.9★, 85+ verified reviews. Independent, bilingual, zero pressure.",
+    description: "Family-run Downey broker since 1999. We shop 30+ carriers in English, Spanish & Arabic for SE LA families. 4.9★, 92 verified reviews. Independent, bilingual, zero pressure.",
     canonical: "https://originalinsurance.net/about",
   });
 
@@ -168,7 +168,7 @@ export default function About() {
           </Stagger>
 
           <div className="mt-10 flex justify-center">
-            <ReviewBadge count={47} />
+            <ReviewBadge count={site.reviews.count} />
           </div>
         </div>
       </section>
@@ -190,6 +190,9 @@ export default function About() {
               </p>
               <p className="mt-3 text-slate-500 leading-relaxed">
                 Independent brokerage means we are not tied to any single insurance company's products, pricing, or sales targets. Every client who walks through our door or calls our Paramount Blvd office gets an honest comparison across our full carrier network. We have seen the Southeast LA market through major events — rising uninsured rates, carrier exits, regulatory changes, and economic cycles — and that long view shapes how we advise our clients. We know which carriers consistently pay claims fairly, which offer the most competitive rates for specific driver profiles, and where gaps in coverage most commonly catch families off guard.
+              </p>
+              <p className="mt-3 text-slate-500 leading-relaxed">
+                Original Insurance is a Black- and Latino-owned independent brokerage. Our office is wheelchair accessible, LGBTQ+ friendly, and a transgender safespace — because the people who walk through our door deserve to feel respected before they even sit down. We have always served clients who were turned away or underserved elsewhere, and that commitment has not changed in 25 years.
               </p>
               <p className="mt-3 text-slate-500 leading-relaxed">
                 Today we serve clients across California — in English, Spanish, and Arabic — with the same personal service we started with. If you're looking for{" "}

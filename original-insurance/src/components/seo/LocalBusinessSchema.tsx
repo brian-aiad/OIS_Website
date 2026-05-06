@@ -15,6 +15,20 @@ const DEFAULT_AREA_SERVED = [
   "Paramount, CA",
   "Lakewood, CA",
   "Whittier, CA",
+  "Cerritos, CA",
+  "Commerce, CA",
+  "Montebello, CA",
+  "Pico Rivera, CA",
+  "South Gate, CA",
+  // Additional GBP-listed service areas
+  "Bell, CA",
+  "Bell Gardens, CA",
+  "Cudahy, CA",
+  "Huntington Park, CA",
+  "La Habra, CA",
+  "La Mirada, CA",
+  "Maywood, CA",
+  "Santa Fe Springs, CA",
 ];
 
 export default function LocalBusinessSchema({
@@ -41,7 +55,30 @@ export default function LocalBusinessSchema({
       url,
       telephone: "+1-310-538-8666",
       priceRange: "$$",
-      image: "https://originalinsurance.net/og-image.jpg",
+      image: "https://originalinsurance.net/og-image.png",
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          telephone: "+1-310-538-8666",
+          contactType: "customer service",
+          contactOption: "TollFree",
+          availableLanguage: ["English", "Spanish", "Arabic"],
+          areaServed: "US-CA",
+        },
+        {
+          "@type": "ContactPoint",
+          telephone: "+1-310-429-6777",
+          contactType: "sales",
+          contactOption: ["TollFree", "HearingImpairedSupported"],
+          availableLanguage: ["English", "Spanish", "Arabic"],
+          areaServed: "US-CA",
+        },
+      ],
+      amenityFeature: [
+        { "@type": "LocationFeatureSpecification", name: "Wheelchair accessible parking lot", value: true },
+        { "@type": "LocationFeatureSpecification", name: "Wheelchair accessible entrance", value: true },
+        { "@type": "LocationFeatureSpecification", name: "Wheelchair accessible seating", value: true },
+      ],
       address: {
         "@type": "PostalAddress",
         streetAddress: "9907-B Paramount Blvd",
@@ -68,6 +105,7 @@ export default function LocalBusinessSchema({
       sameAs: [
         "https://www.facebook.com/157258154314691/",
         "https://www.linkedin.com/company/original-insurance-services/",
+        "https://g.page/original-insurance",
       ],
       serviceType: [
         "Auto Insurance",
@@ -76,6 +114,10 @@ export default function LocalBusinessSchema({
         "Commercial Auto Insurance",
         "Home Insurance",
         "Renters Insurance",
+        "Motorcycle Insurance",
+        "Life Insurance",
+        "Commercial Property Insurance",
+        "Condo Insurance",
       ],
     });
     document.head.appendChild(el);

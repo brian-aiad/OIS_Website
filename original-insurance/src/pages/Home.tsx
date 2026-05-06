@@ -76,7 +76,7 @@ function Hero() {
           </p>
 
           <div className="mt-5">
-            <ReviewBadge count={47} compact />
+            <ReviewBadge count={site.reviews.count} compact />
           </div>
 
           <div className="mt-7 flex flex-col sm:flex-row gap-3">
@@ -830,44 +830,53 @@ function StickyRibbon() {
 /* ═══════════════════════════════════════════════
    POPULAR INSURANCE NEEDS HUB
    ═══════════════════════════════════════════════ */
-function PopularNeedsHub() {
-  const cards = [
-    { title: "Auto Insurance in Downey", desc: "Compare 30+ carriers for liability, full coverage, and no-license options.", to: "/auto-insurance-downey-ca" },
-    { title: "SR-22 Filing in Downey", desc: "Same-day electronic SR-22 filing to the California DMV.", to: "/sr22-insurance-downey" },
-    { title: "No-License / Foreign-License Insurance", desc: "Coverage options for vehicle owners without a traditional CA license.", to: "/no-license-auto-insurance-downey" },
-    { title: "Cheap Car Insurance Options", desc: "We compare rates so you get the best price for the coverage you need.", to: "/auto-insurance-downey-ca#cost" },
-    { title: "Commercial Auto Insurance", desc: "Business vehicles, fleets, and hired/non-owned coverage.", to: "/services" },
+function ProductShowcase() {
+  const products = [
+    { badge: "Same-day",    title: "SR-22 Insurance",         value: "Same-day filing, $15–$25 fee",          to: "/sr22-insurance-downey" },
+    { badge: "30+ carriers", title: "Auto Insurance",         value: "Liability, full coverage, SR-22",        to: "/auto-insurance-downey-ca" },
+    { badge: "ITIN OK",    title: "No-License Auto",          value: "Foreign license, ITIN, international",  to: "/no-license-auto-insurance-downey" },
+    { badge: "Fleets",     title: "Commercial Auto",          value: "BOP, GL, hired/non-owned, fleet",        to: "/commercial-auto-insurance-downey" },
+    { badge: "Bundle",     title: "Homeowners Insurance",     value: "Bundle with auto for 10–15% savings",   to: "/services" },
+    { badge: "Walls-in",   title: "Condo Insurance",          value: "Interior coverage for condo owners",    to: "/services" },
+    { badge: "Affordable", title: "Motorcycle Insurance",     value: "Gear and accessory coverage included",  to: "/services" },
+    { badge: "Term",       title: "Life Insurance",           value: "Affordable family protection options",  to: "/services" },
+    { badge: "Low down",   title: "Low Down Payment Auto",    value: "Drive today for less upfront",          to: "/auto-insurance-downey-ca" },
+    { badge: "Coverage",   title: "Final Expense Insurance",  value: "Funeral and burial cost coverage",      to: "/services" },
   ];
 
   return (
-    <section className="sp bg-slate-50" id="popular-needs">
+    <section className="sp bg-slate-50" id="products">
       <div className="container">
         <Reveal>
-          <span className="eyebrow">Most Requested</span>
+          <span className="eyebrow">What We Cover</span>
           <h2 className="mt-3 display-2 text-slate-900 max-w-2xl">
-            Popular insurance needs in&nbsp;Downey
+            10 coverage types, one Downey office
           </h2>
           <p className="mt-3 text-slate-500 max-w-xl leading-relaxed">
-            Most people who contact us in Downey are looking for one of four things: affordable auto insurance, fast SR-22 filing, help covering a vehicle without a traditional license setup, or a real local broker who can compare multiple carriers.
+            Independent broker means we compare 30+ carriers across every line. Call, text, or walk in — we handle it all from one location.
           </p>
         </Reveal>
-        <Stagger className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" gap={0.04}>
-          {cards.map((card, i) => (
+        <Stagger className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3" gap={0.03}>
+          {products.map((p, i) => (
             <StaggerChild key={i}>
               <NavLink
-                to={card.to}
-                className="block h-full bg-white rounded-2xl p-6 ring-1 ring-slate-200/80 shadow-soft hover:shadow-lifted hover:ring-brand-300 transition-all"
+                to={p.to}
+                className="block h-full bg-white rounded-2xl p-5 ring-1 ring-slate-200/80 shadow-soft hover:shadow-lifted hover:ring-brand-300 hover:-translate-y-0.5 transition-all"
               >
-                <h3 className="font-bold text-slate-900 mb-2">{card.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{card.desc}</p>
-                <span className="mt-4 inline-flex items-center gap-1 text-[12px] font-semibold text-brand-700">
-                  Learn more
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" /></svg>
+                <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-brand-600 bg-brand-50 rounded-full px-2 py-0.5 mb-3">
+                  {p.badge}
                 </span>
+                <h3 className="font-bold text-slate-900 text-[14px] mb-1 leading-snug">{p.title}</h3>
+                <p className="text-[12px] text-slate-500 leading-relaxed">{p.value}</p>
               </NavLink>
             </StaggerChild>
           ))}
         </Stagger>
+        <Reveal delay={0.1} className="mt-6 text-center">
+          <NavLink to="/services" className="text-[13px] font-medium text-brand-700 hover:text-brand-900 hover:underline transition-colors">
+            View all services & coverage details →
+          </NavLink>
+        </Reveal>
       </div>
     </section>
   );
@@ -958,7 +967,7 @@ export default function Home() {
         </div>
       </div>
       <BentoStats />
-      <PopularNeedsHub />
+      <ProductShowcase />
       <ServicesMasonry />
       <Carriers />
       <HowItWorks />

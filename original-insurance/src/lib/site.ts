@@ -6,11 +6,25 @@ export const site = {
   contact: {
     phone: "(310) 538-8666",
     phoneHref: "tel:+13105388666",
+    text: "(310) 429-6777",
+    textHref: "sms:+13104296777",
     email: "originalinsurance@gmail.com",
     emailHref: "mailto:originalinsurance@gmail.com",
     address: "9907-B Paramount Blvd, Downey, CA 90240",
     mapsHref:
       "https://maps.google.com/maps?q=9907B+PARAMOUNT+BLVD,+DOWNEY,+CA+90240",
+  },
+  reviews: {
+    rating: 4.9,
+    count: 92,
+    googleUrl: "https://g.page/original-insurance",
+  },
+  identity: {
+    blackOwned: true,
+    latinoOwned: true,
+    lgbtqFriendly: true,
+    transgenderSafespace: true,
+    wheelchairAccessible: true,
   },
   socials: [
     { label: "Facebook", href: "https://www.facebook.com/157258154314691/", icon: "Facebook" },
