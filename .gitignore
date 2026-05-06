@@ -1,2 +1,4 @@
 node_modules
 .vercel
+lh-*.json
+audit-lighthouse-*/
