@@ -7,6 +7,24 @@ All SEO-relevant changes, ordered newest-first. Format:
 
 ## 2026-05-06
 
+### On-page optimization: titles, meta descriptions, FAQPage schemas, internal links, image fixes
+**Commit:** `bb11d555`
+
+**What changed:**
+- All 22 page titles shortened from 65–93 chars to 49–60 chars. Pattern: Primary Keyword + Benefit Modifier + Brand. City pages differentiated by local angle (605 corridor, bundling, walk-in, ITIN). CityLanding.tsx template updated.
+- All 22 meta descriptions rewritten to 150–165 chars. Pattern: Hook + Promise + Proof + CTA. Removed generic "Independent insurance broker serving X" boilerplate. Added specific proof points (30+ carriers, same-day, $15 SR-22 fee, 4.9★, bilingual).
+- FAQPage schema added to 4 money pages: SR-22 (5 Q&As), no-license (5 Q&As), auto insurance (5 Q&As), commercial auto (4 Q&As). Each set unique to the page's service.
+- /about inbound links increased from 1 to ~14: all 11 city pages, FAQ, and SR-22 page now link contextually to /about.
+- Image fixes: Locations.tsx storefront missing loading="lazy" + dimensions; Services.tsx service image missing dimensions. Both corrected.
+
+**Why:** GSC shows 0.74% CTR with 676 impressions. "Insurance in downey ca" = 34 impressions, 0 clicks. Generic, truncated titles and boilerplate descriptions are the primary cause. FAQPage schema creates rich result eligibility for SR-22 and no-license pages.
+
+**GSC KPIs targeted:** CTR lift (titles/meta), FAQPage rich results (FAQ schema), /about indexing signal (internal links).
+
+**Lighthouse:** PageSpeed API rate-limited during audit. Bundle sizes: main JS 78KB gzipped, animations (Framer Motion) 150KB uncompressed, CSS 10KB gzipped. All public images in WebP. Hero LCP image preloaded with fetchPriority="high".
+
+---
+
 ### Schema audit: fix InsuranceAgency URL on money pages; fix validate-schema rules
 **Commit:** `eb3fa017`
 
