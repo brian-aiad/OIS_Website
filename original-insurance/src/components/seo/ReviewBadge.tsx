@@ -52,7 +52,7 @@ export default function ReviewBadge({
         "hover:shadow-md transition-shadow duration-200 no-underline",
         compact ? "px-3 py-1.5" : "px-4 py-2",
       ].join(" ")}
-      aria-label={`${rating} out of 5 stars — ${count} Google Reviews`}
+      aria-label={`${rating} stars, ${count} Google Reviews — view on Google`}
     >
       {/* Stars */}
       <span className="flex items-center gap-0.5">

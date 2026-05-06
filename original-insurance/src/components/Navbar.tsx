@@ -109,7 +109,7 @@ export default function Navbar() {
             />
             <div className="hidden sm:block leading-tight">
               <div className="text-[15px] font-bold text-brand-900 tracking-tight">Original Insurance</div>
-              <div className="text-[11px] text-slate-400 font-medium">Est. 1999 &middot; Downey, CA</div>
+              <div className="text-[11px] text-slate-500 font-medium">Est. 1999 &middot; Downey, CA</div>
             </div>
           </NavLink>
 

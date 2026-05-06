@@ -130,7 +130,7 @@ export default function Locations() {
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
               className="hidden lg:block"
             >
               <div className="rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-heavy">

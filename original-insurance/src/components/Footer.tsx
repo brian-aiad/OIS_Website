@@ -58,25 +58,25 @@ export default function Footer() {
 
             <ul className="mt-5 space-y-2 text-sm">
               <li className="flex items-center gap-2">
-                <svg className="w-3.5 h-3.5 text-white/40 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.3 2.6 3.4 4.7 6 6l2-2c.2-.2.6-.3.9-.2 1 .3 2 .5 3.1.5.5 0 .9.4.9.9V20c0 .5-.4.9-.9.9C9.6 20.9 3.1 14.4 3.1 6.9c0-.5.4-.9.9-.9h2.2c.5 0 .9.4.9.9 0 1.1.2 2.1.5 3.1.1.3 0 .6-.2.9l-1.8 1.8z"/></svg>
+                <svg aria-hidden="true" className="w-3.5 h-3.5 text-white/60 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.3 2.6 3.4 4.7 6 6l2-2c.2-.2.6-.3.9-.2 1 .3 2 .5 3.1.5.5 0 .9.4.9.9V20c0 .5-.4.9-.9.9C9.6 20.9 3.1 14.4 3.1 6.9c0-.5.4-.9.9-.9h2.2c.5 0 .9.4.9.9 0 1.1.2 2.1.5 3.1.1.3 0 .6-.2.9l-1.8 1.8z"/></svg>
                 <a href={site.contact.phoneHref} className="hover:text-white transition-colors">{site.contact.phone}</a>
               </li>
               <li className="flex items-center gap-2">
-                <svg className="w-3.5 h-3.5 text-white/40 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+                <svg aria-hidden="true" className="w-3.5 h-3.5 text-white/60 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
                 <a href={site.contact.textHref} className="hover:text-white transition-colors">{site.contact.text} (text)</a>
               </li>
               <li className="flex items-center gap-2">
-                <svg className="w-3.5 h-3.5 text-white/40 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <svg aria-hidden="true" className="w-3.5 h-3.5 text-white/60 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                 <a href={site.contact.emailHref} className="hover:text-white transition-colors truncate">{site.contact.email}</a>
               </li>
               <li className="flex items-start gap-2">
-                <svg className="w-3.5 h-3.5 text-white/40 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <svg aria-hidden="true" className="w-3.5 h-3.5 text-white/60 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                 <a href={site.contact.mapsHref} target="_blank" rel="noreferrer" className="hover:text-white transition-colors leading-snug">
                   9907-B Paramount Blvd<br />Downey, CA 90240
                 </a>
               </li>
               <li className="flex items-center gap-2 text-white/50">
-                <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+                <svg aria-hidden="true" className="w-3.5 h-3.5 text-white/60 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
                 <span>Mon–Fri 10 AM – 5:30 PM PT</span>
               </li>
             </ul>
@@ -198,14 +198,14 @@ export default function Footer() {
 
         {/* Languages */}
         <div className="mt-4">
-          <span className="text-[11px] text-white/40 uppercase tracking-widest font-semibold">Service languages: </span>
+          <span className="text-[11px] text-white/60 uppercase tracking-widest font-semibold">Service languages: </span>
           <span className="text-[11px] text-white/60 font-medium">English · Español · العربية</span>
         </div>
       </div>
 
       {/* Bottom bar */}
       <div className="border-t border-white/[0.06]">
-        <div className="container py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-[11px] text-slate-400">
+        <div className="container py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-[11px] text-slate-300">
           <p>&copy; {year} Original Group Inc. All rights reserved. CA DOI Licensed.</p>
           <div className="flex items-center gap-5">
             <a href={site.socials.find(s => s.label === "Facebook")?.href ?? "#"} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Facebook</a>

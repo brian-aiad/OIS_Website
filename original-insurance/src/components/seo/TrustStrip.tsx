@@ -28,7 +28,6 @@ export default function TrustStrip() {
     <div
       className="w-full"
       aria-label="Trust indicators"
-      role="list"
     >
       {/* Desktop: single row. Mobile: 2-column grid */}
       <ul className="grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-wrap sm:items-center sm:gap-x-5 sm:gap-y-2 list-none m-0 p-0">

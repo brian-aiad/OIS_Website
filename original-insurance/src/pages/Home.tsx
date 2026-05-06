@@ -31,7 +31,7 @@ function Hero() {
       {/* Navy overlay */}
       <div className="absolute inset-0" style={{ backgroundColor: "rgba(6,14,31,0.82)" }} />
       {/* Soft gradient sweetener for legibility on the left */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#060E1F]/90 via-[#0B1E3D]/65 to-[#0B1E3D]/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-950/90 via-brand-900/65 to-brand-900/30" />
 
       <div className="container relative grid lg:grid-cols-[1.15fr,1fr] gap-10 lg:gap-14 items-center pt-24 pb-20 lg:pt-28 lg:pb-24">
         {/* ── Left: Copy ── */}
@@ -80,13 +80,13 @@ function Hero() {
           </div>
 
           <div className="mt-7 flex flex-col sm:flex-row gap-3">
-            <MagneticButton as="a" className="inline-block">
+            <MagneticButton as="div" className="inline-block">
               <button onClick={openQuoteModal} className="btn btn-accent btn-lg group">
                 Get Your Free Quote
                 <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" /></svg>
               </button>
             </MagneticButton>
-            <MagneticButton as="a" className="inline-block" strength={0.2}>
+            <MagneticButton as="div" className="inline-block" strength={0.2}>
               <a href={site.contact.phoneHref} className="btn btn-ghost-light btn-lg">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
                 Call {site.contact.phone}
@@ -393,8 +393,8 @@ function Carriers() {
       </div>
 
       <div className="relative">
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#F1F5F9] to-transparent z-10" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#F1F5F9] to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-slate-50 to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-slate-50 to-transparent z-10" />
 
         <div className="overflow-hidden py-1 select-none" style={{ "--marquee-speed": "35s" } as any}>
           <div className="flex w-max animate-marquee items-center">
