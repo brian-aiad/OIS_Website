@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { openQuoteModal } from "../lib/openQuote";
 import { motion, AnimatePresence } from "framer-motion";
 import { site } from "../lib/site";
-import logoBadge from "../assets/logo-badge.png";
+import logoBadge from "../assets/logo-badge.webp";
 
 function cx(...v: (string | false | null | undefined)[]) {
   return v.filter(Boolean).join(" ");

@@ -7,16 +7,17 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import QuoteWidget from "./components/QuoteWidget";
 
-// Eagerly load Home (above the fold)
+// Eagerly load primary prerendered pages — lazy-loading causes Suspense-induced CLS:
+// the fallback briefly replaces prerendered DOM before the chunk arrives.
 import Home from "./pages/Home";
+import About from "./pages/About";
+import Services from "./pages/Services";
+import Contact from "./pages/Contact";
+import Faq from "./pages/Faq";
+import CityLanding from "./pages/CityLanding";
 
-// Lazy load secondary routes
-const Services = lazy(() => import("./pages/Services"));
+// Lazy load low-traffic / utility pages (acceptable CLS tradeoff, not prerendered entry points)
 const Locations = lazy(() => import("./pages/Locations"));
-const About = lazy(() => import("./pages/About"));
-const Contact = lazy(() => import("./pages/Contact"));
-const Faq = lazy(() => import("./pages/Faq"));
-const CityLanding = lazy(() => import("./pages/CityLanding"));
 const AutoInsuranceDowneyCA = lazy(() => import("./pages/AutoInsuranceDowneyCA"));
 const SR22InsuranceDowney = lazy(() => import("./pages/SR22InsuranceDowney"));
 const NoLicenseInsuranceDowney = lazy(() => import("./pages/NoLicenseInsuranceDowney"));
@@ -102,7 +103,10 @@ export default function App() {
       <div className="min-h-dvh flex flex-col bg-slate-50">
         <Navbar />
         <main className="flex-1">
-          <AnimatePresence mode="wait">
+          {/* initial={false} skips the entrance animation on first page load so the
+              prerendered content is never hidden by opacity:0 during hydration.
+              SPA navigations (key changes) still animate normally. */}
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={location.pathname}
               variants={pageVariants}

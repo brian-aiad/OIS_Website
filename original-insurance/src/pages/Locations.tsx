@@ -8,7 +8,7 @@ import { usePageMeta } from "../lib/seo";
 import { Icons } from "../components/Icons";
 import { Reveal } from "../components/AnimatedSection";
 
-import storefrontImg from "../assets/storefront.png";
+import storefrontImg from "../assets/storefront.webp";
 
 type HourRow =
   | { label: string; short: string; open: string; close: string; closed?: false }

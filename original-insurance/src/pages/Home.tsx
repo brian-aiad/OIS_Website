@@ -11,7 +11,7 @@ import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import ReviewBadge from "../components/seo/ReviewBadge";
 import TrustStrip from "../components/seo/TrustStrip";
 
-import storefrontImg from "../assets/storefront.png";
+import storefrontImg from "../assets/storefront.webp";
 
 /* ═══════════════════════════════════════════════
    HERO — Photo-based with full-bleed storefront background
@@ -26,7 +26,8 @@ function Hero() {
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover"
         fetchPriority="high"
-        decoding="async"
+        width={1200}
+        height={800}
       />
       {/* Navy overlay */}
       <div className="absolute inset-0" style={{ backgroundColor: "rgba(6,14,31,0.82)" }} />
@@ -310,8 +311,7 @@ function ServicesMasonry() {
               srcSet={srcset(img.src)}
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
               alt={img.alt}
-              loading={idx < 3 ? "eager" : "lazy"}
-              fetchPriority={idx === 0 ? "high" : "auto"}
+              loading="lazy"
               decoding="async"
               width={800}
               height={600}
@@ -378,7 +378,7 @@ function ServicesMasonry() {
 function Carriers() {
   const logos = useMemo(() =>
     Array.from({ length: 8 }, (_, i) =>
-      new URL(`../assets/clients/client-${i + 1}.png`, import.meta.url).href
+      new URL(`../assets/clients/client-${i + 1}.webp`, import.meta.url).href
     ), []);
   const row = [...logos, ...logos];
 

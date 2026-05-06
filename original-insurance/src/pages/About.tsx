@@ -8,8 +8,8 @@ import PageHero from "../components/PageHero";
 import ReviewBadge from "../components/seo/ReviewBadge";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 
-import storefrontImg from "../assets/storefront.png";
-import logoBadge from "../assets/logo-badge.png";
+import storefrontImg from "../assets/storefront.webp";
+import logoBadge from "../assets/logo-badge.webp";
 
 export default function About() {
   usePageMeta({

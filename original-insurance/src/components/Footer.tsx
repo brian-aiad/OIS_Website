@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
 import { getOfficeStatus } from "../data/hours";
-import logoBadge from "../assets/logo-badge.png";
+import logoBadge from "../assets/logo-badge.webp";
 
 export default function Footer() {
   const { open, label, holidayWarning } = useMemo(() => getOfficeStatus(), []);

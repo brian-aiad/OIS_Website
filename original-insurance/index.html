@@ -44,15 +44,19 @@
     <meta name="geo.position" content="33.9403;-118.1331" />
     <meta name="ICBM" content="33.9403, -118.1331" />
 
-    <link rel="icon" href="/logo.png" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="canonical" href="https://originalinsurance.net/" />
 
     <!-- Preconnect to font servers -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Preload most-used hero background (inner pages: FAQ, city pages, SR-22, no-license) -->
-    <link rel="preload" href="/images/heroTeam.webp" as="image" type="image/webp" />
+    <!-- Non-blocking font load — print trick avoids render-blocking CSS @import -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,700;9..40,800;9..40,900&display=optional" as="style" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,700;9..40,800;9..40,900&display=optional" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,700;9..40,800;9..40,900&display=optional" /></noscript>
+
+    <!-- heroTeam.webp preload removed — PageHero uses fetchPriority="high" directly on the img element -->
   </head>
   <body>
     <noscript>
