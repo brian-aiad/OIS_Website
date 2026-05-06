@@ -11,11 +11,12 @@ description: SEO methodology for originalinsurance.net — a React/Vite SPA depl
 - **Business**: Independent insurance broker, Downey CA, est. 1999
 - **Languages**: English, Spanish, Arabic
 - **Build cmd**: `npm run build` (tsc → vite build → node scripts/prerender.mjs)
-- **Deploy cmd**: `git push origin HEAD:main` — Vercel GitHub integration deploys automatically
+- **Deploy cmd**: `bash scripts/deploy.sh` from repo root (NOT git push — GitHub integration skips prerender)
 - **Git branch**: seo/gap-remediation
-- **IMPORTANT**: The GitHub integration sets VERCEL=1, which causes prerender.mjs to skip.
-  Production serves the JS SPA (Google can render it). Prerendering is for local inspection only.
-  `vercel deploy --prebuilt` does NOT work cleanly — use git push instead.
+- **IMPORTANT**: GitHub integration sets VERCEL=1 → prerender.mjs exits early → production serves SPA.
+  Use `bash scripts/deploy.sh` which does: seo-lint → npm run build (prerender) → vercel build → copy pages → vercel deploy --prebuilt --prod.
+  Always run from REPO ROOT (ois_website/), NOT from inside original-insurance/.
+  Correct Vercel project: ois-website (prj_8WZgILub9h5s3DppuoPvONOSXYOP) — .vercel/project.json at repo root.
 
 ## Architecture — How SEO Works in This SPA
 
@@ -32,10 +33,11 @@ npm run build
         → Replaces localhost origin with https://originalinsurance.net
 ```
 
-**What this means**: In production, Google gets the JS-rendered SPA (not prerendered HTML).
-Google's crawler does execute JavaScript. Schema tags, canonical, and meta tags from React
-components DO get indexed, but the prerendered HTML files in dist/ are NOT what Vercel serves.
-Changes to React components take effect after `git push origin HEAD:main`.
+**What this means**: When deployed via `bash scripts/deploy.sh`, Vercel serves the prerendered
+static HTML (dist/<route>/index.html). The prerendered HTML is what Google sees first.
+Schema tags, canonical, and meta tags baked into the prerendered HTML take effect immediately.
+Changes to React components ONLY take effect after a full deploy (build + prerender + vercel deploy).
+Git push alone does NOT update the live site.
 
 ---
 
@@ -162,12 +164,14 @@ lakewood, paramount, south-gate, pico-rivera, montebello, commerce
 
 ---
 
-## robots.txt (never modify)
+## robots.txt (current content — only modify with explicit reason)
 ```
 User-agent: *
 Allow: /
+Disallow: /*?q=
 Sitemap: https://originalinsurance.net/sitemap.xml
 ```
+The `Disallow: /*?q=` line was added to prevent Google crawling query-param URL variants (which had no redirect-safe fix at the Vercel config level). Do NOT remove it unless you implement a real search feature that requires those URLs to be indexed.
 
 ---
 

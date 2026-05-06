@@ -1,0 +1,221 @@
+/**
+ * seo-lint.mjs — Static SEO analysis of source files.
+ *
+ * Catches common SEO bugs before they reach production:
+ *   1. Trailing-slash internal links (to="/something/")
+ *   2. LocalBusinessSchema on pages that should not have it
+ *   3. InsuranceAgency url pointing to non-homepage on non-city pages
+ *   4. Sitemap and homepage ServiceAreas city list mismatch
+ *   5. Redirect rules in vercel.json that could preserve query-string and loop
+ *   6. Any canonical URL with a trailing slash
+ *
+ * Usage:  node scripts/seo-lint.mjs
+ * Or:     npm run seo-lint
+ * Exit:   0 = pass, 1 = failures, 2 = warnings only
+ */
+
+import { readFileSync, readdirSync, statSync } from "fs";
+import { resolve, join, relative, dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const APP_DIR = resolve(__dirname, "..");
+const SRC_DIR = join(APP_DIR, "src");
+const PUBLIC_DIR = join(APP_DIR, "public");
+
+let failures = 0;
+let warnings = 0;
+
+const fail = (msg) => { console.error(`  ✗ FAIL  ${msg}`); failures++; };
+const warn = (msg) => { console.warn(`  ⚠ WARN  ${msg}`); warnings++; };
+const ok   = (msg) => { console.log(`  ✓ ok    ${msg}`); };
+
+// Pages that must NOT mount LocalBusinessSchema.
+const NO_LOCAL_BUSINESS = new Set([
+  "Faq.tsx", "About.tsx", "Contact.tsx", "Services.tsx",
+]);
+
+// Pages that ARE allowed to mount LocalBusinessSchema.
+// City pages and money pages are allowed. Homepage uses LocalBusinessSchema too.
+// This list is the deny-list for wrong pages; everything else is allowed.
+
+const HOMEPAGE = "https://originalinsurance.net/";
+
+// Expected city slugs — must match sitemap AND homepage ServiceAreas.
+const EXPECTED_CITIES = [
+  "downey", "norwalk", "bellflower", "lynwood", "cerritos",
+  "whittier", "lakewood", "paramount", "south-gate",
+  "pico-rivera", "montebello", "commerce",
+];
+
+/**
+ * Recursively collect all .tsx/.ts/.jsx files under a directory.
+ */
+function collectFiles(dir, exts = [".tsx", ".ts", ".jsx"]) {
+  const results = [];
+  for (const entry of readdirSync(dir)) {
+    const full = join(dir, entry);
+    const st = statSync(full);
+    if (st.isDirectory()) {
+      results.push(...collectFiles(full, exts));
+    } else if (exts.some(e => full.endsWith(e))) {
+      results.push(full);
+    }
+  }
+  return results;
+}
+
+console.log("\n--- SEO lint (source analysis) ---\n");
+
+const srcFiles = collectFiles(SRC_DIR);
+
+// ── Check 1: Trailing-slash internal links ────────────────────────────────────
+console.log("1. Trailing-slash internal links:");
+let trailingSlashFound = false;
+for (const f of srcFiles) {
+  const content = readFileSync(f, "utf-8");
+  const rel = relative(APP_DIR, f);
+  // Match to="/something/" (not just to="/")
+  const matches = [...content.matchAll(/\bto=["'](\/.+\/)["']/g)];
+  for (const m of matches) {
+    if (m[1] !== "/") {
+      fail(`${rel}: trailing-slash link: to="${m[1]}"`);
+      trailingSlashFound = true;
+    }
+  }
+  // Match href="/something/" (hardcoded anchor)
+  const hrefMatches = [...content.matchAll(/href=["'](\/.+\/)["']/g)];
+  for (const m of hrefMatches) {
+    if (m[1] !== "/" && !m[1].startsWith("//")) {
+      fail(`${rel}: trailing-slash href: href="${m[1]}"`);
+      trailingSlashFound = true;
+    }
+  }
+}
+if (!trailingSlashFound) ok("No trailing-slash internal links found");
+
+// ── Check 2: LocalBusinessSchema on wrong pages ──────────────────────────────
+console.log("\n2. LocalBusinessSchema on pages that should not have it:");
+let wrongSchemaFound = false;
+for (const f of srcFiles) {
+  const filename = f.split(/[/\\]/).pop();
+  if (!NO_LOCAL_BUSINESS.has(filename)) continue;
+  const content = readFileSync(f, "utf-8");
+  if (content.includes("LocalBusinessSchema")) {
+    fail(`${relative(APP_DIR, f)}: has LocalBusinessSchema — forbidden on this page (see SKILL.md)`);
+    wrongSchemaFound = true;
+  }
+}
+if (!wrongSchemaFound) ok("LocalBusinessSchema not present on forbidden pages");
+
+// ── Check 3: InsuranceAgency url on non-city/non-homepage pages ──────────────
+console.log("\n3. InsuranceAgency url field (must be homepage on non-city pages):");
+let badUrlFound = false;
+const CITY_PAGE_PATTERN = /\/insurance\/[a-z-]+/;
+for (const f of srcFiles) {
+  const content = readFileSync(f, "utf-8");
+  const rel = relative(APP_DIR, f);
+  // Find LocalBusinessSchema with a url prop that isn't the homepage
+  const localBusinessUrls = [...content.matchAll(/LocalBusinessSchema\s+url=["']([^"']+)["']/g)];
+  for (const m of localBusinessUrls) {
+    const url = m[1];
+    if (url === HOMEPAGE || url === HOMEPAGE.slice(0, -1)) continue; // homepage OK
+    if (CITY_PAGE_PATTERN.test(url)) continue; // city page URL OK
+    fail(`${rel}: LocalBusinessSchema url="${url}" — should be homepage or city page URL`);
+    badUrlFound = true;
+  }
+}
+if (!badUrlFound) ok("All LocalBusinessSchema url fields are correct");
+
+// ── Check 4: Sitemap vs homepage city list ───────────────────────────────────
+console.log("\n4. Sitemap city list vs homepage ServiceAreas:");
+const sitemapContent = readFileSync(join(PUBLIC_DIR, "sitemap.xml"), "utf-8");
+const sitemapCities = [...sitemapContent.matchAll(/\/insurance\/([a-z-]+)/g)].map(m => m[1]);
+
+const homeContent = readFileSync(join(SRC_DIR, "pages", "Home.tsx"), "utf-8");
+const homeCities = [...homeContent.matchAll(/slug:\s*["']([a-z-]+)["']/g)].map(m => m[1])
+  .filter(s => EXPECTED_CITIES.includes(s));
+
+const sitemapSet = new Set(sitemapCities);
+const homeSet = new Set(homeCities);
+
+let cityMismatch = false;
+for (const city of EXPECTED_CITIES) {
+  if (!sitemapSet.has(city)) {
+    fail(`City "${city}" missing from sitemap.xml`);
+    cityMismatch = true;
+  }
+  if (!homeSet.has(city)) {
+    warn(`City "${city}" missing from homepage ServiceAreas (slug list)`);
+    cityMismatch = true;
+  }
+}
+for (const city of sitemapCities) {
+  if (!EXPECTED_CITIES.includes(city)) {
+    warn(`Sitemap has unexpected city slug: "${city}"`);
+    cityMismatch = true;
+  }
+}
+if (!cityMismatch) ok(`All ${EXPECTED_CITIES.length} cities in sitemap and homepage`);
+
+// ── Check 5: vercel.json redirect loop potential ─────────────────────────────
+console.log("\n5. vercel.json redirect rules (loop check):");
+const vercelJson = JSON.parse(readFileSync(join(APP_DIR, "vercel.json"), "utf-8"));
+let loopFound = false;
+if (vercelJson.redirects) {
+  for (const rule of vercelJson.redirects) {
+    const src = rule.source || "";
+    const dst = rule.destination || "";
+    // A redirect loops if destination matches source (including with query params preserved).
+    // Vercel preserves query strings unless destination explicitly omits them.
+    // Flag if source and destination are the same path (ignoring query string).
+    const srcPath = src.split("?")[0];
+    const dstPath = dst.split("?")[0];
+    if (srcPath === dstPath) {
+      fail(`vercel.json redirect loop: "${src}" -> "${dst}" — source and destination are the same path. Vercel will preserve query strings, creating an infinite loop.`);
+      loopFound = true;
+    }
+    // Also flag if source has a `has` query matcher pointing to itself
+    if (rule.has) {
+      for (const h of rule.has) {
+        if (h.type === "query" && srcPath === dstPath) {
+          fail(`vercel.json redirect with query has-matcher loops: "${src}" (has ?${h.key}=) -> "${dst}"`);
+          loopFound = true;
+        }
+      }
+    }
+  }
+}
+if (!loopFound) ok("No redirect loops detected in vercel.json");
+
+// ── Check 6: Trailing-slash canonical URLs ───────────────────────────────────
+console.log("\n6. Trailing-slash in canonical URL declarations:");
+let canonicalSlashFound = false;
+for (const f of srcFiles) {
+  const content = readFileSync(f, "utf-8");
+  const rel = relative(APP_DIR, f);
+  // Find canonical: "https://originalinsurance.net/..." with trailing slash
+  const canonicalMatches = [...content.matchAll(/canonical[^"']*["']https:\/\/originalinsurance\.net(\/[^"']*\/)["']/g)];
+  for (const m of canonicalMatches) {
+    const path = m[1];
+    if (path !== "/") {
+      fail(`${rel}: canonical URL has trailing slash: "${m[0]}"`);
+      canonicalSlashFound = true;
+    }
+  }
+}
+if (!canonicalSlashFound) ok("No trailing-slash canonical URLs found");
+
+// ── Summary ──────────────────────────────────────────────────────────────────
+console.log("\n" + "─".repeat(50));
+console.log(`  ${failures} failure(s), ${warnings} warning(s)`);
+if (failures === 0 && warnings === 0) {
+  console.log("  ✅ SEO lint passed — safe to deploy.\n");
+  process.exit(0);
+} else if (failures === 0) {
+  console.log("  ⚠  SEO lint passed with warnings — review before deploying.\n");
+  process.exit(2);
+} else {
+  console.log("  ❌ SEO lint FAILED — fix before deploying.\n");
+  process.exit(1);
+}
