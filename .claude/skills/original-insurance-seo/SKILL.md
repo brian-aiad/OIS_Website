@@ -11,9 +11,11 @@ description: SEO methodology for originalinsurance.net — a React/Vite SPA depl
 - **Business**: Independent insurance broker, Downey CA, est. 1999
 - **Languages**: English, Spanish, Arabic
 - **Build cmd**: `npm run build` (tsc → vite build → node scripts/prerender.mjs)
-- **Deploy cmd**: `vercel deploy --prebuilt` (NEVER firebase deploy — Firebase is the old host)
+- **Deploy cmd**: `git push origin HEAD:main` — Vercel GitHub integration deploys automatically
 - **Git branch**: seo/gap-remediation
-- **IMPORTANT**: Prerender runs locally only. Vercel's own build skips it (VERCEL env var check in prerender.mjs). Always build locally first, then `vercel deploy --prebuilt`.
+- **IMPORTANT**: The GitHub integration sets VERCEL=1, which causes prerender.mjs to skip.
+  Production serves the JS SPA (Google can render it). Prerendering is for local inspection only.
+  `vercel deploy --prebuilt` does NOT work cleanly — use git push instead.
 
 ## Architecture — How SEO Works in This SPA
 
@@ -30,9 +32,10 @@ npm run build
         → Replaces localhost origin with https://originalinsurance.net
 ```
 
-**What this means**: Every meta tag, canonical, and JSON-LD in the dist/ HTML files
-is the final truth Google sees. Changes to React components only take effect after
-a full `npm run build` + `firebase deploy`.
+**What this means**: In production, Google gets the JS-rendered SPA (not prerendered HTML).
+Google's crawler does execute JavaScript. Schema tags, canonical, and meta tags from React
+components DO get indexed, but the prerendered HTML files in dist/ are NOT what Vercel serves.
+Changes to React components take effect after `git push origin HEAD:main`.
 
 ---
 
