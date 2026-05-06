@@ -18,7 +18,7 @@ export default function SR22InsuranceDowney() {
 
   return (
     <main id="main-content">
-      <LocalBusinessSchema url="https://originalinsurance.net/sr22-insurance-downey" />
+      <LocalBusinessSchema />
       <BreadcrumbSchema crumbs={[
         { name: "Home", url: "https://originalinsurance.net/" },
         { name: "SR-22 Insurance Downey", url: "https://originalinsurance.net/sr22-insurance-downey" },

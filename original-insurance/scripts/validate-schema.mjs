@@ -26,8 +26,14 @@ const NO_BREADCRUMB = new Set(["/"]);
 // Pages that should have FAQPage schema
 const NEED_FAQ = new Set(["/faq"]);
 
-// Pages that should have InsuranceAgency schema
-const NEED_INSURANCE_AGENCY = true; // all pages via LocalBusinessSchema
+// Pages that should have InsuranceAgency schema (homepage, city pages, money pages).
+// /faq, /about, /contact, /services explicitly excluded — see SKILL.md schema rules.
+const NO_INSURANCE_AGENCY = new Set(["/faq", "/about", "/contact", "/services"]);
+
+// Pages where InsuranceAgency url must be the homepage (not the page's own URL).
+// City pages (/insurance/*) are allowed to have their own canonical URL.
+// All other pages with InsuranceAgency must use the homepage URL.
+const HOMEPAGE_URL = "https://originalinsurance.net/";
 
 let totalFiles = 0;
 let failures = 0;
@@ -116,11 +122,25 @@ for (const { path: htmlPath, route } of files) {
   const hasLocalhost = /http:\/\/(localhost|127\.0\.0\.1)/.test(rawJson);
   check(routeKey, !hasLocalhost, "Localhost URL found in JSON-LD");
 
-  // 4. InsuranceAgency (or LocalBusiness) should exist on all pages
+  // 4. InsuranceAgency must be present on pages that need it, absent on pages that don't.
   const hasInsuranceAgency = types.some(t =>
     t === "InsuranceAgency" || t === "LocalBusiness" || t === "FinancialService"
   );
-  check(routeKey, hasInsuranceAgency, "Missing InsuranceAgency schema");
+  if (NO_INSURANCE_AGENCY.has(routeKey)) {
+    check(routeKey, !hasInsuranceAgency, "InsuranceAgency must NOT appear on this page (see SKILL.md)");
+  } else {
+    check(routeKey, hasInsuranceAgency, "Missing InsuranceAgency schema");
+    // For non-city pages, InsuranceAgency url must be homepage, not the page's own URL.
+    if (hasInsuranceAgency && !routeKey.startsWith("/insurance/")) {
+      const agencyBlock = blocks.find(b => b["@type"] === "InsuranceAgency");
+      if (agencyBlock && agencyBlock.url && agencyBlock.url !== HOMEPAGE_URL) {
+        check(routeKey, false,
+          `InsuranceAgency url="${agencyBlock.url}" must be homepage "${HOMEPAGE_URL}" on non-city pages`);
+      } else if (agencyBlock && agencyBlock.url) {
+        pass(routeKey, `InsuranceAgency url="${agencyBlock.url}" ✓`);
+      }
+    }
+  }
 
   // 5. BreadcrumbList required on non-home pages
   if (!NO_BREADCRUMB.has(routeKey)) {

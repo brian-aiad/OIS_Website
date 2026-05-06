@@ -18,7 +18,7 @@ export default function NoLicenseInsuranceDowney() {
 
   return (
     <main id="main-content">
-      <LocalBusinessSchema url="https://originalinsurance.net/no-license-auto-insurance-downey" />
+      <LocalBusinessSchema />
       <BreadcrumbSchema crumbs={[
         { name: "Home", url: "https://originalinsurance.net/" },
         { name: "No-License Insurance Downey", url: "https://originalinsurance.net/no-license-auto-insurance-downey" },

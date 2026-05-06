@@ -56,7 +56,7 @@ export default function CommercialAutoInsuranceDowneyPage() {
 
   return (
     <main id="main-content">
-      <LocalBusinessSchema url="https://originalinsurance.net/commercial-auto-insurance-downey" />
+      <LocalBusinessSchema />
       <BreadcrumbSchema crumbs={[
         { name: "Home", url: "https://originalinsurance.net/" },
         { name: "Commercial Auto Insurance Downey", url: "https://originalinsurance.net/commercial-auto-insurance-downey" },
