@@ -1,6 +1,5 @@
 import { useState } from "react";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
-import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import { NavLink } from "react-router-dom";
 import { openQuoteModal } from "../lib/openQuote";
 import { motion, AnimatePresence } from "framer-motion";
@@ -159,7 +158,6 @@ export default function Services() {
 
   return (
     <main id="main-content">
-      <LocalBusinessSchema url="https://originalinsurance.net/services" />
       <BreadcrumbSchema crumbs={[
         { name: "Home", url: "https://originalinsurance.net/" },
         { name: "Services", url: "https://originalinsurance.net/services" },

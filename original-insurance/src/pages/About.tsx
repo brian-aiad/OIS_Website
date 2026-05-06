@@ -186,6 +186,12 @@ export default function About() {
                 We opened our doors on Paramount Blvd in Downey in 1999, when the Southeast LA community needed a local broker who would compare options honestly instead of pushing a single company's policies. Over 25 years, we have helped thousands of Downey-area families and businesses find the right coverage for auto, home, life, and commercial needs — including SR-22 filings, no-license auto programs, and commercial fleet policies.
               </p>
               <p className="mt-3 text-slate-500 leading-relaxed">
+                Our roots are in the Downey community. Downey and the surrounding Southeast LA cities — Norwalk, Bellflower, Cerritos, Lakewood, Paramount, South Gate, Pico Rivera, Montebello, Lynwood, Whittier, and Commerce — make up one of the most culturally diverse, working-class corridors in Southern California. Many of our clients are first-generation immigrants, small-business owners, or families for whom insurance has historically been confusing, expensive, or inaccessible. Our ability to serve clients in English, Spanish, and Arabic was not an afterthought — it is central to who we are.
+              </p>
+              <p className="mt-3 text-slate-500 leading-relaxed">
+                Independent brokerage means we are not tied to any single insurance company's products, pricing, or sales targets. Every client who walks through our door or calls our Paramount Blvd office gets an honest comparison across our full carrier network. We have seen the Southeast LA market through major events — rising uninsured rates, carrier exits, regulatory changes, and economic cycles — and that long view shapes how we advise our clients. We know which carriers consistently pay claims fairly, which offer the most competitive rates for specific driver profiles, and where gaps in coverage most commonly catch families off guard.
+              </p>
+              <p className="mt-3 text-slate-500 leading-relaxed">
                 Today we serve clients across California — in English, Spanish, and Arabic — with the same personal service we started with. If you're looking for{" "}
                 <NavLink to="/auto-insurance-downey-ca" className="text-brand-700 hover:underline font-medium">
                   auto insurance in Downey
@@ -360,6 +366,55 @@ export default function About() {
                     <p className="mt-1 text-[11px] uppercase tracking-wider font-semibold text-slate-400">
                       {c.sub}
                     </p>
+                  </div>
+                </div>
+              </StaggerChild>
+            ))}
+          </Stagger>
+        </div>
+      </section>
+
+      {/* ── What to Expect ── */}
+      <section className="sp bg-white">
+        <div className="container max-w-3xl">
+          <Reveal className="text-center mb-10">
+            <span className="eyebrow mb-4">Working With Us</span>
+            <h2 className="display-2 text-slate-900">What to expect when you call</h2>
+            <p className="mt-3 text-slate-500 leading-relaxed">
+              We know your time is valuable. Here is what a typical first interaction looks like.
+            </p>
+          </Reveal>
+          <Stagger className="space-y-4">
+            {[
+              {
+                step: "01",
+                title: "A real person answers",
+                desc: "When you call our Downey office at (310) 538-8666, you speak with someone who knows our carrier network — not a scripted call center representative routing you to a queue. Most calls are answered within one ring during business hours."
+              },
+              {
+                step: "02",
+                title: "We gather the basics — no guesswork",
+                desc: "We ask for vehicle details, driving history, current coverage, and any specific needs like SR-22 filing, no-license programs, or commercial coverage. Ten minutes of information gives us enough to run accurate quotes across 30+ carriers."
+              },
+              {
+                step: "03",
+                title: "You get real options, explained plainly",
+                desc: "We walk through the top options in plain English, Spanish, or Arabic — whichever you prefer. No pressure to choose on the spot. We explain the difference between minimum liability and full coverage, what each deductible means in practice, and which carriers have the strongest local claims reputation."
+              },
+              {
+                step: "04",
+                title: "Same-day binding and ID cards",
+                desc: "When you're ready, we bind the policy and issue electronic proof of insurance the same day. SR-22 certificates are filed electronically with the California DMV within hours of policy binding — so your reinstatement is never delayed by paperwork."
+              },
+            ].map((item) => (
+              <StaggerChild key={item.step}>
+                <div className="flex gap-5 items-start bg-slate-50 rounded-2xl p-5 ring-1 ring-slate-200/60">
+                  <div className="shrink-0 w-11 h-11 rounded-xl bg-brand-800 text-white text-sm font-extrabold grid place-items-center">
+                    {item.step}
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900">{item.title}</h3>
+                    <p className="mt-1 text-sm text-slate-500 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               </StaggerChild>
