@@ -7,6 +7,27 @@ All SEO-relevant changes, ordered newest-first. Format:
 
 ## 2026-05-06
 
+### GBP integration: text number, identity badges, product showcase, footer rebuild, schema
+**Commit:** `83e78b04`
+
+**What changed:**
+- `site.ts`: added text number (310) 429-6777, `sms:+13104296777` href, reviews object (4.9/92), identity flags
+- `Navbar.tsx`: Call + Text + Quote in desktop CTA; 3-button grid in mobile sheet
+- `Contact.tsx`: added "Text Us" as 4th contact card with `sms:` link
+- `Footer.tsx`: major rebuild — 4 distinct columns (contact, distinct service links, company, service areas), identity badges row (Black-owned/Latino-owned/LGBTQ+/Wheelchair/BBB/CDI), languages row, bottom bar with CA DOI note
+- `About.tsx`: identity paragraph in Our Story — "Black- and Latino-owned brokerage, wheelchair accessible, LGBTQ+ friendly, transgender safespace"
+- `Home.tsx`: replaced 5-card `PopularNeedsHub` with 10-product GBP catalog showcase — SR-22, Auto, No-License, Commercial, Homeowners, Condo, Motorcycle, Life, Low Down Payment, Final Expense
+- `LocalBusinessSchema.tsx`: contactPoint (voice + text with languages), amenityFeature (wheelchair), areaServed expanded to all 20 GBP cities, sameAs Google Business Profile, serviceType expanded to 10 products
+- `src/data/hours.ts`: new hours data module with `getOfficeStatus()` and `SPECIAL_HOURS` array — pre-loaded Memorial Day + 2026 federal holidays; Footer now uses this instead of hardcoded logic
+- Review count updated 47→92 (actual GBP count) in all ReviewBadge mounts
+- `PHOTOGRAPHY_NEEDS.md`: shot list with placement, priority, and current→replacement map
+
+**Why:** GBP lists attributes, services, and contact info that were absent from the site. Texting channel is a major UX win for the bilingual/younger audience. Identity attributes are real differentiators that were invisible. Footer was functionally broken (6 identical /services links in Coverage column).
+
+**Open questions for Brian (see summary report):** 8 new city pages, carrier logo list, holiday hours confirmation, `aggregateRating`, `paymentAccepted`, `priceRange`.
+
+---
+
 ### On-page optimization: titles, meta descriptions, FAQPage schemas, internal links, image fixes
 **Commit:** `bb11d555`
 
