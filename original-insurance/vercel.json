@@ -10,12 +10,6 @@
       "destination": "/",
       "permanent": true
     },
-    {
-      "source": "/faq",
-      "has": [{ "type": "query", "key": "q" }],
-      "destination": "/faq",
-      "permanent": true
-    }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
