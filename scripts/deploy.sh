@@ -96,8 +96,13 @@ else
     cp "$f" "$STATIC_OUT/$reldir/index.html"
     COPIED=$((COPIED + 1))
   done < <(find "$APP_DIR/dist" -mindepth 2 -name "index.html" -print0)
-  # Copy prerendered root homepage (hard link broken by prerender rewrite)
-  cp "$APP_DIR/dist/index.html" "$STATIC_OUT/index.html"
+  # Copy prerendered root homepage. In some Windows/Git Bash runs Vercel output
+  # and app dist can resolve to the same file, so skip the copy in that case.
+  if [[ "$APP_DIR/dist/index.html" -ef "$STATIC_OUT/index.html" ]]; then
+    log "Root homepage already points at prerendered output; skipping duplicate copy"
+  else
+    cp "$APP_DIR/dist/index.html" "$STATIC_OUT/index.html"
+  fi
   # Also copy sitemap and robots (may have been updated by build)
   cp "$APP_DIR/dist/sitemap.xml" "$STATIC_OUT/sitemap.xml"
   cp "$APP_DIR/dist/robots.txt"  "$STATIC_OUT/robots.txt"
