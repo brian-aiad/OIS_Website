@@ -3,7 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { openQuoteModal } from "../lib/openQuote";
 import { motion, AnimatePresence } from "framer-motion";
 import { site } from "../lib/site";
-import logoBadge from "../assets/logo-badge.png";
+import logoBadge from "../assets/logo-badge.webp";
 
 function cx(...v: (string | false | null | undefined)[]) {
   return v.filter(Boolean).join(" ");
@@ -13,6 +13,7 @@ const LINKS = [
   { to: "/",          label: "Home" },
   { to: "/services",  label: "Services" },
   { to: "/about",     label: "About" },
+  { to: "/faq",       label: "FAQ" },
   { to: "/locations", label: "Location" },
   { to: "/contact",   label: "Contact" },
 ];
@@ -108,7 +109,7 @@ export default function Navbar() {
             />
             <div className="hidden sm:block leading-tight">
               <div className="text-[15px] font-bold text-brand-900 tracking-tight">Original Insurance</div>
-              <div className="text-[11px] text-slate-400 font-medium">Est. 1999 &middot; Downey, CA</div>
+              <div className="text-[11px] text-slate-500 font-medium">Est. 1999 &middot; Downey, CA</div>
             </div>
           </NavLink>
 
@@ -144,13 +145,22 @@ export default function Navbar() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2">
             <a
               href={site.contact.phoneHref}
               className="text-[13px] font-medium text-slate-500 hover:text-brand-700 transition-colors flex items-center gap-1.5"
+              aria-label={`Call ${site.contact.phone}`}
             >
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.3 2.6 3.4 4.7 6 6l2-2c.2-.2.6-.3.9-.2 1 .3 2 .5 3.1.5.5 0 .9.4.9.9V20c0 .5-.4.9-.9.9C9.6 20.9 3.1 14.4 3.1 6.9c0-.5.4-.9.9-.9h2.2c.5 0 .9.4.9.9 0 1.1.2 2.1.5 3.1.1.3 0 .6-.2.9l-1.8 1.8z" /></svg>
-              {site.contact.phone}
+              Call
+            </a>
+            <a
+              href={site.contact.textHref}
+              className="text-[13px] font-medium text-slate-500 hover:text-brand-700 transition-colors flex items-center gap-1.5"
+              aria-label={`Text ${site.contact.text}`}
+            >
+              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+              Text
             </a>
             <button onClick={openQuoteModal} className="btn btn-primary btn-sm">
               Free Quote
@@ -211,18 +221,21 @@ export default function Navbar() {
                   </motion.div>
                 ))}
 
-                <div className="pt-3 grid grid-cols-2 gap-2">
+                <div className="pt-3 grid grid-cols-3 gap-2">
                   <a href={site.contact.phoneHref} className="btn btn-outline btn-sm justify-center">
-                    Call Us
+                    Call
+                  </a>
+                  <a href={site.contact.textHref} className="btn btn-outline btn-sm justify-center">
+                    Text
                   </a>
                   <button onClick={() => { setOpen(false); openQuoteModal(); }} className="btn btn-primary btn-sm justify-center">
-                    Free Quote
+                    Quote
                   </button>
                 </div>
 
                 <div className="pt-2 text-[12px] text-slate-400 flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                  Mon-Fri 10-5:30 &middot; {site.contact.phone}
+                  Mon-Fri 10-5:30 &middot; Call or text
                 </div>
               </div>
             </motion.div>

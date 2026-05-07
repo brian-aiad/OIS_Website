@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { usePageMeta } from "../../lib/seo";
 import { openQuoteModal } from "../../lib/openQuote";
 import { site } from "../../lib/site";
 import PageHero from "../../components/PageHero";
 import LocalBusinessSchema from "../../components/seo/LocalBusinessSchema";
+import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema";
 import { Reveal } from "../../components/AnimatedSection";
 
 const canonical = "https://originalinsurance.net/insurance/whittier";
@@ -36,15 +37,19 @@ const TRUST_POINTS = [
 export default function WhittierPage() {
   usePageMeta({
     title:
-      "Auto Insurance Whittier CA | Cheap Car Insurance, SR-22 | Original Insurance",
+      "Whittier Auto Insurance — SR-22, Home Bundle | Original",
     description:
-      "Independent insurance broker serving Whittier, CA. Compare 30+ carriers for auto, home, and SR-22. From Uptown Whittier to East Whittier.",
+      "Whittier auto insurance from Uptown to East Whittier. Compare 30+ carriers — SR-22, home bundles, no-license programs. Bilingual service via the 605.",
     canonical,
   });
 
   return (
     <main id="main-content">
       <LocalBusinessSchema url={canonical} areaServed={areaServed} />
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "Whittier Insurance", url: canonical },
+      ]} />
 
       <PageHero
         title="Auto Insurance in Whittier, CA"
@@ -318,6 +323,13 @@ export default function WhittierPage() {
                 className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
               >
                 No-license auto insurance
+              </Link>
+              <span className="text-slate-300">·</span>
+              <Link
+                to="/about"
+                className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
+              >
+                About our brokerage
               </Link>
             </div>
           </Reveal>

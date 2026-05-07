@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { usePageMeta } from "../../lib/seo";
 import { openQuoteModal } from "../../lib/openQuote";
 import { site } from "../../lib/site";
 import PageHero from "../../components/PageHero";
 import LocalBusinessSchema from "../../components/seo/LocalBusinessSchema";
+import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema";
 import { Reveal } from "../../components/AnimatedSection";
 
 const canonical = "https://originalinsurance.net/insurance/commerce";
@@ -35,15 +36,19 @@ const TRUST_POINTS = [
 export default function CommercePage() {
   usePageMeta({
     title:
-      "Auto Insurance Commerce CA | Commercial Auto, SR-22 | Original Insurance",
+      "Auto Insurance Commerce CA — Fleet & Commercial | Original",
     description:
-      "Insurance broker serving City of Commerce businesses and residents. Commercial auto, BOP, SR-22, and personal auto from 30+ carriers.",
+      "City of Commerce auto and commercial insurance. Personal vehicles and business fleets — SR-22, no-license, BOP bundles. Independent broker, 30+ carriers, same-day quotes.",
     canonical,
   });
 
   return (
     <main id="main-content">
       <LocalBusinessSchema url={canonical} areaServed={areaServed} />
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "Commerce Insurance", url: canonical },
+      ]} />
 
       <PageHero
         title="Auto Insurance in City of Commerce, CA"
@@ -322,6 +327,13 @@ export default function CommercePage() {
                 className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
               >
                 No-license auto insurance
+              </Link>
+              <span className="text-slate-300">·</span>
+              <Link
+                to="/about"
+                className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
+              >
+                About our brokerage
               </Link>
             </div>
           </Reveal>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { openQuoteModal } from "../lib/openQuote";
@@ -7,7 +8,7 @@ import { usePageMeta } from "../lib/seo";
 import { Icons } from "../components/Icons";
 import { Reveal } from "../components/AnimatedSection";
 
-import storefrontImg from "../assets/storefront.png";
+import storefrontImg from "../assets/storefront.webp";
 
 type HourRow =
   | { label: string; short: string; open: string; close: string; closed?: false }
@@ -31,8 +32,8 @@ function cx(...v: (string | false | null | undefined)[]) {
 
 export default function Locations() {
   usePageMeta({
-    title: "Our Location | 9907-B Paramount Blvd Downey CA | Original Insurance",
-    description: "Visit Original Insurance at 9907-B Paramount Blvd, Downey CA 90240. Open Monday-Friday 10AM-5:30PM. Serving Downey, Lynwood, Cerritos, Whittier, Lakewood & surrounding areas. Call (310) 538-8666.",
+    title: "Our Downey Office — Hours & Directions | Original Insurance",
+    description: "Visit us at 9907-B Paramount Blvd, Downey CA 90240. Open Mon–Fri 10AM–5:30PM. Walk-ins welcome. Serving Downey, Cerritos, Norwalk, Lakewood & surrounding areas.",
     canonical: "https://originalinsurance.net/locations",
   });
 
@@ -53,7 +54,7 @@ export default function Locations() {
     el.type = "application/ld+json";
     el.text = JSON.stringify({
       "@context": "https://schema.org", "@type": "InsuranceAgency",
-      name: site.name, url: window.location.origin + "/locations",
+      name: site.name, url: "https://originalinsurance.net/",
       telephone: site.contact.phone, email: site.contact.email,
       address: { "@type": "PostalAddress", streetAddress: site.contact.address,
         addressLocality: "Downey", addressRegion: "CA", postalCode: "90240", addressCountry: "US" },
@@ -73,6 +74,10 @@ export default function Locations() {
 
   return (
     <main id="main-content">
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "Location", url: "https://originalinsurance.net/locations" },
+      ]} />
       {/* ── Premium Header ── */}
       <section className="relative hero-mesh overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-400/10 rounded-full blur-3xl" />
@@ -125,11 +130,11 @@ export default function Locations() {
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
               className="hidden lg:block"
             >
               <div className="rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-heavy">
-                <img src={storefrontImg} alt="Original Insurance storefront on Paramount Blvd" className="w-full h-auto object-cover" />
+                <img src={storefrontImg} alt="Original Insurance storefront on Paramount Blvd" className="w-full h-auto object-cover" loading="lazy" width={800} height={600} />
               </div>
             </motion.div>
           </div>

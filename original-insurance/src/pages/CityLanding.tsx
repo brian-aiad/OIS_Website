@@ -8,6 +8,7 @@ import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import { Reveal } from "../components/AnimatedSection";
 import { Icons } from "../components/Icons";
 import { Car, Home, Heart, Building2, Bike, FileText } from "lucide-react";
+import { CTASection, Section, SectionHeader } from "../design-system";
 
 /**
  * Per-city landing pages for local SEO. Each city gets a unique URL,
@@ -149,8 +150,8 @@ export default function CityLanding() {
   const canonical = `https://originalinsurance.net/insurance/${city.slug}`;
 
   usePageMeta({
-    title: `Insurance Broker ${city.name}, CA | Auto, Home, Life & Business | Original Insurance`,
-    description: `Independent insurance broker serving ${city.name}, CA since 1999. Compare 30+ carriers for auto, home, life, and commercial insurance. SR-22 filing, no-license programs, bilingual English / Spanish / Arabic service. Call (310) 538-8666 for a free quote.`,
+    title: `Auto Insurance ${city.name} CA — Same-Day, No License | Original`,
+    description: `Get auto insurance in ${city.name}, CA. Same-day eID cards, SR-22 filing, no-license programs. Compare 30+ carriers with a bilingual broker. Free quote — call or walk in.`,
     canonical,
   });
 
@@ -202,7 +203,7 @@ export default function CityLanding() {
 
       {/* Downey hub — popular insurance needs */}
       {isDowney && (
-        <section className="sp bg-slate-50">
+        <Section tone="offwhite">
           <div className="container max-w-4xl">
             <Reveal>
               <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6" style={{ fontFamily: "var(--font-display)" }}>
@@ -231,11 +232,11 @@ export default function CityLanding() {
               </div>
             </Reveal>
           </div>
-        </section>
+        </Section>
       )}
 
       {/* Intro */}
-      <section className="sp bg-white">
+      <Section tone="light">
         <div className="container max-w-4xl">
           <Reveal>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4" style={{ fontFamily: "var(--font-display)" }}>
@@ -259,16 +260,12 @@ export default function CityLanding() {
             )}
           </Reveal>
         </div>
-      </section>
+      </Section>
 
       {/* Coverage grid */}
-      <section className="sp bg-slate-50">
+      <Section tone="offwhite">
         <div className="container">
-          <Reveal>
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center" style={{ fontFamily: "var(--font-display)" }}>
-              Insurance we write for {city.name}
-            </h2>
-          </Reveal>
+          <SectionHeader title={`Insurance we write for ${city.name}`} align="center" className="mb-8" />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
             {COVERAGE_LINES.map((line, i) => {
               const Icon = line.Icon;
@@ -289,10 +286,10 @@ export default function CityLanding() {
             })}
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Why us */}
-      <section className="sp bg-white">
+      <Section tone="light">
         <div className="container max-w-4xl">
           <Reveal>
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6" style={{ fontFamily: "var(--font-display)" }}>
@@ -317,10 +314,10 @@ export default function CityLanding() {
             </ul>
           </Reveal>
         </div>
-      </section>
+      </Section>
 
       {/* Nearby cities — internal linking */}
-      <section className="sp bg-slate-50">
+      <Section tone="offwhite">
         <div className="container max-w-4xl">
           <Reveal>
             <h2 className="text-xl font-bold text-slate-900 mb-4">We also serve nearby</h2>
@@ -352,31 +349,14 @@ export default function CityLanding() {
             </div>
           </Reveal>
         </div>
-      </section>
+      </Section>
 
       {/* CTA */}
-      <section className="sp bg-white">
-        <div className="container max-w-3xl">
-          <Reveal>
-            <div className="rounded-2xl bg-gradient-to-br from-brand-950 to-brand-800 p-8 md:p-10 text-center text-white shadow-heavy">
-              <h3 className="text-2xl md:text-3xl font-bold mb-2" style={{ fontFamily: "var(--font-display)" }}>
-                Ready for a free {city.name} quote?
-              </h3>
-              <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                Most quotes take under 10 minutes. Call, message, or stop by our Downey office — walk-ins welcome.
-              </p>
-              <div className="flex flex-wrap justify-center gap-3">
-                <a href={site.contact.phoneHref} className="btn btn-accent">
-                  Call {site.contact.phone}
-                </a>
-                <button onClick={openQuoteModal} className="btn btn-ghost-light">
-                  Get a Quote
-                </button>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <CTASection
+        title={`Ready for a free ${city.name} quote?`}
+        lede="Most quotes take under 10 minutes. Call, message, or stop by our Downey office - walk-ins welcome."
+        secondaryLabel={`Call ${site.contact.phone}`}
+      />
     </main>
   );
 }

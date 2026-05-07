@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZDREMBRV97"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZDREMBRV97');
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#1e3a8a" />
@@ -14,15 +23,17 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Original Insurance Services | Trusted Broker in Downey CA" />
     <meta property="og:description" content="Compare 30+ carriers for auto, home, life & business insurance. Bilingual service since 1999. Call (310) 538-8666" />
-    <meta property="og:url" content="https://originalinsurance.net" />
-    <meta property="og:image" content="https://originalinsurance.net/logo.png" />
+    <meta property="og:url" content="https://originalinsurance.net/" />
+    <meta property="og:image" content="https://originalinsurance.net/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Original Insurance Services | Trusted Broker in Downey CA" />
     <meta name="twitter:description" content="Compare 30+ carriers for auto, home, life & business insurance. Bilingual service since 1999. Call (310) 538-8666" />
-    <meta name="twitter:image" content="https://originalinsurance.net/logo.png" />
+    <meta name="twitter:image" content="https://originalinsurance.net/og-image.png" />
 
     <!-- Robots & Crawl directives -->
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -33,21 +44,27 @@
     <meta name="geo.position" content="33.9403;-118.1331" />
     <meta name="ICBM" content="33.9403, -118.1331" />
 
-    <link rel="icon" href="/logo.png" />
-    <link rel="canonical" href="https://originalinsurance.net" />
+    <link rel="icon" href="/favicon.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png" />
+    <link rel="canonical" href="https://originalinsurance.net/" />
 
     <!-- Preconnect to font servers -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Preload hero image (above the fold) -->
-    <link rel="preload" href="/images/hero-celebration-highfive.webp" as="image" type="image/webp" />
+    <!-- Non-blocking font load — print trick avoids render-blocking CSS @import -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,700;9..40,800;9..40,900&display=optional" as="style" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,700;9..40,800;9..40,900&display=optional" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,700;9..40,800;9..40,900&display=optional" /></noscript>
+
+    <!-- heroTeam.webp preload removed — PageHero uses fetchPriority="high" directly on the img element -->
   </head>
   <body>
     <noscript>
       <div style="padding:2rem;text-align:center;font-family:sans-serif">
-        <h1>Original Insurance Services</h1>
-        <p>Independent insurance broker in Downey, CA. Compare 30+ carriers for auto, home, life & business insurance.</p>
+        <p style="font-size:1.25rem;font-weight:700">Original Insurance Services</p>
+        <p>Independent insurance broker in Downey, CA. Compare 30+ carriers for auto, home, life &amp; business insurance.</p>
         <p>Call us at <a href="tel:+13105388666">(310) 538-8666</a> or visit us at 9907-B Paramount Blvd, Downey, CA 90240.</p>
       </div>
     </noscript>

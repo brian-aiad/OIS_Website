@@ -52,8 +52,9 @@ export default function PageHero({
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover"
             style={{ filter: imageFilter ?? "contrast(1.05) saturate(0.85)" }}
-            loading="eager"
-            decoding="async"
+            fetchPriority="high"
+            width={1440}
+            height={960}
           />
           {/* Dark overlay over photo */}
           <div

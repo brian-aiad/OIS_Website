@@ -11,7 +11,6 @@ export default defineConfig({
       gifsicle: false,
       optipng: { optimizationLevel: 5 },
       mozjpeg: { quality: 78, progressive: true },
-      webp: { quality: 78 },
       svgo: {
         plugins: [
           { name: "removeViewBox", active: false },
@@ -21,8 +20,7 @@ export default defineConfig({
     }),
   ],
 
-  // ensure relative assets load correctly on Firebase
-  base: "./",
+  base: "/",
 
   build: {
     outDir: "dist",

@@ -29,7 +29,7 @@ export default function QuoteWidget() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 1.5, type: "spring", stiffness: 260, damping: 20 }}
         className="fixed bottom-[5.5rem] right-4 sm:bottom-20 sm:right-6 z-50 flex items-center gap-2 bg-brand-700 hover:bg-brand-800 text-white font-semibold pl-3.5 pr-4 py-2.5 sm:pl-4 sm:pr-5 sm:py-3 text-[13px] sm:text-sm rounded-full shadow-heavy ring-1 ring-brand-600 transition-colors"
-        aria-label="Get a free quote"
+        aria-label="Get a Quote"
       >
         <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />

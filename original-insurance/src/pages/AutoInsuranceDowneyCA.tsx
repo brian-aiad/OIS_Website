@@ -4,6 +4,17 @@ import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
+import FAQSchema from "../components/seo/FAQSchema";
+import ReviewBadge from "../components/seo/ReviewBadge";
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
+
+const AUTO_FAQS = [
+  { q: "How much does car insurance cost in Downey, CA?", a: "Most Downey drivers pay $80–$180 per month depending on driving record, vehicle type, coverage level, and ZIP code. Rates vary significantly by carrier." },
+  { q: "What is California's minimum car insurance requirement?", a: "California requires 30/60/15 liability: $30,000 bodily injury per person, $60,000 per accident, and $15,000 for property damage." },
+  { q: "Can I get same-day proof of insurance in Downey?", a: "Yes. Once you bind a policy, we issue a digital ID card immediately. SR-22 certificates are filed electronically with the CA DMV the same day." },
+  { q: "What discounts are available for Downey auto insurance?", a: "Common discounts include multi-car, home and auto bundle (10–15%), continuous coverage, and good driver. We compare 30+ carriers to find your best combination." },
+  { q: "Do you offer insurance for drivers without a California license?", a: "Yes. We work with carriers that cover vehicle owners with foreign licenses, ITIN-based applicants, and licensed household members as the primary driver." },
+];
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 
 const NEARBY_CITIES = [
@@ -42,15 +53,20 @@ function TrustStrip() {
 
 export default function AutoInsuranceDowneyCA() {
   usePageMeta({
-    title: "Auto Insurance Downey CA | Cheap Car Insurance, SR-22 & No-License | Original Insurance",
+    title: "Auto Insurance Downey CA — Same-Day | Original Insurance",
     description:
-      "Compare 30+ carriers for auto insurance in Downey, CA. Cheap car insurance, SR-22 filing, and no-license or international-license options. Same-day quotes.",
+      "Compare 30+ carriers for auto insurance in Downey, CA. Same-day eID cards, SR-22 filing, no-license programs. Cheap car insurance that fits — walk in or call today.",
     canonical: "https://originalinsurance.net/auto-insurance-downey-ca",
   });
 
   return (
     <main id="main-content">
-      <LocalBusinessSchema url="https://originalinsurance.net/auto-insurance-downey-ca" />
+      <LocalBusinessSchema />
+      <FAQSchema questions={AUTO_FAQS} />
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "Auto Insurance Downey CA", url: "https://originalinsurance.net/auto-insurance-downey-ca" },
+      ]} />
 
       <PageHero
         title="Auto Insurance in Downey, CA"
@@ -70,6 +86,12 @@ export default function AutoInsuranceDowneyCA() {
       </PageHero>
 
       <TrustStrip />
+
+      <div className="bg-white py-4 border-b border-slate-100">
+        <div className="container flex justify-center">
+          <ReviewBadge count={site.reviews.count} />
+        </div>
+      </div>
 
       {/* Section 1: Cost */}
       <section className="sp bg-white">
@@ -231,6 +253,37 @@ export default function AutoInsuranceDowneyCA() {
                 </li>
               ))}
             </ul>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Section 5b: Spanish-intent section */}
+      <section lang="es" className="sp bg-brand-950 text-white">
+        <div className="container max-w-4xl">
+          <Reveal>
+            <h2
+              className="text-3xl md:text-4xl font-bold mb-6"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Seguro de Auto en Downey, California
+            </h2>
+            <div className="prose prose-invert max-w-none">
+              <p className="text-lg text-white/85 leading-relaxed mb-4">
+                En Original Insurance, comparamos más de 30 aseguradoras para encontrar la cobertura que mejor se adapta a su situación — ya sea seguro básico de responsabilidad civil, cobertura completa, o un programa especial para conductores sin licencia californiana o con licencia extranjera.
+              </p>
+              <p className="text-base text-white/80 leading-relaxed mb-4">
+                Nuestro equipo en Downey ofrece servicio completamente en español. Explicamos cada opción de cobertura con claridad, sin terminología confusa, para que usted pueda tomar una decisión informada. Hemos ayudado a miles de familias en el área de Downey, Lynwood, South Gate, y toda el área del sureste del Condado de Los Ángeles a obtener cobertura de auto de manera rápida y accesible.
+              </p>
+              <p className="text-base text-white/80 leading-relaxed mb-4">
+                Si usted ha tenido infracciones de tránsito, necesita un archivo SR-22 para reinstalar su licencia, o es nuevo en California con una licencia de otro país, tenemos opciones disponibles. No es necesario tener número de Seguro Social para obtener cobertura en muchos de nuestros programas. Aceptamos clientes con ITIN y con licencias extranjeras válidas.
+              </p>
+              <p className="text-base text-white/80 leading-relaxed mb-4">
+                Para obtener una cotización el mismo día, llámenos o visítenos en nuestra oficina en 9907-B Paramount Blvd, Downey, CA 90240. Estamos abiertos de lunes a viernes de 10:00 AM a 5:30 PM. También puede solicitar su cotización en línea y nos pondremos en contacto con usted dentro de horas hábiles.
+              </p>
+              <p className="text-sm text-white/60 leading-relaxed italic">
+                Nota: Este contenido fue redactado para hispanohablantes que buscan seguro de auto en Downey. Recomendamos que un hispanohablante nativo revise y perfeccione el texto antes de publicarlo. — Original Insurance Team
+              </p>
+            </div>
           </Reveal>
         </div>
       </section>

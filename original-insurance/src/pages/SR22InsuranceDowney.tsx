@@ -4,19 +4,35 @@ import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
+import FAQSchema from "../components/seo/FAQSchema";
+import TrustStrip from "../components/seo/TrustStrip";
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
+
+const SR22_FAQS = [
+  { q: "How long do I need SR-22 in California?", a: "California requires SR-22 for 3 continuous years from license reinstatement. Any policy lapse or cancellation resets the clock with the DMV." },
+  { q: "What does SR-22 filing cost in Downey, CA?", a: "The SR-22 filing fee is $15–$25. Your underlying auto insurance premium also increases based on your driving record and the carrier." },
+  { q: "Can I get same-day SR-22 filing?", a: "Yes. We file SR-22 certificates electronically with the California DMV the same day you bind a qualifying policy." },
+  { q: "What happens if I miss a payment while on SR-22?", a: "If your policy lapses, the carrier notifies the DMV. Your license can be re-suspended, restarting the 3-year reinstatement requirement." },
+  { q: "Do I need SR-22 if I don't own a car?", a: "Yes. A non-owner SR-22 policy provides the required liability coverage without a specific vehicle, covering you in borrowed or rented cars." },
+];
 
 export default function SR22InsuranceDowney() {
   usePageMeta({
-    title: "SR-22 Insurance Downey CA | Same-Day Filing | Original Insurance",
+    title: "SR-22 Downey CA — Same-Day Filing, $15 Fee | Original",
     description:
-      "Same-day SR-22 filing in Downey, CA. We explain what SR-22 is, who needs it, how long it lasts, and what to bring. Independent broker, 30+ carriers.",
+      "Need SR-22 in Downey? We file electronically with the CA DMV same day. $15–$25 filing fee. We find your cheapest qualifying carrier. Walk in or call (310) 538-8666.",
     canonical: "https://originalinsurance.net/sr22-insurance-downey",
   });
 
   return (
     <main id="main-content">
-      <LocalBusinessSchema url="https://originalinsurance.net/sr22-insurance-downey" />
+      <LocalBusinessSchema />
+      <FAQSchema questions={SR22_FAQS} />
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "SR-22 Insurance Downey", url: "https://originalinsurance.net/sr22-insurance-downey" },
+      ]} />
 
       <PageHero
         title="SR-22 Insurance & Same-Day Filing in Downey, CA"
@@ -35,6 +51,12 @@ export default function SR22InsuranceDowney() {
           </a>
         </div>
       </PageHero>
+
+      <div className="bg-brand-950 py-4 text-white">
+        <div className="container">
+          <TrustStrip />
+        </div>
+      </div>
 
       {/* What is SR-22 */}
       <section className="sp bg-white">
@@ -169,6 +191,13 @@ export default function SR22InsuranceDowney() {
             </p>
             <p className="text-base text-slate-600 leading-relaxed">
               Once your filing is submitted, we can provide you with written confirmation of the electronic filing for your DMV appointment or court date. Most filings are submitted within hours of binding your policy.
+            </p>
+            <p className="mt-3 text-sm text-slate-500">
+              Want to learn more about our brokerage?{" "}
+              <NavLink to="/about" className="text-brand-700 font-medium hover:underline">
+                About Original Insurance
+              </NavLink>{" "}
+              — independent broker in Downey since 1999.
             </p>
           </Reveal>
         </div>

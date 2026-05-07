@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { usePageMeta } from "../../lib/seo";
 import { openQuoteModal } from "../../lib/openQuote";
 import { site } from "../../lib/site";
 import PageHero from "../../components/PageHero";
 import LocalBusinessSchema from "../../components/seo/LocalBusinessSchema";
+import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema";
 import { Reveal } from "../../components/AnimatedSection";
 
 const canonical = "https://originalinsurance.net/insurance/south-gate";
@@ -36,15 +37,19 @@ const TRUST_POINTS = [
 export default function SouthGatePage() {
   usePageMeta({
     title:
-      "Auto Insurance South Gate CA | Cheap Car Insurance, SR-22 | Original Insurance",
+      "South Gate Auto Insurance — SR-22 & No License | Original",
     description:
-      "Independent insurance broker serving South Gate, CA. Bilingual auto, SR-22, and no-license insurance for South Gate families. Compare 30+ carriers.",
+      "South Gate drivers: SR-22 filing, no-license programs, and competitive auto rates from 30+ carriers. Firestone Blvd and the 710 corridor. Bilingual. Same-day quotes.",
     canonical,
   });
 
   return (
     <main id="main-content">
       <LocalBusinessSchema url={canonical} areaServed={areaServed} />
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "South Gate Insurance", url: canonical },
+      ]} />
 
       <PageHero
         title="Auto Insurance in South Gate, CA"
@@ -322,6 +327,13 @@ export default function SouthGatePage() {
                 className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
               >
                 No-license auto insurance
+              </Link>
+              <span className="text-slate-300">·</span>
+              <Link
+                to="/about"
+                className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
+              >
+                About our brokerage
               </Link>
             </div>
           </Reveal>

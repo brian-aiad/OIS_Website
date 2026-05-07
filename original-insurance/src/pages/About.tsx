@@ -5,15 +5,17 @@ import { usePageMeta } from "../lib/seo";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 import { Counter } from "../components/AnimatedCounter";
 import PageHero from "../components/PageHero";
-import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
+import ReviewBadge from "../components/seo/ReviewBadge";
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
+import { CTASection, SectionHeader } from "../design-system";
 
-import storefrontImg from "../assets/storefront.png";
-import logoBadge from "../assets/logo-badge.png";
+import storefrontImg from "../assets/storefront.webp";
+import logoBadge from "../assets/logo-badge.webp";
 
 export default function About() {
   usePageMeta({
-    title: "Independent Insurance Broker in Downey CA Since 1999 | Original Insurance",
-    description: "Learn why Downey drivers choose an independent broker. Compare 30+ carriers with local multilingual service and claims guidance.",
+    title: "Downey's Trusted Broker Since 1999 | Original Insurance",
+    description: "Family-run Downey broker since 1999. We shop 30+ carriers in English, Spanish & Arabic for SE LA families. 4.9★, 92 verified reviews. Independent, bilingual, zero pressure.",
     canonical: "https://originalinsurance.net/about",
   });
 
@@ -26,31 +28,23 @@ export default function About() {
       name: "About Original Insurance Services",
       url: "https://originalinsurance.net/about",
       description: "Family-owned independent insurance broker in Downey, CA serving Southern California since 1999.",
-      mainEntity: { "@id": "https://originalinsurance.net/#organization" },
-    });
-    const crumbEl = document.createElement("script");
-    crumbEl.type = "application/ld+json";
-    crumbEl.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: "https://originalinsurance.net/" },
-        { "@type": "ListItem", position: 2, name: "About", item: "https://originalinsurance.net/about" },
-      ],
+      mainEntity: { "@id": "https://originalinsurance.net/#agency" },
     });
     document.head.appendChild(aboutEl);
-    document.head.appendChild(crumbEl);
-    return () => { aboutEl.remove(); crumbEl.remove(); };
+    return () => { aboutEl.remove(); };
   }, []);
 
   return (
     <main id="main-content">
-      <LocalBusinessSchema url="https://originalinsurance.net/about" />
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "About", url: "https://originalinsurance.net/about" },
+      ]} />
       <PageHero
         title="Insurance built on relationships"
         subtitle={site.description}
         breadcrumb="About"
-        backgroundImage="/images/handshake-800w.webp"
+        backgroundImage="/images/handshake.webp"
         overlayGradient="linear-gradient(105deg, rgba(6,14,31,0.92) 0%, rgba(11,30,61,0.82) 50%, rgba(11,30,61,0.65) 100%)"
         imageFilter="contrast(1.08) saturate(0.7) brightness(0.9)"
         rightContent={
@@ -108,13 +102,13 @@ export default function About() {
       {/* ── Mission, Values, Promise ── */}
       <section className="sp bg-white">
         <div className="container">
-          <Reveal className="text-center max-w-xl mx-auto mb-14">
-            <span className="eyebrow mb-4">What Drives Us</span>
-            <h2 className="display-2 text-slate-900">Our mission, values &amp; promise</h2>
-            <p className="mt-3 text-slate-500">
-              We make insurance simple and transparent by doing the heavy lifting: shopping multiple carriers, explaining coverages in plain language, and advocating for you at claim time.
-            </p>
-          </Reveal>
+          <SectionHeader
+            eyebrow="What Drives Us"
+            title="Our mission, values & promise"
+            lede="We make insurance simple and transparent by doing the heavy lifting: shopping multiple carriers, explaining coverages in plain language, and advocating for you at claim time."
+            align="center"
+            className="mb-14"
+          />
 
           <Stagger className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
@@ -173,6 +167,10 @@ export default function About() {
               </StaggerChild>
             ))}
           </Stagger>
+
+          <div className="mt-10 flex justify-center">
+            <ReviewBadge count={site.reviews.count} />
+          </div>
         </div>
       </section>
 
@@ -187,6 +185,15 @@ export default function About() {
               </h2>
               <p className="mt-4 text-slate-500 leading-relaxed">
                 We opened our doors on Paramount Blvd in Downey in 1999, when the Southeast LA community needed a local broker who would compare options honestly instead of pushing a single company's policies. Over 25 years, we have helped thousands of Downey-area families and businesses find the right coverage for auto, home, life, and commercial needs — including SR-22 filings, no-license auto programs, and commercial fleet policies.
+              </p>
+              <p className="mt-3 text-slate-500 leading-relaxed">
+                Our roots are in the Downey community. Downey and the surrounding Southeast LA cities — Norwalk, Bellflower, Cerritos, Lakewood, Paramount, South Gate, Pico Rivera, Montebello, Lynwood, Whittier, and Commerce — make up one of the most culturally diverse, working-class corridors in Southern California. Many of our clients are first-generation immigrants, small-business owners, or families for whom insurance has historically been confusing, expensive, or inaccessible. Our ability to serve clients in English, Spanish, and Arabic was not an afterthought — it is central to who we are.
+              </p>
+              <p className="mt-3 text-slate-500 leading-relaxed">
+                Independent brokerage means we are not tied to any single insurance company's products, pricing, or sales targets. Every client who walks through our door or calls our Paramount Blvd office gets an honest comparison across our full carrier network. We have seen the Southeast LA market through major events — rising uninsured rates, carrier exits, regulatory changes, and economic cycles — and that long view shapes how we advise our clients. We know which carriers consistently pay claims fairly, which offer the most competitive rates for specific driver profiles, and where gaps in coverage most commonly catch families off guard.
+              </p>
+              <p className="mt-3 text-slate-500 leading-relaxed">
+                Original Insurance is a Black- and Latino-owned independent brokerage. Our office is wheelchair accessible, LGBTQ+ friendly, and a transgender safespace — because the people who walk through our door deserve to feel respected before they even sit down. We have always served clients who were turned away or underserved elsewhere, and that commitment has not changed in 25 years.
               </p>
               <p className="mt-3 text-slate-500 leading-relaxed">
                 Today we serve clients across California — in English, Spanish, and Arabic — with the same personal service we started with. If you're looking for{" "}
@@ -371,33 +378,63 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="sp hero-mesh relative overflow-hidden">
-        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-brand-400/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-gold-400/10 rounded-full blur-3xl" />
-        <div className="container relative text-center">
-          <Reveal>
-            <h2 className="display-2 text-white mb-4">Ready to work with a real broker?</h2>
-            <p className="text-lg text-white/80 max-w-md mx-auto mb-8">
-              Get a personalized quote from someone who puts your needs first — compare 30+ carriers in one conversation.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <NavLink to="/auto-insurance-downey-ca" className="btn btn-accent btn-lg">
-                Compare auto quotes in Downey
-              </NavLink>
-              <NavLink to="/sr22-insurance-downey" className="btn btn-ghost-light btn-lg">
-                SR-22 or no-license options
-              </NavLink>
-            </div>
-            <p className="mt-5 text-white/60 text-sm">
-              Or call us at{" "}
-              <a href={site.contact.phoneHref} className="text-gold-300 hover:text-gold-200 font-semibold">
-                {site.contact.phone}
-              </a>
+      {/* ── What to Expect ── */}
+      <section className="sp bg-white">
+        <div className="container max-w-3xl">
+          <Reveal className="text-center mb-10">
+            <span className="eyebrow mb-4">Working With Us</span>
+            <h2 className="display-2 text-slate-900">What to expect when you call</h2>
+            <p className="mt-3 text-slate-500 leading-relaxed">
+              We know your time is valuable. Here is what a typical first interaction looks like.
             </p>
           </Reveal>
+          <Stagger className="space-y-4">
+            {[
+              {
+                step: "01",
+                title: "A real person answers",
+                desc: "When you call our Downey office at (310) 538-8666, you speak with someone who knows our carrier network — not a scripted call center representative routing you to a queue. Most calls are answered within one ring during business hours."
+              },
+              {
+                step: "02",
+                title: "We gather the basics — no guesswork",
+                desc: "We ask for vehicle details, driving history, current coverage, and any specific needs like SR-22 filing, no-license programs, or commercial coverage. Ten minutes of information gives us enough to run accurate quotes across 30+ carriers."
+              },
+              {
+                step: "03",
+                title: "You get real options, explained plainly",
+                desc: "We walk through the top options in plain English, Spanish, or Arabic — whichever you prefer. No pressure to choose on the spot. We explain the difference between minimum liability and full coverage, what each deductible means in practice, and which carriers have the strongest local claims reputation."
+              },
+              {
+                step: "04",
+                title: "Same-day binding and ID cards",
+                desc: "When you're ready, we bind the policy and issue electronic proof of insurance the same day. SR-22 certificates are filed electronically with the California DMV within hours of policy binding — so your reinstatement is never delayed by paperwork."
+              },
+            ].map((item) => (
+              <StaggerChild key={item.step}>
+                <div className="flex gap-5 items-start bg-slate-50 rounded-2xl p-5 ring-1 ring-slate-200/60">
+                  <div className="shrink-0 w-11 h-11 rounded-xl bg-brand-800 text-white text-sm font-extrabold grid place-items-center">
+                    {item.step}
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900">{item.title}</h3>
+                    <p className="mt-1 text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              </StaggerChild>
+            ))}
+          </Stagger>
         </div>
       </section>
+
+      {/* ── CTA ── */}
+      <CTASection
+        title="Ready to work with a real broker?"
+        lede="Get a personalized quote from someone who puts your needs first - compare 30+ carriers in one conversation."
+        primaryLabel="Compare auto quotes in Downey"
+        secondaryLabel="SR-22 or no-license options"
+        secondaryTo="/sr22-insurance-downey"
+      />
     </main>
   );
 }

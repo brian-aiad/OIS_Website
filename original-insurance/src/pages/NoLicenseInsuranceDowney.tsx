@@ -4,19 +4,35 @@ import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
+import FAQSchema from "../components/seo/FAQSchema";
+import TrustStrip from "../components/seo/TrustStrip";
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
+
+const NO_LICENSE_FAQS = [
+  { q: "Can I insure a car without a California driver's license?", a: "In certain lawful situations, yes. Vehicle owners who are not the primary driver, foreign-license holders, and ITIN-based applicants may have coverage options." },
+  { q: "Does Original Insurance accept ITIN for car insurance?", a: "Yes. Several California carriers we work with accept ITIN-based applicants who do not have a Social Security Number." },
+  { q: "Will a foreign driver's license work for auto insurance in California?", a: "Many California carriers accept valid licenses issued by other countries. An International Driving Permit can expand your carrier options." },
+  { q: "What documents do I need for no-license auto insurance?", a: "Bring your foreign driver's license, passport, ITIN letter if applicable, vehicle registration, and any current declarations page." },
+  { q: "Is it legal to insure a car you don't personally drive?", a: "Yes. A vehicle owner can be the named insured with a licensed household member listed as the primary driver on the policy." },
+];
 
 export default function NoLicenseInsuranceDowney() {
   usePageMeta({
-    title: "No-License & Foreign-License Auto Insurance Downey CA | Original Insurance",
+    title: "No-License Auto Insurance Downey — ITIN OK | Original",
     description:
-      "Auto insurance options in Downey, CA for vehicle owners without a traditional California license, foreign-license holders, and international-license drivers.",
+      "No CA license? We help Downey vehicle owners get covered — foreign license, ITIN, international drivers welcome. Licensed CA broker. Tell us your situation, we find options.",
     canonical: "https://originalinsurance.net/no-license-auto-insurance-downey",
   });
 
   return (
     <main id="main-content">
-      <LocalBusinessSchema url="https://originalinsurance.net/no-license-auto-insurance-downey" />
+      <LocalBusinessSchema />
+      <FAQSchema questions={NO_LICENSE_FAQS} />
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "No-License Insurance Downey", url: "https://originalinsurance.net/no-license-auto-insurance-downey" },
+      ]} />
 
       <PageHero
         title="No-License & International-License Auto Insurance in Downey, CA"
@@ -33,6 +49,12 @@ export default function NoLicenseInsuranceDowney() {
           </a>
         </div>
       </PageHero>
+
+      <div className="bg-brand-950 py-4 text-white">
+        <div className="container">
+          <TrustStrip />
+        </div>
+      </div>
 
       {/* Common Scenarios */}
       <section className="sp bg-white">

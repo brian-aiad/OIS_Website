@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { usePageMeta } from "../../lib/seo";
 import { openQuoteModal } from "../../lib/openQuote";
 import { site } from "../../lib/site";
 import PageHero from "../../components/PageHero";
 import LocalBusinessSchema from "../../components/seo/LocalBusinessSchema";
+import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema";
 import { Reveal } from "../../components/AnimatedSection";
 
 const canonical = "https://originalinsurance.net/insurance/montebello";
@@ -36,15 +37,19 @@ const TRUST_POINTS = [
 export default function MontebelloPage() {
   usePageMeta({
     title:
-      "Auto Insurance Montebello CA | Cheap Car Insurance, SR-22 | Original Insurance",
+      "Montebello Auto Insurance — 30+ Carriers | Original",
     description:
-      "Independent insurance broker serving Montebello, CA. Compare 30+ carriers for auto, home, and SR-22. English, Spanish, Arabic service.",
+      "Auto insurance for Montebello drivers on the 60 and 710. Compare 30+ California carriers — SR-22, no-license, home bundles. Bilingual broker. Free quote today.",
     canonical,
   });
 
   return (
     <main id="main-content">
       <LocalBusinessSchema url={canonical} areaServed={areaServed} />
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "Montebello Insurance", url: canonical },
+      ]} />
 
       <PageHero
         title="Auto Insurance in Montebello, CA"
@@ -323,6 +328,13 @@ export default function MontebelloPage() {
                 className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
               >
                 No-license auto insurance
+              </Link>
+              <span className="text-slate-300">·</span>
+              <Link
+                to="/about"
+                className="text-sm font-medium text-brand-700 hover:text-brand-900 hover:underline"
+              >
+                About our brokerage
               </Link>
             </div>
           </Reveal>

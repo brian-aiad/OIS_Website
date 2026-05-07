@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { NavLink } from "react-router-dom";
 import { openQuoteModal } from "../lib/openQuote";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,6 +8,7 @@ import { usePageMeta } from "../lib/seo";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 import { Car, Home, Heart, Building2, Bike, Caravan } from "lucide-react";
 import { images } from "../lib/images";
+import { CTASection, Section } from "../design-system";
 
 /* ── Service tab data ── */
 const SERVICE_TABS = [
@@ -140,27 +142,13 @@ const SERVICE_TABS = [
 
 export default function Services() {
   usePageMeta({
-    title: "Insurance Services | Auto, Home, Life & Business | Original Insurance",
-    description: "Explore our full range of insurance services: auto, home, life, commercial, motorcycle, and RV coverage. Compare 30+ carriers for the best rates in Downey, CA. SR-22 filing available.",
+    title: "Auto, Home & SR-22 Insurance in Downey | Original Insurance",
+    description: "Auto, home, life, SR-22, commercial, renters, motorcycle — we compare 30+ carriers so you get the best fit. Bilingual English, Spanish, Arabic. Same-day eID cards.",
     canonical: "https://originalinsurance.net/services",
   });
 
   const [activeTab, setActiveTab] = useState("auto");
 
-  useEffect(() => {
-    const el = document.createElement("script");
-    el.type = "application/ld+json";
-    el.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: `${window.location.origin}/` },
-        { "@type": "ListItem", position: 2, name: "Services", item: `${window.location.origin}/services` },
-      ],
-    });
-    document.head.appendChild(el);
-    return () => el.remove();
-  }, []);
 
   const active = SERVICE_TABS.find((t) => t.key === activeTab) || SERVICE_TABS[0];
   const ActiveIcon = active.icon;
@@ -171,6 +159,10 @@ export default function Services() {
 
   return (
     <main id="main-content">
+      <BreadcrumbSchema crumbs={[
+        { name: "Home", url: "https://originalinsurance.net/" },
+        { name: "Services", url: "https://originalinsurance.net/services" },
+      ]} />
       {/* ── Premium Header ── */}
       <section className="relative hero-mesh overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-400/10 rounded-full blur-3xl" />
@@ -201,7 +193,7 @@ export default function Services() {
       </section>
 
       {/* ── Interactive Service Browser ── */}
-      <section className="py-16 md:py-24 bg-white">
+      <Section tone="light">
         <div className="container">
           <Reveal className="text-center mb-12 md:mb-16">
             <span className="eyebrow">What We Cover</span>
@@ -250,7 +242,7 @@ export default function Services() {
                 {/* Image side */}
                 <div className="relative">
                   <div className="rounded-2xl overflow-hidden ring-1 ring-slate-200/80 shadow-lifted aspect-[4/3]">
-                    <img src={active.img} alt={active.alt} className="h-full w-full object-cover" loading="lazy" />
+                    <img src={active.img} alt={active.alt} className="h-full w-full object-cover" loading="lazy" width={800} height={600} />
                   </div>
 
                   {/* Floating stats overlay */}
@@ -333,7 +325,7 @@ export default function Services() {
             ))}
           </Stagger>
         </div>
-      </section>
+      </Section>
 
       {/* ── Additional services ── */}
       {extraServices.length > 0 && (
@@ -360,28 +352,12 @@ export default function Services() {
       )}
 
       {/* ── Bottom CTA ── */}
-      <section className="sp hero-mesh relative overflow-hidden">
-        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-brand-400/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-gold-400/10 rounded-full blur-3xl" />
-        <div className="container relative text-center">
-          <Reveal>
-            <h2 className="display-2 text-white mb-4">
-              Can't find what you need?
-            </h2>
-            <p className="text-lg text-white/80 max-w-md mx-auto mb-8">
-              We handle unusual risks too. Tell us what you need and we'll find a solution.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <button onClick={openQuoteModal} className="btn btn-accent btn-lg">
-                Start a Conversation
-              </button>
-              <a href={site.contact.phoneHref} className="btn btn-ghost-light btn-lg">
-                Call {site.contact.phone}
-              </a>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <CTASection
+        title="Can't find what you need?"
+        lede="We handle unusual risks too. Tell us what you need and we'll find a solution."
+        primaryLabel="Start a Conversation"
+        secondaryLabel={`Call ${site.contact.phone}`}
+      />
     </main>
   );
 }

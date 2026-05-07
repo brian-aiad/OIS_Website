@@ -8,8 +8,11 @@ import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 import { Counter } from "../components/AnimatedCounter";
 import { MagneticButton } from "../components/MagneticButton";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
+import ReviewBadge from "../components/seo/ReviewBadge";
+import TrustStrip from "../components/seo/TrustStrip";
+import { CTASection, Section, SectionHeader } from "../design-system";
 
-import storefrontImg from "../assets/storefront.png";
+import storefrontImg from "../assets/storefront.webp";
 
 /* ═══════════════════════════════════════════════
    HERO — Photo-based with full-bleed storefront background
@@ -24,12 +27,13 @@ function Hero() {
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover"
         fetchPriority="high"
-        decoding="async"
+        width={1200}
+        height={800}
       />
       {/* Navy overlay */}
       <div className="absolute inset-0" style={{ backgroundColor: "rgba(6,14,31,0.82)" }} />
       {/* Soft gradient sweetener for legibility on the left */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#060E1F]/90 via-[#0B1E3D]/65 to-[#0B1E3D]/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-950/90 via-brand-900/65 to-brand-900/30" />
 
       <div className="container relative grid lg:grid-cols-[1.15fr,1fr] gap-10 lg:gap-14 items-center pt-24 pb-20 lg:pt-28 lg:pb-24">
         {/* ── Left: Copy ── */}
@@ -73,14 +77,18 @@ function Hero() {
             No license? No problem.
           </p>
 
+          <div className="mt-5">
+            <ReviewBadge count={site.reviews.count} compact />
+          </div>
+
           <div className="mt-7 flex flex-col sm:flex-row gap-3">
-            <MagneticButton as="a" className="inline-block">
+            <MagneticButton as="div" className="inline-block">
               <button onClick={openQuoteModal} className="btn btn-accent btn-lg group">
                 Get Your Free Quote
                 <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" /></svg>
               </button>
             </MagneticButton>
-            <MagneticButton as="a" className="inline-block" strength={0.2}>
+            <MagneticButton as="div" className="inline-block" strength={0.2}>
               <a href={site.contact.phoneHref} className="btn btn-ghost-light btn-lg">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
                 Call {site.contact.phone}
@@ -300,12 +308,11 @@ function ServicesMasonry() {
         {img && (
           <div className="img-duotone absolute inset-0">
             <img
-              src={img.src.replace(".webp", "-800w.webp")}
+              src={img.src}
               srcSet={srcset(img.src)}
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
               alt={img.alt}
-              loading={idx < 3 ? "eager" : "lazy"}
-              fetchPriority={idx === 0 ? "high" : "auto"}
+              loading="lazy"
               decoding="async"
               width={800}
               height={600}
@@ -372,7 +379,7 @@ function ServicesMasonry() {
 function Carriers() {
   const logos = useMemo(() =>
     Array.from({ length: 8 }, (_, i) =>
-      new URL(`../assets/clients/client-${i + 1}.png`, import.meta.url).href
+      new URL(`../assets/clients/client-${i + 1}.webp`, import.meta.url).href
     ), []);
   const row = [...logos, ...logos];
 
@@ -387,8 +394,8 @@ function Carriers() {
       </div>
 
       <div className="relative">
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#F1F5F9] to-transparent z-10" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#F1F5F9] to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-slate-50 to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-slate-50 to-transparent z-10" />
 
         <div className="overflow-hidden py-1 select-none" style={{ "--marquee-speed": "35s" } as any}>
           <div className="flex w-max animate-marquee items-center">
@@ -494,7 +501,7 @@ function AboutSplit() {
           <Reveal direction="left" className="relative">
             <div className="rounded-3xl overflow-hidden shadow-heavy ring-1 ring-slate-100 aspect-[4/3]">
               <img
-                src={images.about.handshake.replace(".webp", "-800w.webp")}
+                src={images.about.handshake}
                 srcSet={srcset(images.about.handshake)}
                 sizes="(max-width: 1024px) 100vw, 600px"
                 alt="Original Insurance broker shaking hands with a new client in Downey, CA"
@@ -722,12 +729,9 @@ function FAQ() {
   ];
 
   return (
-    <section className="sp bg-white cv-auto-tall">
+    <Section tone="light" className="cv-auto-tall">
       <div className="container max-w-2xl">
-        <Reveal className="text-center mb-10">
-          <span className="eyebrow">FAQ</span>
-          <h2 className="mt-3 display-2 text-slate-900">Common questions</h2>
-        </Reveal>
+        <SectionHeader eyebrow="FAQ" title="Common questions" align="center" className="mb-10" />
 
         <div>
           {qa.map((item, i) => (
@@ -780,7 +784,7 @@ function FAQ() {
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
 
@@ -824,44 +828,116 @@ function StickyRibbon() {
 /* ═══════════════════════════════════════════════
    POPULAR INSURANCE NEEDS HUB
    ═══════════════════════════════════════════════ */
-function PopularNeedsHub() {
-  const cards = [
-    { title: "Auto Insurance in Downey", desc: "Compare 30+ carriers for liability, full coverage, and no-license options.", to: "/auto-insurance-downey-ca" },
-    { title: "SR-22 Filing in Downey", desc: "Same-day electronic SR-22 filing to the California DMV.", to: "/sr22-insurance-downey" },
-    { title: "No-License / Foreign-License Insurance", desc: "Coverage options for vehicle owners without a traditional CA license.", to: "/no-license-auto-insurance-downey" },
-    { title: "Cheap Car Insurance Options", desc: "We compare rates so you get the best price for the coverage you need.", to: "/auto-insurance-downey-ca#cost" },
-    { title: "Commercial Auto Insurance", desc: "Business vehicles, fleets, and hired/non-owned coverage.", to: "/services" },
+function ProductShowcase() {
+  const products = [
+    { badge: "Same-day",    title: "SR-22 Insurance",         value: "Same-day filing, $15–$25 fee",          to: "/sr22-insurance-downey" },
+    { badge: "30+ carriers", title: "Auto Insurance",         value: "Liability, full coverage, SR-22",        to: "/auto-insurance-downey-ca" },
+    { badge: "ITIN OK",    title: "No-License Auto",          value: "Foreign license, ITIN, international",  to: "/no-license-auto-insurance-downey" },
+    { badge: "Fleets",     title: "Commercial Auto",          value: "BOP, GL, hired/non-owned, fleet",        to: "/commercial-auto-insurance-downey" },
+    { badge: "Bundle",     title: "Homeowners Insurance",     value: "Bundle with auto for 10–15% savings",   to: "/services" },
+    { badge: "Walls-in",   title: "Condo Insurance",          value: "Interior coverage for condo owners",    to: "/services" },
+    { badge: "Affordable", title: "Motorcycle Insurance",     value: "Gear and accessory coverage included",  to: "/services" },
+    { badge: "Term",       title: "Life Insurance",           value: "Affordable family protection options",  to: "/services" },
+    { badge: "Low down",   title: "Low Down Payment Auto",    value: "Drive today for less upfront",          to: "/auto-insurance-downey-ca" },
+    { badge: "Coverage",   title: "Final Expense Insurance",  value: "Funeral and burial cost coverage",      to: "/services" },
   ];
 
   return (
-    <section className="sp bg-slate-50" id="popular-needs">
+    <Section tone="offwhite" id="products">
       <div className="container">
         <Reveal>
-          <span className="eyebrow">Most Requested</span>
+          <span className="eyebrow">What We Cover</span>
           <h2 className="mt-3 display-2 text-slate-900 max-w-2xl">
-            Popular insurance needs in&nbsp;Downey
+            10 coverage types, one Downey office
           </h2>
           <p className="mt-3 text-slate-500 max-w-xl leading-relaxed">
-            Most people who contact us in Downey are looking for one of four things: affordable auto insurance, fast SR-22 filing, help covering a vehicle without a traditional license setup, or a real local broker who can compare multiple carriers.
+            Independent broker means we compare 30+ carriers across every line. Call, text, or walk in — we handle it all from one location.
           </p>
         </Reveal>
-        <Stagger className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" gap={0.04}>
-          {cards.map((card, i) => (
+        <Stagger className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3" gap={0.03}>
+          {products.map((p, i) => (
             <StaggerChild key={i}>
               <NavLink
-                to={card.to}
-                className="block h-full bg-white rounded-2xl p-6 ring-1 ring-slate-200/80 shadow-soft hover:shadow-lifted hover:ring-brand-300 transition-all"
+                to={p.to}
+                className="block h-full bg-white rounded-2xl p-5 ring-1 ring-slate-200/80 shadow-soft hover:shadow-lifted hover:ring-brand-300 hover:-translate-y-0.5 transition-all"
               >
-                <h3 className="font-bold text-slate-900 mb-2">{card.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{card.desc}</p>
-                <span className="mt-4 inline-flex items-center gap-1 text-[12px] font-semibold text-brand-700">
-                  Learn more
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" /></svg>
+                <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-brand-600 bg-brand-50 rounded-full px-2 py-0.5 mb-3">
+                  {p.badge}
                 </span>
+                <h3 className="font-bold text-slate-900 text-[14px] mb-1 leading-snug">{p.title}</h3>
+                <p className="text-[12px] text-slate-500 leading-relaxed">{p.value}</p>
               </NavLink>
             </StaggerChild>
           ))}
         </Stagger>
+        <Reveal delay={0.1} className="mt-6 text-center">
+          <NavLink to="/services" className="text-[13px] font-medium text-brand-700 hover:text-brand-900 hover:underline transition-colors">
+            View all services & coverage details →
+          </NavLink>
+        </Reveal>
+      </div>
+    </Section>
+  );
+}
+
+/* ═══════════════════════════════════════════════
+   SERVICE AREAS — City landing page hub
+   ═══════════════════════════════════════════════ */
+function ServiceAreas() {
+  const cities = [
+    { name: "Downey", slug: "downey", note: "Our home base — walk-ins welcome" },
+    { name: "Norwalk", slug: "norwalk", note: "Minutes away via the 605" },
+    { name: "Bellflower", slug: "bellflower", note: "Auto & SR-22 specialists" },
+    { name: "Cerritos", slug: "cerritos", note: "605 & 91 corridor coverage" },
+    { name: "Lakewood", slug: "lakewood", note: "Home & auto bundles" },
+    { name: "Paramount", slug: "paramount", note: "Commercial & fleet coverage" },
+    { name: "Lynwood", slug: "lynwood", note: "Multilingual service" },
+    { name: "South Gate", slug: "south-gate", note: "No-license programs available" },
+    { name: "Pico Rivera", slug: "pico-rivera", note: "Foreign-license specialists" },
+    { name: "Montebello", slug: "montebello", note: "Home & renters coverage" },
+    { name: "Commerce", slug: "commerce", note: "Commercial auto & BOP" },
+    { name: "Whittier", slug: "whittier", note: "SR-22 same-day filing" },
+  ];
+
+  return (
+    <section className="sp bg-white" id="service-areas">
+      <div className="container">
+        <Reveal className="text-center max-w-2xl mx-auto">
+          <span className="eyebrow">Service Areas</span>
+          <h2 className="mt-3 display-2 text-slate-900">
+            Serving southeast Los Angeles County
+          </h2>
+          <p className="mt-3 text-slate-500">
+            One call covers the whole region. We compare 30+ carriers for drivers, homeowners, and businesses across 12 cities in the 605 and 91 corridors.
+          </p>
+        </Reveal>
+
+        <Stagger className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3" gap={0.03}>
+          {cities.map((city) => (
+            <StaggerChild key={city.slug}>
+              <NavLink
+                to={`/insurance/${city.slug}`}
+                className="block h-full bg-slate-50 rounded-2xl p-4 ring-1 ring-slate-200/80 hover:ring-brand-300 hover:shadow-soft hover:-translate-y-0.5 transition-all"
+              >
+                <div className="font-bold text-slate-900 text-[15px]">
+                  {city.name}
+                </div>
+                <div className="mt-1 text-[12px] text-slate-500 leading-snug">{city.note}</div>
+                <div className="mt-2 flex items-center gap-1 text-[11px] font-semibold text-brand-700">
+                  See coverage
+                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" /></svg>
+                </div>
+              </NavLink>
+            </StaggerChild>
+          ))}
+        </Stagger>
+
+        <Reveal delay={0.2} className="mt-7 text-center">
+          <NavLink to="/locations" className="btn btn-outline group">
+            View our Downey office location
+            <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" /></svg>
+          </NavLink>
+        </Reveal>
       </div>
     </section>
   );
@@ -872,8 +948,8 @@ function PopularNeedsHub() {
    ═══════════════════════════════════════════════ */
 export default function Home() {
   usePageMeta({
-    title: "Insurance Broker Downey CA | Auto, Home, Commercial, SR-22 | Original Insurance",
-    description: "Independent insurance broker in Downey, CA. Compare 30+ carriers for auto, home, commercial, life, and SR-22 insurance with multilingual local service.",
+    title: "Insurance Broker Downey CA — Free Quote | Original Insurance",
+    description: "Tired of paying too much? We compare 30+ carriers for Downey drivers — auto, home, SR-22, no-license programs. 4.9★ rated, bilingual staff. Free quote in minutes.",
     canonical: "https://originalinsurance.net/",
   });
 
@@ -883,15 +959,26 @@ export default function Home() {
       <LocalBusinessSchema />
       <StickyRibbon />
       <Hero />
+      <div className="bg-white border-b border-slate-100 py-4 text-slate-600">
+        <div className="container">
+          <TrustStrip />
+        </div>
+      </div>
       <BentoStats />
-      <PopularNeedsHub />
+      <ProductShowcase />
       <ServicesMasonry />
       <Carriers />
       <HowItWorks />
       <AboutSplit />
       <Testimonials />
       <ClaimsCTA />
+      <ServiceAreas />
       <FAQ />
+      <CTASection
+        title="Ready to compare 30+ carriers?"
+        lede="Get a personalized quote from a licensed Downey broker. Call, text, or start online."
+        secondaryLabel={`Call ${site.contact.phone}`}
+      />
     </>
   );
 }

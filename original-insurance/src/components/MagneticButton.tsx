@@ -3,7 +3,7 @@ import { useRef, type ReactNode, type MouseEvent } from "react";
 interface Props {
   children: ReactNode;
   className?: string;
-  as?: "button" | "a";
+  as?: "button" | "a" | "div";
   strength?: number;
   [key: string]: unknown;
 }
