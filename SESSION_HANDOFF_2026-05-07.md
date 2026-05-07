@@ -6,12 +6,12 @@ Brian asked for the Original Insurance website to look more professional, feel l
 
 ## Current Status
 
-The UX revamp is implemented, committed, pushed, and deployed to production. A second continuation pass is committed locally as `dc90ee4a`: shared broker hero panel, Services hero replacement, quote-widget quote-type tabs, and cleanup of unsupported Services claims.
+The UX revamp is implemented, committed, pushed, and deployed to production. A second continuation pass is committed locally as `b83c20a6`: shared broker hero panel, Services hero replacement, quote-widget quote-type tabs, and cleanup of unsupported Services claims.
 
 - Production site: https://originalinsurance.net
 - Latest production deployment URL: https://ois-website-k1dwr2lza-aiadcollc.vercel.app
 - Live verification: passed all checks
-- Working tree after earlier deploy: was clean. After `dc90ee4a`, push and deploy the continuation pass.
+- Working tree after earlier deploy: was clean. After `b83c20a6`, push and deploy the continuation pass.
 
 ## Commits From This Session
 
@@ -27,7 +27,7 @@ The UX revamp is implemented, committed, pushed, and deployed to production. A s
 4. `343654a8` - `Snapshot prerender output before Vercel build`
    - Final deploy fix. This snapshots prerendered HTML before `vercel build` rewrites app `dist`, then copies that snapshot into `.vercel/output/static`.
 
-5. `dc90ee4a` - `Refine broker hero and quote widget`
+5. `b83c20a6` - `Refine broker hero and quote widget`
    - Continuation pass after Brian asked to keep coding: shared broker hero, Services hero replacement, quote-type tabs in quote widget, and unsupported Services claim cleanup.
 
 All commits were pushed to `origin/main`.
@@ -80,7 +80,7 @@ Checks:
 Next action if the session resumes here:
 
 1. Run `git status --short`.
-2. Push `dc90ee4a` to `origin/main`.
+2. Push `b83c20a6` to `origin/main`.
 3. Deploy with `& 'C:\Program Files\Git\bin\bash.exe' scripts/deploy.sh`.
 4. Confirm live verification passes.
 

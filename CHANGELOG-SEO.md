@@ -8,7 +8,7 @@ All SEO-relevant changes, ordered newest-first. Format:
 ## 2026-05-07
 
 ### Shared broker hero and quote-widget refinement
-**Commit:** `dc90ee4a`
+**Commit:** `b83c20a6`
 
 **What changed:**
 - Added `BrokerHeroPanel`, a reusable insurance-specific hero panel focused on broker review, documents, carrier fit, SR-22/no-license needs, and same-day proof when binding is available.
