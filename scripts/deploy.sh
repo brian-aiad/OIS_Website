@@ -104,8 +104,16 @@ else
     cp "$APP_DIR/dist/index.html" "$STATIC_OUT/index.html"
   fi
   # Also copy sitemap and robots (may have been updated by build)
-  cp "$APP_DIR/dist/sitemap.xml" "$STATIC_OUT/sitemap.xml"
-  cp "$APP_DIR/dist/robots.txt"  "$STATIC_OUT/robots.txt"
+  if [[ "$APP_DIR/dist/sitemap.xml" -ef "$STATIC_OUT/sitemap.xml" ]]; then
+    log "Sitemap already points at prerendered output; skipping duplicate copy"
+  else
+    cp "$APP_DIR/dist/sitemap.xml" "$STATIC_OUT/sitemap.xml"
+  fi
+  if [[ "$APP_DIR/dist/robots.txt" -ef "$STATIC_OUT/robots.txt" ]]; then
+    log "Robots.txt already points at prerendered output; skipping duplicate copy"
+  else
+    cp "$APP_DIR/dist/robots.txt" "$STATIC_OUT/robots.txt"
+  fi
   ok "Copied $COPIED prerendered pages + root + sitemap + robots.txt"
 fi
 
