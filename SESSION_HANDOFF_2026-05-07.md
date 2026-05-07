@@ -6,12 +6,12 @@ Brian asked for the Original Insurance website to look more professional, feel l
 
 ## Current Status
 
-The UX revamp is implemented, committed, pushed, and deployed to production. A second continuation pass is committed locally as `b83c20a6`: shared broker hero panel, Services hero replacement, quote-widget quote-type tabs, and cleanup of unsupported Services claims.
+The UX revamp and continuation pass are implemented, committed, pushed, and deployed to production.
 
 - Production site: https://originalinsurance.net
-- Latest production deployment URL: https://ois-website-k1dwr2lza-aiadcollc.vercel.app
+- Latest production deployment URL: https://ois-website-1ao74tr8y-aiadcollc.vercel.app
 - Live verification: passed all checks
-- Working tree after earlier deploy: was clean. After `b83c20a6`, push and deploy the continuation pass.
+- Working tree after final deploy: clean
 
 ## Commits From This Session
 
@@ -29,6 +29,9 @@ The UX revamp is implemented, committed, pushed, and deployed to production. A s
 
 5. `b83c20a6` - `Refine broker hero and quote widget`
    - Continuation pass after Brian asked to keep coding: shared broker hero, Services hero replacement, quote-type tabs in quote widget, and unsupported Services claim cleanup.
+
+6. `14d27c78` - `Update revamp handoff commit reference`
+   - Documentation-only commit pointing the changelog and handoff to the real code commit.
 
 All commits were pushed to `origin/main`.
 
@@ -77,12 +80,26 @@ Checks:
 - Quote iframe exists
 - SR-22 quote tab changes the checklist correctly
 
+Final deployment for this continuation pass:
+
+```powershell
+& 'C:\Program Files\Git\bin\bash.exe' scripts/deploy.sh
+```
+
+Result:
+
+- SEO lint passed
+- Build/prerender passed, 22 pages
+- Schema validation passed, 22 pages
+- Vercel production deploy succeeded
+- CDN propagation check passed
+- `scripts/verify-live.sh` passed all live checks against `https://originalinsurance.net`
+- Deployment URL: `https://ois-website-1ao74tr8y-aiadcollc.vercel.app`
+
 Next action if the session resumes here:
 
 1. Run `git status --short`.
-2. Push `b83c20a6` to `origin/main`.
-3. Deploy with `& 'C:\Program Files\Git\bin\bash.exe' scripts/deploy.sh`.
-4. Confirm live verification passes.
+2. Continue visual refinement or mobile LCP work from the remaining priorities below.
 
 ## Main UX Work Completed
 
