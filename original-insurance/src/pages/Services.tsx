@@ -1,6 +1,5 @@
 import { useState } from "react";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
-import { NavLink } from "react-router-dom";
 import { openQuoteModal } from "../lib/openQuote";
 import { motion, AnimatePresence } from "framer-motion";
 import { site } from "../lib/site";
@@ -10,6 +9,7 @@ import { Car, Home, Heart, Building2, Bike, Caravan } from "lucide-react";
 import { images } from "../lib/images";
 import { CTASection, Section } from "../design-system";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
+import PageHero from "../components/PageHero";
 
 /* ── Service tab data ── */
 const SERVICE_TABS = [
@@ -31,7 +31,7 @@ const SERVICE_TABS = [
     stats: [
       { value: "Same Day", label: "eID Cards" },
       { value: "30+", label: "Carriers" },
-      { value: "25%", label: "Avg. Savings" },
+      { value: "SR-22", label: "Filing Help" },
     ],
   },
   {
@@ -46,13 +46,13 @@ const SERVICE_TABS = [
     highlights: [
       { title: "Dwelling & personal property", sub: "Full replacement options" },
       { title: "Liability protection", sub: "Coverage up to $1M+" },
-      { title: "Renters coverage too", sub: "Affordable policies from $15/mo" },
+      { title: "Renters coverage too", sub: "Coverage for belongings and liability" },
       { title: "Bundle & save", sub: "Home + Auto discounts" },
     ],
     stats: [
-      { value: "15%", label: "Avg. Bundle Savings" },
-      { value: "$15/mo", label: "Renters Starting" },
-      { value: "24/7", label: "Claims Support" },
+      { value: "Bundle", label: "Auto + Home" },
+      { value: "Renters", label: "Apartment Coverage" },
+      { value: "Claims", label: "Guidance" },
     ],
   },
   {
@@ -67,13 +67,13 @@ const SERVICE_TABS = [
     highlights: [
       { title: "Term & whole life", sub: "Options for every budget" },
       { title: "Family protection", sub: "Peace of mind for loved ones" },
-      { title: "Flexible coverage amounts", sub: "$50K to $1M+" },
-      { title: "Affordable premiums", sub: "Starting at $20/mo" },
+      { title: "Flexible coverage amounts", sub: "Matched to family and budget needs" },
+      { title: "Clear beneficiary review", sub: "Help structuring who is protected" },
     ],
     stats: [
-      { value: "24hr", label: "Approval Turnaround" },
-      { value: "$20/mo", label: "Plans Starting" },
-      { value: "$1M+", label: "Coverage Available" },
+      { value: "Term", label: "Simple Protection" },
+      { value: "Whole", label: "Permanent Options" },
+      { value: "Family", label: "Needs Review" },
     ],
   },
   {
@@ -92,9 +92,9 @@ const SERVICE_TABS = [
       { title: "Workers' compensation", sub: "Required CA coverage" },
     ],
     stats: [
-      { value: "500+", label: "Businesses Covered" },
-      { value: "Same Day", label: "Certificates" },
-      { value: "20%", label: "Avg. BOP Savings" },
+      { value: "BOP", label: "Package Options" },
+      { value: "COI", label: "Certificate Help" },
+      { value: "Fleet", label: "Auto Coverage" },
     ],
   },
   {
@@ -114,7 +114,7 @@ const SERVICE_TABS = [
     ],
     stats: [
       { value: "Same Day", label: "Coverage Available" },
-      { value: "15%", label: "Multi-Bike Discount" },
+      { value: "Gear", label: "Coverage Review" },
       { value: "30+", label: "Carriers" },
     ],
   },
@@ -134,9 +134,9 @@ const SERVICE_TABS = [
       { title: "Weekend-ready coverage", sub: "Quick bind, fast eID" },
     ],
     stats: [
-      { value: "Custom", label: "Coverage Plans" },
-      { value: "10%", label: "Seasonal Savings" },
-      { value: "24/7", label: "Roadside Assist" },
+      { value: "RV", label: "Motorhome Options" },
+      { value: "Boat", label: "Watercraft" },
+      { value: "Toys", label: "ATV / Specialty" },
     ],
   },
 ];
@@ -164,35 +164,21 @@ export default function Services() {
         { name: "Home", url: "https://originalinsurance.net/" },
         { name: "Services", url: "https://originalinsurance.net/services" },
       ]} />
-      {/* ── Premium Header ── */}
-      <section className="relative hero-mesh overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-400/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gold-400/10 rounded-full blur-3xl" />
-
-        <div className="container relative pt-28 pb-20 md:pt-36 md:pb-28">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <nav className="flex items-center gap-2 text-sm text-blue-200 mb-6">
-              <NavLink to="/" className="hover:text-white transition-colors">Home</NavLink>
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
-              <span className="text-white font-medium">Services</span>
-            </nav>
-            <h1 className="display-1 text-white max-w-2xl">
-              Complete insurance coverage
-            </h1>
-            <p className="mt-5 text-lg text-white/80 max-w-xl">
-              Every policy is different because every person is different.
-              We tailor coverage to your situation — not just your budget.
-            </p>
-          </motion.div>
+      <PageHero
+        title="Complete insurance coverage"
+        subtitle="Every policy is different because every person is different. We compare carrier fit, coverage requirements, and timing before you buy."
+        breadcrumb="Services"
+        backgroundImage="/images/heroTeam.webp"
+      >
+        <div className="flex flex-wrap gap-3">
+          <button onClick={openQuoteModal} className="btn btn-accent">
+            Start a Quote
+          </button>
+          <a href={site.contact.phoneHref} className="btn btn-ghost-light">
+            Call {site.contact.phone}
+          </a>
         </div>
-
-        <div className="wave-divider">
-          <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="white">
-            <path d="M0 30C240 50 480 20 720 30C960 40 1200 20 1440 30V60H0V30Z" />
-          </svg>
-        </div>
-      </section>
-
+      </PageHero>
       {/* ── Interactive Service Browser ── */}
       <Section tone="light">
         <div className="container">

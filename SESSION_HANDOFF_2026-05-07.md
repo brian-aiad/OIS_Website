@@ -6,12 +6,12 @@ Brian asked for the Original Insurance website to look more professional, feel l
 
 ## Current Status
 
-The UX revamp is implemented, committed, pushed, and deployed to production.
+The UX revamp is implemented, committed, pushed, and deployed to production. A second continuation pass is committed locally as `dc90ee4a`: shared broker hero panel, Services hero replacement, quote-widget quote-type tabs, and cleanup of unsupported Services claims.
 
 - Production site: https://originalinsurance.net
 - Latest production deployment URL: https://ois-website-k1dwr2lza-aiadcollc.vercel.app
 - Live verification: passed all checks
-- Working tree after deploy: clean
+- Working tree after earlier deploy: was clean. After `dc90ee4a`, push and deploy the continuation pass.
 
 ## Commits From This Session
 
@@ -27,9 +27,62 @@ The UX revamp is implemented, committed, pushed, and deployed to production.
 4. `343654a8` - `Snapshot prerender output before Vercel build`
    - Final deploy fix. This snapshots prerendered HTML before `vercel build` rewrites app `dist`, then copies that snapshot into `.vercel/output/static`.
 
+5. `dc90ee4a` - `Refine broker hero and quote widget`
+   - Continuation pass after Brian asked to keep coding: shared broker hero, Services hero replacement, quote-type tabs in quote widget, and unsupported Services claim cleanup.
+
 All commits were pushed to `origin/main`.
 
 Note: GitHub prints a moved-repository warning and says to use `https://github.com/brian-aiad/OIS_Website.git`, but the push to the existing remote still succeeded.
+
+## Continuation Pass After Brian Asked To Keep Coding
+
+Files changed:
+
+- `original-insurance/src/components/BrokerHeroPanel.tsx` added.
+- `original-insurance/src/components/PageHero.tsx` now uses the broker panel by default when a page does not provide custom right-side hero content.
+- `original-insurance/src/components/QuoteWidget.tsx` now has quote-type tabs for Auto, SR-22, Home, and Business, with dynamic checklists and mobile-visible context above the embedded quote form.
+- `original-insurance/src/pages/Services.tsx` now uses shared `PageHero` instead of the older custom hero and removes unsupported marketing claims such as average savings, starting monthly prices, large coverage amounts, and unverifiable business-count claims.
+- `CHANGELOG-SEO.md` has a May 7 entry for the continuation pass.
+
+Validation already run for this continuation pass:
+
+```bash
+npm run lint
+npm run seo-lint
+npm run build
+npm run validate:schema
+```
+
+All passed.
+
+Playwright smoke test also passed against local preview `http://127.0.0.1:5177` for:
+
+- `/`
+- `/services`
+- `/contact`
+- `/faq`
+- `/insurance/downey`
+- `/insurance/norwalk`
+- `/auto-insurance-downey-ca`
+- `/sr22-insurance-downey`
+- `/no-license-auto-insurance-downey`
+- `/commercial-auto-insurance-downey`
+
+Checks:
+
+- Exactly one H1 per route
+- No horizontal overflow on desktop or mobile
+- Broker hero panel present on desktop PageHero routes
+- Quote modal opens on mobile
+- Quote iframe exists
+- SR-22 quote tab changes the checklist correctly
+
+Next action if the session resumes here:
+
+1. Run `git status --short`.
+2. Push `dc90ee4a` to `origin/main`.
+3. Deploy with `& 'C:\Program Files\Git\bin\bash.exe' scripts/deploy.sh`.
+4. Confirm live verification passes.
 
 ## Main UX Work Completed
 
@@ -233,4 +286,3 @@ The deploy script now snapshots prerender output before Vercel build. This is im
 - `scripts/verify-live.sh`
 - `CHANGELOG-SEO.md`
 - `SEO_CONVENTIONS.md`
-

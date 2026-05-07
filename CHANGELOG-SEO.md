@@ -5,6 +5,24 @@ All SEO-relevant changes, ordered newest-first. Format:
 
 ---
 
+## 2026-05-07
+
+### Shared broker hero and quote-widget refinement
+**Commit:** `dc90ee4a`
+
+**What changed:**
+- Added `BrokerHeroPanel`, a reusable insurance-specific hero panel focused on broker review, documents, carrier fit, SR-22/no-license needs, and same-day proof when binding is available.
+- Updated `PageHero` so Services, Contact, FAQ, money pages, and city pages share the same professional broker panel by default.
+- Replaced the old custom Services hero with shared `PageHero` so Services now matches the rest of the priority pages.
+- Improved `QuoteWidget` with quote-type tabs for Auto, SR-22, Home, and Business. The checklist now changes based on the selected quote type, including mobile where the previous modal mostly exposed only the iframe.
+- Removed unsupported marketing numbers from Services copy and stats, including average savings, starting monthly prices, large coverage amounts, and business-count claims that should not appear without Brian's source data.
+
+**Why:** Brian wanted the site to look less generic and more like a real insurance brokerage. This pass removes filler-style claims, makes the hero experience consistent across page families, and gives the quote modal more useful insurance context before the embedded form.
+
+**Validation:** `npm run lint`, `npm run seo-lint`, `npm run build`, and `npm run validate:schema` passed. Playwright browser smoke passed on 10 routes across desktop and mobile: one H1 per page, no horizontal overflow, expected broker hero panel on desktop PageHero routes, and quote modal iframe plus SR-22 checklist switching on mobile.
+
+---
+
 ## 2026-05-06
 
 ### Insurance-specific UX revamp, quote widget upgrade, lint cleanup

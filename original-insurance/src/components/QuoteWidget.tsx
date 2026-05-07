@@ -4,12 +4,36 @@ import { ClipboardCheck, FileText, Phone, ShieldCheck, X } from "lucide-react";
 import { site } from "../lib/site";
 
 const QUOTZAL_URL = "https://quotzal.com/f/original-insurance";
-const CHECKLIST = ["Driver or owner details", "VIN or property address", "Current policy if you have one", "SR-22 or business-use notes"];
+const QUOTE_TYPES = [
+  {
+    label: "Auto",
+    note: "Driver, vehicle, and coverage details",
+    checklist: ["Driver name and date of birth", "Vehicle year, make, model, or VIN", "Current policy if you have one"],
+  },
+  {
+    label: "SR-22",
+    note: "Filing status and DMV requirement",
+    checklist: ["Driver details", "DMV or court requirement if available", "Target reinstatement date"],
+  },
+  {
+    label: "Home",
+    note: "Property, renters, or bundle review",
+    checklist: ["Property address", "Current declarations page if available", "Loan or landlord requirements"],
+  },
+  {
+    label: "Business",
+    note: "Operations, vehicles, and certificate needs",
+    checklist: ["Business name and operations", "Vehicle or payroll details", "Certificate holder requirements"],
+  },
+] as const;
 
 /** Open from anywhere: window.dispatchEvent(new Event('openQuoteModal')) */
 export default function QuoteWidget() {
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [quoteType, setQuoteType] = useState<(typeof QUOTE_TYPES)[number]["label"]>("Auto");
+
+  const activeQuoteType = QUOTE_TYPES.find((item) => item.label === quoteType) ?? QUOTE_TYPES[0];
 
   useEffect(() => {
     const handleOpen = () => setOpen(true);
@@ -104,7 +128,7 @@ export default function QuoteWidget() {
                   <div className="mt-6 rounded-xl bg-white/[0.06] p-4 ring-1 ring-white/10">
                     <div className="text-[11px] font-bold uppercase tracking-wider text-white/50">Helpful to have</div>
                     <ul className="mt-3 space-y-2">
-                      {CHECKLIST.map((item) => (
+                      {activeQuoteType.checklist.map((item) => (
                         <li key={item} className="flex items-start gap-2 text-[13px] text-white/75">
                           <span className="mt-1 h-1.5 w-1.5 rounded-full bg-gold-300" />
                           {item}
@@ -124,6 +148,46 @@ export default function QuoteWidget() {
                 </aside>
 
                 <div className="relative bg-slate-50">
+                  <div className="border-b border-slate-200 bg-white px-4 py-3 sm:px-5">
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Quote Type</div>
+                        <p className="mt-0.5 text-sm font-semibold text-slate-800">{activeQuoteType.note}</p>
+                      </div>
+                      <a href={site.contact.phoneHref} className="hidden sm:inline-flex text-sm font-semibold text-brand-700 hover:text-brand-900">
+                        Call instead
+                      </a>
+                    </div>
+                    <div className="mt-3 flex gap-2 overflow-x-auto pb-1 scrollbar-none" role="tablist" aria-label="Quote type">
+                      {QUOTE_TYPES.map((type) => {
+                        const selected = type.label === quoteType;
+                        return (
+                          <button
+                            key={type.label}
+                            type="button"
+                            onClick={() => setQuoteType(type.label)}
+                            className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-bold transition-colors ${
+                              selected
+                                ? "bg-brand-800 text-white"
+                                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                            }`}
+                            role="tab"
+                            aria-selected={selected}
+                          >
+                            {type.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                    <div className="mt-3 grid gap-2 sm:hidden">
+                      {activeQuoteType.checklist.slice(0, 2).map((item) => (
+                        <div key={item} className="flex items-start gap-2 text-[12px] text-slate-600">
+                          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500" />
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                   {!loaded && (
                     <div className="absolute inset-0 z-10 grid place-items-center bg-slate-50">
                       <div className="text-center">
@@ -140,7 +204,7 @@ export default function QuoteWidget() {
                     loading="lazy"
                     title="Insurance Quote Request"
                     className="block w-full bg-white"
-                    style={{ height: "calc(90dvh - 65px)", minHeight: "620px" }}
+                    style={{ height: "calc(90dvh - 166px)", minHeight: "560px" }}
                     onLoad={() => setLoaded(true)}
                   />
                 </div>

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
+import BrokerHeroPanel from "./BrokerHeroPanel";
 
 interface PageHeroProps {
   title: string;
@@ -35,6 +36,8 @@ export default function PageHero({
   rightContent,
   children,
 }: PageHeroProps) {
+  const heroAside = rightContent ?? <BrokerHeroPanel />;
+
   return (
     <section
       className="page-hero relative overflow-hidden"
@@ -92,7 +95,7 @@ export default function PageHero({
       <div className="container relative z-10 pt-28 pb-24 md:pt-32 md:pb-28">
         <div
           className={
-            rightContent
+            heroAside
               ? "grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
               : "max-w-3xl"
           }
@@ -153,7 +156,7 @@ export default function PageHero({
             {children && <div className="mt-7">{children}</div>}
           </div>
 
-          {rightContent && <div className="hidden lg:block">{rightContent}</div>}
+          {heroAside && <div className="hidden lg:block">{heroAside}</div>}
         </div>
       </div>
 
