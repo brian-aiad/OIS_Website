@@ -18,6 +18,11 @@ done
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 APP_DIR="$REPO_ROOT/original-insurance"
 STATIC_OUT="$REPO_ROOT/.vercel/output/static"
+PRERENDER_SNAPSHOT=""
+cleanup() {
+  [[ -n "$PRERENDER_SNAPSHOT" && -d "$PRERENDER_SNAPSHOT" ]] && rm -rf "$PRERENDER_SNAPSHOT"
+}
+trap cleanup EXIT
 
 log()  { echo "  $*"; }
 ok()   { echo "  ✓ $*"; }
@@ -54,6 +59,8 @@ if $DRY_RUN; then
 else
   cd "$APP_DIR"
   npm run build || fail "npm run build failed"
+  PRERENDER_SNAPSHOT="$(mktemp -d)"
+  cp -R "$APP_DIR/dist/." "$PRERENDER_SNAPSHOT/"
   ok "Build complete — 22 pages prerendered in dist/"
 fi
 
@@ -87,33 +94,20 @@ if $DRY_RUN; then
     dryrun "mkdir -p $STATIC_OUT/$reldir && cp $f $STATIC_OUT/$reldir/index.html"
   done
 else
+  [[ -n "$PRERENDER_SNAPSHOT" && -d "$PRERENDER_SNAPSHOT" ]] || fail "Prerender snapshot missing"
   # Copy prerendered subdirectory pages (about/, faq/, insurance/*, etc.)
-  # Note: use APP_DIR prefix in path stripping since find gets absolute paths here
+  # Note: use snapshot prefix in path stripping since Vercel build can rewrite app dist.
   while IFS= read -r -d '' f; do
-    reldir="${f#$APP_DIR/dist/}"
+    reldir="${f#$PRERENDER_SNAPSHOT/}"
     reldir="${reldir%/index.html}"
     mkdir -p "$STATIC_OUT/$reldir"
     cp "$f" "$STATIC_OUT/$reldir/index.html"
     COPIED=$((COPIED + 1))
-  done < <(find "$APP_DIR/dist" -mindepth 2 -name "index.html" -print0)
-  # Copy prerendered root homepage. In some Windows/Git Bash runs Vercel output
-  # and app dist can resolve to the same file, so skip the copy in that case.
-  if [[ "$APP_DIR/dist/index.html" -ef "$STATIC_OUT/index.html" ]]; then
-    log "Root homepage already points at prerendered output; skipping duplicate copy"
-  else
-    cp "$APP_DIR/dist/index.html" "$STATIC_OUT/index.html"
-  fi
+  done < <(find "$PRERENDER_SNAPSHOT" -mindepth 2 -name "index.html" -print0)
+  cp "$PRERENDER_SNAPSHOT/index.html" "$STATIC_OUT/index.html"
   # Also copy sitemap and robots (may have been updated by build)
-  if [[ "$APP_DIR/dist/sitemap.xml" -ef "$STATIC_OUT/sitemap.xml" ]]; then
-    log "Sitemap already points at prerendered output; skipping duplicate copy"
-  else
-    cp "$APP_DIR/dist/sitemap.xml" "$STATIC_OUT/sitemap.xml"
-  fi
-  if [[ "$APP_DIR/dist/robots.txt" -ef "$STATIC_OUT/robots.txt" ]]; then
-    log "Robots.txt already points at prerendered output; skipping duplicate copy"
-  else
-    cp "$APP_DIR/dist/robots.txt" "$STATIC_OUT/robots.txt"
-  fi
+  cp "$PRERENDER_SNAPSHOT/sitemap.xml" "$STATIC_OUT/sitemap.xml"
+  cp "$PRERENDER_SNAPSHOT/robots.txt"  "$STATIC_OUT/robots.txt"
   ok "Copied $COPIED prerendered pages + root + sitemap + robots.txt"
 fi
 
