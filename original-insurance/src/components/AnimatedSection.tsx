@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, type ElementType } from "react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -35,7 +35,7 @@ export function Reveal({
   const inView = useInView(ref, { once, margin: "-60px" });
   const off = offsets[direction];
 
-  const Component = motion[Tag] as any;
+  const Component = motion[Tag] as ElementType;
 
   return (
     <Component

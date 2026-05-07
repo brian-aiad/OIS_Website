@@ -1,6 +1,6 @@
 import { useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { useLenis } from "../App";
+import { useLenis } from "../lib/lenisContext";
 
 export default function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -18,7 +18,7 @@ export default function ScrollToTop() {
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
-  }, [pathname, lenisRef]);
+  }, [pathname, hash, lenisRef]);
 
   return null;
 }

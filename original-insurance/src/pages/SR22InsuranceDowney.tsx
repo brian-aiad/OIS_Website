@@ -8,6 +8,7 @@ import FAQSchema from "../components/seo/FAQSchema";
 import TrustStrip from "../components/seo/TrustStrip";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
+import InsuranceWorkflow from "../components/InsuranceWorkflow";
 
 const SR22_FAQS = [
   { q: "How long do I need SR-22 in California?", a: "California requires SR-22 for 3 continuous years from license reinstatement. Any policy lapse or cancellation resets the clock with the DMV." },
@@ -57,6 +58,12 @@ export default function SR22InsuranceDowney() {
           <TrustStrip />
         </div>
       </div>
+
+      <InsuranceWorkflow
+        tone="offwhite"
+        title="SR-22 filing without extra confusion"
+        lede="We quote the underlying auto policy, confirm the SR-22 filing requirement, and submit the certificate electronically when the policy is bound."
+      />
 
       {/* What is SR-22 */}
       <section className="sp bg-white">

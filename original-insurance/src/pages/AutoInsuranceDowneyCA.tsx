@@ -7,6 +7,7 @@ import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import FAQSchema from "../components/seo/FAQSchema";
 import ReviewBadge from "../components/seo/ReviewBadge";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
+import InsuranceWorkflow from "../components/InsuranceWorkflow";
 
 const AUTO_FAQS = [
   { q: "How much does car insurance cost in Downey, CA?", a: "Most Downey drivers pay $80–$180 per month depending on driving record, vehicle type, coverage level, and ZIP code. Rates vary significantly by carrier." },
@@ -92,6 +93,12 @@ export default function AutoInsuranceDowneyCA() {
           <ReviewBadge count={site.reviews.count} />
         </div>
       </div>
+
+      <InsuranceWorkflow
+        tone="offwhite"
+        title="Auto quotes that account for the details"
+        lede="Vehicle use, driver history, coverage limits, SR-22 status, and current policy details all affect which carrier is actually competitive."
+      />
 
       {/* Section 1: Cost */}
       <section className="sp bg-white">

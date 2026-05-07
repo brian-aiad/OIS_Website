@@ -9,6 +9,7 @@ import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 import { Car, Home, Heart, Building2, Bike, Caravan } from "lucide-react";
 import { images } from "../lib/images";
 import { CTASection, Section } from "../design-system";
+import InsuranceWorkflow from "../components/InsuranceWorkflow";
 
 /* ── Service tab data ── */
 const SERVICE_TABS = [
@@ -326,6 +327,12 @@ export default function Services() {
           </Stagger>
         </div>
       </Section>
+
+      <InsuranceWorkflow
+        tone="offwhite"
+        title="Coverage decisions before carrier selection"
+        lede="The right service page should help you understand what needs to be quoted, what documents matter, and how fast coverage can be bound."
+      />
 
       {/* ── Additional services ── */}
       {extraServices.length > 0 && (

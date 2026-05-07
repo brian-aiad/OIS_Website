@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useRef, createContext, useContext } from "react";
+import { lazy, Suspense, useEffect, useRef } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Lenis from "lenis";
@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import QuoteWidget from "./components/QuoteWidget";
+import { LenisContext } from "./lib/lenisContext";
 
 // Eagerly load primary prerendered pages — lazy-loading causes Suspense-induced CLS:
 // the fallback briefly replaces prerendered DOM before the chunk arrives.
@@ -36,10 +37,6 @@ const WhittierPage = lazy(() => import("./pages/insurance/Whittier"));
 const PicoRiveraPage = lazy(() => import("./pages/insurance/PicoRivera"));
 const MontebelloPage = lazy(() => import("./pages/insurance/Montebello"));
 const CommercePage = lazy(() => import("./pages/insurance/Commerce"));
-
-// Lenis context so ScrollToTop and other components can reset scroll
-export const LenisContext = createContext<React.RefObject<Lenis | null>>({ current: null });
-export const useLenis = () => useContext(LenisContext);
 
 function useSmoothScroll() {
   const lenisRef = useRef<Lenis | null>(null);

@@ -7,6 +7,7 @@ import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import FAQSchema from "../components/seo/FAQSchema";
 import TrustStrip from "../components/seo/TrustStrip";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
+import InsuranceWorkflow from "../components/InsuranceWorkflow";
 
 const COMMERCIAL_FAQS = [
   { q: "What is commercial auto insurance?", a: "Commercial auto insurance covers vehicles used for business, including delivery vehicles, work trucks, and company cars not covered by personal auto policies." },
@@ -91,6 +92,12 @@ export default function CommercialAutoInsuranceDowneyPage() {
           <TrustStrip />
         </div>
       </div>
+
+      <InsuranceWorkflow
+        tone="offwhite"
+        title="Commercial auto quotes need business context"
+        lede="Vehicle type, radius, drivers, filings, certificates, and hired/non-owned exposure determine which commercial carriers make sense."
+      />
 
       {/* Section 1: What commercial auto covers */}
       <section className="sp bg-white">

@@ -8,6 +8,7 @@ import FAQSchema from "../components/seo/FAQSchema";
 import TrustStrip from "../components/seo/TrustStrip";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
+import InsuranceWorkflow from "../components/InsuranceWorkflow";
 
 const NO_LICENSE_FAQS = [
   { q: "Can I insure a car without a California driver's license?", a: "In certain lawful situations, yes. Vehicle owners who are not the primary driver, foreign-license holders, and ITIN-based applicants may have coverage options." },
@@ -55,6 +56,12 @@ export default function NoLicenseInsuranceDowney() {
           <TrustStrip />
         </div>
       </div>
+
+      <InsuranceWorkflow
+        tone="offwhite"
+        title="Non-standard license situations need carrier fit"
+        lede="We identify which carriers can consider foreign licenses, ITIN-based applicants, excluded-owner setups, and named-insured arrangements."
+      />
 
       {/* Common Scenarios */}
       <section className="sp bg-white">

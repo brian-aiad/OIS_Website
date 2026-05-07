@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { NavLink } from "react-router-dom";
 import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
@@ -11,6 +11,7 @@ import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import ReviewBadge from "../components/seo/ReviewBadge";
 import TrustStrip from "../components/seo/TrustStrip";
 import { CTASection, Section, SectionHeader } from "../design-system";
+import InsuranceWorkflow from "../components/InsuranceWorkflow";
 
 import storefrontImg from "../assets/storefront.webp";
 
@@ -397,7 +398,7 @@ function Carriers() {
         <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-slate-50 to-transparent z-10" />
         <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-slate-50 to-transparent z-10" />
 
-        <div className="overflow-hidden py-1 select-none" style={{ "--marquee-speed": "35s" } as any}>
+        <div className="overflow-hidden py-1 select-none" style={{ "--marquee-speed": "35s" } as CSSProperties}>
           <div className="flex w-max animate-marquee items-center">
             {row.map((src, i) => (
               <div key={i} className="shrink-0 mx-4 w-[160px] h-16 grid place-items-center">
@@ -965,6 +966,7 @@ export default function Home() {
         </div>
       </div>
       <BentoStats />
+      <InsuranceWorkflow tone="light" />
       <ProductShowcase />
       <ServicesMasonry />
       <Carriers />

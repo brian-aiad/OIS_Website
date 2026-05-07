@@ -1,11 +1,10 @@
-import { useRef, type ReactNode, type MouseEvent } from "react";
+import { useRef, type ComponentPropsWithoutRef, type ElementType, type MouseEvent, type ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
   className?: string;
   as?: "button" | "a" | "div";
   strength?: number;
-  [key: string]: unknown;
 }
 
 export function MagneticButton({
@@ -16,6 +15,7 @@ export function MagneticButton({
   ...props
 }: Props) {
   const ref = useRef<HTMLElement>(null);
+  const Component = Tag as ElementType;
 
   const handleMouseMove = (e: MouseEvent) => {
     if (!ref.current) return;
@@ -32,14 +32,14 @@ export function MagneticButton({
   };
 
   return (
-    <Tag
-      ref={ref as any}
+    <Component
+      ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className={`transition-transform duration-300 ease-out ${className}`}
-      {...(props as any)}
+      {...(props as ComponentPropsWithoutRef<typeof Component>)}
     >
       {children}
-    </Tag>
+    </Component>
   );
 }

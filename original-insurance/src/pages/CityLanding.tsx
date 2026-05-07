@@ -9,6 +9,7 @@ import { Reveal } from "../components/AnimatedSection";
 import { Icons } from "../components/Icons";
 import { Car, Home, Heart, Building2, Bike, FileText } from "lucide-react";
 import { CTASection, Section, SectionHeader } from "../design-system";
+import InsuranceWorkflow from "../components/InsuranceWorkflow";
 
 /**
  * Per-city landing pages for local SEO. Each city gets a unique URL,
@@ -30,7 +31,7 @@ type CityInfo = {
   zips: string[];
 };
 
-export const CITIES: CityInfo[] = [
+const CITIES: CityInfo[] = [
   {
     slug: "downey",
     name: "Downey",
@@ -142,11 +143,10 @@ const COVERAGE_LINES = [
 
 export default function CityLanding() {
   const { citySlug } = useParams<{ citySlug: string }>();
-  const city = citySlug ? CITY_MAP[citySlug] : undefined;
+  const requestedCity = citySlug ? CITY_MAP[citySlug] : undefined;
+  const city = requestedCity ?? CITIES[0];
 
   // Unknown city → 404
-  if (!city) return <Navigate to="/404" replace />;
-
   const canonical = `https://originalinsurance.net/insurance/${city.slug}`;
 
   usePageMeta({
@@ -180,6 +180,8 @@ export default function CityLanding() {
       (s) => s !== `${city.name}, CA`
     ),
   ];
+
+  if (!requestedCity) return <Navigate to="/404" replace />;
 
   return (
     <main id="main-content">
@@ -261,6 +263,12 @@ export default function CityLanding() {
           </Reveal>
         </div>
       </Section>
+
+      <InsuranceWorkflow
+        tone="light"
+        title={`How we quote ${city.name} coverage`}
+        lede={`We compare carrier fit for ${city.name} drivers, homeowners, renters, and businesses with clear next steps before you buy.`}
+      />
 
       {/* Coverage grid */}
       <Section tone="offwhite">

@@ -41,7 +41,9 @@ export default function LocalBusinessSchema({
     document.querySelectorAll('script[type="application/ld+json"]').forEach((s) => {
       try {
         if (JSON.parse(s.textContent || "{}")["@type"] === "InsuranceAgency") s.remove();
-      } catch {}
+      } catch {
+        return;
+      }
     });
 
     const el = document.createElement("script");

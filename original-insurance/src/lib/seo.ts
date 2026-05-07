@@ -59,7 +59,7 @@ export function usePageMeta({ title, description, canonical }: PageMeta) {
 }
 
 function setOgContent(property: string, content: string) {
-  let el = document.querySelector<HTMLMetaElement>(`meta[property="${property}"]`);
+  const el = document.querySelector<HTMLMetaElement>(`meta[property="${property}"]`);
   if (el) {
     el.content = content;
   }

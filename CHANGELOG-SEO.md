@@ -7,6 +7,21 @@ All SEO-relevant changes, ordered newest-first. Format:
 
 ## 2026-05-06
 
+### Insurance-specific UX revamp, quote widget upgrade, lint cleanup
+**Commit:** pending
+
+**What changed:**
+- Added `InsuranceWorkflow` shared component with a broker-specific quote process, checklist, carrier-fit language, and quote/call actions.
+- Added the workflow to Home, About, Services, Contact, the reusable city landing template, and all four money pages.
+- Rebuilt `QuoteWidget` into a professional quote modal shell: broker context panel, quote checklist, phone fallback, external-form fallback, iframe loading state, and improved desktop layout.
+- Standardized `CTASection` with insurance trust markers and removed decorative glow elements.
+- Cleaned footer trust badges to use professional text markers instead of emoji-style badges.
+- Fixed lint issues while touching the UX layer: Lenis context moved to `lib/lenisContext.ts`, typed icons/buttons/animation helpers, stable city-page hooks, schema cleanup, and typed location hours.
+
+**Why:** The site had good SEO mechanics but still felt like a collection of generic marketing blocks. This pass makes the visitor flow feel more like an insurance brokerage: understand the risk, compare carrier appetite, prepare documents, bind coverage, and keep service available after purchase.
+
+**Validation:** `npm run lint`, `npm run seo-lint`, `npm run build`, and `npm run validate:schema` passed. Browser smoke tests passed on 11 routes across desktop/mobile with one H1, no horizontal overflow, no non-Vercel 404s, and verified quote modal iframe/scroll-lock/phone fallback. Local Lighthouse desktop: Home 95/96/96/100 with CLS 0, Services 93/95/96/100 with CLS 0, SR-22 91/96/96/100 with CLS 0. Local Lighthouse mobile: Home perf 69, Services perf 71, both CLS 0.
+
 ### Priority page design-system adoption + money-page CLS fix
 **Commit:** pending
 

@@ -40,12 +40,15 @@ export function CTASection({
 
   return (
     <section className={`sp hero-mesh relative overflow-hidden ${className}`}>
-      {/* Ambient glows */}
-      <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-brand-500/10 blur-3xl pointer-events-none" aria-hidden="true" />
-      <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-gold-400/10 blur-3xl pointer-events-none" aria-hidden="true" />
-
       <div className="container relative text-center">
         <RevealOnScroll>
+          <div className="mb-5 flex flex-wrap justify-center gap-2">
+            {["Licensed CA broker", "30+ carriers", "Call, text, or walk in"].map((item) => (
+              <span key={item} className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white/70 ring-1 ring-white/15">
+                {item}
+              </span>
+            ))}
+          </div>
           <h2 className="display-2 text-white max-w-2xl mx-auto">{title}</h2>
           {lede && (
             <p className="mt-3 text-lg text-white/80 max-w-xl mx-auto">{lede}</p>

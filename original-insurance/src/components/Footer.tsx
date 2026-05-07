@@ -165,7 +165,7 @@ export default function Footer() {
               ))}
               <li className="pt-1">
                 <Link to="/locations" className="text-gold-400/80 hover:text-gold-300 transition-colors text-[12px]">
-                  + 12 more cities →
+                  All service areas
                 </Link>
               </li>
             </ul>
@@ -176,17 +176,17 @@ export default function Footer() {
         <div className="mt-10 pt-8 border-t border-white/[0.06]">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
             {[
-              { label: "Black-Owned Business",    icon: "🏢" },
-              { label: "Latino-Owned Business",   icon: "🏢" },
-              { label: "LGBTQ+ Friendly",         icon: "🤝" },
-              { label: "Transgender Safespace",   icon: "🤝" },
-              { label: "Wheelchair Accessible",   icon: "♿" },
-              { label: "BBB Accredited",          icon: "✓" },
-              { label: "CDI Licensed Since 1999", icon: "✓" },
-            ].map((badge) => (
-              <span key={badge.label} className="flex items-center gap-1.5 text-[11px] font-medium text-white/60">
-                <span className="text-[13px]">{badge.icon}</span>
-                {badge.label}
+              "Black-Owned Business",
+              "Latino-Owned Business",
+              "LGBTQ+ Friendly",
+              "Transgender Safespace",
+              "Wheelchair Accessible",
+              "BBB Accredited",
+              "CDI Licensed Since 1999",
+            ].map((label) => (
+              <span key={label} className="flex items-center gap-1.5 text-[11px] font-medium text-white/60">
+                <span className="h-1.5 w-1.5 rounded-full bg-gold-400/80" />
+                {label}
               </span>
             ))}
             <span className="flex items-center gap-1.5 text-[11px] font-medium text-amber-400/80">

@@ -30,6 +30,10 @@ function cx(...v: (string | false | null | undefined)[]) {
   return v.filter(Boolean).join(" ");
 }
 
+function isClosedHour(row: HourRow): row is Extract<HourRow, { closed: true }> {
+  return "closed" in row && row.closed === true;
+}
+
 export default function Locations() {
   usePageMeta({
     title: "Our Downey Office — Hours & Directions | Original Insurance",
@@ -44,11 +48,11 @@ export default function Locations() {
   useEffect(() => {
     const dayMap = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
     const spec = HOURS.map((h, i) => {
-      if ("closed" in h && h.closed)
+      if (isClosedHour(h))
         return { "@type": "OpeningHoursSpecification", dayOfWeek: dayMap[i] };
       return { "@type": "OpeningHoursSpecification", dayOfWeek: dayMap[i],
-        opens: (h as any).open?.replace(" AM",":00").replace(" PM",":00"),
-        closes: (h as any).close?.replace(" AM",":00").replace(" PM",":00") };
+        opens: h.open.replace(" AM",":00").replace(" PM",":00"),
+        closes: h.close.replace(" AM",":00").replace(" PM",":00") };
     });
     const el = document.createElement("script");
     el.type = "application/ld+json";
@@ -229,7 +233,7 @@ export default function Locations() {
                     <ul className="divide-y divide-slate-100">
                       {HOURS.map((h, i) => {
                         const isToday = i === todayIdx;
-                        const isClosed = "closed" in h && h.closed;
+                        const isClosed = isClosedHour(h);
                         return (
                           <li key={h.label} className={cx(
                             "px-4 py-3 grid grid-cols-[1fr,auto] text-sm",
@@ -240,7 +244,7 @@ export default function Locations() {
                               {isToday && <span className="ml-2 text-[10px] font-bold uppercase tracking-widest text-brand-500">Today</span>}
                             </span>
                             <span className={cx(isClosed ? "text-slate-400" : "text-slate-700")}>
-                              {isClosed ? "Closed" : `${(h as any).open} \u2013 ${(h as any).close}`}
+                              {isClosedHour(h) ? "Closed" : `${h.open} \u2013 ${h.close}`}
                             </span>
                           </li>
                         );

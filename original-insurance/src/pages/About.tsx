@@ -8,6 +8,7 @@ import PageHero from "../components/PageHero";
 import ReviewBadge from "../components/seo/ReviewBadge";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { CTASection, SectionHeader } from "../design-system";
+import InsuranceWorkflow from "../components/InsuranceWorkflow";
 
 import storefrontImg from "../assets/storefront.webp";
 import logoBadge from "../assets/logo-badge.webp";
@@ -173,6 +174,12 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <InsuranceWorkflow
+        tone="offwhite"
+        title="Built like a broker, not a call center"
+        lede="Our job is to understand the risk, shop the right carriers, explain the tradeoffs, and stay available after the policy starts."
+      />
 
       {/* ── Timeline ── */}
       <section className="sp bg-slate-50">
