@@ -8,6 +8,7 @@ import { usePageMeta } from "../lib/seo";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 import { Car, Home, Heart, Building2, Bike, Caravan } from "lucide-react";
 import { images } from "../lib/images";
+import { CTASection, Section } from "../design-system";
 
 /* ── Service tab data ── */
 const SERVICE_TABS = [
@@ -192,7 +193,7 @@ export default function Services() {
       </section>
 
       {/* ── Interactive Service Browser ── */}
-      <section className="py-16 md:py-24 bg-white">
+      <Section tone="light">
         <div className="container">
           <Reveal className="text-center mb-12 md:mb-16">
             <span className="eyebrow">What We Cover</span>
@@ -324,7 +325,7 @@ export default function Services() {
             ))}
           </Stagger>
         </div>
-      </section>
+      </Section>
 
       {/* ── Additional services ── */}
       {extraServices.length > 0 && (
@@ -351,28 +352,12 @@ export default function Services() {
       )}
 
       {/* ── Bottom CTA ── */}
-      <section className="sp hero-mesh relative overflow-hidden">
-        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-brand-400/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-gold-400/10 rounded-full blur-3xl" />
-        <div className="container relative text-center">
-          <Reveal>
-            <h2 className="display-2 text-white mb-4">
-              Can't find what you need?
-            </h2>
-            <p className="text-lg text-white/80 max-w-md mx-auto mb-8">
-              We handle unusual risks too. Tell us what you need and we'll find a solution.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <button onClick={openQuoteModal} className="btn btn-accent btn-lg">
-                Start a Conversation
-              </button>
-              <a href={site.contact.phoneHref} className="btn btn-ghost-light btn-lg">
-                Call {site.contact.phone}
-              </a>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <CTASection
+        title="Can't find what you need?"
+        lede="We handle unusual risks too. Tell us what you need and we'll find a solution."
+        primaryLabel="Start a Conversation"
+        secondaryLabel={`Call ${site.contact.phone}`}
+      />
     </main>
   );
 }

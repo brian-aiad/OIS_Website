@@ -7,6 +7,7 @@ import { Icons } from "../components/Icons";
 import { Reveal } from "../components/AnimatedSection";
 import PageHero from "../components/PageHero";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
+import { CTASection, Section } from "../design-system";
 
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string;
 
@@ -163,7 +164,7 @@ export default function Contact() {
       </section>
 
       {/* Form + sidebar */}
-      <section className="sp bg-white border-t border-slate-100">
+      <Section tone="light" className="border-t border-slate-100">
         <div className="container">
           <div className="grid lg:grid-cols-[1.2fr,0.8fr] gap-8 lg:gap-14 items-start">
 
@@ -349,7 +350,14 @@ export default function Contact() {
 
           </div>
         </div>
-      </section>
+      </Section>
+
+      <CTASection
+        title="Need a quote today?"
+        lede="Call, text, or send the form. A licensed Downey broker will help you compare options."
+        primaryLabel="Get a Free Quote"
+        secondaryLabel={`Call ${site.contact.phone}`}
+      />
     </main>
   );
 }

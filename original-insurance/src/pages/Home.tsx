@@ -10,6 +10,7 @@ import { MagneticButton } from "../components/MagneticButton";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import ReviewBadge from "../components/seo/ReviewBadge";
 import TrustStrip from "../components/seo/TrustStrip";
+import { CTASection, Section, SectionHeader } from "../design-system";
 
 import storefrontImg from "../assets/storefront.webp";
 
@@ -728,12 +729,9 @@ function FAQ() {
   ];
 
   return (
-    <section className="sp bg-white cv-auto-tall">
+    <Section tone="light" className="cv-auto-tall">
       <div className="container max-w-2xl">
-        <Reveal className="text-center mb-10">
-          <span className="eyebrow">FAQ</span>
-          <h2 className="mt-3 display-2 text-slate-900">Common questions</h2>
-        </Reveal>
+        <SectionHeader eyebrow="FAQ" title="Common questions" align="center" className="mb-10" />
 
         <div>
           {qa.map((item, i) => (
@@ -786,7 +784,7 @@ function FAQ() {
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
 
@@ -845,7 +843,7 @@ function ProductShowcase() {
   ];
 
   return (
-    <section className="sp bg-slate-50" id="products">
+    <Section tone="offwhite" id="products">
       <div className="container">
         <Reveal>
           <span className="eyebrow">What We Cover</span>
@@ -878,7 +876,7 @@ function ProductShowcase() {
           </NavLink>
         </Reveal>
       </div>
-    </section>
+    </Section>
   );
 }
 
@@ -976,6 +974,11 @@ export default function Home() {
       <ClaimsCTA />
       <ServiceAreas />
       <FAQ />
+      <CTASection
+        title="Ready to compare 30+ carriers?"
+        lede="Get a personalized quote from a licensed Downey broker. Call, text, or start online."
+        secondaryLabel={`Call ${site.contact.phone}`}
+      />
     </>
   );
 }

@@ -15,13 +15,13 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Faq from "./pages/Faq";
 import CityLanding from "./pages/CityLanding";
+import AutoInsuranceDowneyCA from "./pages/AutoInsuranceDowneyCA";
+import SR22InsuranceDowney from "./pages/SR22InsuranceDowney";
+import NoLicenseInsuranceDowney from "./pages/NoLicenseInsuranceDowney";
+import CommercialAutoInsuranceDowney from "./pages/CommercialAutoInsuranceDowney";
 
 // Lazy load low-traffic / utility pages (acceptable CLS tradeoff, not prerendered entry points)
 const Locations = lazy(() => import("./pages/Locations"));
-const AutoInsuranceDowneyCA = lazy(() => import("./pages/AutoInsuranceDowneyCA"));
-const SR22InsuranceDowney = lazy(() => import("./pages/SR22InsuranceDowney"));
-const NoLicenseInsuranceDowney = lazy(() => import("./pages/NoLicenseInsuranceDowney"));
-const CommercialAutoInsuranceDowney = lazy(() => import("./pages/CommercialAutoInsuranceDowney"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Individual localized city pages

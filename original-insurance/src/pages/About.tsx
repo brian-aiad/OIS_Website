@@ -7,6 +7,7 @@ import { Counter } from "../components/AnimatedCounter";
 import PageHero from "../components/PageHero";
 import ReviewBadge from "../components/seo/ReviewBadge";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
+import { CTASection, SectionHeader } from "../design-system";
 
 import storefrontImg from "../assets/storefront.webp";
 import logoBadge from "../assets/logo-badge.webp";
@@ -101,13 +102,13 @@ export default function About() {
       {/* ── Mission, Values, Promise ── */}
       <section className="sp bg-white">
         <div className="container">
-          <Reveal className="text-center max-w-xl mx-auto mb-14">
-            <span className="eyebrow mb-4">What Drives Us</span>
-            <h2 className="display-2 text-slate-900">Our mission, values &amp; promise</h2>
-            <p className="mt-3 text-slate-500">
-              We make insurance simple and transparent by doing the heavy lifting: shopping multiple carriers, explaining coverages in plain language, and advocating for you at claim time.
-            </p>
-          </Reveal>
+          <SectionHeader
+            eyebrow="What Drives Us"
+            title="Our mission, values & promise"
+            lede="We make insurance simple and transparent by doing the heavy lifting: shopping multiple carriers, explaining coverages in plain language, and advocating for you at claim time."
+            align="center"
+            className="mb-14"
+          />
 
           <Stagger className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
@@ -427,32 +428,13 @@ export default function About() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="sp hero-mesh relative overflow-hidden">
-        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-brand-400/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-gold-400/10 rounded-full blur-3xl" />
-        <div className="container relative text-center">
-          <Reveal>
-            <h2 className="display-2 text-white mb-4">Ready to work with a real broker?</h2>
-            <p className="text-lg text-white/80 max-w-md mx-auto mb-8">
-              Get a personalized quote from someone who puts your needs first — compare 30+ carriers in one conversation.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <NavLink to="/auto-insurance-downey-ca" className="btn btn-accent btn-lg">
-                Compare auto quotes in Downey
-              </NavLink>
-              <NavLink to="/sr22-insurance-downey" className="btn btn-ghost-light btn-lg">
-                SR-22 or no-license options
-              </NavLink>
-            </div>
-            <p className="mt-5 text-white/60 text-sm">
-              Or call us at{" "}
-              <a href={site.contact.phoneHref} className="text-gold-300 hover:text-gold-200 font-semibold">
-                {site.contact.phone}
-              </a>
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      <CTASection
+        title="Ready to work with a real broker?"
+        lede="Get a personalized quote from someone who puts your needs first - compare 30+ carriers in one conversation."
+        primaryLabel="Compare auto quotes in Downey"
+        secondaryLabel="SR-22 or no-license options"
+        secondaryTo="/sr22-insurance-downey"
+      />
     </main>
   );
 }

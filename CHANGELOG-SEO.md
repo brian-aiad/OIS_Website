@@ -7,6 +7,18 @@ All SEO-relevant changes, ordered newest-first. Format:
 
 ## 2026-05-06
 
+### Priority page design-system adoption + money-page CLS fix
+**Commit:** pending
+
+**What changed:**
+- `App.tsx`: eagerly imports the four prerendered money pages (`/auto-insurance-downey-ca`, `/sr22-insurance-downey`, `/no-license-auto-insurance-downey`, `/commercial-auto-insurance-downey`) so hydration does not show the Suspense fallback on those entry points.
+- `Home.tsx`, `About.tsx`, `Services.tsx`, `Contact.tsx`, `CityLanding.tsx`: began applying shared design-system primitives (`Section`, `SectionHeader`, `CTASection`) to the 5 priority page surfaces and the reusable city-page template.
+- Replaced bespoke bottom CTA implementations on About, Services, Contact, and city landing pages with the shared `CTASection` closer.
+
+**Why:** Live Lighthouse still showed CLS `0.295` on the two special landing pages because they remained lazy-loaded. The design-system components existed but were not visible on priority pages yet.
+
+**Validation:** `npm run seo-lint`, `npm run build`, and `npm run validate:schema` passed. Local Lighthouse desktop after the eager-import fix: `/sr22-insurance-downey` CLS `0`, `/no-license-auto-insurance-downey` CLS `0`, `/insurance/downey` CLS `0`.
+
 ### GBP integration: text number, identity badges, product showcase, footer rebuild, schema
 **Commit:** `83e78b04`
 
