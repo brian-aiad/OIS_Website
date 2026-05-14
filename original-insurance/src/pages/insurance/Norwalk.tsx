@@ -5,7 +5,9 @@ import { site } from "../../lib/site";
 import PageHero from "../../components/PageHero";
 import LocalBusinessSchema from "../../components/seo/LocalBusinessSchema";
 import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema";
-import { Reveal } from "../../components/AnimatedSection";
+import { Reveal, Stagger, StaggerChild } from "../../components/AnimatedSection";
+import StatsBar from "../../components/StatsBar";
+import PageTestimonials from "../../components/PageTestimonials";
 
 const canonical = "https://originalinsurance.net/insurance/norwalk";
 
@@ -59,6 +61,8 @@ export default function NorwalkPage() {
           </a>
         </div>
       </PageHero>
+
+      <StatsBar />
 
       {/* Section 1: Auto Insurance in Norwalk */}
       <section className="sp bg-white">
@@ -160,44 +164,57 @@ export default function NorwalkPage() {
 
       {/* Section 4: Why Norwalk Residents Choose Original */}
       <section className="sp bg-slate-50">
-        <div className="container max-w-4xl">
-          <Reveal>
-            <h2
-              className="text-3xl md:text-4xl font-bold text-slate-900 mb-6"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Why Norwalk Residents Choose Original Insurance
-            </h2>
-            <ul className="space-y-3 text-slate-600">
-              {[
-                "Independent broker — we work for you, not one insurance company",
-                "30+ top-rated California carriers compared in a single quote session",
-                "Bilingual English, Spanish, and Arabic service — también hablamos español",
-                "Same-day SR-22 electronic filing to the California DMV",
-                "No-license and international-license auto insurance programs",
-                "25+ years serving Norwalk, Downey, and the Southeast LA County community",
-              ].map((point) => (
-                <li key={point} className="flex items-start gap-3">
-                  <span className="mt-1 shrink-0 w-5 h-5 rounded-full bg-gold-50 ring-1 ring-gold-200 grid place-items-center">
-                    <svg
-                      className="w-3 h-3 text-gold-600"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={3}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </span>
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
+        <div className="container max-w-5xl">
+          <Reveal className="text-center mb-10">
+            <span className="eyebrow">Why Choose Us</span>
+            <h2 className="mt-3 display-2 text-slate-900">Why Norwalk Residents Choose Original Insurance</h2>
           </Reveal>
+          <Stagger className="grid sm:grid-cols-2 gap-4">
+            {[
+              {
+                icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5" /></svg>,
+                title: "Independent broker",
+                desc: "We work for you, not one insurance company",
+              },
+              {
+                icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>,
+                title: "30+ carriers compared",
+                desc: "Side-by-side quotes from 30+ top-rated California carriers in a single session",
+              },
+              {
+                icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg>,
+                title: "Bilingual service",
+                desc: "English, Spanish, and Arabic — también hablamos español",
+              },
+              {
+                icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
+                title: "Same-day SR-22 filing",
+                desc: "Electronic SR-22 filing to the California DMV the day you bind your policy",
+              },
+              {
+                icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
+                title: "No-license programs",
+                desc: "Foreign license, ITIN, and international-license auto insurance programs",
+              },
+              {
+                icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+                title: "25+ years serving SE LA",
+                desc: "Norwalk, Downey, and the Southeast LA County community since 1999",
+              },
+            ].map((item) => (
+              <StaggerChild key={item.title}>
+                <div className="flex gap-4 bg-white rounded-2xl p-5 ring-1 ring-slate-200/80 shadow-soft hover:shadow-lifted hover:-translate-y-0.5 transition-all">
+                  <div className="shrink-0 w-10 h-10 rounded-xl grid place-items-center bg-brand-800 text-gold-400">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 text-[14px]">{item.title}</h3>
+                    <p className="text-[13px] text-slate-500 leading-relaxed mt-0.5">{item.desc}</p>
+                  </div>
+                </div>
+              </StaggerChild>
+            ))}
+          </Stagger>
         </div>
       </section>
 
@@ -335,6 +352,8 @@ export default function NorwalkPage() {
           </Reveal>
         </div>
       </section>
+
+      <PageTestimonials tone="white" />
 
       {/* CTA Block */}
       <section className="sp bg-white">

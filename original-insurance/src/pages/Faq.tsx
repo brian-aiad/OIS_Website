@@ -6,6 +6,8 @@ import { openQuoteModal } from "../lib/openQuote";
 import PageHero from "../components/PageHero";
 import FAQSchema from "../components/seo/FAQSchema";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
+import StatsBar from "../components/StatsBar";
+import PageTestimonials from "../components/PageTestimonials";
 import { Reveal } from "../components/AnimatedSection";
 import { Icons } from "../components/Icons";
 
@@ -185,6 +187,8 @@ export default function Faq() {
         </div>
       </PageHero>
 
+      <StatsBar />
+
       <section className="sp bg-white">
         <div className="container max-w-4xl">
           {FAQ_GROUPS.map((group, gi) => (
@@ -301,6 +305,8 @@ export default function Faq() {
           </Reveal>
         </div>
       </section>
+
+      <PageTestimonials />
     </main>
   );
 }

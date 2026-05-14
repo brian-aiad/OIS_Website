@@ -5,9 +5,10 @@ import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import FAQSchema from "../components/seo/FAQSchema";
-import ReviewBadge from "../components/seo/ReviewBadge";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
+import StatsBar from "../components/StatsBar";
+import PageTestimonials from "../components/PageTestimonials";
 
 const AUTO_FAQS = [
   { q: "How much does car insurance cost in Downey, CA?", a: "Most Downey drivers pay $80–$180 per month depending on driving record, vehicle type, coverage level, and ZIP code. Rates vary significantly by carrier." },
@@ -17,7 +18,6 @@ const AUTO_FAQS = [
   { q: "Do you offer insurance for drivers without a California license?", a: "Yes. We work with carriers that cover vehicle owners with foreign licenses, ITIN-based applicants, and licensed household members as the primary driver." },
 ];
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
-
 const NEARBY_CITIES = [
   { name: "Bellflower", slug: "bellflower" },
   { name: "Norwalk", slug: "norwalk" },
@@ -26,31 +26,6 @@ const NEARBY_CITIES = [
   { name: "Lynwood", slug: "lynwood" },
   { name: "Whittier", slug: "whittier" },
 ];
-
-function TrustStrip() {
-  const items = [
-    "Founded 1999",
-    "30+ Carriers",
-    "Downey Office",
-    "English · Español · العربية",
-    "Same-Day Proof of Insurance",
-    "4.9★ Google Rating",
-  ];
-  return (
-    <div className="bg-brand-950 py-4">
-      <div className="container">
-        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-          {items.map((item, i) => (
-            <span key={i} className="flex items-center gap-2 text-[13px] font-medium text-white/80">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold-400 shrink-0" />
-              {item}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function AutoInsuranceDowneyCA() {
   usePageMeta({
@@ -86,13 +61,7 @@ export default function AutoInsuranceDowneyCA() {
         </div>
       </PageHero>
 
-      <TrustStrip />
-
-      <div className="bg-white py-4 border-b border-slate-100">
-        <div className="container flex justify-center">
-          <ReviewBadge count={site.reviews.count} />
-        </div>
-      </div>
+      <StatsBar />
 
       <InsuranceWorkflow
         tone="offwhite"
@@ -127,45 +96,78 @@ export default function AutoInsuranceDowneyCA() {
 
       {/* Section 2: Coverage Options */}
       <section className="sp bg-slate-50">
-        <div className="container max-w-4xl">
-          <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6" style={{ fontFamily: "var(--font-display)" }}>
-              Coverage options for Downey drivers
-            </h2>
+        <div className="container max-w-5xl">
+          <Reveal className="text-center mb-10">
+            <span className="eyebrow">Coverage Types</span>
+            <h2 className="mt-3 display-2 text-slate-900">Coverage options for Downey drivers</h2>
+            <p className="mt-3 text-slate-500 max-w-xl mx-auto">
+              Not every car or driver needs the same coverage. We match the policy to your actual situation.
+            </p>
           </Reveal>
-          <Stagger className="space-y-6">
+          <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               {
+                icon: (
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                ),
                 title: "Liability-Only",
-                desc: "The minimum California requires — covers damage you cause to others' vehicles and bodily injuries. Best for older paid-off vehicles where the car's value is close to or below what full coverage would cost annually. Commuters driving shorter distances on surface streets often choose this.",
+                desc: "The California minimum — covers damage you cause to others. Best for older paid-off vehicles. Commuters on surface streets often choose this as a starting point.",
               },
               {
+                icon: (
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                  </svg>
+                ),
                 title: "Full Coverage",
-                desc: "Combines liability, collision (damage to your car in a crash), and comprehensive (theft, weather, fire, vandalism). Lenders typically require full coverage on financed or leased vehicles. Newer vehicles or those with significant market value usually benefit most.",
+                desc: "Liability + collision + comprehensive. Required by most lenders on financed vehicles. Protects your investment against at-fault accidents, theft, and weather damage.",
               },
               {
-                title: "Uninsured / Underinsured Motorist",
-                desc: "Covers you when you're hit by a driver who has no insurance or not enough. California has a significant uninsured driver population, making this coverage worth serious consideration for any Downey household.",
+                icon: (
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                ),
+                title: "Uninsured Motorist",
+                desc: "Covers you when hit by a driver with no insurance or not enough. California has a significant uninsured driver population — worth serious consideration for any household.",
               },
               {
+                icon: (
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                ),
                 title: "Comprehensive",
-                desc: "Pays for non-collision damage — theft, hail, fire, flood, falling objects, and vandalism. If you park on the street or in an area with higher theft rates, comprehensive coverage is especially valuable.",
+                desc: "Non-collision damage: theft, hail, fire, flood, vandalism. If you park on the street or in a higher-theft area, this coverage pays for itself quickly after one incident.",
               },
               {
+                icon: (
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                ),
                 title: "Collision",
-                desc: "Pays to repair or replace your vehicle after a collision regardless of who is at fault. Multi-car households with newer vehicles frequently add this to avoid a large out-of-pocket repair bill.",
+                desc: "Repairs or replaces your vehicle after any crash, regardless of fault. Multi-car households with newer vehicles frequently add this to avoid large out-of-pocket repair bills.",
               },
               {
-                title: "Optional Add-Ons",
-                desc: "Rental reimbursement pays for a rental while your car is being repaired. Roadside assistance covers towing, flat tires, and lockouts. These are typically low cost and worth considering for daily drivers.",
+                icon: (
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                  </svg>
+                ),
+                title: "Add-Ons",
+                desc: "Rental reimbursement while your car is repaired. Roadside assistance for towing, flats, and lockouts. Both are low cost and worth adding for daily drivers.",
               },
-            ].map((item, i) => (
-              <StaggerChild key={i}>
-                <div className="bg-white rounded-2xl p-6 ring-1 ring-slate-200/80 shadow-soft">
-                  <h3 className="text-xl font-bold text-slate-900 mb-2" style={{ fontFamily: "var(--font-display)" }}>
-                    {item.title}
-                  </h3>
-                  <p className="text-slate-600 leading-relaxed">{item.desc}</p>
+            ].map((item) => (
+              <StaggerChild key={item.title}>
+                <div className="bg-white rounded-2xl p-6 ring-1 ring-slate-200/80 shadow-soft hover:shadow-lifted hover:-translate-y-1 transition-all duration-200 h-full">
+                  <div className="w-11 h-11 rounded-xl grid place-items-center mb-4 bg-brand-800 text-gold-400 shadow-sm">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>
+                  <p className="text-[14px] text-slate-500 leading-relaxed">{item.desc}</p>
                 </div>
               </StaggerChild>
             ))}
@@ -234,35 +236,62 @@ export default function AutoInsuranceDowneyCA() {
 
       {/* Section 5: Why Original */}
       <section className="sp bg-white">
-        <div className="container max-w-4xl">
-          <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6" style={{ fontFamily: "var(--font-display)" }}>
-              Why drivers choose Original in Downey
-            </h2>
-            <p className="text-lg text-slate-600 leading-relaxed mb-6">
-              We have been on Paramount Blvd — just off the 5 freeway — since 1999, serving Downey families and businesses before most of our competitors existed in this market. As an independent broker, we are not paid to steer you toward a specific carrier. Our job is to find the right policy at the right price from the right company for your situation.
+        <div className="container max-w-5xl">
+          <Reveal className="text-center mb-10">
+            <span className="eyebrow">Why Choose Us</span>
+            <h2 className="mt-3 display-2 text-slate-900">Why Downey drivers choose Original</h2>
+            <p className="mt-3 text-slate-500 max-w-xl mx-auto">
+              On Paramount Blvd since 1999 — we find the right policy at the right price from the right carrier for your situation.
             </p>
-            <ul className="space-y-3">
-              {[
-                "Independent broker — we work for you, not one insurance company",
-                "30+ top-rated California carriers compared in a single quote",
-                "Bilingual English, Spanish, and Arabic service",
-                "Same-day proof of insurance and SR-22 electronic filing",
-                "Claims guidance and advocacy throughout the life of your policy",
-                "Real local office at 9907-B Paramount Blvd, Downey — walk-ins welcome",
-                "25+ years serving Southeast LA County",
-              ].map((point, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="mt-1 shrink-0 w-5 h-5 rounded-full bg-gold-50 ring-1 ring-gold-200 grid place-items-center">
-                    <svg className="w-3 h-3 text-gold-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  </span>
-                  <span className="text-slate-600">{point}</span>
-                </li>
-              ))}
-            </ul>
           </Reveal>
+          <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>,
+                title: "We work for you",
+                desc: "Independent broker — zero brand quotas, zero pressure. We compare every carrier and recommend what's actually best for your situation.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>,
+                title: "30+ carriers, one call",
+                desc: "Real market competition produces better rates. We run your profile across every carrier at once so you're not overpaying because you only called one company.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg>,
+                title: "3 languages",
+                desc: "Fluent service in English, Spanish, and Arabic. Every option explained clearly — no insurance jargon, no translation gaps.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
+                title: "Same-day proof",
+                desc: "eID cards issued immediately after binding. SR-22 certificates filed electronically with the CA DMV the same day you bind your policy.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" /></svg>,
+                title: "Claims advocacy",
+                desc: "We don't disappear after the sale. We guide you through claims, communicate with adjusters, and follow up so nothing falls through the cracks.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>,
+                title: "Local office, walk-ins welcome",
+                desc: "9907-B Paramount Blvd, Downey — right off the 5 freeway. 25+ years in the same location serving Southeast LA County.",
+              },
+            ].map((item) => (
+              <StaggerChild key={item.title}>
+                <div className="bg-white rounded-2xl p-6 ring-1 ring-slate-200/80 shadow-soft hover:shadow-lifted hover:-translate-y-1 transition-all duration-200 h-full">
+                  <div className="w-11 h-11 rounded-xl grid place-items-center mb-4 bg-brand-800 text-gold-400 shadow-sm">
+                    {item.icon}
+                  </div>
+                  <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
+                  <p className="text-[14px] text-slate-500 leading-relaxed">{item.desc}</p>
+                </div>
+              </StaggerChild>
+            ))}
+          </Stagger>
         </div>
       </section>
+
+      <PageTestimonials tone="offwhite" />
 
       {/* Section 5b: Spanish-intent section */}
       <section lang="es" className="sp bg-brand-950 text-white">

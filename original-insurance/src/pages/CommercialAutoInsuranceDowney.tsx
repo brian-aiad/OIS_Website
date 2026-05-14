@@ -5,9 +5,10 @@ import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import FAQSchema from "../components/seo/FAQSchema";
-import TrustStrip from "../components/seo/TrustStrip";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
+import StatsBar from "../components/StatsBar";
+import PageTestimonials from "../components/PageTestimonials";
 
 const COMMERCIAL_FAQS = [
   { q: "What is commercial auto insurance?", a: "Commercial auto insurance covers vehicles used for business, including delivery vehicles, work trucks, and company cars not covered by personal auto policies." },
@@ -87,11 +88,7 @@ export default function CommercialAutoInsuranceDowneyPage() {
         </div>
       </PageHero>
 
-      <div className="bg-brand-950 py-4 text-white">
-        <div className="container">
-          <TrustStrip />
-        </div>
-      </div>
+      <StatsBar />
 
       <InsuranceWorkflow
         tone="offwhite"
@@ -345,6 +342,8 @@ export default function CommercialAutoInsuranceDowneyPage() {
           </Reveal>
         </div>
       </section>
+
+      <PageTestimonials />
 
       {/* Dual CTA block */}
       <section className="sp bg-brand-950">

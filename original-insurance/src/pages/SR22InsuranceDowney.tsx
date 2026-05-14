@@ -5,10 +5,11 @@ import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import FAQSchema from "../components/seo/FAQSchema";
-import TrustStrip from "../components/seo/TrustStrip";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
+import StatsBar from "../components/StatsBar";
+import PageTestimonials from "../components/PageTestimonials";
 
 const SR22_FAQS = [
   { q: "How long do I need SR-22 in California?", a: "California requires SR-22 for 3 continuous years from license reinstatement. Any policy lapse or cancellation resets the clock with the DMV." },
@@ -53,11 +54,7 @@ export default function SR22InsuranceDowney() {
         </div>
       </PageHero>
 
-      <div className="bg-brand-950 py-4 text-white">
-        <div className="container">
-          <TrustStrip />
-        </div>
-      </div>
+      <StatsBar />
 
       <InsuranceWorkflow
         tone="offwhite"
@@ -84,28 +81,54 @@ export default function SR22InsuranceDowney() {
 
       {/* Who needs SR-22 */}
       <section className="sp bg-slate-50">
-        <div className="container max-w-4xl">
-          <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6" style={{ fontFamily: "var(--font-display)" }}>
-              Who needs SR-22 in California?
-            </h2>
-            <p className="text-base text-slate-600 leading-relaxed mb-6">
-              The California DMV typically requires SR-22 filing in the following situations:
+        <div className="container max-w-5xl">
+          <Reveal className="text-center mb-10">
+            <span className="eyebrow">SR-22 Triggers</span>
+            <h2 className="mt-3 display-2 text-slate-900">Who needs SR-22 in California?</h2>
+            <p className="mt-3 text-slate-500 max-w-xl mx-auto">
+              The California DMV typically requires SR-22 filing in these situations:
             </p>
           </Reveal>
-          <Stagger className="grid sm:grid-cols-2 gap-4">
+          <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { title: "Coverage Lapse", desc: "Driving without active auto insurance, or allowing your policy to cancel while your vehicle is registered." },
-              { title: "License Suspension", desc: "A suspended or revoked license due to points accumulation, failure to appear, or failure to pay a judgment." },
-              { title: "DUI or DWI", desc: "A DUI conviction typically requires SR-22 as a condition of license reinstatement." },
-              { title: "Uninsured Accident", desc: "Being involved in an at-fault accident while uninsured, or a hit-and-run determination." },
-              { title: "Court Order", desc: "A judge can require SR-22 as part of a sentencing condition or settlement agreement." },
-              { title: "Too Many Points", desc: "Accumulating too many DMV points from moving violations within a given period." },
-            ].map((item, i) => (
-              <StaggerChild key={i}>
-                <div className="bg-white rounded-2xl p-6 ring-1 ring-slate-200/80 shadow-soft h-full">
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>,
+                title: "Coverage Lapse",
+                desc: "Driving without active auto insurance, or allowing your policy to cancel while your vehicle is registered.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" /></svg>,
+                title: "License Suspension",
+                desc: "A suspended or revoked license due to points accumulation, failure to appear, or failure to pay a judgment.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
+                title: "DUI or DWI",
+                desc: "A DUI conviction typically requires SR-22 as a condition of California license reinstatement.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 3l3.5 3.5M3 3h5m-5 0v5m18 13l-3.5-3.5M21 21h-5m5 0v-5M3 21l3.5-3.5M3 21v-5m0 5h5m13-18l-3.5 3.5M21 3h-5m5 0v5" /></svg>,
+                title: "Uninsured Accident",
+                desc: "Being involved in an at-fault accident while uninsured, or a hit-and-run determination by the DMV.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5" /></svg>,
+                title: "Court Order",
+                desc: "A judge can require SR-22 as part of a sentencing condition or civil settlement agreement.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>,
+                title: "Too Many Points",
+                desc: "Accumulating too many DMV points from moving violations within a given period triggers the SR-22 requirement.",
+              },
+            ].map((item) => (
+              <StaggerChild key={item.title}>
+                <div className="bg-white rounded-2xl p-6 ring-1 ring-slate-200/80 shadow-soft hover:shadow-lifted hover:-translate-y-1 transition-all duration-200 h-full">
+                  <div className="w-11 h-11 rounded-xl grid place-items-center mb-4 bg-brand-800 text-gold-400 shadow-sm">
+                    {item.icon}
+                  </div>
                   <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{item.desc}</p>
+                  <p className="text-[14px] text-slate-500 leading-relaxed">{item.desc}</p>
                 </div>
               </StaggerChild>
             ))}
@@ -135,31 +158,53 @@ export default function SR22InsuranceDowney() {
 
       {/* What to bring */}
       <section className="sp bg-slate-50">
-        <div className="container max-w-4xl">
-          <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6" style={{ fontFamily: "var(--font-display)" }}>
-              What to bring for same-day filing
-            </h2>
-            <p className="text-base text-slate-600 leading-relaxed mb-6">
-              Walk-ins are welcome at our Downey office. Bringing the following makes the process faster:
+        <div className="container max-w-5xl">
+          <Reveal className="text-center mb-10">
+            <span className="eyebrow">Walk-In Ready</span>
+            <h2 className="mt-3 display-2 text-slate-900">What to bring for same-day filing</h2>
+            <p className="mt-3 text-slate-500 max-w-xl mx-auto">
+              Walk-ins are welcome. Bringing these items makes the process faster and ensures we can file the same day.
             </p>
-            <ul className="space-y-3">
-              {[
-                "Your driver's license or DMV reinstatement letter",
-                "Vehicle VIN (or have the vehicle registration handy)",
-                "Current declarations page if you have existing coverage",
-                "Court or DMV reference number if applicable",
-                "Preferred contact information for policy delivery",
-              ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
-                  <span className="mt-1 shrink-0 w-5 h-5 rounded-full bg-gold-50 ring-1 ring-gold-200 grid place-items-center">
-                    <svg className="w-3 h-3 text-gold-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  </span>
-                  <span className="text-slate-600">{item}</span>
-                </li>
-              ))}
-            </ul>
           </Reveal>
+          <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" /></svg>,
+                title: "Driver's License or DMV Letter",
+                desc: "Your current license, or your DMV reinstatement paperwork if your license has been suspended.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2 2h10" /></svg>,
+                title: "Vehicle VIN or Registration",
+                desc: "The 17-digit VIN from your dashboard or registration card. This is required to quote and bind the underlying policy.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>,
+                title: "Current Declarations Page",
+                desc: "Your existing policy's declarations page if you have coverage. Helps us compare rates against your current carrier.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>,
+                title: "Court or DMV Reference Number",
+                desc: "If a court or the DMV issued a specific SR-22 requirement notice, the reference number speeds up the filing confirmation.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
+                title: "Contact Information",
+                desc: "Email and phone number for policy delivery. eID cards and SR-22 confirmation are sent electronically as soon as the policy is bound.",
+              },
+            ].map((item) => (
+              <StaggerChild key={item.title}>
+                <div className="bg-white rounded-2xl p-6 ring-1 ring-slate-200/80 shadow-soft hover:shadow-lifted hover:-translate-y-1 transition-all duration-200 h-full">
+                  <div className="w-11 h-11 rounded-xl grid place-items-center mb-4 bg-brand-800 text-gold-400 shadow-sm">
+                    {item.icon}
+                  </div>
+                  <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
+                  <p className="text-[14px] text-slate-500 leading-relaxed">{item.desc}</p>
+                </div>
+              </StaggerChild>
+            ))}
+          </Stagger>
         </div>
       </section>
 
@@ -209,6 +254,8 @@ export default function SR22InsuranceDowney() {
           </Reveal>
         </div>
       </section>
+
+      <PageTestimonials />
 
       {/* CTA */}
       <section className="sp bg-brand-950">

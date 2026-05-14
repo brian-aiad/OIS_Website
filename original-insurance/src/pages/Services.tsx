@@ -10,6 +10,8 @@ import { images } from "../lib/images";
 import { CTASection, Section } from "../design-system";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
 import PageHero from "../components/PageHero";
+import StatsBar from "../components/StatsBar";
+import PageTestimonials from "../components/PageTestimonials";
 
 /* ── Service tab data ── */
 const SERVICE_TABS = [
@@ -179,6 +181,8 @@ export default function Services() {
           </a>
         </div>
       </PageHero>
+      <StatsBar />
+
       {/* ── Interactive Service Browser ── */}
       <Section tone="light">
         <div className="container">
@@ -343,6 +347,8 @@ export default function Services() {
           </div>
         </section>
       )}
+
+      <PageTestimonials tone="white" />
 
       {/* ── Bottom CTA ── */}
       <CTASection

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
-import { motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
 import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
 import { usePageMeta } from "../lib/seo";
 import { Icons } from "../components/Icons";
 import { Reveal } from "../components/AnimatedSection";
+import PageHero from "../components/PageHero";
+import InsuranceWorkflow from "../components/InsuranceWorkflow";
+import PageTestimonials from "../components/PageTestimonials";
 
 import storefrontImg from "../assets/storefront.webp";
 
@@ -82,74 +83,34 @@ export default function Locations() {
         { name: "Home", url: "https://originalinsurance.net/" },
         { name: "Location", url: "https://originalinsurance.net/locations" },
       ]} />
-      {/* ── Premium Header ── */}
-      <section className="relative hero-mesh overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-400/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gold-400/10 rounded-full blur-3xl" />
-
-        <div className="container relative pt-28 pb-20 md:pt-36 md:pb-28">
-          <div className="grid lg:grid-cols-[1fr,0.7fr] gap-12 items-center">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              <nav className="flex items-center gap-2 text-sm text-blue-200 mb-6">
-                <NavLink to="/" className="hover:text-white transition-colors">Home</NavLink>
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" /></svg>
-                <span className="text-white font-medium">Location</span>
-              </nav>
-
-              <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 px-4 py-2 rounded-full text-sm font-bold mb-4">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                Open now
-              </div>
-
-              <h1 className="display-1 text-white">Our Downey office</h1>
-              <p className="mt-4 text-lg text-white/80 max-w-lg">
-                Free parking lot on-site plus free street parking on Paramount Blvd.
-                Walk-ins welcome Monday through Friday.
-              </p>
-
-              {/* Quick contact cards */}
-              <div className="mt-8 grid grid-cols-2 gap-4">
-                <a
-                  href={site.contact.phoneHref}
-                  className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all group"
-                >
-                  <Icons.Phone className="w-5 h-5 text-gold-400 mb-2" />
-                  <div className="text-sm text-blue-200">Call Us</div>
-                  <div className="text-white font-bold group-hover:text-gold-400 transition-colors">{site.contact.phone}</div>
-                </a>
-
-                <a
-                  href={site.contact.mapsHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all group"
-                >
-                  <Icons.MapPin className="w-5 h-5 text-gold-400 mb-2" />
-                  <div className="text-sm text-blue-200">Directions</div>
-                  <div className="text-white font-bold group-hover:text-gold-400 transition-colors">Get Directions</div>
-                </a>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="hidden lg:block"
-            >
-              <div className="rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-heavy">
-                <img src={storefrontImg} alt="Original Insurance storefront on Paramount Blvd" className="w-full h-auto object-cover" loading="lazy" width={800} height={600} />
-              </div>
-            </motion.div>
+      <PageHero
+        title="Our Downey office"
+        subtitle="Walk-ins welcome Monday through Friday. Free parking lot on-site and street parking on Paramount Blvd."
+        breadcrumb="Location"
+        badgeText="Open Mon–Fri 10 AM – 5:30 PM"
+        backgroundImage="/images/storefront.webp"
+        rightContent={
+          <div className="rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-heavy aspect-[4/3]">
+            <img src={storefrontImg} alt="Original Insurance storefront on Paramount Blvd, Downey CA" className="w-full h-full object-cover" width={800} height={600} />
           </div>
+        }
+      >
+        <div className="flex flex-wrap gap-3">
+          <a href={site.contact.phoneHref} className="btn btn-accent">
+            <Icons.Phone className="w-4 h-4" />
+            Call {site.contact.phone}
+          </a>
+          <a href={site.contact.mapsHref} target="_blank" rel="noreferrer" className="btn btn-ghost-light">
+            Get Directions
+          </a>
         </div>
+      </PageHero>
 
-        <div className="wave-divider">
-          <svg viewBox="0 0 1440 60" preserveAspectRatio="none" fill="white">
-            <path d="M0 30C240 50 480 20 720 30C960 40 1200 20 1440 30V60H0V30Z" />
-          </svg>
-        </div>
-      </section>
+      <InsuranceWorkflow
+        tone="offwhite"
+        title="Walk in ready — no appointment needed"
+        lede="Bring your vehicle info, current coverage, and any specific situation details. We'll compare carriers, explain options, and bind same-day."
+      />
 
       {/* ── Main content: 2-column ── */}
       <section className="sp bg-white">
@@ -291,6 +252,8 @@ export default function Locations() {
           </div>
         </div>
       </section>
+
+      <PageTestimonials />
     </main>
   );
 }

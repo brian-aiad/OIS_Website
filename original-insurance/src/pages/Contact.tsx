@@ -9,6 +9,8 @@ import PageHero from "../components/PageHero";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { CTASection, Section } from "../design-system";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
+import StatsBar from "../components/StatsBar";
+import PageTestimonials from "../components/PageTestimonials";
 
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string;
 
@@ -94,6 +96,8 @@ export default function Contact() {
         breadcrumb="Contact"
         backgroundImage="/images/handshake.webp"
       />
+
+      <StatsBar />
 
       {/* 3 contact cards */}
       <section className="relative -mt-2 z-10 pb-12">
@@ -358,6 +362,8 @@ export default function Contact() {
           </div>
         </div>
       </Section>
+
+      <PageTestimonials tone="white" />
 
       <CTASection
         title="Need a quote today?"

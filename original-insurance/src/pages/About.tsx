@@ -9,6 +9,7 @@ import ReviewBadge from "../components/seo/ReviewBadge";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { CTASection, SectionHeader } from "../design-system";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
+import PageTestimonials from "../components/PageTestimonials";
 
 import storefrontImg from "../assets/storefront.webp";
 import logoBadge from "../assets/logo-badge.webp";
@@ -433,6 +434,8 @@ export default function About() {
           </Stagger>
         </div>
       </section>
+
+      <PageTestimonials />
 
       {/* ── CTA ── */}
       <CTASection

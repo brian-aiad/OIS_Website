@@ -5,9 +5,10 @@ import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import FAQSchema from "../components/seo/FAQSchema";
-import TrustStrip from "../components/seo/TrustStrip";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
+import StatsBar from "../components/StatsBar";
+import PageTestimonials from "../components/PageTestimonials";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
 
 const NO_LICENSE_FAQS = [
@@ -51,11 +52,7 @@ export default function NoLicenseInsuranceDowney() {
         </div>
       </PageHero>
 
-      <div className="bg-brand-950 py-4 text-white">
-        <div className="container">
-          <TrustStrip />
-        </div>
-      </div>
+      <StatsBar />
 
       <InsuranceWorkflow
         tone="offwhite"
@@ -164,6 +161,65 @@ export default function NoLicenseInsuranceDowney() {
         </div>
       </section>
 
+      {/* Why Original — icon card grid */}
+      <section className="sp bg-slate-50">
+        <div className="container max-w-4xl">
+          <Reveal className="text-center mb-10">
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-600 mb-2">Why Choose Us</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3" style={{ fontFamily: "var(--font-display)" }}>
+              Why an independent broker matters here
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Non-standard license situations need a broker with real carrier access — not a single company that says no.
+            </p>
+          </Reveal>
+          <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5" /></svg>,
+                title: "We work for you",
+                desc: "Independent broker — we compare 30+ carriers with zero brand pressure.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>,
+                title: "30+ carriers compared",
+                desc: "Side-by-side quotes in a single conversation — more options than any captive agent.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg>,
+                title: "Bilingual service",
+                desc: "English, Spanish, and Arabic — también hablamos español, وأيضاً نتحدث العربية.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
+                title: "Same-day SR-22 filing",
+                desc: "Electronic filing to the California DMV the same day you bind coverage.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
+                title: "No-license programs",
+                desc: "Foreign license, ITIN, and international driver options — we know which carriers say yes.",
+              },
+              {
+                icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+                title: "25+ years serving SE LA",
+                desc: "Downey's trusted broker since 1999 — we know this community's situations.",
+              },
+            ].map((item) => (
+              <StaggerChild key={item.title}>
+                <div className="bg-white rounded-2xl p-6 ring-1 ring-slate-200/80 shadow-soft hover:shadow-lifted hover:-translate-y-1 transition-all duration-200 h-full">
+                  <div className="w-11 h-11 rounded-xl grid place-items-center mb-4 bg-brand-800 text-gold-400 shadow-sm">
+                    {item.icon}
+                  </div>
+                  <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
+                  <p className="text-[14px] text-slate-500 leading-relaxed">{item.desc}</p>
+                </div>
+              </StaggerChild>
+            ))}
+          </Stagger>
+        </div>
+      </section>
+
       {/* Languages */}
       <section className="sp bg-slate-50">
         <div className="container max-w-4xl">
@@ -188,6 +244,8 @@ export default function NoLicenseInsuranceDowney() {
           </Reveal>
         </div>
       </section>
+
+      <PageTestimonials />
 
       {/* CTA */}
       <section className="sp bg-brand-950">
