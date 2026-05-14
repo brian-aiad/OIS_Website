@@ -188,6 +188,45 @@ if (vercelJson.redirects) {
 }
 if (!loopFound) ok("No redirect loops detected in vercel.json");
 
+// ── Check 6a: Lazy-loaded prerendered routes (causes CLS on hydrateRoot) ────────
+// All routes listed in prerender.mjs ROUTES must NOT be wrapped in lazy() in App.tsx.
+// lazy() + Suspense causes hydrateRoot to de-opt to the LoadingFallback fallback,
+// replacing the prerendered DOM and causing a CLS spike Google detects.
+console.log("\n6a. Lazy-loaded prerendered routes (must be eager):");
+const appTsxPath = join(SRC_DIR, "..", "src", "App.tsx");
+const prerenderMjsPath = join(APP_DIR, "scripts", "prerender.mjs");
+let lazyPrerenderFound = false;
+try {
+  const appContent = readFileSync(appTsxPath, "utf-8");
+  const prerenderContent = readFileSync(prerenderMjsPath, "utf-8");
+
+  // Extract prerendered routes (non-dynamic ones) from prerender.mjs
+  const prerenderRoutes = [...prerenderContent.matchAll(/["'](\/.+?)["']/g)]
+    .map(m => m[1])
+    .filter(r => r.startsWith("/") && !r.includes("{") && r !== "/");
+
+  // Find all lazy() imports in App.tsx
+  const lazyImports = [...appContent.matchAll(/const\s+(\w+)\s*=\s*lazy\s*\(/g)].map(m => m[1]);
+
+  // Map component names to route patterns in App.tsx
+  // If a lazy component is used in a Route for a prerendered path, flag it.
+  for (const comp of lazyImports) {
+    // Find the Route that uses this component
+    const routeMatch = appContent.match(new RegExp(`path=["']([^"']+)["'][^>]*element=\\{<${comp}\\s*/?>\\}`));
+    if (!routeMatch) continue;
+    const routePath = routeMatch[1];
+    // Check if this route path matches any prerendered route (exact or prefix for parameterized)
+    const isPrerendered = prerenderRoutes.some(pr => pr === routePath || pr.startsWith(routePath.replace(/:.*/, "")));
+    if (isPrerendered) {
+      fail(`App.tsx: ${comp} is lazy()-loaded but its route "${routePath}" is prerendered — use an eager import to prevent hydrateRoot CLS`);
+      lazyPrerenderFound = true;
+    }
+  }
+} catch {
+  warn("Could not read App.tsx or prerender.mjs for lazy-prerender check");
+}
+if (!lazyPrerenderFound) ok("No lazy-loaded prerendered routes found");
+
 // ── Check 6: Trailing-slash canonical URLs ───────────────────────────────────
 console.log("\n6. Trailing-slash in canonical URL declarations:");
 let canonicalSlashFound = false;

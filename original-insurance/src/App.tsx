@@ -13,6 +13,7 @@ import { LenisContext } from "./lib/lenisContext";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
+import Locations from "./pages/Locations";
 import Contact from "./pages/Contact";
 import Faq from "./pages/Faq";
 import CityLanding from "./pages/CityLanding";
@@ -21,22 +22,23 @@ import SR22InsuranceDowney from "./pages/SR22InsuranceDowney";
 import NoLicenseInsuranceDowney from "./pages/NoLicenseInsuranceDowney";
 import CommercialAutoInsuranceDowney from "./pages/CommercialAutoInsuranceDowney";
 
-// Lazy load low-traffic / utility pages (acceptable CLS tradeoff, not prerendered entry points)
-const Locations = lazy(() => import("./pages/Locations"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+// All prerendered city pages are eagerly imported — lazy() + Suspense causes hydrateRoot
+// to de-opt to the LoadingFallback during hydration, replacing prerendered content and
+// producing a CLS spike that Google detects.
+import BellflowerPage from "./pages/insurance/Bellflower";
+import NorwalkPage from "./pages/insurance/Norwalk";
+import CerritosPage from "./pages/insurance/Cerritos";
+import LakewoodPage from "./pages/insurance/Lakewood";
+import LynwoodPage from "./pages/insurance/Lynwood";
+import ParamountPage from "./pages/insurance/Paramount";
+import SouthGatePage from "./pages/insurance/SouthGate";
+import WhittierPage from "./pages/insurance/Whittier";
+import PicoRiveraPage from "./pages/insurance/PicoRivera";
+import MontebelloPage from "./pages/insurance/Montebello";
+import CommercePage from "./pages/insurance/Commerce";
 
-// Individual localized city pages
-const BellflowerPage = lazy(() => import("./pages/insurance/Bellflower"));
-const NorwalkPage = lazy(() => import("./pages/insurance/Norwalk"));
-const CerritosPage = lazy(() => import("./pages/insurance/Cerritos"));
-const LakewoodPage = lazy(() => import("./pages/insurance/Lakewood"));
-const LynwoodPage = lazy(() => import("./pages/insurance/Lynwood"));
-const ParamountPage = lazy(() => import("./pages/insurance/Paramount"));
-const SouthGatePage = lazy(() => import("./pages/insurance/SouthGate"));
-const WhittierPage = lazy(() => import("./pages/insurance/Whittier"));
-const PicoRiveraPage = lazy(() => import("./pages/insurance/PicoRivera"));
-const MontebelloPage = lazy(() => import("./pages/insurance/Montebello"));
-const CommercePage = lazy(() => import("./pages/insurance/Commerce"));
+// NotFound is the only page that is NOT prerendered — lazy is fine here.
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 function useSmoothScroll() {
   const lenisRef = useRef<Lenis | null>(null);
