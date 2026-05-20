@@ -371,6 +371,16 @@ export default function AutoInsuranceDowneyCA() {
                 {site.contact.phone}
               </a>
             </p>
+            <p className="mt-3 text-white/50 text-sm">
+              Also see:{" "}
+              <NavLink to="/no-license-auto-insurance-downey" className="text-gold-300/80 hover:text-gold-200">
+                No-license &amp; foreign-license options
+              </NavLink>{" "}
+              ·{" "}
+              <NavLink to="/commercial-auto-insurance-downey" className="text-gold-300/80 hover:text-gold-200">
+                Commercial auto insurance
+              </NavLink>
+            </p>
           </Reveal>
         </div>
       </section>

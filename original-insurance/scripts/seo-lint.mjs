@@ -158,9 +158,20 @@ for (const city of sitemapCities) {
 }
 if (!cityMismatch) ok(`All ${EXPECTED_CITIES.length} cities in sitemap and homepage`);
 
-// ── Check 5: vercel.json redirect loop potential ─────────────────────────────
-console.log("\n5. vercel.json redirect rules (loop check):");
+// ── Check 5: vercel.json redirect loop potential + trailingSlash ─────────────
+console.log("\n5. vercel.json redirect rules (loop check + trailingSlash):");
 const vercelJson = JSON.parse(readFileSync(join(APP_DIR, "vercel.json"), "utf-8"));
+
+// trailingSlash: false causes Vercel to 308-redirect all trailing-slash URLs.
+// Google reports these as "Page with redirect" in GSC — a status that can never
+// be validated as fixed because the redirect is intentional and permanent.
+// Without this setting, both /about and /about/ return 200; canonical handles deduplication.
+if (vercelJson.trailingSlash === false) {
+  fail('vercel.json has "trailingSlash": false — this causes 308 redirects for trailing-slash URLs which Google reports as unvalidatable "Page with redirect" errors in GSC. Remove this key entirely.');
+} else {
+  ok('"trailingSlash" is not set to false (trailing-slash URLs will serve 200 with canonical)');
+}
+
 let loopFound = false;
 if (vercelJson.redirects) {
   for (const rule of vercelJson.redirects) {

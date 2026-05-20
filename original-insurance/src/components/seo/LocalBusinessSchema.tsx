@@ -54,6 +54,8 @@ export default function LocalBusinessSchema({
       "@type": "InsuranceAgency",
       "@id": "https://originalinsurance.net/#agency",
       name: "Original Insurance Services",
+      description: "Independent insurance broker in Downey, CA serving Southeast Los Angeles County since 1999. We compare 30+ carriers for auto, home, SR-22, commercial, and specialty insurance. Bilingual service in English, Spanish, and Arabic.",
+      foundingDate: "1999",
       url,
       telephone: "+1-310-538-8666",
       priceRange: "$$",
