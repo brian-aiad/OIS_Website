@@ -100,7 +100,11 @@ export default function PageHero({
               : "max-w-3xl"
           }
         >
-          <div>
+          <div className="relative">
+            <div
+              aria-hidden="true"
+              className="absolute -left-6 top-2 hidden h-40 w-px bg-gradient-to-b from-gold-300/0 via-gold-300/70 to-gold-300/0 md:block"
+            />
             {breadcrumb && (
               <nav className="mb-6 flex items-center gap-2 text-sm text-white/55">
                 <NavLink to="/" className="hover:text-white/90 transition-colors">
@@ -154,6 +158,18 @@ export default function PageHero({
             )}
 
             {children && <div className="mt-7">{children}</div>}
+
+            <div className="mt-8 grid max-w-xl grid-cols-1 gap-2 text-[12px] font-semibold text-white/75 sm:grid-cols-3">
+              {["30+ carrier market", "Downey office", "Same-day help"].map((item) => (
+                <span
+                  key={item}
+                  className="inline-flex items-center gap-2 rounded-xl bg-white/[0.07] px-3 py-2 ring-1 ring-white/10 backdrop-blur-sm"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-gold-400" />
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
 
           {heroAside && <div className="hidden lg:block">{heroAside}</div>}

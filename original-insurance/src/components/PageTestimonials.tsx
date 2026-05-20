@@ -1,3 +1,4 @@
+import { RevealOnScroll } from "../design-system";
 import { Stagger, StaggerChild } from "./AnimatedSection";
 
 const REVIEWS = [
@@ -32,7 +33,7 @@ export default function PageTestimonials({ tone = "offwhite" }: PageTestimonials
   return (
     <section className={`sp ${tone === "offwhite" ? "bg-slate-50" : "bg-white"}`}>
       <div className="container">
-        <div className="text-center mb-10">
+        <RevealOnScroll className="text-center mb-10">
           <span className="eyebrow">Client Stories</span>
           <h2 className="mt-3 display-2 text-slate-900">
             Downey families trust us for decades
@@ -40,18 +41,24 @@ export default function PageTestimonials({ tone = "offwhite" }: PageTestimonials
           <p className="mt-3 text-slate-500 max-w-lg mx-auto">
             We don't just sell policies — we build relationships. These are real words from long-term clients.
           </p>
-        </div>
+        </RevealOnScroll>
 
         <Stagger className="grid sm:grid-cols-3 gap-4">
           {REVIEWS.map((r, i) => (
             <StaggerChild key={r.name}>
-              <div className="bg-white rounded-2xl p-6 ring-1 ring-slate-200/80 shadow-soft h-full flex flex-col hover:shadow-lifted hover:ring-slate-300 transition-all">
-                <div className="flex gap-0.5 mb-3">
+              <div className="relative bg-white rounded-2xl p-6 ring-1 ring-slate-200/80 shadow-soft h-full flex flex-col hover:shadow-lifted hover:ring-brand-200 transition-all overflow-hidden">
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-700 via-gold-400 to-brand-700" aria-hidden="true" />
+                <div className="flex items-center justify-between gap-3 mb-4">
+                  <div className="flex gap-0.5">
                   {[...Array(5)].map((_, j) => (
                     <svg key={j} className="w-3.5 h-3.5 text-gold-400" viewBox="0 0 24 24" fill="currentColor">
                       <path d="m12 17.3 6 3.6-1.6-6.9 5.3-4.5-7-.6L12 2 9.3 8.9l-7 .6 5.3 4.5L6 20.9z" />
                     </svg>
                   ))}
+                  </div>
+                  <span className="grid h-8 w-8 place-items-center rounded-full bg-brand-50 text-lg font-serif text-brand-700 ring-1 ring-brand-100">
+                    &ldquo;
+                  </span>
                 </div>
                 <blockquote className="text-[14px] text-slate-600 leading-relaxed flex-1">
                   &ldquo;{r.quote}&rdquo;

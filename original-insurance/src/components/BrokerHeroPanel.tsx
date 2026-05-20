@@ -26,6 +26,19 @@ export default function BrokerHeroPanel() {
         A quote is only useful if the policy can actually protect you. We review the details carriers care about, then compare available options.
       </p>
 
+      <div className="mt-5 grid grid-cols-3 gap-2">
+        {[
+          ["30+", "Carriers"],
+          ["25+", "Years"],
+          ["3", "Languages"],
+        ].map(([value, label]) => (
+          <div key={label} className="rounded-xl bg-white/[0.06] px-3 py-3 text-center ring-1 ring-white/10">
+            <div className="text-lg font-extrabold tracking-tight text-white">{value}</div>
+            <div className="mt-0.5 text-[10px] font-semibold uppercase tracking-wider text-white/50">{label}</div>
+          </div>
+        ))}
+      </div>
+
       <div className="mt-5 grid gap-3">
         {REVIEW_ITEMS.map((item) => (
           <div key={item} className="flex items-center gap-3 rounded-xl bg-white/[0.06] px-3 py-2.5 ring-1 ring-white/10">

@@ -5,6 +5,7 @@ import Lenis from "lenis";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import ScrollProgress from "./components/ScrollProgress";
 import QuoteWidget from "./components/QuoteWidget";
 import { LenisContext } from "./lib/lenisContext";
 
@@ -100,6 +101,7 @@ export default function App() {
       <ScrollToTop />
 
       <div className="min-h-dvh flex flex-col bg-slate-50">
+        <ScrollProgress />
         <Navbar />
         <main className="flex-1">
           {/* initial={false} skips the entrance animation on first page load so the

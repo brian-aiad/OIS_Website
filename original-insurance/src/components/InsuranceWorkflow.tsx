@@ -1,7 +1,7 @@
 import { FileCheck2, Gauge, ShieldCheck } from "lucide-react";
 import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
-import { Card, Section, SectionHeader } from "../design-system";
+import { Card, RevealOnScroll, Section, SectionHeader } from "../design-system";
 
 const STEPS = [
   {
@@ -44,11 +44,15 @@ export default function InsuranceWorkflow({
       <div className="container">
         <div className="grid gap-10 lg:grid-cols-[1.1fr,0.9fr] lg:items-start">
           <div>
-            <SectionHeader eyebrow="Quote Process" title={title} lede={lede} />
-            <div className="mt-8 grid gap-4">
+            <RevealOnScroll>
+              <SectionHeader eyebrow="Quote Process" title={title} lede={lede} />
+            </RevealOnScroll>
+            <div className="relative mt-8 grid gap-4">
+              <div className="absolute left-[21px] top-8 bottom-8 hidden w-px bg-gradient-to-b from-brand-100 via-brand-200 to-brand-100 sm:block" aria-hidden="true" />
               {STEPS.map(({ title: stepTitle, text, Icon }, index) => (
-                <Card key={stepTitle} className="flex gap-4 p-5" hover>
-                  <div className="shrink-0 h-11 w-11 rounded-xl bg-brand-50 ring-1 ring-brand-100 grid place-items-center text-brand-700">
+                <RevealOnScroll key={stepTitle} delay={index * 0.05}>
+                <Card className="relative flex gap-4 p-5" hover>
+                  <div className="shrink-0 h-11 w-11 rounded-xl bg-brand-50 ring-1 ring-brand-100 grid place-items-center text-brand-700 shadow-xs">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -62,11 +66,14 @@ export default function InsuranceWorkflow({
                     <p className="mt-1 text-sm leading-relaxed text-slate-600">{text}</p>
                   </div>
                 </Card>
+                </RevealOnScroll>
               ))}
             </div>
           </div>
 
-          <Card variant="dark" className="text-white lg:sticky lg:top-28">
+          <RevealOnScroll direction="right" delay={0.1}>
+          <Card variant="dark" className="relative overflow-hidden text-white lg:sticky lg:top-28">
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-gold-300 via-gold-500 to-gold-300" aria-hidden="true" />
             <span className="eyebrow-light">Before You Call</span>
             <h3 className="mt-3 text-2xl font-bold tracking-tight">Have what you can. We can work with the rest.</h3>
             <p className="mt-3 text-sm leading-relaxed text-white/75">
@@ -93,6 +100,7 @@ export default function InsuranceWorkflow({
               </a>
             </div>
           </Card>
+          </RevealOnScroll>
         </div>
       </div>
     </Section>
