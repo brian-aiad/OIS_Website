@@ -8,6 +8,7 @@ import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema";
 import { Reveal, Stagger, StaggerChild } from "../../components/AnimatedSection";
 import StatsBar from "../../components/StatsBar";
 import PageTestimonials from "../../components/PageTestimonials";
+import InsuranceWorkflow from "../../components/InsuranceWorkflow";
 
 const canonical = "https://originalinsurance.net/insurance/south-gate";
 const areaServed = [
@@ -61,6 +62,12 @@ export default function SouthGatePage() {
       </PageHero>
 
       <StatsBar />
+
+      <InsuranceWorkflow
+        tone="offwhite"
+        title="How we quote South Gate coverage"
+        lede="We compare carrier fit for South Gate drivers, homeowners, renters, and businesses with clear next steps before you buy."
+      />
 
       {/* Section 1 — Auto Insurance in South Gate */}
       <section className="sp bg-white">

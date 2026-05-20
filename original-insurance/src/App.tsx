@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollProgress from "./components/ScrollProgress";
+import SectionNavigator from "./components/SectionNavigator";
 import QuoteWidget from "./components/QuoteWidget";
 import { LenisContext } from "./lib/lenisContext";
 
@@ -104,6 +105,7 @@ export default function App() {
         <ScrollProgress />
         <Navbar />
         <main className="flex-1">
+          <SectionNavigator />
           {/* initial={false} skips the entrance animation on first page load so the
               prerendered content is never hidden by opacity:0 during hydration.
               SPA navigations (key changes) still animate normally. */}

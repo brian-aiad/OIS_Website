@@ -8,6 +8,7 @@ import BreadcrumbSchema from "../../components/seo/BreadcrumbSchema";
 import { Reveal, Stagger, StaggerChild } from "../../components/AnimatedSection";
 import StatsBar from "../../components/StatsBar";
 import PageTestimonials from "../../components/PageTestimonials";
+import InsuranceWorkflow from "../../components/InsuranceWorkflow";
 
 const canonical = "https://originalinsurance.net/insurance/commerce";
 const areaServed = [
@@ -60,6 +61,12 @@ export default function CommercePage() {
       </PageHero>
 
       <StatsBar />
+
+      <InsuranceWorkflow
+        tone="offwhite"
+        title="How we quote Commerce coverage"
+        lede="We compare carrier fit for Commerce drivers, homeowners, renters, and businesses with clear next steps before you buy."
+      />
 
       {/* Section 1 — Auto Insurance in Commerce */}
       <section className="sp bg-white">

@@ -52,14 +52,35 @@ const STATS = [
 
 export default function StatsBar() {
   return (
-    <div className="bg-brand-950 border-t border-brand-900">
-      <div className="container py-6">
-        <Stagger className="grid grid-cols-2 md:grid-cols-4 gap-px bg-brand-800/40 rounded-2xl overflow-hidden">
+    <div className="relative overflow-hidden bg-brand-950 border-t border-brand-900">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 opacity-[0.08]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,.65) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.65) 1px, transparent 1px)",
+          backgroundSize: "44px 44px",
+        }}
+      />
+      <div className="container relative py-7">
+        <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <span className="eyebrow-light">Brokerage Snapshot</span>
+            <p className="mt-1 text-sm text-white/55">Local service, multi-carrier leverage, real support after binding.</p>
+          </div>
+          <span className="hidden text-[11px] font-semibold uppercase tracking-widest text-gold-300/80 sm:inline">
+            Original Insurance Services
+          </span>
+        </div>
+        <Stagger className="grid grid-cols-2 md:grid-cols-4 gap-2">
           {STATS.map((s) => (
             <StaggerChild key={s.label}>
-              <div className="bg-brand-950 px-6 py-5 flex items-center gap-4">
-                <div className="shrink-0 w-10 h-10 rounded-xl bg-brand-800/60 ring-1 ring-brand-700/60 grid place-items-center text-gold-400">
-                  {s.icon}
+              <div className="group h-full rounded-2xl bg-white/[0.055] px-4 py-4 ring-1 ring-white/10 backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/[0.075] hover:ring-gold-300/30 sm:px-5 sm:py-5">
+                <div className="mb-4 flex items-center justify-between gap-3">
+                  <div className="shrink-0 w-10 h-10 rounded-xl bg-brand-800/70 ring-1 ring-brand-700/70 grid place-items-center text-gold-400 transition-transform duration-200 group-hover:scale-105">
+                    {s.icon}
+                  </div>
+                  <span className="h-px flex-1 bg-white/10" />
                 </div>
                 <div>
                   <div className="text-2xl font-extrabold text-white tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
