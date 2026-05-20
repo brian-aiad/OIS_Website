@@ -35,15 +35,18 @@ done
 
 echo ""
 
-# ── Trailing-slash variants redirect 308 ─────────────────────────────────────
-echo "Trailing-slash redirects (expected 308):"
+# ── Trailing-slash variants return 200 with canonical (no redirect) ───────────
+# trailingSlash is not set, so both /about and /about/ serve 200.
+# Google deduplicates via canonical tag rather than following a redirect.
+# This eliminates unvalidatable "Page with redirect" GSC errors.
+echo "Trailing-slash URLs (expected 200 — canonical handles dedup, no GSC redirect error):"
 for url in /about/ /services/ /locations/ /contact/ /faq/ \
            /insurance/downey/ /insurance/bellflower/ /insurance/cerritos/; do
   code=$(curl -so /dev/null -w "%{http_code}" "${PROD}${url}")
-  if [[ "$code" == "308" ]]; then
+  if [[ "$code" == "200" ]]; then
     ok "$code  $url"
   else
-    fail "$code  $url  (expected 308)"
+    fail "$code  $url  (expected 200, got redirect — check vercel.json trailingSlash)"
   fi
 done
 
