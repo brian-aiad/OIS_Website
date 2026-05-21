@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { usePageMeta } from "../../lib/seo";
 import { openQuoteModal } from "../../lib/openQuote";
 import { site } from "../../lib/site";
@@ -48,7 +48,7 @@ export default function CommercePage() {
         title="Auto Insurance in City of Commerce, CA"
         subtitle="Commercial and personal auto insurance for City of Commerce businesses and residents — 30+ carriers, same-day SR-22, bilingual service."
         breadcrumb="Commerce"
-        backgroundImage="/images/heroTeam.webp"
+        backgroundImage="/images/hero-friendly-handshake.webp"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent">

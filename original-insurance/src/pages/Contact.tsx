@@ -94,7 +94,9 @@ export default function Contact() {
         title="We're here to help"
         subtitle="Questions about coverage? Need help with a claim? Reach out — real people, real answers."
         breadcrumb="Contact"
-        backgroundImage="/images/handshake.webp"
+        backgroundImage="/images/ois-contact-front-desk.webp"
+        imageFilter="contrast(1.05) saturate(0.88) brightness(0.78)"
+        imagePosition="center"
       />
 
       <StatsBar />

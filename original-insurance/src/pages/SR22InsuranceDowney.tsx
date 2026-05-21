@@ -10,6 +10,7 @@ import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
 import StatsBar from "../components/StatsBar";
 import PageTestimonials from "../components/PageTestimonials";
+import { ConsultationImage } from "../components/ConsultationImage";
 
 const SR22_FAQS = [
   { q: "How long do I need SR-22 in California?", a: "California requires SR-22 for 3 continuous years from license reinstatement. Any policy lapse or cancellation resets the clock with the DMV." },
@@ -42,7 +43,9 @@ export default function SR22InsuranceDowney() {
         breadcrumb="SR-22 Insurance Downey"
         badgeText="Same-Day Electronic Filing"
         badgeType="open"
-        backgroundImage="/images/heroTeam.webp"
+        backgroundImage="/images/product-sr22-filing.webp"
+        imageFilter="contrast(1.06) saturate(0.9) brightness(0.78)"
+        imagePosition="center"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent btn-lg">
@@ -79,8 +82,37 @@ export default function SR22InsuranceDowney() {
         </div>
       </section>
 
-      {/* Who needs SR-22 */}
+      {/* Consultation image — SR-22 filing expertise */}
       <section className="sp bg-slate-50">
+        <div className="container max-w-6xl">
+          <ConsultationImage
+            image="/images/ois-sr22-filing-consultation.webp"
+            alt="Original Insurance broker in Downey, CA reviewing SR-22 filing documents with client and coordinating same-day electronic DMV submission"
+            eyebrow="Serving Downey Since 1999"
+            heading="SR-22 specialists who know the CA DMV process inside out"
+            imageLeft
+            badge="Same-day electronic filing"
+            stats={[
+              { value: "Same day", label: "Filing speed" },
+              { value: "$15–$25", label: "Filing fee" },
+              { value: "3 years", label: "CA requirement" },
+            ]}
+            body={
+              <>
+                <p className="text-lg leading-relaxed">
+                  Our team has filed thousands of SR-22 certificates with the California DMV across 25 years in Downey. We know which carriers accept high-risk drivers at the most competitive rates — and which ones file the fastest after binding.
+                </p>
+                <p className="leading-relaxed">
+                  Walk in without an appointment. Most clients leave with written proof of SR-22 filing the same day. We explain the 3-year continuous coverage requirement clearly and monitor your policy so no lapse restarts the clock. Service in English, Spanish, and Arabic.
+                </p>
+              </>
+            }
+          />
+        </div>
+      </section>
+
+      {/* Who needs SR-22 */}
+      <section className="sp bg-white">
         <div className="container max-w-5xl">
           <Reveal className="text-center mb-10">
             <span className="eyebrow">SR-22 Triggers</span>

@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { usePageMeta } from "../../lib/seo";
 import { openQuoteModal } from "../../lib/openQuote";
 import { site } from "../../lib/site";
@@ -49,7 +49,7 @@ export default function WhittierPage() {
         title="Auto Insurance in Whittier, CA"
         subtitle="From Uptown Whittier to East Whittier — independent insurance broker comparing 30+ carriers for auto, home, and SR-22 filing needs."
         breadcrumb="Whittier"
-        backgroundImage="/images/heroTeam.webp"
+        backgroundImage="/images/hero-friendly-handshake.webp"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent">

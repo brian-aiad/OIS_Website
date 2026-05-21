@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { usePageMeta } from "../../lib/seo";
 import { openQuoteModal } from "../../lib/openQuote";
 import { site } from "../../lib/site";
@@ -49,7 +49,7 @@ export default function CerritosPage() {
         title="Auto Insurance in Cerritos, CA"
         subtitle="Comparing 30+ carriers for Cerritos homeowners, drivers, and business owners — bilingual English, Spanish, and Arabic service since 1999."
         breadcrumb="Auto Insurance Cerritos"
-        backgroundImage="/images/heroTeam.webp"
+        backgroundImage="/images/hero-friendly-handshake.webp"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent">

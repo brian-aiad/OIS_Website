@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { usePageMeta } from "../../lib/seo";
 import { openQuoteModal } from "../../lib/openQuote";
 import { site } from "../../lib/site";
@@ -49,7 +49,7 @@ export default function ParamountPage() {
         title="Auto Insurance in Paramount, CA"
         subtitle="Our Downey office sits right on Paramount Blvd — Paramount residents get the fastest walk-in service and same-day SR-22 filings from 30+ carriers."
         breadcrumb="Paramount"
-        backgroundImage="/images/heroTeam.webp"
+        backgroundImage="/images/hero-friendly-handshake.webp"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent">

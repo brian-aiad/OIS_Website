@@ -10,6 +10,7 @@ import { Icons } from "../components/Icons";
 import { Car, Home, Heart, Building2, Bike, FileText } from "lucide-react";
 import { CTASection, Section, SectionHeader } from "../design-system";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
+import StatsBar from "../components/StatsBar";
 
 /**
  * Per-city landing pages for local SEO. Each city gets a unique URL,
@@ -190,7 +191,7 @@ export default function CityLanding() {
         title={`Insurance Broker in ${city.name}, CA`}
         subtitle={`Independent coverage from 30+ carriers — serving ${city.name} since 1999.`}
         breadcrumb={city.name}
-        backgroundImage="/images/heroTeam.webp"
+        backgroundImage="/images/hero-friendly-handshake.webp"
       >
         <div className="flex flex-wrap gap-3">
           <a href={site.contact.phoneHref} className="btn btn-accent">
@@ -202,6 +203,8 @@ export default function CityLanding() {
           </button>
         </div>
       </PageHero>
+
+      <StatsBar />
 
       {/* Downey hub — popular insurance needs */}
       {isDowney && (

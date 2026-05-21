@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { usePageMeta } from "../../lib/seo";
 import { openQuoteModal } from "../../lib/openQuote";
 import { site } from "../../lib/site";
@@ -49,7 +49,7 @@ export default function PicoRiveraPage() {
         title="Auto Insurance in Pico Rivera, CA"
         subtitle="Comparing top California carriers for Pico Rivera drivers — independent broker service in English, Spanish, and Arabic since 1999."
         breadcrumb="Pico Rivera"
-        backgroundImage="/images/heroTeam.webp"
+        backgroundImage="/images/hero-friendly-handshake.webp"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent">

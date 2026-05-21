@@ -15,6 +15,79 @@ body {
 ::selection { background: #dbeafe; color: #0f172a; }
 :focus-visible { outline: none; box-shadow: 0 0 0 2px #fff, 0 0 0 4px #3b82f6; }
 
+/* Shared polish layer */
+.reveal-surface {
+  will-change: opacity, transform, filter;
+}
+
+.page-hero {
+  min-height: clamp(560px, 72vh, 760px);
+}
+
+.page-hero > img {
+  transform: scale(1.02);
+  animation: hero-photo-drift 18s ease-in-out infinite alternate;
+}
+
+.page-hero nav a,
+.page-hero .btn,
+.hero-mesh .btn {
+  text-shadow: none;
+}
+
+.page-hero h1 {
+  text-wrap: balance;
+}
+
+.hero-copy-enter {
+  animation: hero-copy-enter 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-aside-enter {
+  animation: hero-aside-enter 820ms cubic-bezier(0.16, 1, 0.3, 1) 90ms both;
+}
+
+.page-hero p,
+.display-2,
+.display-3 {
+  text-wrap: balance;
+}
+
+.bg-white.rounded-2xl,
+.bg-slate-50.rounded-2xl {
+  transition:
+    transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bg-white.rounded-2xl.ring-1,
+.bg-slate-50.rounded-2xl.ring-1 {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 14px 36px -30px rgba(15, 23, 42, 0.38);
+}
+
+.bg-white.rounded-2xl.ring-1:hover,
+a.bg-white.rounded-2xl.ring-1:hover,
+button.bg-white.rounded-2xl.ring-1:hover {
+  border-color: rgba(96, 165, 250, 0.35);
+}
+
+@keyframes hero-photo-drift {
+  from { transform: scale(1.02) translate3d(0, 0, 0); }
+  to { transform: scale(1.07) translate3d(-1.25%, -0.75%, 0); }
+}
+
+@keyframes hero-copy-enter {
+  from { opacity: 0; transform: translate3d(0, 18px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes hero-aside-enter {
+  from { opacity: 0; transform: translate3d(24px, 0, 0) scale(0.98); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
 
 @layer components {
   /* ─── Buttons ─── */
@@ -123,16 +196,47 @@ body {
 .sp-sm {
   position: relative;
   isolation: isolate;
+  overflow: hidden;
 }
 
 .sp > .container,
 .sp-sm > .container {
   position: relative;
+  z-index: 1;
 }
 
 .sp.bg-white + .sp.bg-white,
 .sp.bg-slate-50 + .sp.bg-slate-50 {
   border-top: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+.sp.bg-white::before,
+.sp-sm.bg-white::before,
+.sp.bg-slate-50::before,
+.sp-sm.bg-slate-50::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sp.bg-white::before,
+.sp-sm.bg-white::before {
+  background:
+    linear-gradient(180deg, rgba(248, 250, 252, 0), rgba(248, 250, 252, 0.65) 100%),
+    linear-gradient(90deg, rgba(219, 234, 254, 0.18) 1px, transparent 1px);
+  background-size: auto, 88px 88px;
+  opacity: 0.46;
+}
+
+.sp.bg-slate-50::before,
+.sp-sm.bg-slate-50::before {
+  background:
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
 }
 
 .sp .container.max-w-4xl > div > h2,
@@ -163,6 +267,11 @@ body {
   margin-top: 1rem;
 }
 
+.prose.prose-slate > p:not(:first-of-type) {
+  padding-left: 1rem;
+  border-left: 2px solid rgba(226, 232, 240, 0.9);
+}
+
 .prose.prose-slate > p:first-of-type {
   margin-top: 0;
   border-radius: 1rem;
@@ -183,6 +292,13 @@ body {
   font-weight: 650;
   text-decoration-thickness: 0.08em;
   text-underline-offset: 0.18em;
+}
+
+.prose.prose-invert > p:first-of-type {
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 1.15rem 1.25rem;
 }
 
 @media (min-width: 1024px) {
@@ -303,6 +419,11 @@ body {
   box-shadow: 0 16px 48px -8px rgba(0, 0, 0, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.06);
 }
 
+.shadow-soft:hover,
+.shadow-lifted:hover {
+  box-shadow: 0 18px 50px -24px rgba(15, 23, 42, 0.45), 0 8px 20px -18px rgba(15, 23, 42, 0.3);
+}
+
 /* ─── Link underline animation ─── */
 .link-underline {
   position: relative;
@@ -365,7 +486,84 @@ body {
   }
 }
 
+/* ─── Shimmer sweep on accent buttons ─── */
+@keyframes shimmer-slide {
+  0%   { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(220%) skewX(-15deg); }
+}
+.btn-accent::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 36%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  animation: shimmer-slide 3s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* ─── Slow rotation for decorative SVG rings ─── */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 28s linear infinite;
+}
+
+/* ─── Gold glow pulse for key CTAs ─── */
+@keyframes glow-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0); }
+  50%       { box-shadow: 0 0 20px 5px rgba(245,158,11,0.22); }
+}
+.animate-glow-gold {
+  animation: glow-gold 3.5s ease-in-out infinite;
+}
+
+/* ─── Morphing blob shape ─── */
+@keyframes blob-morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  33%       { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  66%       { border-radius: 50% 50% 60% 40% / 40% 60% 50% 60%; }
+}
+.animate-blob {
+  animation: blob-morph 10s ease-in-out infinite;
+}
+
+/* ─── Gradient text — gold ─── */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #f59e0b 0%, #fcd34d 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Subtle reveal-line under section dividers ─── */
+.section-rule {
+  width: 48px;
+  height: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #f59e0b, rgba(245,158,11,0));
+  margin-top: 1rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .page-hero > img {
+    animation: none;
+    transform: none;
+  }
+
+  .hero-copy-enter,
+  .hero-aside-enter {
+    animation: none;
+  }
+
+  .btn-accent::after {
+    animation: none;
+    display: none;
+  }
+
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

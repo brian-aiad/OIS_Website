@@ -9,6 +9,7 @@ import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
 import StatsBar from "../components/StatsBar";
 import PageTestimonials from "../components/PageTestimonials";
+import { ConsultationImage } from "../components/ConsultationImage";
 
 const AUTO_FAQS = [
   { q: "How much does car insurance cost in Downey, CA?", a: "Most Downey drivers pay $80–$180 per month depending on driving record, vehicle type, coverage level, and ZIP code. Rates vary significantly by carrier." },
@@ -49,7 +50,9 @@ export default function AutoInsuranceDowneyCA() {
         subtitle="Auto insurance in Downey should be simple. We compare 30+ carriers for liability, full coverage, SR-22 filings, and no-license or international-license situations so you can choose the right price and protection without calling five different companies."
         breadcrumb="Auto Insurance Downey"
         badgeText="Same-Day Quotes Available"
-        backgroundImage="/images/heroTeam.webp"
+        backgroundImage="/images/product-auto-insurance.webp"
+        imageFilter="contrast(1.06) saturate(0.92) brightness(0.8)"
+        imagePosition="center"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent btn-lg">
@@ -175,8 +178,36 @@ export default function AutoInsuranceDowneyCA() {
         </div>
       </section>
 
+      {/* Consultation image — independent broker advantage */}
+      <section className="sp bg-white">
+        <div className="container max-w-6xl">
+          <ConsultationImage
+            image="/images/ois-auto-consultation.webp"
+            alt="Independent insurance broker at Original Insurance in Downey, CA comparing auto insurance rates across 30+ carriers side by side for client"
+            eyebrow="Independent Broker Advantage"
+            heading="One conversation. Thirty carrier quotes. Best rate for your situation."
+            badge="Walk-ins welcome · No appointment needed"
+            stats={[
+              { value: "30+", label: "Carriers quoted" },
+              { value: "10 min", label: "Avg. quote time" },
+              { value: "Same day", label: "ID card issued" },
+            ]}
+            body={
+              <>
+                <p className="text-lg leading-relaxed">
+                  A captive agent shows you one company's prices. We show you 30+. That difference matters most when your situation is non-standard — SR-22 requirement, foreign license, prior lapse, or a financed vehicle with strict lender requirements.
+                </p>
+                <p className="leading-relaxed">
+                  Our office at 9907-B Paramount Blvd, Downey is open Monday through Friday, 10 AM to 5:30 PM. Walk in, get covered, and drive away with same-day proof of insurance. We serve in English, Spanish, and Arabic.
+                </p>
+              </>
+            }
+          />
+        </div>
+      </section>
+
       {/* Section 3: SR-22 */}
-      <section id="sr22" className="sp bg-white">
+      <section id="sr22" className="sp bg-slate-50">
         <div className="container max-w-4xl">
           <Reveal>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6" style={{ fontFamily: "var(--font-display)" }}>

@@ -104,7 +104,7 @@ export default function App() {
       <div className="min-h-dvh flex flex-col bg-slate-50">
         <ScrollProgress />
         <Navbar />
-        <main className="flex-1">
+        <div className="flex-1">
           <SectionNavigator />
           {/* initial={false} skips the entrance animation on first page load so the
               prerendered content is never hidden by opacity:0 during hydration.
@@ -148,7 +148,7 @@ export default function App() {
               </Suspense>
             </motion.div>
           </AnimatePresence>
-        </main>
+        </div>
         <Footer />
       </div>
 

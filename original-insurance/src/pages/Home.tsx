@@ -344,7 +344,7 @@ function ServicesMasonry() {
   };
 
   return (
-    <section className="sp" style={{ background: "var(--surface-gray)" }} id="main-content">
+    <section className="sp" style={{ background: "var(--surface-gray)" }}>
       <div className="container">
         <Reveal>
           <span className="eyebrow">What We Cover</span>
@@ -502,10 +502,10 @@ function AboutSplit() {
           <Reveal direction="left" className="relative">
             <div className="rounded-3xl overflow-hidden shadow-heavy ring-1 ring-slate-100 aspect-[4/3]">
               <img
-                src={images.about.handshake}
-                srcSet={srcset(images.about.handshake)}
+                src={images.about.consultation}
+                srcSet={srcset(images.about.consultation)}
                 sizes="(max-width: 1024px) 100vw, 600px"
-                alt="Original Insurance broker shaking hands with a new client in Downey, CA"
+                alt="Original Insurance broker reviewing coverage options with Downey clients"
                 className="h-full w-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -590,6 +590,19 @@ function Testimonials() {
             </p>
 
             <div className="mt-6 bg-brand-900 rounded-2xl p-7 text-white ring-1 ring-brand-800 relative overflow-hidden">
+              <div className="-mx-7 -mt-7 mb-5 h-44 overflow-hidden bg-brand-950">
+                <img
+                  src={images.clients.consultation}
+                  srcSet={srcset(images.clients.consultation)}
+                  sizes="(max-width: 1024px) 100vw, 420px"
+                  alt="Insurance broker reviewing auto policy choices with a client"
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                  width={800}
+                  height={450}
+                />
+              </div>
               {/* Decorative open quote */}
               <span
                 aria-hidden
@@ -599,6 +612,7 @@ function Testimonials() {
                   fontSize: "110px",
                   lineHeight: 1,
                   color: "rgba(245,166,35,0.18)",
+                  top: "150px",
                 }}
               >
                 &ldquo;
@@ -956,7 +970,7 @@ export default function Home() {
 
 
   return (
-    <>
+    <main id="main-content">
       <LocalBusinessSchema />
       <StickyRibbon />
       <Hero />
@@ -981,6 +995,6 @@ export default function Home() {
         lede="Get a personalized quote from a licensed Downey broker. Call, text, or start online."
         secondaryLabel={`Call ${site.contact.phone}`}
       />
-    </>
+    </main>
   );
 }

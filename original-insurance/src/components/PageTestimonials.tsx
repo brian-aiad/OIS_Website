@@ -1,4 +1,5 @@
 import { RevealOnScroll } from "../design-system";
+import { images, srcset } from "../lib/images";
 import { Stagger, StaggerChild } from "./AnimatedSection";
 
 const REVIEWS = [
@@ -6,16 +7,22 @@ const REVIEWS = [
     quote: "I've trusted Aiman for over 23 years — auto, home, fire. He always finds the best rates.",
     name: "RiRi M.",
     tenure: "23+ years",
+    image: images.clients.officeConsultation,
+    alt: "Insurance broker consultation with local Downey clients",
   },
   {
     quote: "The best ever. Very helpful, I've been with them for about 20 years. You won't find a more friendly company.",
     name: "Sheila R.",
     tenure: "20+ years",
+    image: images.clients.consultation,
+    alt: "Original Insurance broker reviewing coverage with a client",
   },
   {
     quote: "I've been a loyal customer for over ten years. Their customer service is consistently amazing.",
     name: "Sameh E.",
     tenure: "10+ years",
+    image: images.clients.commercialReview,
+    alt: "Commercial auto insurance review with an Original Insurance broker",
   },
 ];
 
@@ -48,6 +55,19 @@ export default function PageTestimonials({ tone = "offwhite" }: PageTestimonials
             <StaggerChild key={r.name}>
               <div className="relative bg-white rounded-2xl p-6 ring-1 ring-slate-200/80 shadow-soft h-full flex flex-col hover:shadow-lifted hover:ring-brand-200 transition-all overflow-hidden">
                 <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-700 via-gold-400 to-brand-700" aria-hidden="true" />
+                <div className="-mx-6 -mt-6 mb-5 aspect-[16/10] overflow-hidden bg-slate-100">
+                  <img
+                    src={r.image}
+                    srcSet={srcset(r.image)}
+                    sizes="(max-width: 640px) 100vw, 33vw"
+                    alt={r.alt}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    width={640}
+                    height={400}
+                  />
+                </div>
                 <div className="flex items-center justify-between gap-3 mb-4">
                   <div className="flex gap-0.5">
                   {[...Array(5)].map((_, j) => (

@@ -9,6 +9,7 @@ import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
 import StatsBar from "../components/StatsBar";
 import PageTestimonials from "../components/PageTestimonials";
+import { ConsultationImage } from "../components/ConsultationImage";
 
 const COMMERCIAL_FAQS = [
   { q: "What is commercial auto insurance?", a: "Commercial auto insurance covers vehicles used for business, including delivery vehicles, work trucks, and company cars not covered by personal auto policies." },
@@ -76,7 +77,9 @@ export default function CommercialAutoInsuranceDowneyPage() {
         title="Commercial Auto Insurance in Downey, CA"
         subtitle="Protect your trucks, vans, and business vehicles without shopping five carriers yourself. We compare 30+ commercial auto markets for Downey-area owner-operators, small fleets, and local businesses — same-day proof of insurance when you need it."
         breadcrumb="Commercial Auto"
-        backgroundImage="/images/heroTeam.webp"
+        backgroundImage="/images/product-commercial-auto-insurance.webp"
+        imageFilter="contrast(1.06) saturate(0.9) brightness(0.78)"
+        imagePosition="center"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent btn-lg">
@@ -219,6 +222,34 @@ export default function CommercialAutoInsuranceDowneyPage() {
               </p>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Consultation image — commercial coverage specialist */}
+      <section className="sp bg-white">
+        <div className="container max-w-6xl">
+          <ConsultationImage
+            image="/images/ois-commercial-auto-consultation.webp"
+            alt="Commercial auto insurance broker at Original Insurance in Downey, CA reviewing fleet vehicle coverage and business policy options with small business owner"
+            eyebrow="Commercial Auto Specialists · Downey CA"
+            heading="Commercial auto quoting that starts with your business, not a form"
+            badge="Fleet · Single vehicle · NEMT · Delivery"
+            stats={[
+              { value: "30+", label: "Commercial markets" },
+              { value: "Same day", label: "COI available" },
+              { value: "25+", label: "Years experience" },
+            ]}
+            body={
+              <>
+                <p className="text-lg leading-relaxed">
+                  Commercial auto is not one-size-fits-all. A single contractor pickup needs entirely different coverage than a three-van HVAC fleet or a food truck operation. We open with questions about your operation before we touch a quote form.
+                </p>
+                <p className="leading-relaxed">
+                  We have access to specialty commercial markets most standard agents don't — including NEMT operators, for-hire vehicles, and non-owner commercial policies for businesses that use employee vehicles. Certificates of insurance available same day when binding allows.
+                </p>
+              </>
+            }
+          />
         </div>
       </section>
 

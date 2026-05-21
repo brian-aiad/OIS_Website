@@ -1,5 +1,6 @@
 // TODO: replace count prop value at mount site with real GBP review count
 // Search for data-verify="gbp-review-count" to find all mount points
+import { useId } from "react";
 
 interface ReviewBadgeProps {
   rating?: number;
@@ -8,7 +9,7 @@ interface ReviewBadgeProps {
 }
 
 function StarIcon({ fill, size }: { fill: number; size: number }) {
-  const id = `star-grad-${Math.random().toString(36).slice(2, 7)}`;
+  const id = `star-grad-${useId().replace(/:/g, "")}`;
   return (
     <svg
       width={size}

@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { usePageMeta } from "../../lib/seo";
 import { openQuoteModal } from "../../lib/openQuote";
 import { site } from "../../lib/site";
@@ -49,7 +49,7 @@ export default function MontebelloPage() {
         title="Auto Insurance in Montebello, CA"
         subtitle="Independent insurance broker serving Montebello commuters and families — multilingual English, Spanish, and Arabic support from our Downey office."
         breadcrumb="Montebello"
-        backgroundImage="/images/heroTeam.webp"
+        backgroundImage="/images/hero-friendly-handshake.webp"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent">

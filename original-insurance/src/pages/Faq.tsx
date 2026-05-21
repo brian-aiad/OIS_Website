@@ -174,7 +174,8 @@ export default function Faq() {
         title="Downey Auto Insurance FAQ"
         subtitle="Straight answers for Downey drivers about car insurance cost, SR-22, no-license options, proof of insurance, and claims help."
         breadcrumb="FAQ"
-        backgroundImage="/images/heroTeam.webp"
+        backgroundImage="/images/claimsDocs.webp"
+        imageFilter="contrast(1.08) saturate(0.82) brightness(0.82)"
       >
         <div className="flex flex-wrap gap-3">
           <a href={site.contact.phoneHref} className="btn btn-accent">

@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { usePageMeta } from "../../lib/seo";
 import { openQuoteModal } from "../../lib/openQuote";
 import { site } from "../../lib/site";
@@ -51,7 +51,7 @@ export default function BellflowerPage() {
         title="Auto Insurance in Bellflower, CA"
         subtitle="Independent auto and home coverage for Bellflower families — comparing 30+ carriers since 1999. Just minutes south of Downey via Lakewood Blvd."
         breadcrumb="Bellflower"
-        backgroundImage="/images/heroTeam.webp"
+        backgroundImage="/images/hero-friendly-handshake.webp"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent">

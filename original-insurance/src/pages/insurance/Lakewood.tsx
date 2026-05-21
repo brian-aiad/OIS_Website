@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { usePageMeta } from "../../lib/seo";
 import { openQuoteModal } from "../../lib/openQuote";
 import { site } from "../../lib/site";
@@ -49,7 +49,7 @@ export default function LakewoodPage() {
         title="Auto Insurance in Lakewood, CA"
         subtitle="Helping Lakewood homeowners bundle home and auto for real savings — comparing 30+ top carriers from our Downey office."
         breadcrumb="Auto Insurance Lakewood"
-        backgroundImage="/images/heroTeam.webp"
+        backgroundImage="/images/hero-friendly-handshake.webp"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent">

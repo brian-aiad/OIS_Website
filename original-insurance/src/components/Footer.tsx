@@ -145,25 +145,29 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Service Areas (top 8 + link) */}
+          {/* Column 4: Service Areas */}
           <div>
             <h4 className="text-[11px] font-bold uppercase tracking-widest text-white/60 mb-4">Service Areas</h4>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5 text-sm lg:grid-cols-1">
               {[
                 { name: "Downey",       slug: "downey" },
-                { name: "Bellflower",   slug: "bellflower" },
-                { name: "Cerritos",     slug: "cerritos" },
-                { name: "Lakewood",     slug: "lakewood" },
                 { name: "Norwalk",      slug: "norwalk" },
+                { name: "Bellflower",   slug: "bellflower" },
+                { name: "Lynwood",      slug: "lynwood" },
+                { name: "Cerritos",     slug: "cerritos" },
+                { name: "Whittier",     slug: "whittier" },
+                { name: "Lakewood",     slug: "lakewood" },
                 { name: "Paramount",    slug: "paramount" },
                 { name: "South Gate",   slug: "south-gate" },
-                { name: "Whittier",     slug: "whittier" },
+                { name: "Pico Rivera",  slug: "pico-rivera" },
+                { name: "Montebello",   slug: "montebello" },
+                { name: "Commerce",     slug: "commerce" },
               ].map((city) => (
                 <li key={city.slug}>
                   <Link to={`/insurance/${city.slug}`} className="hover:text-white transition-colors">{city.name}</Link>
                 </li>
               ))}
-              <li className="pt-1">
+              <li className="col-span-2 pt-1 lg:col-span-1">
                 <Link to="/locations" className="text-gold-400/80 hover:text-gold-300 transition-colors text-[12px]">
                   All service areas
                 </Link>

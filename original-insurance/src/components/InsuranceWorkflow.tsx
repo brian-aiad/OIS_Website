@@ -47,6 +47,15 @@ export default function InsuranceWorkflow({
             <RevealOnScroll>
               <SectionHeader eyebrow="Quote Process" title={title} lede={lede} />
             </RevealOnScroll>
+            <RevealOnScroll delay={0.04}>
+              <div className="mt-5 flex flex-wrap gap-2 text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                {["No pressure", "Carrier-by-carrier comparison", "Clear next steps"].map((item) => (
+                  <span key={item} className="rounded-full bg-white px-3 py-1.5 ring-1 ring-slate-200/80 shadow-xs">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </RevealOnScroll>
             <div className="relative mt-8 grid gap-4">
               <div className="absolute left-[21px] top-8 bottom-8 hidden w-px bg-gradient-to-b from-brand-100 via-brand-200 to-brand-100 sm:block" aria-hidden="true" />
               {STEPS.map(({ title: stepTitle, text, Icon }, index) => (

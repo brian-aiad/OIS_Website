@@ -17,12 +17,8 @@ const app = (
   </React.StrictMode>
 );
 
-// hydrateRoot when prerendered HTML is present (production prerender deploy) so React
-// preserves the existing DOM during lazy-chunk loading instead of collapsing to the
-// Suspense fallback and causing a CLS spike. Falls back to createRoot in dev mode or
-// when the SPA shell is served without prerendering.
-if (rootEl.hasChildNodes()) {
-  ReactDOM.hydrateRoot(rootEl, app);
-} else {
-  ReactDOM.createRoot(rootEl).render(app);
-}
+// The local prerender step snapshots the fully rendered browser DOM after scroll
+// and entrance animations have settled. Hydrating that post-animation HTML creates
+// React 418 mismatches, so the client mounts cleanly while crawlers still receive
+// route-specific static HTML.
+ReactDOM.createRoot(rootEl).render(app);

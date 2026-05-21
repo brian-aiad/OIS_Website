@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { usePageMeta } from "../../lib/seo";
 import { openQuoteModal } from "../../lib/openQuote";
 import { site } from "../../lib/site";
@@ -49,7 +49,7 @@ export default function SouthGatePage() {
         title="Auto Insurance in South Gate, CA"
         subtitle="Bilingual auto, home, and SR-22 insurance for South Gate families — comparing 30+ top California carriers with English, Spanish, and Arabic service."
         breadcrumb="South Gate"
-        backgroundImage="/images/heroTeam.webp"
+        backgroundImage="/images/hero-friendly-handshake.webp"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent">

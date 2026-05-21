@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { site } from "../../lib/site";
 
 interface LocalBusinessSchemaProps {
   /** Override the page URL (defaults to homepage) */
@@ -59,13 +60,23 @@ export default function LocalBusinessSchema({
       url,
       telephone: "+1-310-538-8666",
       priceRange: "$$",
-      image: "https://originalinsurance.net/og-image.png",
+      image: [
+        "https://originalinsurance.net/og-image.png",
+        "https://originalinsurance.net/images/office-client-consultation.webp",
+        "https://originalinsurance.net/images/broker-client-consultation.webp",
+      ],
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: site.reviews.rating,
+        reviewCount: site.reviews.count,
+        bestRating: 5,
+        worstRating: 1,
+      },
       contactPoint: [
         {
           "@type": "ContactPoint",
           telephone: "+1-310-538-8666",
           contactType: "customer service",
-          contactOption: "TollFree",
           availableLanguage: ["English", "Spanish", "Arabic"],
           areaServed: "US-CA",
         },
@@ -73,7 +84,6 @@ export default function LocalBusinessSchema({
           "@type": "ContactPoint",
           telephone: "+1-310-429-6777",
           contactType: "sales",
-          contactOption: ["TollFree", "HearingImpairedSupported"],
           availableLanguage: ["English", "Spanish", "Arabic"],
           areaServed: "US-CA",
         },

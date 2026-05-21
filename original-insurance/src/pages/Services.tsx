@@ -170,7 +170,9 @@ export default function Services() {
         title="Complete insurance coverage"
         subtitle="Every policy is different because every person is different. We compare carrier fit, coverage requirements, and timing before you buy."
         breadcrumb="Services"
-        backgroundImage="/images/heroTeam.webp"
+        backgroundImage="/images/product-services-overview.webp"
+        imageFilter="contrast(1.06) saturate(0.9) brightness(0.78)"
+        imagePosition="center"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent">
@@ -221,7 +223,7 @@ export default function Services() {
           </div>
 
           {/* Tab content — two column */}
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={active.key}
               initial={{ opacity: 0, y: 16 }}

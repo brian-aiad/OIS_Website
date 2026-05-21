@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
+import { images } from "../lib/images";
 import { usePageMeta } from "../lib/seo";
 import { Icons } from "../components/Icons";
 import { Reveal } from "../components/AnimatedSection";
@@ -35,6 +36,13 @@ function isClosedHour(row: HourRow): row is Extract<HourRow, { closed: true }> {
   return "closed" in row && row.closed === true;
 }
 
+function toSchemaTime(value: string) {
+  const [time, meridiem] = value.split(" ");
+  const [rawHour, minute] = time.split(":").map(Number);
+  const hour = meridiem === "PM" && rawHour !== 12 ? rawHour + 12 : rawHour === 12 && meridiem === "AM" ? 0 : rawHour;
+  return `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
+}
+
 export default function Locations() {
   usePageMeta({
     title: "Our Downey Office — Hours & Directions | Original Insurance",
@@ -52,8 +60,8 @@ export default function Locations() {
       if (isClosedHour(h))
         return { "@type": "OpeningHoursSpecification", dayOfWeek: dayMap[i] };
       return { "@type": "OpeningHoursSpecification", dayOfWeek: dayMap[i],
-        opens: h.open.replace(" AM",":00").replace(" PM",":00"),
-        closes: h.close.replace(" AM",":00").replace(" PM",":00") };
+        opens: toSchemaTime(h.open),
+        closes: toSchemaTime(h.close) };
     });
     const el = document.createElement("script");
     el.type = "application/ld+json";
@@ -88,10 +96,10 @@ export default function Locations() {
         subtitle="Walk-ins welcome Monday through Friday. Free parking lot on-site and street parking on Paramount Blvd."
         breadcrumb="Location"
         badgeText="Open Mon–Fri 10 AM – 5:30 PM"
-        backgroundImage="/images/storefront.webp"
+        backgroundImage={storefrontImg}
         rightContent={
           <div className="rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-heavy aspect-[4/3]">
-            <img src={storefrontImg} alt="Original Insurance storefront on Paramount Blvd, Downey CA" className="w-full h-full object-cover" width={800} height={600} />
+            <img src={images.clients.officeConsultation} alt="Original Insurance broker consultation in a local Downey office setting" className="w-full h-full object-cover" width={800} height={600} />
           </div>
         }
       >

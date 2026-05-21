@@ -10,6 +10,7 @@ import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 import StatsBar from "../components/StatsBar";
 import PageTestimonials from "../components/PageTestimonials";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
+import { ConsultationImage } from "../components/ConsultationImage";
 
 const NO_LICENSE_FAQS = [
   { q: "Can I insure a car without a California driver's license?", a: "In certain lawful situations, yes. Vehicle owners who are not the primary driver, foreign-license holders, and ITIN-based applicants may have coverage options." },
@@ -40,7 +41,9 @@ export default function NoLicenseInsuranceDowney() {
         title="No-License & International-License Auto Insurance in Downey, CA"
         subtitle="Vehicle ownership and driving are separate legal situations. We work with carriers that understand the difference and write policies for foreign-license holders, international drivers, and vehicle owners who are not the primary driver."
         breadcrumb="No-License Insurance Downey"
-        backgroundImage="/images/heroTeam.webp"
+        backgroundImage="/images/product-no-license-auto.webp"
+        imageFilter="contrast(1.06) saturate(0.92) brightness(0.78)"
+        imagePosition="center"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent btn-lg">
@@ -109,8 +112,37 @@ export default function NoLicenseInsuranceDowney() {
         </div>
       </section>
 
-      {/* Documents */}
+      {/* Consultation image — non-standard license specialist */}
       <section className="sp bg-slate-50">
+        <div className="container max-w-6xl">
+          <ConsultationImage
+            image="/images/ois-no-license-consultation.webp"
+            alt="Original Insurance agent in Downey, CA helping ITIN holder and foreign driver's license applicant obtain California auto insurance coverage"
+            eyebrow="Non-Standard Insurance Specialists"
+            heading="We've helped hundreds of Downey-area families get covered without a CA license"
+            imageLeft
+            badge="ITIN accepted · Foreign license OK"
+            stats={[
+              { value: "25+", label: "Years experience" },
+              { value: "30+", label: "Carriers compared" },
+              { value: "3 langs", label: "We speak yours" },
+            ]}
+            body={
+              <>
+                <p className="text-lg leading-relaxed">
+                  Most offices turn away clients who don't have a California driver's license. We specialize in exactly these situations — vehicle owners with foreign licenses, ITIN-based applicants, and named-insured arrangements where a licensed household member drives.
+                </p>
+                <p className="leading-relaxed">
+                  Our bilingual and trilingual staff explain your options in English, Spanish, or Arabic. We know which carriers have the most flexible underwriting and which documents they require. We never advise unlicensed vehicle operation — every driver on the policy must hold a valid license.
+                </p>
+              </>
+            }
+          />
+        </div>
+      </section>
+
+      {/* Documents */}
+      <section className="sp bg-white">
         <div className="container max-w-4xl">
           <Reveal>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6" style={{ fontFamily: "var(--font-display)" }}>
@@ -141,12 +173,12 @@ export default function NoLicenseInsuranceDowney() {
         </div>
       </section>
 
-      {/* Why independent broker */}
+      {/* Carrier access */}
       <section className="sp bg-white">
         <div className="container max-w-4xl">
           <Reveal>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6" style={{ fontFamily: "var(--font-display)" }}>
-              Why an independent broker matters here
+              Carrier access for non-standard license situations
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed mb-4">
               No-license, foreign-license, and international-license situations are not standard applications at most insurance companies. A captive agent who works for one carrier may simply tell you they cannot help — because their single carrier does not write these situations.
@@ -167,7 +199,7 @@ export default function NoLicenseInsuranceDowney() {
           <Reveal className="text-center mb-10">
             <p className="text-xs font-bold uppercase tracking-widest text-brand-600 mb-2">Why Choose Us</p>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3" style={{ fontFamily: "var(--font-display)" }}>
-              Why an independent broker matters here
+              Why Downey clients choose Original
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Non-standard license situations need a broker with real carrier access — not a single company that says no.

@@ -63,14 +63,15 @@ export default function StatsBar() {
         }}
       />
       <div className="container relative py-7">
-        <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <span className="eyebrow-light">Brokerage Snapshot</span>
             <p className="mt-1 text-sm text-white/55">Local service, multi-carrier leverage, real support after binding.</p>
           </div>
-          <span className="hidden text-[11px] font-semibold uppercase tracking-widest text-gold-300/80 sm:inline">
-            Original Insurance Services
-          </span>
+          <div className="flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-widest text-white/65">
+            <span className="rounded-full bg-white/8 px-3 py-1 ring-1 ring-white/10">Original Insurance Services</span>
+            <span className="rounded-full bg-gold-400/12 px-3 py-1 text-gold-200 ring-1 ring-gold-300/20">Walk-ins welcome</span>
+          </div>
         </div>
         <Stagger className="grid grid-cols-2 md:grid-cols-4 gap-2">
           {STATS.map((s) => (

@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef, type ElementType } from "react";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -32,18 +32,23 @@ export function Reveal({
   as?: "div" | "section" | "article" | "li" | "figure";
 }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once, margin: "-60px" });
+  const shouldReduceMotion = useReducedMotion();
+  const inView = useInView(ref, { once, margin: "-80px 0px -40px 0px", amount: 0.18 });
   const off = offsets[direction];
 
   const Component = motion[Tag] as ElementType;
 
+  if (shouldReduceMotion) {
+    return <Tag className={className}>{children}</Tag>;
+  }
+
   return (
     <Component
       ref={ref}
-      initial={{ opacity: 0, ...off }}
-      animate={inView ? { opacity: 1, x: 0, y: 0, scale: 1 } : undefined}
+      initial={{ opacity: 0, filter: "blur(8px)", ...off }}
+      animate={inView ? { opacity: 1, x: 0, y: 0, scale: 1, filter: "blur(0px)" } : undefined}
       transition={{ duration, delay, ease }}
-      className={className}
+      className={`reveal-surface ${className}`}
     >
       {children}
     </Component>
@@ -60,7 +65,12 @@ export function Stagger({
   gap?: number;
 }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const shouldReduceMotion = useReducedMotion();
+  const inView = useInView(ref, { once: true, margin: "-70px 0px -35px 0px", amount: 0.14 });
+
+  if (shouldReduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div
@@ -85,10 +95,10 @@ export function StaggerChild({
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 24 },
-        show:   { opacity: 1, y: 0, transition: { duration: 0.45, ease } },
+        hidden: { opacity: 0, y: 26, filter: "blur(8px)" },
+        show:   { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.52, ease } },
       }}
-      className={className}
+      className={`reveal-surface ${className}`}
     >
       {children}
     </motion.div>
