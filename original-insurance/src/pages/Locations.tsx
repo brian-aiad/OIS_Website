@@ -10,8 +10,6 @@ import PageHero from "../components/PageHero";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
 import PageTestimonials from "../components/PageTestimonials";
 
-import storefrontImg from "../assets/storefront.webp";
-
 type HourRow =
   | { label: string; short: string; open: string; close: string; closed?: false }
   | { label: string; short: string; closed: true };
@@ -96,7 +94,8 @@ export default function Locations() {
         subtitle="Walk-ins welcome Monday through Friday. Free parking lot on-site and street parking on Paramount Blvd."
         breadcrumb="Location"
         badgeText="Open Mon–Fri 10 AM – 5:30 PM"
-        backgroundImage={storefrontImg}
+        backgroundImage={images.hero.storefront}
+        imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
         rightContent={
           <div className="rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-heavy aspect-[4/3]">
             <img src={images.clients.officeConsultation} alt="Original Insurance broker consultation in a local Downey office setting" className="w-full h-full object-cover" width={800} height={600} />

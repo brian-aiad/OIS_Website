@@ -10,8 +10,8 @@ import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { CTASection, SectionHeader } from "../design-system";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
 import PageTestimonials from "../components/PageTestimonials";
+import { images } from "../lib/images";
 
-import storefrontImg from "../assets/storefront.webp";
 import logoBadge from "../assets/logo-badge.webp";
 
 export default function About() {
@@ -46,17 +46,17 @@ export default function About() {
         title="Insurance built on relationships"
         subtitle={site.description}
         breadcrumb="About"
-        backgroundImage="/images/handshake.webp"
-        overlayGradient="linear-gradient(105deg, rgba(6,14,31,0.92) 0%, rgba(11,30,61,0.82) 50%, rgba(11,30,61,0.65) 100%)"
-        imageFilter="contrast(1.08) saturate(0.7) brightness(0.9)"
+        backgroundImage="/images/about-office-interior.webp"
+        overlayGradient="linear-gradient(105deg, rgba(6,14,31,0.9) 0%, rgba(11,30,61,0.74) 46%, rgba(11,30,61,0.26) 100%)"
+        imageFilter="contrast(1.08) saturate(1.02) brightness(0.9)"
         rightContent={
-          <div className="rounded-3xl overflow-hidden ring-1 ring-white/10 shadow-heavy aspect-[4/3] relative">
+          <div className="rounded-3xl overflow-hidden ring-1 ring-white/10 shadow-heavy aspect-[3/4] max-h-[560px] relative bg-brand-950">
             <img
-              src={storefrontImg}
-              alt="Original Insurance Services storefront on Paramount Blvd in Downey, CA"
+              src={images.about.portrait}
+              alt="Original Insurance Services senior broker portrait"
               className="h-full w-full object-cover"
-              width={800}
-              height={600}
+              width={1086}
+              height={1448}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-950/60 via-transparent to-transparent" />
             <div className="absolute bottom-4 left-4 right-4">
@@ -64,7 +64,7 @@ export default function About() {
                 <svg className="w-3.5 h-3.5 text-gold-400" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" />
                 </svg>
-                9907-B Paramount Blvd, Downey CA
+                25+ years serving Southeast LA
               </span>
             </div>
           </div>

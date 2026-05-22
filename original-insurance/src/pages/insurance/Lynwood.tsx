@@ -47,7 +47,9 @@ export default function LynwoodPage() {
         title="Auto Insurance in Lynwood, CA"
         subtitle="Bilingual English, Spanish, and Arabic insurance service for Lynwood families — SR-22 filing, no-license programs, and 30+ carrier options."
         breadcrumb="Auto Insurance Lynwood"
-        backgroundImage="/images/hero-friendly-handshake.webp"
+        backgroundImage="/images/southeast-la-community.webp"
+        imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
+        imagePosition="center"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent">

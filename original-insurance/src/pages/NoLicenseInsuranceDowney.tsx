@@ -41,8 +41,8 @@ export default function NoLicenseInsuranceDowney() {
         title="No-License & International-License Auto Insurance in Downey, CA"
         subtitle="Vehicle ownership and driving are separate legal situations. We work with carriers that understand the difference and write policies for foreign-license holders, international drivers, and vehicle owners who are not the primary driver."
         breadcrumb="No-License Insurance Downey"
-        backgroundImage="/images/product-no-license-auto.webp"
-        imageFilter="contrast(1.06) saturate(0.92) brightness(0.78)"
+        backgroundImage="/images/foreign-license-consultation.webp"
+        imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
         imagePosition="center"
       >
         <div className="flex flex-wrap gap-3">
@@ -116,7 +116,7 @@ export default function NoLicenseInsuranceDowney() {
       <section className="sp bg-slate-50">
         <div className="container max-w-6xl">
           <ConsultationImage
-            image="/images/ois-no-license-consultation.webp"
+            image="/images/itin-document-help.webp"
             alt="Original Insurance agent in Downey, CA helping ITIN holder and foreign driver's license applicant obtain California auto insurance coverage"
             eyebrow="Non-Standard Insurance Specialists"
             heading="We've helped hundreds of Downey-area families get covered without a CA license"

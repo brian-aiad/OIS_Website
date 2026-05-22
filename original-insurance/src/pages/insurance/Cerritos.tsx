@@ -49,7 +49,9 @@ export default function CerritosPage() {
         title="Auto Insurance in Cerritos, CA"
         subtitle="Comparing 30+ carriers for Cerritos homeowners, drivers, and business owners — bilingual English, Spanish, and Arabic service since 1999."
         breadcrumb="Auto Insurance Cerritos"
-        backgroundImage="/images/hero-friendly-handshake.webp"
+        backgroundImage="/images/southeast-la-community.webp"
+        imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
+        imagePosition="center"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent">

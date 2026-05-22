@@ -49,7 +49,9 @@ export default function MontebelloPage() {
         title="Auto Insurance in Montebello, CA"
         subtitle="Independent insurance broker serving Montebello commuters and families — multilingual English, Spanish, and Arabic support from our Downey office."
         breadcrumb="Montebello"
-        backgroundImage="/images/hero-friendly-handshake.webp"
+        backgroundImage="/images/southeast-la-community.webp"
+        imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
+        imagePosition="center"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent">

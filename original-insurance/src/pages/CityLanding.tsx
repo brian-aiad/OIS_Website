@@ -191,7 +191,9 @@ export default function CityLanding() {
         title={`Insurance Broker in ${city.name}, CA`}
         subtitle={`Independent coverage from 30+ carriers — serving ${city.name} since 1999.`}
         breadcrumb={city.name}
-        backgroundImage="/images/hero-friendly-handshake.webp"
+        backgroundImage={isDowney ? "/images/downey-neighborhood.webp" : "/images/southeast-la-community.webp"}
+        imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
+        imagePosition="center"
       >
         <div className="flex flex-wrap gap-3">
           <a href={site.contact.phoneHref} className="btn btn-accent">

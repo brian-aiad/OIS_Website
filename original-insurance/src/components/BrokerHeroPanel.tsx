@@ -11,15 +11,33 @@ const REVIEW_ITEMS = [
 
 export default function BrokerHeroPanel() {
   return (
-    <aside className="rounded-2xl bg-white/[0.07] p-5 text-white ring-1 ring-white/15 shadow-heavy backdrop-blur-md">
+    <aside className="overflow-hidden rounded-2xl bg-white/[0.08] text-white ring-1 ring-white/15 shadow-heavy backdrop-blur-md">
+      <div className="relative h-56 overflow-hidden bg-brand-950">
+        <img
+          src="/images/hero-broker-team.webp"
+          alt="Original Insurance Services multilingual broker team"
+          className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.04]"
+          width={800}
+          height={600}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-950/88 via-brand-950/18 to-transparent" />
+        <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-300">Local broker team</span>
+            <p className="mt-1 text-sm font-semibold text-white/92">English, Spanish, and Arabic support from Downey.</p>
+          </div>
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gold-400 text-brand-950 shadow-md">
+            <ClipboardCheck className="h-5 w-5" />
+          </span>
+        </div>
+      </div>
+
+      <div className="p-5">
       <div className="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
         <div>
           <span className="eyebrow-light">Broker Review</span>
           <h2 className="mt-2 text-2xl font-bold leading-tight">Coverage checked before price.</h2>
         </div>
-        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gold-400 text-brand-950 shadow-md">
-          <ClipboardCheck className="h-5 w-5" />
-        </span>
       </div>
 
       <p className="mt-4 text-sm leading-relaxed text-white/75">
@@ -66,6 +84,7 @@ export default function BrokerHeroPanel() {
           <Phone className="h-4 w-4" />
           Call
         </a>
+      </div>
       </div>
     </aside>
   );

@@ -51,7 +51,9 @@ export default function NorwalkPage() {
         title="Auto Insurance in Norwalk, CA"
         subtitle="Serving Norwalk families and Cerritos College commuters with bilingual insurance from 30+ top California carriers."
         breadcrumb="Norwalk"
-        backgroundImage="/images/hero-friendly-handshake.webp"
+        backgroundImage="/images/southeast-la-community.webp"
+        imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
+        imagePosition="center"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent">

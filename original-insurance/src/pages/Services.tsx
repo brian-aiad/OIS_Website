@@ -170,8 +170,8 @@ export default function Services() {
         title="Complete insurance coverage"
         subtitle="Every policy is different because every person is different. We compare carrier fit, coverage requirements, and timing before you buy."
         breadcrumb="Services"
-        backgroundImage="/images/product-services-overview.webp"
-        imageFilter="contrast(1.06) saturate(0.9) brightness(0.78)"
+        backgroundImage="/images/services-overview-hero.webp"
+        imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
         imagePosition="center"
       >
         <div className="flex flex-wrap gap-3">
@@ -234,8 +234,9 @@ export default function Services() {
               <div className="grid md:grid-cols-2 gap-10 md:gap-14 lg:gap-16 items-center">
                 {/* Image side */}
                 <div className="relative">
-                  <div className="rounded-2xl overflow-hidden ring-1 ring-slate-200/80 shadow-lifted aspect-[4/3]">
+                  <div className="rounded-3xl overflow-hidden ring-1 ring-slate-200/80 shadow-lifted aspect-[4/3] relative">
                     <img src={active.img} alt={active.alt} className="h-full w-full object-cover" loading="lazy" width={800} height={600} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-950/24 via-transparent to-transparent pointer-events-none" />
                   </div>
 
                   {/* Floating stats overlay */}
@@ -310,7 +311,7 @@ export default function Services() {
               { title: "Claims Support", sub: "We handle the paperwork" },
             ].map((item) => (
               <StaggerChild key={item.title}>
-                <button onClick={openQuoteModal} className="group bg-slate-50 hover:bg-white p-5 md:p-6 rounded-xl ring-1 ring-slate-200/80 hover:ring-brand-200 hover:shadow-soft transition-all duration-300 block w-full text-left">
+                <button onClick={openQuoteModal} className="group bg-white hover:bg-brand-50/40 p-5 md:p-6 rounded-2xl ring-1 ring-slate-200/80 hover:ring-brand-200 hover:shadow-lifted transition-all duration-300 block w-full text-left">
                   <div className="text-sm font-semibold text-slate-900 mb-1 group-hover:text-brand-800 transition-colors">{item.title}</div>
                   <div className="text-xs text-slate-500">{item.sub}</div>
                 </button>

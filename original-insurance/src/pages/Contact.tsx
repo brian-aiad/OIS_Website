@@ -94,8 +94,8 @@ export default function Contact() {
         title="We're here to help"
         subtitle="Questions about coverage? Need help with a claim? Reach out — real people, real answers."
         breadcrumb="Contact"
-        backgroundImage="/images/ois-contact-front-desk.webp"
-        imageFilter="contrast(1.05) saturate(0.88) brightness(0.78)"
+        backgroundImage="/images/contact-front-desk.webp"
+        imageFilter="contrast(1.08) saturate(1.02) brightness(0.96)"
         imagePosition="center"
       />
 
@@ -316,6 +316,23 @@ export default function Contact() {
             {/* Sidebar */}
             <Reveal direction="right" delay={0.1}>
               <div className="space-y-6">
+                {/* Quote CTA */}
+                <div className="rounded-2xl overflow-hidden ring-1 ring-slate-200/80 shadow-lifted aspect-[4/3] relative bg-brand-950">
+                  <img
+                    src="/images/contact-call-broker.webp"
+                    alt="Original Insurance broker answering client calls in the Downey office"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                    width={800}
+                    height={600}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-950/78 via-brand-950/10 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <p className="text-sm font-bold text-white">A real broker answers.</p>
+                    <p className="mt-1 text-xs text-white/75">Call, text, or walk in during business hours.</p>
+                  </div>
+                </div>
+
                 {/* Quote CTA */}
                 <div className="bg-brand-50 rounded-2xl p-6 ring-1 ring-brand-100 text-center">
                   <div className="w-12 h-12 bg-brand-100 rounded-xl grid place-items-center mx-auto mb-3">

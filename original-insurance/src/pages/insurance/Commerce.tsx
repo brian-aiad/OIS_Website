@@ -48,7 +48,9 @@ export default function CommercePage() {
         title="Auto Insurance in City of Commerce, CA"
         subtitle="Commercial and personal auto insurance for City of Commerce businesses and residents — 30+ carriers, same-day SR-22, bilingual service."
         breadcrumb="Commerce"
-        backgroundImage="/images/hero-friendly-handshake.webp"
+        backgroundImage="/images/southeast-la-community.webp"
+        imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
+        imagePosition="center"
       >
         <div className="flex flex-wrap gap-3">
           <button onClick={openQuoteModal} className="btn btn-accent">

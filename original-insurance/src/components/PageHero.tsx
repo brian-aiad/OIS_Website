@@ -59,7 +59,7 @@ export default function PageHero({
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover"
             style={{
-              filter: imageFilter ?? "contrast(1.05) saturate(0.85)",
+              filter: imageFilter ?? "contrast(1.08) saturate(1.06) brightness(0.96)",
               objectPosition: imagePosition,
             }}
             fetchPriority="high"
@@ -72,7 +72,15 @@ export default function PageHero({
             style={{
               background:
                 overlayGradient ??
-                "linear-gradient(to right, rgba(6,14,31,0.92) 0%, rgba(11,30,61,0.78) 55%, rgba(11,30,61,0.55) 100%)",
+                "linear-gradient(105deg, rgba(6,14,31,0.86) 0%, rgba(11,30,61,0.6) 48%, rgba(11,30,61,0.12) 100%)",
+            }}
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-0 mix-blend-soft-light opacity-70"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(245,158,11,0.18), rgba(30,58,138,0.04) 42%, rgba(255,255,255,0.08))",
             }}
             aria-hidden="true"
           />

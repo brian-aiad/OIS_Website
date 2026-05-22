@@ -13,8 +13,6 @@ import TrustStrip from "../components/seo/TrustStrip";
 import { CTASection, Section, SectionHeader } from "../design-system";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
 
-import storefrontImg from "../assets/storefront.webp";
-
 /* ═══════════════════════════════════════════════
    HERO — Photo-based with full-bleed storefront background
    ═══════════════════════════════════════════════ */
@@ -23,18 +21,19 @@ function Hero() {
     <section className="relative overflow-hidden noise-overlay diagonal-pattern">
       {/* Full-bleed background photo (storefront) */}
       <img
-        src={storefrontImg}
+        src={images.hero.storefront}
         alt=""
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover"
         fetchPriority="high"
-        width={1200}
-        height={800}
+        width={1672}
+        height={941}
       />
       {/* Navy overlay */}
-      <div className="absolute inset-0" style={{ backgroundColor: "rgba(6,14,31,0.82)" }} />
+      <div className="absolute inset-0" style={{ backgroundColor: "rgba(6,14,31,0.64)" }} />
       {/* Soft gradient sweetener for legibility on the left */}
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-950/90 via-brand-900/65 to-brand-900/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-950/92 via-brand-900/58 to-brand-900/12" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_24%,rgba(245,166,35,0.22),transparent_28%)]" />
 
       <div className="container relative grid lg:grid-cols-[1.15fr,1fr] gap-10 lg:gap-14 items-center pt-24 pb-20 lg:pt-28 lg:pb-24">
         {/* ── Left: Copy ── */}
@@ -118,16 +117,36 @@ function Hero() {
         {/* ── Right: Single elegant Trust Panel ── */}
         <div className="relative hidden lg:flex justify-end items-center z-[2]">
           <div
-            className="w-full max-w-[400px] rounded-2xl p-7 relative"
+            className="w-full max-w-[460px] rounded-3xl p-3 relative"
             style={{
-              background: "rgba(255,255,255,0.06)",
+              background: "rgba(255,255,255,0.08)",
               backdropFilter: "blur(16px)",
               WebkitBackdropFilter: "blur(16px)",
               border: "1px solid rgba(255,255,255,0.12)",
-              borderTop: "2px solid #F5A623",
-              boxShadow: "0 20px 60px rgba(0,0,0,0.35)",
+              borderTop: "2px solid rgba(245,166,35,0.75)",
+              boxShadow: "0 24px 80px rgba(0,0,0,0.42)",
             }}
           >
+            <div className="relative overflow-hidden rounded-2xl aspect-[4/3] bg-brand-950">
+              <img
+                src={images.hero.team}
+                alt="Original Insurance Services broker team in Downey"
+                className="h-full w-full object-cover"
+                width={800}
+                height={600}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/12 to-transparent" />
+              <div className="absolute left-5 right-5 bottom-5">
+                <div className="inline-flex items-center gap-2 rounded-full bg-white/12 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-gold-200 ring-1 ring-white/20 backdrop-blur-md">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gold-300" />
+                  Real local brokers
+                </div>
+                <p className="mt-3 max-w-xs text-lg font-bold leading-snug text-white">
+                  Walk in, talk to a person, leave with options.
+                </p>
+              </div>
+            </div>
+            <div className="p-4">
             {/* Star rating + label */}
             <div className="flex items-center gap-2 mb-3">
               <div className="flex gap-0.5">
@@ -173,6 +192,7 @@ function Hero() {
               Get Your Free Quote
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" /></svg>
             </button>
+            </div>
           </div>
         </div>
       </div>
@@ -517,7 +537,7 @@ function AboutSplit() {
               className="absolute -bottom-6 -right-4 lg:-right-8 rounded-2xl overflow-hidden shadow-heavy w-60 h-44 lg:w-72 lg:h-48"
               style={{ border: "2px solid rgba(245,166,35,0.45)" }}
             >
-              <img src={storefrontImg} alt="Original Insurance Services storefront on Paramount Blvd, Downey, CA" className="h-full w-full object-cover" loading="lazy" />
+              <img src={images.hero.storefront} alt="Original Insurance Services storefront on Paramount Blvd, Downey, CA" className="h-full w-full object-cover" loading="lazy" />
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-brand-950/85 via-brand-950/40 to-transparent px-4 py-3">
                 <p className="text-[11px] font-bold uppercase tracking-wider text-gold-300">Our Downey office</p>
                 <p className="text-[11px] text-white/80">9907-B Paramount Blvd</p>

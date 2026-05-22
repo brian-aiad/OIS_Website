@@ -50,8 +50,8 @@ export default function AutoInsuranceDowneyCA() {
         subtitle="Auto insurance in Downey should be simple. We compare 30+ carriers for liability, full coverage, SR-22 filings, and no-license or international-license situations so you can choose the right price and protection without calling five different companies."
         breadcrumb="Auto Insurance Downey"
         badgeText="Same-Day Quotes Available"
-        backgroundImage="/images/product-auto-insurance.webp"
-        imageFilter="contrast(1.06) saturate(0.92) brightness(0.8)"
+        backgroundImage="/images/downey-street-driving.webp"
+        imageFilter="contrast(1.08) saturate(1.03) brightness(0.96)"
         imagePosition="center"
       >
         <div className="flex flex-wrap gap-3">
@@ -182,7 +182,7 @@ export default function AutoInsuranceDowneyCA() {
       <section className="sp bg-white">
         <div className="container max-w-6xl">
           <ConsultationImage
-            image="/images/ois-auto-consultation.webp"
+            image="/images/auto-consultation-main.webp"
             alt="Independent insurance broker at Original Insurance in Downey, CA comparing auto insurance rates across 30+ carriers side by side for client"
             eyebrow="Independent Broker Advantage"
             heading="One conversation. Thirty carrier quotes. Best rate for your situation."

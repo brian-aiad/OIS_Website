@@ -43,8 +43,8 @@ export default function SR22InsuranceDowney() {
         breadcrumb="SR-22 Insurance Downey"
         badgeText="Same-Day Electronic Filing"
         badgeType="open"
-        backgroundImage="/images/product-sr22-filing.webp"
-        imageFilter="contrast(1.06) saturate(0.9) brightness(0.78)"
+        backgroundImage="/images/dmv-documents.webp"
+        imageFilter="contrast(1.08) saturate(1.02) brightness(0.96)"
         imagePosition="center"
       >
         <div className="flex flex-wrap gap-3">
@@ -86,7 +86,7 @@ export default function SR22InsuranceDowney() {
       <section className="sp bg-slate-50">
         <div className="container max-w-6xl">
           <ConsultationImage
-            image="/images/ois-sr22-filing-consultation.webp"
+            image="/images/sr22-filing-desk.webp"
             alt="Original Insurance broker in Downey, CA reviewing SR-22 filing documents with client and coordinating same-day electronic DMV submission"
             eyebrow="Serving Downey Since 1999"
             heading="SR-22 specialists who know the CA DMV process inside out"
