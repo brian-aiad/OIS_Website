@@ -10,6 +10,7 @@ import StatsBar from "../components/StatsBar";
 import PageTestimonials from "../components/PageTestimonials";
 import { Reveal } from "../components/AnimatedSection";
 import { Icons } from "../components/Icons";
+import { images } from "../lib/images";
 
 /**
  * Visible answers — rich, 2-5 sentences, may include links and local context.
@@ -174,7 +175,7 @@ export default function Faq() {
         title="Downey Auto Insurance FAQ"
         subtitle="Straight answers for Downey drivers about car insurance cost, SR-22, no-license options, proof of insurance, and claims help."
         breadcrumb="FAQ"
-        backgroundImage="/images/faq-consultation.webp"
+        backgroundImage={images.claims.docs}
         imageFilter="contrast(1.08) saturate(1.02) brightness(0.96)"
       >
         <div className="flex flex-wrap gap-3">

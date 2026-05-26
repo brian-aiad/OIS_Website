@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useMemo, useState, type CSSProperties } from "react";
 import { NavLink } from "react-router-dom";
 import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
@@ -129,20 +129,20 @@ function Hero() {
           >
             <div className="relative overflow-hidden rounded-2xl aspect-[4/3] bg-brand-950">
               <img
-                src={images.hero.team}
-                alt="Original Insurance Services broker team in Downey"
+                src={images.hero.officeDetail}
+                alt="Insurance folders, keys, and policy documents on an Original Insurance broker desk"
                 className="h-full w-full object-cover"
                 width={800}
                 height={600}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/12 to-transparent" />
               <div className="absolute left-5 right-5 bottom-5">
-                <div className="inline-flex items-center gap-2 rounded-full bg-white/12 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-gold-200 ring-1 ring-white/20 backdrop-blur-md">
-                  <span className="h-1.5 w-1.5 rounded-full bg-gold-300" />
-                  Real local brokers
+                <div className="inline-flex items-center gap-2 rounded-full bg-gold-400 px-3.5 py-2 text-[12px] font-extrabold uppercase tracking-wider text-brand-950 shadow-lg ring-1 ring-gold-200">
+                  <span className="h-2 w-2 rounded-full bg-brand-900" />
+                  Clean quote review
                 </div>
-                <p className="mt-3 max-w-xs text-lg font-bold leading-snug text-white">
-                  Walk in, talk to a person, leave with options.
+                <p className="mt-3 max-w-sm text-xl font-extrabold leading-snug text-white drop-shadow-md">
+                  Bring your details. We compare the market and explain the tradeoffs.
                 </p>
               </div>
             </div>
@@ -522,8 +522,8 @@ function AboutSplit() {
           <Reveal direction="left" className="relative">
             <div className="rounded-3xl overflow-hidden shadow-heavy ring-1 ring-slate-100 aspect-[4/3]">
               <img
-                src={images.about.consultation}
-                srcSet={srcset(images.about.consultation)}
+                src={images.home.why}
+                srcSet={srcset(images.home.why)}
                 sizes="(max-width: 1024px) 100vw, 600px"
                 alt="Original Insurance broker reviewing coverage options with Downey clients"
                 className="h-full w-full object-cover"
@@ -612,8 +612,8 @@ function Testimonials() {
             <div className="mt-6 bg-brand-900 rounded-2xl p-7 text-white ring-1 ring-brand-800 relative overflow-hidden">
               <div className="-mx-7 -mt-7 mb-5 h-44 overflow-hidden bg-brand-950">
                 <img
-                  src={images.clients.consultation}
-                  srcSet={srcset(images.clients.consultation)}
+                  src={images.home.reviews}
+                  srcSet={srcset(images.home.reviews)}
                   sizes="(max-width: 1024px) 100vw, 420px"
                   alt="Insurance broker reviewing auto policy choices with a client"
                   className="h-full w-full object-cover"
@@ -826,40 +826,6 @@ function FAQ() {
 /* ═══════════════════════════════════════════════
    STICKY RIBBON
    ═══════════════════════════════════════════════ */
-function StickyRibbon() {
-  const [show, setShow] = useState(false);
-  useEffect(() => {
-    const fn = () => setShow(window.scrollY > window.innerHeight * 0.65);
-    fn();
-    window.addEventListener("scroll", fn, { passive: true });
-    return () => window.removeEventListener("scroll", fn);
-  }, []);
-
-  return (
-    <div
-      className="fixed bottom-4 inset-x-0 z-40 pointer-events-none transition-all duration-300"
-      style={{
-        transform: show ? "translateY(0)" : "translateY(120%)",
-        opacity: show ? 1 : 0,
-      }}
-    >
-      <div className="container">
-        <div className="pointer-events-auto flex items-center justify-between gap-4 bg-brand-900/95 backdrop-blur-lg text-white rounded-2xl px-5 py-3 shadow-heavy ring-1 ring-white/10">
-          <p className="text-sm font-medium hidden sm:block">Ready for a better rate?</p>
-          <div className="flex gap-2 w-full sm:w-auto">
-            <a className="btn btn-ghost-light btn-sm flex-1 sm:flex-initial justify-center" href={site.contact.phoneHref}>
-              Call Now
-            </a>
-            <button className="btn btn-accent btn-sm flex-1 sm:flex-initial justify-center" onClick={openQuoteModal}>
-              Free Quote
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 /* ═══════════════════════════════════════════════
    POPULAR INSURANCE NEEDS HUB
    ═══════════════════════════════════════════════ */
@@ -992,7 +958,6 @@ export default function Home() {
   return (
     <main id="main-content">
       <LocalBusinessSchema />
-      <StickyRibbon />
       <Hero />
       <div className="bg-white border-b border-slate-100 py-4 text-slate-600">
         <div className="container">

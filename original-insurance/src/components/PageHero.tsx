@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import BrokerHeroPanel from "./BrokerHeroPanel";
 
 interface PageHeroProps {
   title: string;
@@ -40,7 +39,7 @@ export default function PageHero({
   rightContent,
   children,
 }: PageHeroProps) {
-  const heroAside = rightContent ?? <BrokerHeroPanel />;
+  const heroAside = rightContent;
 
   return (
     <section

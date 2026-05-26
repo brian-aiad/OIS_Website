@@ -11,6 +11,7 @@ import StatsBar from "../components/StatsBar";
 import PageTestimonials from "../components/PageTestimonials";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
 import { ConsultationImage } from "../components/ConsultationImage";
+import { images } from "../lib/images";
 
 const NO_LICENSE_FAQS = [
   { q: "Can I insure a car without a California driver's license?", a: "In certain lawful situations, yes. Vehicle owners who are not the primary driver, foreign-license holders, and ITIN-based applicants may have coverage options." },
@@ -41,7 +42,7 @@ export default function NoLicenseInsuranceDowney() {
         title="No-License & International-License Auto Insurance in Downey, CA"
         subtitle="Vehicle ownership and driving are separate legal situations. We work with carriers that understand the difference and write policies for foreign-license holders, international drivers, and vehicle owners who are not the primary driver."
         breadcrumb="No-License Insurance Downey"
-        backgroundImage="/images/foreign-license-consultation.webp"
+        backgroundImage={images.products.noLicense}
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
         imagePosition="center"
       >
@@ -116,7 +117,7 @@ export default function NoLicenseInsuranceDowney() {
       <section className="sp bg-slate-50">
         <div className="container max-w-6xl">
           <ConsultationImage
-            image="/images/itin-document-help.webp"
+            image={images.clients.noLicenseConsultation}
             alt="Original Insurance agent in Downey, CA helping ITIN holder and foreign driver's license applicant obtain California auto insurance coverage"
             eyebrow="Non-Standard Insurance Specialists"
             heading="We've helped hundreds of Downey-area families get covered without a CA license"

@@ -49,7 +49,7 @@ export default function ParamountPage() {
         title="Auto Insurance in Paramount, CA"
         subtitle="Our Downey office sits right on Paramount Blvd — Paramount residents get the fastest walk-in service and same-day SR-22 filings from 30+ carriers."
         breadcrumb="Paramount"
-        backgroundImage="/images/southeast-la-community.webp"
+        backgroundImage="/images/ois-city-small-business-v4.webp"
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
         imagePosition="center"
       >

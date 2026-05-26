@@ -11,6 +11,7 @@ import { CTASection, Section } from "../design-system";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
 import StatsBar from "../components/StatsBar";
 import PageTestimonials from "../components/PageTestimonials";
+import { images } from "../lib/images";
 
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string;
 
@@ -94,7 +95,7 @@ export default function Contact() {
         title="We're here to help"
         subtitle="Questions about coverage? Need help with a claim? Reach out — real people, real answers."
         breadcrumb="Contact"
-        backgroundImage="/images/contact-front-desk.webp"
+        backgroundImage={images.clients.contactFrontDesk}
         imageFilter="contrast(1.08) saturate(1.02) brightness(0.96)"
         imagePosition="center"
       />
@@ -319,8 +320,8 @@ export default function Contact() {
                 {/* Quote CTA */}
                 <div className="rounded-2xl overflow-hidden ring-1 ring-slate-200/80 shadow-lifted aspect-[4/3] relative bg-brand-950">
                   <img
-                    src="/images/contact-call-broker.webp"
-                    alt="Original Insurance broker answering client calls in the Downey office"
+                    src={images.hero.storefront}
+                    alt="Original Insurance storefront in Downey"
                     className="h-full w-full object-cover"
                     loading="lazy"
                     width={800}

@@ -49,7 +49,7 @@ export default function LakewoodPage() {
         title="Auto Insurance in Lakewood, CA"
         subtitle="Helping Lakewood homeowners bundle home and auto for real savings — comparing 30+ top carriers from our Downey office."
         breadcrumb="Auto Insurance Lakewood"
-        backgroundImage="/images/southeast-la-community.webp"
+        backgroundImage="/images/ois-city-community-golden-v4.webp"
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
         imagePosition="center"
       >

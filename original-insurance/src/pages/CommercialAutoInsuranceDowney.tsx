@@ -10,6 +10,7 @@ import InsuranceWorkflow from "../components/InsuranceWorkflow";
 import StatsBar from "../components/StatsBar";
 import PageTestimonials from "../components/PageTestimonials";
 import { ConsultationImage } from "../components/ConsultationImage";
+import { images } from "../lib/images";
 
 const COMMERCIAL_FAQS = [
   { q: "What is commercial auto insurance?", a: "Commercial auto insurance covers vehicles used for business, including delivery vehicles, work trucks, and company cars not covered by personal auto policies." },
@@ -77,7 +78,7 @@ export default function CommercialAutoInsuranceDowneyPage() {
         title="Commercial Auto Insurance in Downey, CA"
         subtitle="Protect your trucks, vans, and business vehicles without shopping five carriers yourself. We compare 30+ commercial auto markets for Downey-area owner-operators, small fleets, and local businesses — same-day proof of insurance when you need it."
         breadcrumb="Commercial Auto"
-        backgroundImage="/images/commercial-vehicles-lineup.webp"
+        backgroundImage={images.products.commercial}
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
         imagePosition="center"
       >
@@ -229,7 +230,7 @@ export default function CommercialAutoInsuranceDowneyPage() {
       <section className="sp bg-white">
         <div className="container max-w-6xl">
           <ConsultationImage
-            image="/images/fleet-vehicle-review.webp"
+            image={images.clients.commercialConsultation}
             alt="Commercial auto insurance broker at Original Insurance in Downey, CA reviewing fleet vehicle coverage and business policy options with small business owner"
             eyebrow="Commercial Auto Specialists · Downey CA"
             heading="Commercial auto quoting that starts with your business, not a form"

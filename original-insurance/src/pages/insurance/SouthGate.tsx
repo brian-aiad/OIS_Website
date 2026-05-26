@@ -49,7 +49,7 @@ export default function SouthGatePage() {
         title="Auto Insurance in South Gate, CA"
         subtitle="Bilingual auto, home, and SR-22 insurance for South Gate families — comparing 30+ top California carriers with English, Spanish, and Arabic service."
         breadcrumb="South Gate"
-        backgroundImage="/images/southeast-la-community.webp"
+        backgroundImage="/images/ois-city-community-golden-v4.webp"
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
         imagePosition="center"
       >

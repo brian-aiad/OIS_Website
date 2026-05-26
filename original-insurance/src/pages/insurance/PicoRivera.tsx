@@ -49,7 +49,7 @@ export default function PicoRiveraPage() {
         title="Auto Insurance in Pico Rivera, CA"
         subtitle="Comparing top California carriers for Pico Rivera drivers — independent broker service in English, Spanish, and Arabic since 1999."
         breadcrumb="Pico Rivera"
-        backgroundImage="/images/southeast-la-community.webp"
+        backgroundImage="/images/ois-city-small-business-v4.webp"
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
         imagePosition="center"
       >

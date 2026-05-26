@@ -98,7 +98,7 @@ export default function Locations() {
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
         rightContent={
           <div className="rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-heavy aspect-[4/3]">
-            <img src={images.clients.officeConsultation} alt="Original Insurance broker consultation in a local Downey office setting" className="w-full h-full object-cover" width={800} height={600} />
+            <img src={images.clients.contactFrontDesk} alt="Original Insurance reception desk in the Downey office" className="w-full h-full object-cover" width={800} height={600} />
           </div>
         }
       >

@@ -46,17 +46,17 @@ export default function About() {
         title="Insurance built on relationships"
         subtitle={site.description}
         breadcrumb="About"
-        backgroundImage="/images/about-office-interior.webp"
+        backgroundImage={images.hero.storefront}
         overlayGradient="linear-gradient(105deg, rgba(6,14,31,0.9) 0%, rgba(11,30,61,0.74) 46%, rgba(11,30,61,0.26) 100%)"
         imageFilter="contrast(1.08) saturate(1.02) brightness(0.9)"
         rightContent={
-          <div className="rounded-3xl overflow-hidden ring-1 ring-white/10 shadow-heavy aspect-[3/4] max-h-[560px] relative bg-brand-950">
+          <div className="rounded-3xl overflow-hidden ring-1 ring-white/10 shadow-heavy aspect-[4/3] relative bg-brand-950">
             <img
-              src={images.about.portrait}
-              alt="Original Insurance Services senior broker portrait"
+              src={images.about.office}
+              alt="Original Insurance broker desk with organized policy documents"
               className="h-full w-full object-cover"
-              width={1086}
-              height={1448}
+              width={1448}
+              height={1086}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-950/60 via-transparent to-transparent" />
             <div className="absolute bottom-4 left-4 right-4">

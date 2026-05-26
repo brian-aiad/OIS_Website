@@ -48,7 +48,7 @@ export default function CommercePage() {
         title="Auto Insurance in City of Commerce, CA"
         subtitle="Commercial and personal auto insurance for City of Commerce businesses and residents — 30+ carriers, same-day SR-22, bilingual service."
         breadcrumb="Commerce"
-        backgroundImage="/images/southeast-la-community.webp"
+        backgroundImage="/images/ois-city-small-business-v4.webp"
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
         imagePosition="center"
       >

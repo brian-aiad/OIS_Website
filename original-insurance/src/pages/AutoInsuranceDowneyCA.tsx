@@ -10,6 +10,7 @@ import InsuranceWorkflow from "../components/InsuranceWorkflow";
 import StatsBar from "../components/StatsBar";
 import PageTestimonials from "../components/PageTestimonials";
 import { ConsultationImage } from "../components/ConsultationImage";
+import { images } from "../lib/images";
 
 const AUTO_FAQS = [
   { q: "How much does car insurance cost in Downey, CA?", a: "Most Downey drivers pay $80–$180 per month depending on driving record, vehicle type, coverage level, and ZIP code. Rates vary significantly by carrier." },
@@ -50,7 +51,7 @@ export default function AutoInsuranceDowneyCA() {
         subtitle="Auto insurance in Downey should be simple. We compare 30+ carriers for liability, full coverage, SR-22 filings, and no-license or international-license situations so you can choose the right price and protection without calling five different companies."
         breadcrumb="Auto Insurance Downey"
         badgeText="Same-Day Quotes Available"
-        backgroundImage="/images/downey-street-driving.webp"
+        backgroundImage={images.products.auto}
         imageFilter="contrast(1.08) saturate(1.03) brightness(0.96)"
         imagePosition="center"
       >
@@ -182,7 +183,7 @@ export default function AutoInsuranceDowneyCA() {
       <section className="sp bg-white">
         <div className="container max-w-6xl">
           <ConsultationImage
-            image="/images/auto-consultation-main.webp"
+            image={images.clients.autoConsultation}
             alt="Independent insurance broker at Original Insurance in Downey, CA comparing auto insurance rates across 30+ carriers side by side for client"
             eyebrow="Independent Broker Advantage"
             heading="One conversation. Thirty carrier quotes. Best rate for your situation."

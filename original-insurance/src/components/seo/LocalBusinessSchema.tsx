@@ -62,8 +62,8 @@ export default function LocalBusinessSchema({
       priceRange: "$$",
       image: [
         "https://originalinsurance.net/og-image.png",
-        "https://originalinsurance.net/images/contact-front-desk.webp",
-        "https://originalinsurance.net/images/community-trust.webp",
+        "https://originalinsurance.net/images/ois-hero-storefront-logo-v4.webp",
+        "https://originalinsurance.net/images/ois-contact-reception-v4.webp",
       ],
       aggregateRating: {
         "@type": "AggregateRating",

@@ -14,8 +14,8 @@ export default function BrokerHeroPanel() {
     <aside className="overflow-hidden rounded-2xl bg-white/[0.08] text-white ring-1 ring-white/15 shadow-heavy backdrop-blur-md">
       <div className="relative h-56 overflow-hidden bg-brand-950">
         <img
-          src="/images/hero-broker-team.webp"
-          alt="Original Insurance Services multilingual broker team"
+          src="/images/ois-office-desk-detail-v3.webp"
+          alt="Insurance policy folders and keys on a broker desk"
           className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.04]"
           width={800}
           height={600}
@@ -23,8 +23,8 @@ export default function BrokerHeroPanel() {
         <div className="absolute inset-0 bg-gradient-to-t from-brand-950/88 via-brand-950/18 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-300">Local broker team</span>
-            <p className="mt-1 text-sm font-semibold text-white/92">English, Spanish, and Arabic support from Downey.</p>
+            <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-gold-300">Prepared before you buy</span>
+            <p className="mt-1 text-sm font-semibold text-white/92">Coverage details, documents, and carrier fit reviewed up front.</p>
           </div>
           <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gold-400 text-brand-950 shadow-md">
             <ClipboardCheck className="h-5 w-5" />

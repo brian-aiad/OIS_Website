@@ -11,6 +11,7 @@ import InsuranceWorkflow from "../components/InsuranceWorkflow";
 import StatsBar from "../components/StatsBar";
 import PageTestimonials from "../components/PageTestimonials";
 import { ConsultationImage } from "../components/ConsultationImage";
+import { images } from "../lib/images";
 
 const SR22_FAQS = [
   { q: "How long do I need SR-22 in California?", a: "California requires SR-22 for 3 continuous years from license reinstatement. Any policy lapse or cancellation resets the clock with the DMV." },
@@ -43,7 +44,7 @@ export default function SR22InsuranceDowney() {
         breadcrumb="SR-22 Insurance Downey"
         badgeText="Same-Day Electronic Filing"
         badgeType="open"
-        backgroundImage="/images/dmv-documents.webp"
+        backgroundImage={images.products.sr22}
         imageFilter="contrast(1.08) saturate(1.02) brightness(0.96)"
         imagePosition="center"
       >
@@ -86,7 +87,7 @@ export default function SR22InsuranceDowney() {
       <section className="sp bg-slate-50">
         <div className="container max-w-6xl">
           <ConsultationImage
-            image="/images/sr22-filing-desk.webp"
+            image={images.clients.sr22Consultation}
             alt="Original Insurance broker in Downey, CA reviewing SR-22 filing documents with client and coordinating same-day electronic DMV submission"
             eyebrow="Serving Downey Since 1999"
             heading="SR-22 specialists who know the CA DMV process inside out"

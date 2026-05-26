@@ -170,7 +170,7 @@ export default function Services() {
         title="Complete insurance coverage"
         subtitle="Every policy is different because every person is different. We compare carrier fit, coverage requirements, and timing before you buy."
         breadcrumb="Services"
-        backgroundImage="/images/services-overview-hero.webp"
+        backgroundImage={images.products.overview}
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
         imagePosition="center"
       >

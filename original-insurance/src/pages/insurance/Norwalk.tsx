@@ -51,7 +51,7 @@ export default function NorwalkPage() {
         title="Auto Insurance in Norwalk, CA"
         subtitle="Serving Norwalk families and Cerritos College commuters with bilingual insurance from 30+ top California carriers."
         breadcrumb="Norwalk"
-        backgroundImage="/images/southeast-la-community.webp"
+        backgroundImage="/images/ois-city-commercial-corridor-v4.webp"
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
         imagePosition="center"
       >

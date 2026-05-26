@@ -49,7 +49,7 @@ export default function MontebelloPage() {
         title="Auto Insurance in Montebello, CA"
         subtitle="Independent insurance broker serving Montebello commuters and families — multilingual English, Spanish, and Arabic support from our Downey office."
         breadcrumb="Montebello"
-        backgroundImage="/images/southeast-la-community.webp"
+        backgroundImage="/images/ois-city-community-golden-v4.webp"
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
         imagePosition="center"
       >

@@ -51,7 +51,7 @@ export default function BellflowerPage() {
         title="Auto Insurance in Bellflower, CA"
         subtitle="Independent auto and home coverage for Bellflower families — comparing 30+ carriers since 1999. Just minutes south of Downey via Lakewood Blvd."
         breadcrumb="Bellflower"
-        backgroundImage="/images/southeast-la-community.webp"
+        backgroundImage="/images/ois-city-community-golden-v4.webp"
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
         imagePosition="center"
       >

@@ -1,4 +1,3 @@
-import storefrontImg from "../../assets/storefront.webp";
 import { images } from "../../lib/images";
 import { site } from "../../lib/site";
 
@@ -11,7 +10,7 @@ export default function OfficePhotoBlock() {
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="grid grid-cols-2 gap-1 bg-slate-200 p-1">
           <img
-            src={storefrontImg}
+            src={images.hero.storefront}
             alt="Original Insurance office on Paramount Boulevard in Downey, CA"
             className="h-full min-h-56 w-full object-cover md:min-h-72"
             loading="lazy"

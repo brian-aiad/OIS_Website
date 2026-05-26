@@ -191,7 +191,7 @@ export default function CityLanding() {
         title={`Insurance Broker in ${city.name}, CA`}
         subtitle={`Independent coverage from 30+ carriers — serving ${city.name} since 1999.`}
         breadcrumb={city.name}
-        backgroundImage={isDowney ? "/images/downey-neighborhood.webp" : "/images/southeast-la-community.webp"}
+        backgroundImage={isDowney ? "/images/downey-neighborhood.webp" : "/images/ois-city-community-golden-v4.webp"}
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
         imagePosition="center"
       >
