@@ -29,7 +29,7 @@ const REVIEWS = [
 const GRADIENTS = [
   "from-brand-500 to-brand-700",
   "from-gold-400 to-gold-600",
-  "from-emerald-500 to-emerald-700",
+  "from-brand-700 to-brand-950",
 ];
 
 interface PageTestimonialsProps {

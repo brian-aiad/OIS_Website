@@ -1,11 +1,10 @@
-import { useMemo, useState, type CSSProperties } from "react";
+import { useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
 import { images, srcset } from "../lib/images";
 import { usePageMeta } from "../lib/seo";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
-import { Counter } from "../components/AnimatedCounter";
 import { MagneticButton } from "../components/MagneticButton";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import ReviewBadge from "../components/seo/ReviewBadge";
@@ -208,89 +207,6 @@ function Hero() {
 }
 
 /* ═══════════════════════════════════════════════
-   STATS — Bento grid with visual hierarchy
-   ═══════════════════════════════════════════════ */
-function BentoStats() {
-  return (
-    <section className="relative -mt-1 z-10 pb-10">
-      <div className="container">
-        <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-4">
-          {/* 25+ Years — compact navy card, same height as siblings */}
-          <StaggerChild>
-            <div
-              className="h-full bg-brand-900 rounded-2xl p-6 text-white ring-1 ring-brand-800 hover:-translate-y-1 hover:shadow-heavy transition-all duration-200 flex flex-col"
-              style={{ minHeight: "150px" }}
-            >
-              <div className="flex items-baseline gap-1">
-                <span className="text-4xl font-extrabold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
-                  <Counter to={25} suffix="+" />
-                </span>
-              </div>
-              <div className="mt-1 text-sm font-medium text-white/90">Years in Business</div>
-              <div className="mt-auto pt-3 flex items-center gap-2">
-                <div className="h-px w-8" style={{ background: "var(--gold-500)" }} />
-                <span className="text-[10px] text-white/70 uppercase tracking-wider font-semibold">Since 1999 · Downey CA</span>
-              </div>
-            </div>
-          </StaggerChild>
-
-          {/* Carriers */}
-          <StaggerChild>
-            <div
-              className="h-full bg-white rounded-2xl p-6 ring-1 ring-slate-200/80 shadow-soft flex flex-col hover:ring-brand-200 hover:-translate-y-1 transition-all duration-200"
-              style={{ minHeight: "150px" }}
-            >
-              <div className="text-4xl font-extrabold text-brand-800 tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
-                <Counter to={30} suffix="+" />
-              </div>
-              <div className="mt-1 text-sm font-medium text-slate-700">Insurance Carriers</div>
-              <div className="mt-auto pt-3 text-[11px] text-slate-500">We shop them all for you</div>
-            </div>
-          </StaggerChild>
-
-          {/* Rating */}
-          <StaggerChild>
-            <div
-              className="h-full bg-white rounded-2xl p-6 ring-1 ring-slate-200/80 shadow-soft flex flex-col hover:ring-brand-200 hover:-translate-y-1 transition-all duration-200"
-              style={{ minHeight: "150px" }}
-            >
-              <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-extrabold text-brand-800 tracking-tight" style={{ fontFamily: "var(--font-display)" }}>4.9</span>
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-3.5 h-3.5 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3 6 3.6-1.6-6.9 5.3-4.5-7-.6L12 2 9.3 8.9l-7 .6 5.3 4.5L6 20.9z" /></svg>
-                  ))}
-                </div>
-              </div>
-              <div className="mt-1 text-sm font-medium text-slate-700">Google Reviews</div>
-              <div className="mt-auto pt-3 text-[11px] text-slate-500">From real clients</div>
-            </div>
-          </StaggerChild>
-
-          {/* Languages — full-width gold card */}
-          <StaggerChild className="md:col-span-3">
-            <div className="bg-gradient-to-r from-gold-500 to-gold-400 rounded-2xl p-6 text-white relative overflow-hidden hover:-translate-y-0.5 transition-transform duration-200">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16" />
-              <div className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                <div>
-                  <div className="text-2xl font-extrabold text-brand-950" style={{ fontFamily: "var(--font-display)" }}>3 Languages</div>
-                  <div className="mt-1 text-sm text-brand-900/70">We speak your language</div>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {["Arabic", "Spanish", "English"].map((l) => (
-                    <span key={l} className="text-[11px] font-semibold bg-white/25 text-brand-950 rounded-full px-2.5 py-1">{l}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </StaggerChild>
-        </Stagger>
-      </div>
-    </section>
-  );
-}
-
-/* ═══════════════════════════════════════════════
    SERVICES — Masonry / staggered grid
    ═══════════════════════════════════════════════ */
 type Svc = { key: string; title?: string; name?: string; blurb?: string; desc?: string };
@@ -388,123 +304,6 @@ function ServicesMasonry() {
             View All Services
             <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" /></svg>
           </NavLink>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-/* ═══════════════════════════════════════════════
-   CARRIERS MARQUEE — logos at full color
-   ═══════════════════════════════════════════════ */
-function Carriers() {
-  const logos = useMemo(() =>
-    Array.from({ length: 8 }, (_, i) =>
-      new URL(`../assets/clients/client-${i + 1}.webp`, import.meta.url).href
-    ), []);
-  const row = [...logos, ...logos];
-
-  return (
-    <section className="py-6 md:py-7 overflow-hidden cv-auto" style={{ background: "var(--surface-gray)", borderTop: "1px solid var(--border-light)", borderBottom: "1px solid var(--border-light)" }}>
-      <div className="container mb-3">
-        <Reveal className="text-center">
-          <p className="text-[13px] font-semibold text-slate-500">
-            We shop <span className="text-slate-800">30+ carriers</span> to find your best fit
-          </p>
-        </Reveal>
-      </div>
-
-      <div className="relative">
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-slate-50 to-transparent z-10" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-slate-50 to-transparent z-10" />
-
-        <div className="overflow-hidden py-1 select-none" style={{ "--marquee-speed": "35s" } as CSSProperties}>
-          <div className="flex w-max animate-marquee items-center">
-            {row.map((src, i) => (
-              <div key={i} className="shrink-0 mx-4 w-[160px] h-16 grid place-items-center">
-                <img
-                  src={src}
-                  alt={`Insurance carrier partner logo ${(i % logos.length) + 1}`}
-                  className="max-h-10 w-auto max-w-[140px] object-contain opacity-80 hover:opacity-100 transition-opacity"
-                  loading="lazy"
-                  decoding="async"
-                  draggable={false}
-                  width={140}
-                  height={40}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ═══════════════════════════════════════════════
-   HOW IT WORKS — Visual numbered flow
-   ═══════════════════════════════════════════════ */
-function HowItWorks() {
-  const steps = [
-    { title: "Tell us about you", desc: "A few basics — vehicles, property, current coverage. Takes about 10 minutes." },
-    { title: "We shop 30+ carriers", desc: "We compare coverage, discounts, and price across our full network." },
-    { title: "Choose with confidence", desc: "We explain options in plain language, then help bind and deliver your policy." },
-  ];
-
-  return (
-    <section className="sp bg-slate-25 relative overflow-hidden cv-auto-tall">
-      <div className="absolute top-20 right-0 w-[400px] h-[400px] bg-brand-100/40 rounded-full blur-3xl opacity-50" />
-
-      <div className="container relative">
-        <Reveal className="text-center max-w-xl mx-auto">
-          <span className="eyebrow">How It Works</span>
-          <h2 className="mt-3 display-2 text-slate-900">Your quote in three steps</h2>
-          <p className="mt-2 text-slate-500">
-            No pressure, no spam — just straight answers from a licensed broker.
-          </p>
-        </Reveal>
-
-        <div className="mt-12 max-w-2xl mx-auto relative">
-          <div
-            className="absolute left-7 top-6 bottom-6 hidden md:block"
-            style={{ borderLeft: "2px dashed rgba(15,33,71,0.18)" }}
-            aria-hidden
-          />
-
-          <Stagger className="space-y-8 md:space-y-10">
-            {steps.map((s, i) => (
-              <StaggerChild key={i}>
-                <div className="flex gap-5 md:gap-8 items-start">
-                  <div
-                    className="shrink-0 relative z-10 w-14 h-14 rounded-2xl bg-brand-800 text-white grid place-items-center text-xl font-extrabold"
-                    style={{ boxShadow: "0 0 0 4px rgba(245,166,35,0.15), 0 4px 14px rgba(15,33,71,0.18)" }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <div className="pt-2">
-                    <h3 className="text-xl font-bold text-slate-900">{s.title}</h3>
-                    <p className="mt-1.5 text-slate-500 leading-relaxed max-w-md">{s.desc}</p>
-                  </div>
-                </div>
-              </StaggerChild>
-            ))}
-          </Stagger>
-        </div>
-
-        <Reveal delay={0.2} className="mt-12 flex justify-center">
-          <div
-            className="inline-flex flex-wrap justify-center gap-x-5 gap-y-2 text-[13px] font-medium text-slate-700 px-5 py-3 rounded-full bg-white"
-            style={{ border: "1px solid var(--border-light)", boxShadow: "var(--shadow-sm)" }}
-          >
-            {["Average call ~10 min", "Most quotes same day", "Same-day eID cards"].map((t) => (
-              <span key={t} className="flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-gold-100 text-gold-600 grid place-items-center ring-1 ring-gold-400/30">
-                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                </span>
-                {t}
-              </span>
-            ))}
-          </div>
         </Reveal>
       </div>
     </section>
@@ -675,9 +474,9 @@ function Testimonials() {
               const avatarGradients = [
                 "from-brand-500 to-brand-700",
                 "from-gold-400 to-gold-600",
-                "from-emerald-500 to-emerald-700",
-                "from-rose-500 to-rose-700",
-                "from-violet-500 to-violet-700",
+                "from-brand-700 to-brand-950",
+                "from-gold-500 to-brand-800",
+                "from-brand-600 to-gold-500",
               ];
               return (
               <StaggerChild key={i}>
@@ -703,48 +502,6 @@ function Testimonials() {
             })}
           </Stagger>
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ═══════════════════════════════════════════════
-   CLAIMS CTA — Full bleed with overlay
-   ═══════════════════════════════════════════════ */
-function ClaimsCTA() {
-  return (
-    <section className="relative overflow-hidden hero-mesh noise-overlay cv-auto">
-      {/* Decorative ambient glows — replaces the off-brand background photo */}
-      <div className="absolute -top-24 -left-24 w-[420px] h-[420px] rounded-full bg-brand-500/10 blur-3xl" />
-      <div className="absolute -bottom-24 -right-24 w-[420px] h-[420px] rounded-full bg-gold-400/10 blur-3xl" />
-      <div className="absolute inset-0 opacity-[0.04]" style={{
-        backgroundImage: "linear-gradient(rgba(255,255,255,.7) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.7) 1px, transparent 1px)",
-        backgroundSize: "60px 60px",
-      }} />
-
-      <div className="container relative sp text-center">
-        <Reveal>
-          <span className="eyebrow-light">Claims Support</span>
-          <h2 className="mt-3 display-2 text-white max-w-2xl mx-auto">
-            Need help with a claim? We've got your back.
-          </h2>
-          <p className="mt-3 text-lg text-white/80 max-w-xl mx-auto">
-            We'll help you report, document, and follow up — even after hours.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <a href={site.contact.phoneHref} className="btn btn-accent btn-lg">
-              Call {site.contact.phone}
-            </a>
-            <NavLink to="/contact" className="btn btn-ghost-light btn-lg">
-              Send a Message
-            </NavLink>
-          </div>
-          <div className="mt-7 text-base text-white/60 flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
-            <strong className="text-white/85 font-medium">También hablamos español</strong>
-            <span className="text-white/30">·</span>
-            <strong className="text-white/85 font-medium">نتحدث العربية</strong>
-          </div>
-        </Reveal>
       </div>
     </section>
   );
@@ -826,61 +583,6 @@ function FAQ() {
 /* ═══════════════════════════════════════════════
    STICKY RIBBON
    ═══════════════════════════════════════════════ */
-/* ═══════════════════════════════════════════════
-   POPULAR INSURANCE NEEDS HUB
-   ═══════════════════════════════════════════════ */
-function ProductShowcase() {
-  const products = [
-    { badge: "Same-day",    title: "SR-22 Insurance",         value: "Same-day filing, $15–$25 fee",          to: "/sr22-insurance-downey" },
-    { badge: "30+ carriers", title: "Auto Insurance",         value: "Liability, full coverage, SR-22",        to: "/auto-insurance-downey-ca" },
-    { badge: "ITIN OK",    title: "No-License Auto",          value: "Foreign license, ITIN, international",  to: "/no-license-auto-insurance-downey" },
-    { badge: "Fleets",     title: "Commercial Auto",          value: "BOP, GL, hired/non-owned, fleet",        to: "/commercial-auto-insurance-downey" },
-    { badge: "Bundle",     title: "Homeowners Insurance",     value: "Bundle with auto for 10–15% savings",   to: "/services" },
-    { badge: "Walls-in",   title: "Condo Insurance",          value: "Interior coverage for condo owners",    to: "/services" },
-    { badge: "Affordable", title: "Motorcycle Insurance",     value: "Gear and accessory coverage included",  to: "/services" },
-    { badge: "Term",       title: "Life Insurance",           value: "Affordable family protection options",  to: "/services" },
-    { badge: "Low down",   title: "Low Down Payment Auto",    value: "Drive today for less upfront",          to: "/auto-insurance-downey-ca" },
-    { badge: "Coverage",   title: "Final Expense Insurance",  value: "Funeral and burial cost coverage",      to: "/services" },
-  ];
-
-  return (
-    <Section tone="offwhite" id="products">
-      <div className="container">
-        <Reveal>
-          <span className="eyebrow">What We Cover</span>
-          <h2 className="mt-3 display-2 text-slate-900 max-w-2xl">
-            10 coverage types, one Downey office
-          </h2>
-          <p className="mt-3 text-slate-500 max-w-xl leading-relaxed">
-            Independent broker means we compare 30+ carriers across every line. Call, text, or walk in — we handle it all from one location.
-          </p>
-        </Reveal>
-        <Stagger className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3" gap={0.03}>
-          {products.map((p, i) => (
-            <StaggerChild key={i}>
-              <NavLink
-                to={p.to}
-                className="block h-full bg-white rounded-2xl p-5 ring-1 ring-slate-200/80 shadow-soft hover:shadow-lifted hover:ring-brand-300 hover:-translate-y-0.5 transition-all"
-              >
-                <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-brand-600 bg-brand-50 rounded-full px-2 py-0.5 mb-3">
-                  {p.badge}
-                </span>
-                <h3 className="font-bold text-slate-900 text-[14px] mb-1 leading-snug">{p.title}</h3>
-                <p className="text-[12px] text-slate-500 leading-relaxed">{p.value}</p>
-              </NavLink>
-            </StaggerChild>
-          ))}
-        </Stagger>
-        <Reveal delay={0.1} className="mt-6 text-center">
-          <NavLink to="/services" className="text-[13px] font-medium text-brand-700 hover:text-brand-900 hover:underline transition-colors">
-            View all services & coverage details →
-          </NavLink>
-        </Reveal>
-      </div>
-    </Section>
-  );
-}
-
 /* ═══════════════════════════════════════════════
    SERVICE AREAS — City landing page hub
    ═══════════════════════════════════════════════ */
@@ -964,15 +666,10 @@ export default function Home() {
           <TrustStrip />
         </div>
       </div>
-      <BentoStats />
-      <InsuranceWorkflow tone="light" />
-      <ProductShowcase />
       <ServicesMasonry />
-      <Carriers />
-      <HowItWorks />
+      <InsuranceWorkflow tone="light" />
       <AboutSplit />
       <Testimonials />
-      <ClaimsCTA />
       <ServiceAreas />
       <FAQ />
       <CTASection

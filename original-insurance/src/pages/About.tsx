@@ -44,7 +44,7 @@ export default function About() {
       ]} />
       <PageHero
         title="Insurance built on relationships"
-        subtitle={site.description}
+        subtitle="Independent Downey broker since 1999, comparing 30+ carriers for local families and businesses in English, Spanish, and Arabic."
         breadcrumb="About"
         backgroundImage={images.hero.storefront}
         overlayGradient="linear-gradient(105deg, rgba(6,14,31,0.9) 0%, rgba(11,30,61,0.74) 46%, rgba(11,30,61,0.26) 100%)"

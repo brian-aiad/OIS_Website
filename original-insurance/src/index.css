@@ -491,6 +491,17 @@ button.bg-white.rounded-2xl.ring-1:hover {
 /* ─── Wave divider responsive ─── */
 @media (max-width: 640px) {
   .wave-divider svg { height: 36px; }
+
+  .page-hero {
+    min-height: auto;
+  }
+
+  .page-hero .hero-copy-enter > p {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
 
 /* ─── Comparison table mobile scroll ─── */

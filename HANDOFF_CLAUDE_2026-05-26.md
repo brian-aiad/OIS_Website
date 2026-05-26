@@ -24,6 +24,33 @@ The user wanted the site to stop feeling flat, repetitive, and obviously AI gene
 
 ## What Was Done
 
+### Latest Organization / Mobile / SEO Pass
+
+After the visual asset commit, the user said the site still felt like "a bunch of words and images mashed up together," especially on the homepage, and asked to triple-check mobile and Google SEO readiness.
+
+Latest pass completed:
+
+- Simplified homepage flow to reduce section overload.
+- Removed unused homepage sections from rendering and source:
+  - stats bento block
+  - product text hub
+  - carrier marquee
+  - duplicate "how it works" section
+  - claims CTA block
+- Homepage now follows a cleaner path:
+  - hero
+  - trust strip
+  - coverage image cards
+  - quote process
+  - why Original
+  - reviews
+  - service areas
+  - FAQ
+  - final CTA
+- Tightened About hero copy so mobile no longer shows a long wall of text.
+- Added a mobile clamp for shared `PageHero` subtitle paragraphs.
+- Normalized review avatar colors back into the navy/gold brand palette instead of random green/red/purple gradients.
+
 ### Visual Assets
 
 Added new generated/object-focused WebP assets in `original-insurance/public/images/`:
@@ -122,29 +149,26 @@ City pages:
 
 ## Verification Done
 
-`npm run build` passed after the final layout changes:
+Latest verification:
 
-- TypeScript passed.
-- Vite build passed.
-- Prerender passed for 22 routes.
+- `npm run build` passed.
+- `npm run seo-lint` passed with 0 failures and 0 warnings.
+- `npm run validate:schema` passed across 22 pages.
+- Playwright mobile QA passed across all 22 routes:
+  - no horizontal overflow
+  - exactly one H1 per route
+  - title present
+  - meta description present
+  - canonical present
+  - no images missing `alt`
 
-Playwright screenshots were captured during QA under `tmp-visual-qa/` before cleanup for:
+Temporary screenshots/contact sheets were created during QA and should be removed before committing if present:
 
-- `/`
-- `/services`
-- `/auto-insurance-downey-ca`
-- `/sr22-insurance-downey`
-- `/no-license-auto-insurance-downey`
-- `/commercial-auto-insurance-downey`
-- `/about`
-- `/contact`
-
-Observed fixes:
-
-- Homepage hero is readable and the "Clean quote review" badge is visible.
-- Inner page heroes are cleaner after removing the repeated default broker card.
-- Footer is much tighter than before.
-- Product pages lead with actual product/object imagery.
+- `tmp-mobile-qa/`
+- `tmp-mobile-contact-sheet.webp`
+- `tmp-home-organized-desktop.png`
+- `tmp-about-mobile-fixed.png`
+- `tmp-home-mobile-next-section.png`
 
 ## Notes / Remaining Caution
 
