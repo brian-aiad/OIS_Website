@@ -162,17 +162,19 @@ if (!cityMismatch) ok(`All ${EXPECTED_CITIES.length} cities in sitemap and homep
 console.log("\n5. vercel.json redirect rules (loop check + trailingSlash):");
 const vercelJson = JSON.parse(readFileSync(join(APP_DIR, "vercel.json"), "utf-8"));
 
-// trailingSlash: false causes Vercel to 308-redirect all trailing-slash URLs.
-// Google reports these as "Page with redirect" in GSC — a status that can never
-// be validated as fixed because the redirect is intentional and permanent.
-// Without this setting, both /about and /about/ return 200; canonical handles deduplication.
-// trailingSlash: false makes Vercel 308-redirect /about/ -> /about.
-// This prevents duplicate 200 pages from accumulating as "Alternate page with
-// proper canonical tag" in Google Search Console.
-if (vercelJson.trailingSlash !== false) {
-  fail('vercel.json must set "trailingSlash": false so trailing-slash variants redirect to canonical no-slash URLs.');
+// This app prerenders routes as /route/index.html. Vercel's global
+// trailingSlash:false can redirect /route/ -> /route while also making /route
+// miss the prerendered directory file. Use explicit redirects for sitemap routes.
+if (vercelJson.trailingSlash === false) {
+  fail('vercel.json must not set "trailingSlash": false because this prerendered directory build returns 404 for clean canonical paths on Vercel.');
 } else {
-  ok('"trailingSlash": false is set (trailing-slash URLs redirect to canonical no-slash URLs)');
+  ok('No global "trailingSlash": false setting is present');
+}
+
+if (vercelJson.cleanUrls === true) {
+  fail('vercel.json must not set "cleanUrls": true for this prerendered directory build.');
+} else {
+  ok('No global "cleanUrls": true setting is present');
 }
 
 if (vercelJson.routes) {
@@ -191,6 +193,24 @@ if (!uppercaseSitemapRedirect) {
 } else {
   ok('Uppercase sitemap URL redirects to the canonical lowercase sitemap');
 }
+
+const expectedRedirectPaths = [...sitemapContent.matchAll(/<loc>https:\/\/originalinsurance\.net(\/[^<]*)<\/loc>/g)]
+  .map(match => match[1])
+  .filter(path => path !== "/");
+
+let missingSlashRedirect = false;
+for (const path of expectedRedirectPaths) {
+  const hasRedirect = vercelJson.redirects?.some(rule =>
+    rule.source === `${path}/` &&
+    rule.destination === path &&
+    rule.permanent === true
+  );
+  if (!hasRedirect) {
+    fail(`vercel.json missing canonical slash redirect: "${path}/" -> "${path}"`);
+    missingSlashRedirect = true;
+  }
+}
+if (!missingSlashRedirect) ok(`All ${expectedRedirectPaths.length} sitemap routes redirect trailing-slash variants to clean canonicals`);
 
 const emailProtectionRewrite = vercelJson.rewrites?.some(rule =>
   rule.source === "/cdn-cgi/l/email-protection" &&

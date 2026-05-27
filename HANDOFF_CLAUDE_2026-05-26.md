@@ -189,7 +189,8 @@ The user shared Google Search Console issues on 2026-05-26:
 
 Latest routing fixes:
 
-- `original-insurance/vercel.json` now sets `cleanUrls: true` and `trailingSlash: false` so `/about/` redirects to `/about` instead of serving a duplicate 200 page.
+- `original-insurance/vercel.json` now has explicit permanent redirects for every sitemap route with a trailing slash, so `/about/` redirects to `/about` instead of serving a duplicate 200 page.
+- Do not use global `cleanUrls: true` or `trailingSlash: false` for this app. Production testing showed that combination can make clean canonical paths such as `/faq` return 404 with this prerendered directory output.
 - `/SITEMAP.XML` now permanently redirects to `/sitemap.xml`. Because Windows is case-insensitive, do not try to create both files locally.
 - `/cdn-cgi/l/email-protection` rewrites to `original-insurance/api/gone.js`, which returns HTTP `410 Gone` with `X-Robots-Tag: noindex, nofollow`.
 - `original-insurance/middleware.js` strips `?q=` query parameters with a 308 redirect before the React app renders.

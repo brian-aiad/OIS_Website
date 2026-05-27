@@ -3,8 +3,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install",
-  "cleanUrls": true,
-  "trailingSlash": false,
   "redirects": [
     {
       "source": "/index.html",
@@ -14,6 +12,111 @@
     {
       "source": "/SITEMAP.XML",
       "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/services/",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/locations/",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/about/",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/contact/",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/faq/",
+      "destination": "/faq",
+      "permanent": true
+    },
+    {
+      "source": "/auto-insurance-downey-ca/",
+      "destination": "/auto-insurance-downey-ca",
+      "permanent": true
+    },
+    {
+      "source": "/sr22-insurance-downey/",
+      "destination": "/sr22-insurance-downey",
+      "permanent": true
+    },
+    {
+      "source": "/no-license-auto-insurance-downey/",
+      "destination": "/no-license-auto-insurance-downey",
+      "permanent": true
+    },
+    {
+      "source": "/commercial-auto-insurance-downey/",
+      "destination": "/commercial-auto-insurance-downey",
+      "permanent": true
+    },
+    {
+      "source": "/insurance/downey/",
+      "destination": "/insurance/downey",
+      "permanent": true
+    },
+    {
+      "source": "/insurance/norwalk/",
+      "destination": "/insurance/norwalk",
+      "permanent": true
+    },
+    {
+      "source": "/insurance/bellflower/",
+      "destination": "/insurance/bellflower",
+      "permanent": true
+    },
+    {
+      "source": "/insurance/lynwood/",
+      "destination": "/insurance/lynwood",
+      "permanent": true
+    },
+    {
+      "source": "/insurance/cerritos/",
+      "destination": "/insurance/cerritos",
+      "permanent": true
+    },
+    {
+      "source": "/insurance/whittier/",
+      "destination": "/insurance/whittier",
+      "permanent": true
+    },
+    {
+      "source": "/insurance/lakewood/",
+      "destination": "/insurance/lakewood",
+      "permanent": true
+    },
+    {
+      "source": "/insurance/paramount/",
+      "destination": "/insurance/paramount",
+      "permanent": true
+    },
+    {
+      "source": "/insurance/south-gate/",
+      "destination": "/insurance/south-gate",
+      "permanent": true
+    },
+    {
+      "source": "/insurance/pico-rivera/",
+      "destination": "/insurance/pico-rivera",
+      "permanent": true
+    },
+    {
+      "source": "/insurance/montebello/",
+      "destination": "/insurance/montebello",
+      "permanent": true
+    },
+    {
+      "source": "/insurance/commerce/",
+      "destination": "/insurance/commerce",
       "permanent": true
     }
   ],
