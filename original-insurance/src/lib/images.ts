@@ -8,8 +8,6 @@ export const images = {
   hero: {
     storefront: "/images/ois-hero-storefront-logo-v4.webp",
     officeDetail: "/images/ois-office-desk-detail-v3.webp",
-    meeting: "/images/ois-hispanic-family-consult-v3.webp",
-    handshake: "/images/handshake-deal.webp",
   },
   home: {
     why: "/images/ois-home-why-hispanic-consult-v4.webp",
@@ -35,11 +33,7 @@ export const images = {
     noLicense: "/images/ois-product-no-license-docs-v3.webp",
   },
   about: {
-    handshake: "/images/handshake-deal.webp",
-    consultation: "/images/ois-hispanic-family-consult-v3.webp",
     office: "/images/ois-office-desk-detail-v3.webp",
-    team: "/images/about-team-gathered.webp",
-    portrait: "/images/about-broker-portrait.webp",
   },
   testimonials: {
     auto: "/images/ois-testimonial-auto-client-v4.webp",
@@ -47,25 +41,12 @@ export const images = {
     business: "/images/ois-testimonial-business-client-v4.webp",
   },
   clients: {
-    consultation: "/images/ois-home-reviews-client-v4.webp",
-    commercialReview: "/images/ois-testimonial-business-client-v4.webp",
     officeConsultation: "/images/ois-testimonial-auto-client-v4.webp",
     autoConsultation: "/images/ois-hispanic-auto-consult-v3.webp",
     sr22Consultation: "/images/ois-sr22-hispanic-consult-v4.webp",
     noLicenseConsultation: "/images/ois-no-license-hispanic-consult-v4.webp",
     commercialConsultation: "/images/ois-testimonial-business-client-v4.webp",
-    homeLifeConsultation: "/images/ois-testimonial-family-client-v4.webp",
-    motorcycleConsultation: "/images/ois-product-motorcycle-v3.webp",
-    recreationalConsultation: "/images/ois-product-rv-boat-v3.webp",
     contactFrontDesk: "/images/ois-contact-reception-v4.webp",
-    contactCall: "/images/contact-call-broker.webp",
-  },
-  city: {
-    downey: "/images/downey-neighborhood.webp",
-    southeastLa: "/images/ois-city-community-golden-v4.webp",
-    corridor: "/images/ois-city-commercial-corridor-v4.webp",
-    smallBusiness: "/images/ois-city-small-business-v4.webp",
-    broker: "/images/bilingual-broker-city.webp",
   },
   claims: {
     docs: "/images/ois-office-desk-detail-v3.webp",

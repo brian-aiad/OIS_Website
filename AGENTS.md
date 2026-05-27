@@ -1,6 +1,6 @@
-# Original Insurance Website - Claude Instructions
+# Original Insurance Website - Codex Instructions
 
-Claude and Codex share this repo. Read `docs/AI_WORKFLOW.md` before changing code, SEO routing, deployment scripts, or generated assets.
+Codex and Claude share this repo. Read `docs/AI_WORKFLOW.md` before changing code, SEO routing, deployment scripts, or generated assets.
 
 Critical rules:
 
