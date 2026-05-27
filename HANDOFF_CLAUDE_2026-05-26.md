@@ -177,6 +177,30 @@ Temporary screenshots/contact sheets were created during QA and should be remove
 - The floating quote widget still appears sitewide; it is separate from the removed homepage sticky ribbon.
 - Do not delete the source PNGs under `.codex/generated_images`; only temp QA folders in the repo should be cleaned.
 
+## Search Console Routing Pass
+
+The user shared Google Search Console issues on 2026-05-26:
+
+- `Alternate page with proper canonical tag` for trailing-slash URLs such as `/faq/`, `/about/`, `/insurance/lynwood/`, `/auto-insurance-downey-ca/`, and `/sr22-insurance-downey/`.
+- `Page with redirect` for known redirect URLs such as `/index.html`, `/contact/`, `/insurance/downey/`, and `/insurance/bellflower/`.
+- Uppercase sitemap submission `/SITEMAP.XML` showing an error.
+- Junk URL `/cdn-cgi/l/email-protection` showing as `Crawled - currently not indexed`.
+- Query URLs such as `/faq/?q={search_term_string}` and `/faq?q={search_term_string}` appearing in reports.
+
+Latest routing fixes:
+
+- `original-insurance/vercel.json` now sets `cleanUrls: true` and `trailingSlash: false` so `/about/` redirects to `/about` instead of serving a duplicate 200 page.
+- `/SITEMAP.XML` now permanently redirects to `/sitemap.xml`. Because Windows is case-insensitive, do not try to create both files locally.
+- `/cdn-cgi/l/email-protection` rewrites to `original-insurance/api/gone.js`, which returns HTTP `410 Gone` with `X-Robots-Tag: noindex, nofollow`.
+- `original-insurance/middleware.js` strips `?q=` query parameters with a 308 redirect before the React app renders.
+- `scripts/seo-lint.mjs` now enforces these routing rules and rejects legacy Vercel `routes` blocks.
+
+Important GSC note:
+
+- `Page with redirect` is not always a problem. `/index.html` and trailing-slash variants should not be indexed; they should redirect to the canonical no-slash URL. In Search Console, inspect/request indexing for the clean canonical URLs from `/sitemap.xml`, not for redirect variants.
+- After deploy, remove the bad uppercase `/SITEMAP.XML` sitemap submission in Search Console and keep only `https://originalinsurance.net/sitemap.xml`.
+- Google will not clear these reports instantly. The screenshots showed crawls from May 20-23, 2026 and a report update from May 21, 2026, so expect recrawl lag after deploy.
+
 ## Useful Commands
 
 Build:

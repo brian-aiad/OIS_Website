@@ -3,14 +3,22 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install",
+  "cleanUrls": true,
+  "trailingSlash": false,
   "redirects": [
     {
       "source": "/index.html",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/SITEMAP.XML",
+      "destination": "/sitemap.xml",
+      "permanent": true
     }
   ],
   "rewrites": [
+    { "source": "/cdn-cgi/l/email-protection", "destination": "/api/gone" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [

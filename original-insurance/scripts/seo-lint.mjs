@@ -14,7 +14,7 @@
  * Exit:   0 = pass, 1 = failures, 2 = warnings only
  */
 
-import { readFileSync, readdirSync, statSync } from "fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "fs";
 import { resolve, join, relative, dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -166,10 +166,56 @@ const vercelJson = JSON.parse(readFileSync(join(APP_DIR, "vercel.json"), "utf-8"
 // Google reports these as "Page with redirect" in GSC — a status that can never
 // be validated as fixed because the redirect is intentional and permanent.
 // Without this setting, both /about and /about/ return 200; canonical handles deduplication.
-if (vercelJson.trailingSlash === false) {
-  fail('vercel.json has "trailingSlash": false — this causes 308 redirects for trailing-slash URLs which Google reports as unvalidatable "Page with redirect" errors in GSC. Remove this key entirely.');
+// trailingSlash: false makes Vercel 308-redirect /about/ -> /about.
+// This prevents duplicate 200 pages from accumulating as "Alternate page with
+// proper canonical tag" in Google Search Console.
+if (vercelJson.trailingSlash !== false) {
+  fail('vercel.json must set "trailingSlash": false so trailing-slash variants redirect to canonical no-slash URLs.');
 } else {
-  ok('"trailingSlash" is not set to false (trailing-slash URLs will serve 200 with canonical)');
+  ok('"trailingSlash": false is set (trailing-slash URLs redirect to canonical no-slash URLs)');
+}
+
+if (vercelJson.routes) {
+  fail('vercel.json must not use legacy "routes" with redirects/rewrites/headers/cleanUrls/trailingSlash.');
+} else {
+  ok('No legacy "routes" block is present');
+}
+
+const uppercaseSitemapRedirect = vercelJson.redirects?.some(rule =>
+  rule.source === "/SITEMAP.XML" &&
+  rule.destination === "/sitemap.xml" &&
+  rule.permanent === true
+);
+if (!uppercaseSitemapRedirect) {
+  fail('vercel.json must redirect "/SITEMAP.XML" to "/sitemap.xml" for the uppercase sitemap submitted in GSC.');
+} else {
+  ok('Uppercase sitemap URL redirects to the canonical lowercase sitemap');
+}
+
+const emailProtectionRewrite = vercelJson.rewrites?.some(rule =>
+  rule.source === "/cdn-cgi/l/email-protection" &&
+  rule.destination === "/api/gone"
+);
+if (!emailProtectionRewrite || !existsSync(join(APP_DIR, "api", "gone.js"))) {
+  fail('vercel.json must route "/cdn-cgi/l/email-protection" to api/gone.js so the junk URL returns 410.');
+} else {
+  ok('Cloudflare email-protection junk URL is routed to a 410 response');
+}
+
+const middlewarePath = join(APP_DIR, "middleware.js");
+if (!existsSync(middlewarePath)) {
+  fail('middleware.js is required to strip "?q=" query URLs before the React app renders.');
+} else {
+  const middlewareContent = readFileSync(middlewarePath, "utf-8");
+  if (
+    !middlewareContent.includes('searchParams.has("q")') ||
+    !middlewareContent.includes('searchParams.delete("q")') ||
+    !middlewareContent.includes("Response.redirect")
+  ) {
+    fail('middleware.js must redirect URLs with a "q" search parameter after deleting that parameter.');
+  } else {
+    ok('Middleware strips "?q=" query URLs before the app renders');
+  }
 }
 
 let loopFound = false;
