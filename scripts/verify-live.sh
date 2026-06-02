@@ -60,7 +60,8 @@ echo ""
 echo "Prerendered source canonicals:"
 for url in /about /faq /insurance/lynwood /auto-insurance-downey-ca /sr22-insurance-downey; do
   expected="https://originalinsurance.net${url}"
-  if curl -s "${PROD}${url}" | grep -q "<link rel=\"canonical\" href=\"${expected}\""; then
+  html="$(curl -s "${PROD}${url}")"
+  if echo "$html" | grep -Eq "<link[^>]+rel=[\"']canonical[\"'][^>]+href=[\"']${expected}[\"']|<link[^>]+href=[\"']${expected}[\"'][^>]+rel=[\"']canonical[\"']"; then
     ok "$url source canonical is page-specific"
   else
     fail "$url source canonical missing or wrong (expected ${expected})"
