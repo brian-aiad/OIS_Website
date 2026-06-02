@@ -57,6 +57,26 @@ else
 fi
 
 echo ""
+echo "Prerendered source canonicals:"
+for url in /about /faq /insurance/lynwood /auto-insurance-downey-ca /sr22-insurance-downey; do
+  expected="https://originalinsurance.net${url}"
+  if curl -s "${PROD}${url}" | grep -q "<link rel=\"canonical\" href=\"${expected}\""; then
+    ok "$url source canonical is page-specific"
+  else
+    fail "$url source canonical missing or wrong (expected ${expected})"
+  fi
+done
+
+echo ""
+echo "Unknown URL (expected 404, not soft-404 200):"
+code=$(curl -so /dev/null -w "%{http_code}" "${PROD}/missing-seo-test-url")
+if [[ "$code" == "404" ]]; then
+  ok "$code  /missing-seo-test-url"
+else
+  fail "$code  /missing-seo-test-url  (expected 404)"
+fi
+
+echo ""
 echo "Query-param URL (expected 308 after stripping ?q=):"
 code=$(curl -so /dev/null -w "%{http_code}" "${PROD}/faq?q=test")
 if [[ "$code" == "308" ]]; then

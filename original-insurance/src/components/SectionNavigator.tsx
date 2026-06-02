@@ -1,4 +1,3 @@
-import { motion, useScroll, useSpring } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -20,8 +19,7 @@ function slugify(value: string) {
 
 export default function SectionNavigator() {
   const { pathname } = useLocation();
-  const { scrollYProgress } = useScroll();
-  const progress = useSpring(scrollYProgress, { stiffness: 100, damping: 24, restDelta: 0.001 });
+  const [progress, setProgress] = useState(0);
   const [headings, setHeadings] = useState<HeadingItem[]>([]);
   const [activeId, setActiveId] = useState("");
   const [showNavigator, setShowNavigator] = useState(false);
@@ -55,6 +53,8 @@ export default function SectionNavigator() {
     const updateVisibility = () => {
       const firstSectionTop = nodes[0]?.getBoundingClientRect().top ?? Number.POSITIVE_INFINITY;
       setShowNavigator(firstSectionTop < window.innerHeight * 0.75);
+      const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      setProgress(Math.min(1, Math.max(0, window.scrollY / max)));
     };
 
     const observer = new IntersectionObserver(
@@ -113,7 +113,7 @@ export default function SectionNavigator() {
             })}
           </nav>
           <div className="mt-3 h-1 overflow-hidden rounded-full bg-slate-100">
-            <motion.div className="h-full origin-left rounded-full bg-gold-400" style={{ scaleX: progress }} />
+            <div className="h-full origin-left rounded-full bg-gold-400" style={{ transform: `scaleX(${progress})` }} />
           </div>
         </div>
       </aside>
@@ -125,7 +125,7 @@ export default function SectionNavigator() {
         >
           <span className="min-w-0 truncate text-[12px] font-semibold">{activeLabel}</span>
           <span className="h-1.5 w-12 overflow-hidden rounded-full bg-white/15">
-            <motion.span className="block h-full origin-left rounded-full bg-gold-400" style={{ scaleX: progress }} />
+            <span className="block h-full origin-left rounded-full bg-gold-400" style={{ transform: `scaleX(${progress})` }} />
           </span>
         </a>
       </div>

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { openQuoteModal } from "../lib/openQuote";
-import { motion, AnimatePresence } from "framer-motion";
 import { site } from "../lib/site";
 import logoBadge from "../assets/logo-badge.webp";
 
@@ -131,13 +130,7 @@ export default function Navbar() {
                 {({ isActive }) => (
                   <>
                     {l.label}
-                    {isActive && (
-                      <motion.span
-                        layoutId="active-pill"
-                        className="absolute inset-0 rounded-lg bg-brand-50 -z-10"
-                        transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                      />
-                    )}
+                    {isActive && <span className="absolute inset-0 rounded-lg bg-brand-50 -z-10" />}
                   </>
                 )}
               </NavLink>
@@ -186,23 +179,15 @@ export default function Navbar() {
         </div>
 
         {/* ── Mobile sheet ── */}
-        <AnimatePresence>
-          {open && (
-            <motion.div
+        {open && (
+            <div
               ref={sheetRef}
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="lg:hidden overflow-hidden border-t border-slate-100"
             >
               <div className="container py-5 space-y-2">
-                {LINKS.map((l, i) => (
-                  <motion.div
+                {LINKS.map((l) => (
+                  <div
                     key={l.to}
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.04, duration: 0.3 }}
                   >
                     <NavLink
                       to={l.to}
@@ -218,7 +203,7 @@ export default function Navbar() {
                     >
                       {l.label}
                     </NavLink>
-                  </motion.div>
+                  </div>
                 ))}
 
                 <div className="pt-3 grid grid-cols-3 gap-2">
@@ -238,9 +223,8 @@ export default function Navbar() {
                   Mon-Fri 10-5:30 &middot; Call or text
                 </div>
               </div>
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
       </div>
     </header>
   );

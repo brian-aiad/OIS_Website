@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
-import { motion } from "framer-motion";
+import { useImagePreload } from "../lib/seo";
 
 interface PageHeroProps {
   title: string;
@@ -40,6 +40,7 @@ export default function PageHero({
   children,
 }: PageHeroProps) {
   const heroAside = rightContent;
+  useImagePreload(backgroundImage);
 
   return (
     <section
@@ -223,15 +224,13 @@ export default function PageHero({
 
             <div className="mt-8 grid max-w-xl grid-cols-1 gap-2 text-[12px] font-semibold text-white/75 sm:grid-cols-3">
               {["30+ carrier market", "Downey office", "Same-day help"].map((item) => (
-                <motion.span
+                <span
                   key={item}
-                  className="inline-flex items-center gap-2 rounded-xl bg-white/[0.07] px-3 py-2 ring-1 ring-white/10 backdrop-blur-sm"
-                  whileHover={{ y: -2, backgroundColor: "rgba(255,255,255,0.11)" }}
-                  transition={{ duration: 0.18 }}
+                  className="inline-flex items-center gap-2 rounded-xl bg-white/[0.07] px-3 py-2 ring-1 ring-white/10 backdrop-blur-sm transition-colors hover:bg-white/[0.11]"
                 >
                   <span className="h-1.5 w-1.5 rounded-full bg-gold-400" />
                   {item}
-                </motion.span>
+                </span>
               ))}
             </div>
           </div>

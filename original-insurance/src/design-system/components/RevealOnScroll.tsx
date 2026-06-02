@@ -1,6 +1,4 @@
-import { motion, useReducedMotion } from "framer-motion";
 import { type ReactNode } from "react";
-import { motion as motionTokens } from "../tokens";
 
 interface RevealOnScrollProps {
   children: ReactNode;
@@ -19,23 +17,7 @@ interface RevealOnScrollProps {
  *   </RevealOnScroll>
  */
 export function RevealOnScroll({ children, className, delay = 0, direction = "up" }: RevealOnScrollProps) {
-  const shouldReduceMotion = useReducedMotion();
-  const initialY = direction === "up" ? 20 : 0;
-  const initialX = direction === "left" ? -20 : direction === "right" ? 20 : 0;
-
-  if (shouldReduceMotion) {
-    return <div className={className}>{children}</div>;
-  }
-
-  return (
-    <motion.div
-      className={`reveal-surface ${className ?? ""}`}
-      initial={{ opacity: 0, y: initialY, x: initialX, filter: "blur(8px)" }}
-      whileInView={{ opacity: 1, y: 0, x: 0, filter: "blur(0px)" }}
-      viewport={motionTokens.fadeUp.viewport}
-      transition={{ ...motionTokens.fadeUp.transition, delay }}
-    >
-      {children}
-    </motion.div>
-  );
+  void delay;
+  void direction;
+  return <div className={`reveal-surface ${className ?? ""}`}>{children}</div>;
 }

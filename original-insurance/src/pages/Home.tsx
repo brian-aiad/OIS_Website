@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
 import { images, srcset } from "../lib/images";
-import { usePageMeta } from "../lib/seo";
+import { useImagePreload, usePageMeta } from "../lib/seo";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 import { MagneticButton } from "../components/MagneticButton";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
@@ -16,6 +16,8 @@ import InsuranceWorkflow from "../components/InsuranceWorkflow";
    HERO — Photo-based with full-bleed storefront background
    ═══════════════════════════════════════════════ */
 function Hero() {
+  useImagePreload(images.hero.storefront);
+
   return (
     <section className="relative overflow-hidden noise-overlay diagonal-pattern">
       {/* Full-bleed background photo (storefront) */}

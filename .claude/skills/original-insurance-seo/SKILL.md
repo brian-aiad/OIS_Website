@@ -47,13 +47,13 @@ npm run validate:schema
 - `/cdn-cgi/l/email-protection` rewrites to `/api/gone`, which returns `410`.
 - `middleware.js` strips `?q=` query params with a `308` redirect.
 - `robots.txt` must keep `Disallow: /*?q=`.
-- Do not add global `trailingSlash: false`, global `cleanUrls: true`, or a legacy Vercel `routes` block.
+- Do not add global `trailingSlash: false`, global `cleanUrls: true`, a legacy Vercel `routes` block, or a catch-all rewrite from `/(.*)` to `/index.html`.
 
 ## Schema Rules
 
 - `LocalBusinessSchema`: homepage, city pages, and money pages where explicitly mounted.
 - Do not mount `LocalBusinessSchema` on `/faq`, `/about`, `/contact`, or `/services`.
-- `FAQSchema`: `/faq` and money pages where explicitly mounted.
+- Do not emit `FAQPage`, `Review`, or `AggregateRating` JSON-LD. FAQ/review content can remain visible on the page, but unsupported rich-result schema must stay out of prerendered HTML.
 - Every prerendered route needs exactly one self-referencing canonical.
 
 ## Route Map

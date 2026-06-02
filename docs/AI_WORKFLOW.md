@@ -40,12 +40,13 @@ npm run validate:schema
 - `/cdn-cgi/l/email-protection` rewrites to `/api/gone` and returns `410`.
 - `?q=` URLs are stripped by `original-insurance/middleware.js` with `308`.
 - `robots.txt` must keep `Disallow: /*?q=`.
+- Do not add a catch-all rewrite from `/(.*)` to `/index.html`; it bypasses prerendered route HTML and creates soft-404 `200` responses for unknown URLs.
 
 ## Schema Rules
 
 - `LocalBusinessSchema` belongs on homepage and city/money pages where explicitly used.
 - Do not add `LocalBusinessSchema` to `/faq`, `/about`, `/contact`, or `/services`.
-- `FAQSchema` belongs on `/faq` and money pages where explicitly used.
+- Do not emit `FAQPage`, `Review`, or `AggregateRating` JSON-LD. Google deprecated FAQ rich results and GSC flags the old FAQ/review schema as invalid. Keep visible FAQ and review content only.
 - Every prerendered route needs one self-referencing canonical.
 
 ## File Organization

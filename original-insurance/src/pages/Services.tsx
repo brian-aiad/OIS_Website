@@ -1,7 +1,6 @@
 import { useState } from "react";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { openQuoteModal } from "../lib/openQuote";
-import { motion, AnimatePresence } from "framer-motion";
 import { site } from "../lib/site";
 import { usePageMeta } from "../lib/seo";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
@@ -145,8 +144,8 @@ const SERVICE_TABS = [
 
 export default function Services() {
   usePageMeta({
-    title: "Auto, Home & SR-22 Insurance in Downey | Original Insurance",
-    description: "Auto, home, life, SR-22, commercial, renters, motorcycle — we compare 30+ carriers so you get the best fit. Bilingual English, Spanish, Arabic. Same-day eID cards.",
+    title: "Auto, Home & Motorcycle Insurance Downey CA | Original",
+    description: "Compare auto, home, renters, motorcycle, life, SR-22 and commercial insurance in Downey CA with 30+ carriers. Bilingual service and same-day eID cards.",
     canonical: "https://originalinsurance.net/services",
   });
 
@@ -223,14 +222,7 @@ export default function Services() {
           </div>
 
           {/* Tab content — two column */}
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={active.key}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            >
+          <div key={active.key}>
               <div className="grid md:grid-cols-2 gap-10 md:gap-14 lg:gap-16 items-center">
                 {/* Image side */}
                 <div className="relative">
@@ -300,8 +292,7 @@ export default function Services() {
                   </div>
                 </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
+          </div>
 
           {/* Quick access grid */}
           <Stagger className="mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">

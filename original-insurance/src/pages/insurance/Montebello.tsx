@@ -31,9 +31,9 @@ const NEARBY = [
 export default function MontebelloPage() {
   usePageMeta({
     title:
-      "Montebello Auto Insurance — 30+ Carriers | Original",
+      "Car Insurance Quotes Montebello CA | Original Insurance",
     description:
-      "Auto insurance for Montebello drivers on the 60 and 710. Compare 30+ California carriers — SR-22, no-license, home bundles. Bilingual broker. Free quote today.",
+      "Compare car insurance quotes in Montebello, CA from 30+ carriers. SR-22, no-license, home bundles, bilingual broker. Free same-day quote.",
     canonical,
   });
 
@@ -46,8 +46,8 @@ export default function MontebelloPage() {
       ]} />
 
       <PageHero
-        title="Auto Insurance in Montebello, CA"
-        subtitle="Independent insurance broker serving Montebello commuters and families — multilingual English, Spanish, and Arabic support from our Downey office."
+        title="Car Insurance Quotes in Montebello, CA"
+        subtitle="Independent insurance broker serving Montebello commuters and families with same-day auto quotes and multilingual English, Spanish, and Arabic support from our Downey office."
         breadcrumb="Montebello"
         backgroundImage="/images/ois-city-community-golden-v4.webp"
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
@@ -79,7 +79,7 @@ export default function MontebelloPage() {
               className="text-3xl md:text-4xl font-bold text-slate-900 mb-6"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Auto Insurance in Montebello, CA
+              Car Insurance in Montebello, CA
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">

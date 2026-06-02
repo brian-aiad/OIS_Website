@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 
 interface OptimizedImageProps {
   src: string;
@@ -32,18 +31,19 @@ export function OptimizedImage({
         </div>
       )}
 
-      <motion.img
+      <img
         src={src}
         alt={alt}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
         onLoad={() => setIsLoaded(true)}
         onError={() => setError(true)}
-        initial={{ opacity: 0, scale: 1.02 }}
-        animate={isLoaded ? { opacity: 1, scale: 1 } : undefined}
-        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className={`w-full h-full object-${objectFit}`}
-        style={{ display: error ? "none" : "block" }}
+        style={{
+          display: error ? "none" : "block",
+          opacity: isLoaded ? 1 : 0,
+          transition: "opacity 240ms ease",
+        }}
       />
     </div>
   );

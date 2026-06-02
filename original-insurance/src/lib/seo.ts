@@ -58,6 +58,37 @@ export function usePageMeta({ title, description, canonical }: PageMeta) {
   }, [title, description, canonical]);
 }
 
+export function useImagePreload(href?: string, options: { media?: string } = {}) {
+  const { media } = options;
+
+  useEffect(() => {
+    if (!href) return;
+
+    const mediaSelector = media ? `[media="${media}"]` : ":not([media])";
+    const existing = document.querySelector<HTMLLinkElement>(
+      `link[rel="preload"][as="image"][href="${href}"]${mediaSelector}`,
+    );
+    if (existing) {
+      existing.setAttribute("fetchpriority", "high");
+      return;
+    }
+
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = href;
+    link.type = "image/webp";
+    if (media) link.media = media;
+    link.setAttribute("fetchpriority", "high");
+    link.setAttribute("data-hero-preload", "true");
+    document.head.appendChild(link);
+
+    return () => {
+      link.remove();
+    };
+  }, [href, media]);
+}
+
 function setOgContent(property: string, content: string) {
   const el = document.querySelector<HTMLMetaElement>(`meta[property="${property}"]`);
   if (el) {

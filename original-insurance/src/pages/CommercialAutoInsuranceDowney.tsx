@@ -58,9 +58,9 @@ const VEHICLE_TYPES = [
 
 export default function CommercialAutoInsuranceDowneyPage() {
   usePageMeta({
-    title: "Commercial Auto Insurance Downey CA | Original Insurance",
+    title: "Commercial Auto & Business Vehicle Insurance Downey CA | Original",
     description:
-      "Commercial auto in Downey for fleets, trucks, and business vehicles. Compare 30+ carriers for liability, hired/non-owned, BOP bundles. Same-day proof of insurance.",
+      "Commercial insurance in Downey CA for business vehicles, fleets, trucks, hired/non-owned auto and BOP bundles. Compare 30+ carriers with same-day proof.",
     canonical:
       "https://originalinsurance.net/commercial-auto-insurance-downey",
   });
@@ -75,8 +75,8 @@ export default function CommercialAutoInsuranceDowneyPage() {
       ]} />
 
       <PageHero
-        title="Commercial Auto Insurance in Downey, CA"
-        subtitle="Protect your trucks, vans, and business vehicles without shopping five carriers yourself. We compare 30+ commercial auto markets for Downey-area owner-operators, small fleets, and local businesses — same-day proof of insurance when you need it."
+        title="Commercial Auto & Business Vehicle Insurance in Downey, CA"
+        subtitle="Protect your trucks, vans, fleets, and business vehicles without shopping five carriers yourself. We compare 30+ commercial auto markets for Downey-area owner-operators, small fleets, and local businesses with same-day proof of insurance when you need it."
         breadcrumb="Commercial Auto"
         backgroundImage={images.products.commercial}
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"

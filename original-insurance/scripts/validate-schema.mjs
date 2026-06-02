@@ -23,8 +23,9 @@ const PROD_ORIGIN = "https://originalinsurance.net";
 // Pages that should NOT have BreadcrumbList (home only)
 const NO_BREADCRUMB = new Set(["/"]);
 
-// Pages that should have FAQPage schema
-const NEED_FAQ = new Set(["/faq"]);
+// Google is deprecating FAQ rich results and review snippets are not valid for this site.
+// Keep visible FAQ/review content, but do not emit these JSON-LD types.
+const DEPRECATED_SCHEMA_TYPES = new Set(["FAQPage", "Review", "AggregateRating"]);
 
 // Pages that should have InsuranceAgency schema (homepage, city pages, money pages).
 // /faq, /about, /contact, /services explicitly excluded — see SKILL.md schema rules.
@@ -149,10 +150,13 @@ for (const { path: htmlPath, route } of files) {
     if (hasBreadcrumb) pass(routeKey, "BreadcrumbList present");
   }
 
-  // 6. FAQPage required on /faq
-  if (NEED_FAQ.has(routeKey)) {
-    check(routeKey, types.includes("FAQPage"), "Missing FAQPage schema");
+  // 6. Deprecated/unsupported rich-result schema must not be emitted.
+  for (const blockedType of DEPRECATED_SCHEMA_TYPES) {
+    check(routeKey, !types.includes(blockedType), `${blockedType} schema must not be emitted`);
   }
+
+  const hasReviewSnippetFields = rawJson.includes('"aggregateRating"') || rawJson.includes('"reviewRating"');
+  check(routeKey, !hasReviewSnippetFields, "Review snippet fields must not be emitted");
 
   // 7. Home page should have WebSite or LocalBusiness at root level
   if (routeKey === "/") {

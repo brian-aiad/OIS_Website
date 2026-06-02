@@ -28,7 +28,7 @@ const QUOTE_TYPES = [
 ] as const;
 
 /** Open from anywhere: window.dispatchEvent(new Event('openQuoteModal')) */
-export default function QuoteWidget() {
+export default function QuoteWidget({ openSignal = 0 }: { openSignal?: number }) {
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [quoteType, setQuoteType] = useState<(typeof QUOTE_TYPES)[number]["label"]>("Auto");
@@ -40,6 +40,10 @@ export default function QuoteWidget() {
     window.addEventListener("openQuoteModal", handleOpen);
     return () => window.removeEventListener("openQuoteModal", handleOpen);
   }, []);
+
+  useEffect(() => {
+    if (openSignal > 0) setOpen(true);
+  }, [openSignal]);
 
   /* Lock body scroll when modal open */
   useEffect(() => {

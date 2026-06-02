@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { site } from "../../lib/site";
 
 interface LocalBusinessSchemaProps {
   /** Override the page URL (defaults to homepage) */
@@ -65,13 +64,6 @@ export default function LocalBusinessSchema({
         "https://originalinsurance.net/images/ois-hero-storefront-logo-v4.webp",
         "https://originalinsurance.net/images/ois-contact-reception-v4.webp",
       ],
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: site.reviews.rating,
-        reviewCount: site.reviews.count,
-        bestRating: 5,
-        worstRating: 1,
-      },
       contactPoint: [
         {
           "@type": "ContactPoint",

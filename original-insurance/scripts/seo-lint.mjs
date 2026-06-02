@@ -222,6 +222,28 @@ if (!emailProtectionRewrite || !existsSync(join(APP_DIR, "api", "gone.js"))) {
   ok('Cloudflare email-protection junk URL is routed to a 410 response');
 }
 
+const static404Path = join(PUBLIC_DIR, "404.html");
+if (!existsSync(static404Path)) {
+  fail('public/404.html is required so unknown URLs return a real noindex 404 page on Vercel.');
+} else {
+  const static404 = readFileSync(static404Path, "utf-8");
+  if (!static404.includes('name="robots"') || !static404.includes("noindex")) {
+    fail('public/404.html must include a noindex robots meta tag.');
+  } else {
+    ok('Static 404.html exists and is noindex');
+  }
+}
+
+const indexCatchAllRewrite = vercelJson.rewrites?.some(rule =>
+  rule.source === "/(.*)" &&
+  rule.destination === "/index.html"
+);
+if (indexCatchAllRewrite) {
+  fail('vercel.json must not rewrite "/(.*)" to "/index.html"; it bypasses prerendered route HTML and makes unknown URLs return soft-404 200 responses.');
+} else {
+  ok('No catch-all index.html rewrite is present');
+}
+
 const middlewarePath = join(APP_DIR, "middleware.js");
 if (!existsSync(middlewarePath)) {
   fail('middleware.js is required to strip "?q=" query URLs before the React app renders.');

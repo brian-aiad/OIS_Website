@@ -1,18 +1,26 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZDREMBRV97"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1e3a8a" />
+
+    <!-- Google tag queue; external script loads after first render work. -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-ZDREMBRV97');
+      window.addEventListener('load', function () {
+        var loadGtag = function () {
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-ZDREMBRV97';
+          document.head.appendChild(script);
+        };
+        window.setTimeout(loadGtag, 4000);
+      });
     </script>
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#1e3a8a" />
 
     <!-- SEO Meta -->
     <title>Original Insurance Services | Independent Insurance Broker Downey CA</title>

@@ -57,6 +57,100 @@ const ROUTES = [
   "/",
 ];
 
+function prioritizeHeroPreloads(html) {
+  const preloadPattern = /\s*<link\s+rel="preload"\s+as="image"[^>]*data-hero-preload="true"[^>]*>/g;
+  const heroPreloads = html.match(preloadPattern);
+  if (!heroPreloads?.length) return html;
+
+  const withoutHeroPreloads = html.replace(preloadPattern, "");
+  const uniquePreloads = [...new Set(heroPreloads.map((tag) => tag.trim()))];
+  const preloadHtml = uniquePreloads.join("\n");
+  const charsetMatch = withoutHeroPreloads.match(/<meta\s+charset="UTF-8">/);
+
+  if (charsetMatch) {
+    return withoutHeroPreloads.replace(
+      charsetMatch[0],
+      `${charsetMatch[0]}\n${preloadHtml}`
+    );
+  }
+
+  return withoutHeroPreloads.replace("<head>", `<head>\n${preloadHtml}`);
+}
+
+function removeCapturedRuntimeScripts(html) {
+  return html.replace(
+    /\s*<script[^>]+src="https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-ZDREMBRV97"[^>]*><\/script>/g,
+    ""
+  );
+}
+
+function deferAppRuntime(html) {
+  const moduleScriptMatch = html.match(
+    /\s*<script\s+type="module"[^>]+src="([^"]*\/assets\/index-[^"]+\.js)"[^>]*><\/script>/
+  );
+  if (!moduleScriptMatch) return html;
+
+  const appScriptSrc = moduleScriptMatch[1];
+  const preloadHrefs = [];
+  let nextHtml = html.replace(moduleScriptMatch[0], "");
+
+  nextHtml = nextHtml.replace(
+    /\s*<link\s+rel="modulepreload"[^>]+href="([^"]+)"[^>]*>/g,
+    (_tag, href) => {
+      preloadHrefs.push(href);
+      return "";
+    }
+  );
+
+  nextHtml = nextHtml.replace(
+    /\s*<script[^>]+src="\/_vercel\/(?:insights|speed-insights)\/script\.js"[^>]*><\/script>/g,
+    ""
+  );
+
+  const loader = `<script data-deferred-app-runtime>
+    (function () {
+      var loaded = false;
+      var appScript = ${JSON.stringify(appScriptSrc)};
+      var preloadHrefs = ${JSON.stringify([...new Set(preloadHrefs)])};
+      function loadApp() {
+        if (loaded) return;
+        loaded = true;
+        preloadHrefs.forEach(function (href) {
+          var link = document.createElement('link');
+          link.rel = 'modulepreload';
+          link.href = href;
+          link.crossOrigin = '';
+          document.head.appendChild(link);
+        });
+        var script = document.createElement('script');
+        script.type = 'module';
+        script.crossOrigin = '';
+        script.src = appScript;
+        document.head.appendChild(script);
+      }
+      window.addEventListener('pointerdown', loadApp, { once: true, capture: true });
+      window.addEventListener('keydown', loadApp, { once: true, capture: true });
+      window.addEventListener('load', function () {
+        window.setTimeout(loadApp, 3000);
+      }, { once: true });
+    }());
+  </script>`;
+
+  return nextHtml.replace("</body>", `${loader}</body>`);
+}
+
+function addPrerenderMarker(html) {
+  const marker = "<!-- prerendered by scripts/prerender.mjs -->";
+  if (html.includes(marker)) return html;
+
+  const charsetMatch = html.match(/<meta\s+charset="UTF-8">/);
+  if (charsetMatch) {
+    return html.replace(charsetMatch[0], `${charsetMatch[0]}\n${marker}`);
+  }
+
+  return html.replace("<head>", `<head>\n${marker}`);
+}
+
 /**
  * Minimal static file server for the dist folder.
  * Falls back to index.html for SPA routes (just like Firebase rewrites).
@@ -165,12 +259,7 @@ async function prerender() {
 
     // Inject a prerender marker once — guard prevents double-stamping when
     // the script runs against an already-prerendered dist folder.
-    if (!html.includes("<!-- prerendered by scripts/prerender.mjs -->")) {
-      html = html.replace(
-        "<head>",
-        "<head>\n<!-- prerendered by scripts/prerender.mjs -->"
-      );
-    }
+    html = addPrerenderMarker(html);
 
     // Determine output path
     let outPath;
@@ -185,6 +274,9 @@ async function prerender() {
 
     // Replace any localhost origin that crept into JSON-LD via window.location.origin
     html = html.replace(/http:\/\/127\.0\.0\.1:\d+/g, PROD_ORIGIN);
+    html = prioritizeHeroPreloads(html);
+    html = removeCapturedRuntimeScripts(html);
+    html = deferAppRuntime(html);
 
     writeFileSync(outPath, html, "utf-8");
     console.log(`  ✓ ${route} → ${outPath.replace(DIST, "dist")}`);

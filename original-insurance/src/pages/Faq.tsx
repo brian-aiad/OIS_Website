@@ -21,7 +21,7 @@ type FaqItem = {
   q: string;
   /** Displayed on page — can include links via renderA */
   a: string;
-  /** For FAQPage JSON-LD — short, neutral, no CTA or phone */
+  /** Visible FAQ copy only. FAQPage JSON-LD is intentionally disabled. */
   schemaA: string;
 };
 

@@ -121,8 +121,7 @@
     }
   ],
   "rewrites": [
-    { "source": "/cdn-cgi/l/email-protection", "destination": "/api/gone" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/cdn-cgi/l/email-protection", "destination": "/api/gone" }
   ],
   "headers": [
     {
@@ -142,6 +141,12 @@
       "source": "/images/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Link", "value": "</images/ois-hero-storefront-logo-v4.webp>; rel=preload; as=image; type=image/webp; fetchpriority=high" }
       ]
     },
     {
