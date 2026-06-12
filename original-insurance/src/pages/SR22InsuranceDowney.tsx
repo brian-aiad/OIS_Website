@@ -1,10 +1,10 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { usePageMeta } from "../lib/seo";
 import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
-import FAQSchema from "../components/seo/FAQSchema";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
@@ -22,6 +22,8 @@ const SR22_FAQS = [
 ];
 
 export default function SR22InsuranceDowney() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
   usePageMeta({
     title: "SR-22 Downey CA — Same-Day Filing, $15 Fee | Original",
     description:
@@ -32,7 +34,6 @@ export default function SR22InsuranceDowney() {
   return (
     <main id="main-content">
       <LocalBusinessSchema />
-      <FAQSchema questions={SR22_FAQS} />
       <BreadcrumbSchema crumbs={[
         { name: "Home", url: "https://originalinsurance.net/" },
         { name: "SR-22 Insurance Downey", url: "https://originalinsurance.net/sr22-insurance-downey" },
@@ -285,6 +286,45 @@ export default function SR22InsuranceDowney() {
               — independent broker in Downey since 1999.
             </p>
           </Reveal>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="sp bg-slate-50">
+        <div className="container max-w-3xl">
+          <Reveal className="text-center mb-10">
+            <span className="eyebrow">Common Questions</span>
+            <h2 className="mt-3 display-2 text-slate-900">SR-22 questions Downey clients ask</h2>
+          </Reveal>
+          <div className="space-y-3">
+            {SR22_FAQS.map((faq, i) => (
+              <Reveal key={i}>
+                <div className="bg-white rounded-2xl ring-1 ring-slate-200/80 overflow-hidden">
+                  <button
+                    className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-slate-50/60 transition-colors"
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    aria-expanded={openFaq === i}
+                  >
+                    <span className="font-semibold text-slate-900 text-[15px] leading-snug">{faq.q}</span>
+                    <svg
+                      className={`w-5 h-5 text-gold-500 flex-shrink-0 transition-transform duration-200 ${openFaq === i ? "rotate-180" : ""}`}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {openFaq === i && (
+                    <div className="px-6 pb-5">
+                      <p className="text-[14px] text-slate-600 leading-relaxed">{faq.a}</p>
+                    </div>
+                  )}
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 

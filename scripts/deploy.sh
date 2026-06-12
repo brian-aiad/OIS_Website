@@ -84,6 +84,25 @@ else
   ok "Vercel output structure created"
 fi
 
+# ── Step 4b: Enable cleanUrls in Vercel output config ────────────────────────
+# Without cleanUrls:true, Vercel's Build Output API v3 only serves
+# about/index.html at /about/ (with trailing slash). The explicit 308
+# redirects in vercel.json send /about/ -> /about, which then 404s.
+# Patching config.json here fixes all canonical (non-slash) URLs.
+log "Enabling cleanUrls in .vercel/output/config.json..."
+if $DRY_RUN; then
+  dryrun "node: inject cleanUrls:true into .vercel/output/config.json"
+else
+  VERCEL_CFG="$REPO_ROOT/.vercel/output/config.json" node -e "
+    const fs = require('fs');
+    const p = process.env.VERCEL_CFG;
+    const cfg = JSON.parse(fs.readFileSync(p, 'utf8'));
+    cfg.cleanUrls = true;
+    fs.writeFileSync(p, JSON.stringify(cfg));
+  " || fail "Failed to enable cleanUrls in .vercel/output/config.json"
+  ok "cleanUrls enabled — /about, /auto-insurance-downey-ca, /faq, etc. serve correctly"
+fi
+
 # ── Step 5: Copy prerendered HTML into Vercel output ─────────────────────────
 log "Copying prerendered pages into .vercel/output/static/..."
 COPIED=0

@@ -10,15 +10,15 @@ export default function OfficePhotoBlock() {
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="grid grid-cols-2 gap-1 bg-slate-200 p-1">
           <img
-            src={images.hero.storefront}
-            alt="Original Insurance office on Paramount Boulevard in Downey, CA"
+            src={images.location.exterior}
+            alt="Original Insurance storefront on Paramount Boulevard in Downey, CA"
             className="h-full min-h-56 w-full object-cover md:min-h-72"
             loading="lazy"
             decoding="async"
           />
           <img
-            src={images.clients.officeConsultation}
-            alt="Insurance broker consultation for Downey auto, home, and business clients"
+            src={images.location.interior}
+            alt="Inside Original Insurance office — desks, hardwood floors, and a welcoming space in Downey"
             className="h-full min-h-56 w-full object-cover md:min-h-72"
             loading="lazy"
             decoding="async"

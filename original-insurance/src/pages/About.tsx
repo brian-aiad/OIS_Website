@@ -53,10 +53,11 @@ export default function About() {
           <div className="rounded-3xl overflow-hidden ring-1 ring-white/10 shadow-heavy aspect-[4/3] relative bg-brand-950">
             <img
               src={images.about.office}
-              alt="Original Insurance broker desk with organized policy documents"
+              alt="Inside the Original Insurance office in Downey, CA — hardwood floors, teal walls, and workstations"
               className="h-full w-full object-cover"
-              width={1448}
-              height={1086}
+              style={{ objectPosition: "center top" }}
+              width={1395}
+              height={934}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-950/60 via-transparent to-transparent" />
             <div className="absolute bottom-4 left-4 right-4">
@@ -247,6 +248,72 @@ export default function About() {
                 </div>
               </div>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Real Office Photos ── */}
+      <section className="sp bg-white" aria-label="Our Downey office photos">
+        <div className="container">
+          <Reveal className="text-center mb-10">
+            <span className="eyebrow mb-4">Our Location</span>
+            <h2 className="display-2 text-slate-900">Our Downey office on Paramount Blvd</h2>
+            <p className="mt-3 text-slate-500 leading-relaxed max-w-2xl mx-auto">
+              Walk-ins welcome. Street and rear parking available. Bilingual staff on-site.
+              Same-day quotes and SR-22 filings.
+            </p>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 rounded-2xl overflow-hidden">
+            <div className="relative overflow-hidden rounded-xl aspect-[4/3] bg-slate-200">
+              <img
+                src={images.location.exterior}
+                alt="Original Insurance storefront at 9907-B Paramount Blvd, Downey CA"
+                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                loading="lazy"
+                decoding="async"
+                width={1613}
+                height={1080}
+              />
+              <div className="absolute bottom-3 left-3 right-3">
+                <span className="inline-flex items-center gap-1.5 bg-black/55 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full">
+                  <svg className="w-3.5 h-3.5 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z" /></svg>
+                  9907-B Paramount Blvd, Downey
+                </span>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-xl aspect-[4/3] bg-slate-200">
+              <img
+                src={images.location.interior}
+                alt="Inside the Original Insurance office — open floor plan with workstations"
+                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                style={{ objectPosition: "center top" }}
+                loading="lazy"
+                decoding="async"
+                width={1395}
+                height={934}
+              />
+              <div className="absolute bottom-3 left-3">
+                <span className="inline-flex items-center gap-1.5 bg-black/55 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full">
+                  Main office
+                </span>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-xl aspect-[4/3] bg-slate-200">
+              <img
+                src={images.location.consultationRoom}
+                alt="Private consultation room at Original Insurance for policy review and signing"
+                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                loading="lazy"
+                decoding="async"
+                width={1395}
+                height={934}
+              />
+              <div className="absolute bottom-3 left-3">
+                <span className="inline-flex items-center gap-1.5 bg-black/55 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full">
+                  Private consultation room
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </section>

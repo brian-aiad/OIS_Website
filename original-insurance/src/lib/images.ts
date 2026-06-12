@@ -3,11 +3,12 @@ export function srcset(src: string): string {
   return src;
 }
 
-/** Centralized image paths — all optimized WebP from /public/images */
+/** Centralized image paths — all optimized from /public/images */
 export const images = {
   hero: {
-    storefront: "/images/ois-hero-storefront-logo-v4.webp",
-    officeDetail: "/images/ois-office-desk-detail-v3.webp",
+    /** Real photo: exterior storefront on Paramount Blvd, Downey */
+    storefront: "/images/ois-storefront-real.jpg",
+    officeDetail: "/images/ois-office-interior-real.jpg",
   },
   home: {
     why: "/images/ois-home-why-hispanic-consult-v4.webp",
@@ -33,7 +34,20 @@ export const images = {
     noLicense: "/images/ois-product-no-license-docs-v3.webp",
   },
   about: {
-    office: "/images/ois-office-desk-detail-v3.webp",
+    /** Real photo: main office interior — teal walls, hardwood floors, workstations */
+    office: "/images/ois-office-interior-real.jpg",
+    /** Real photo: second interior angle — consultation area */
+    officeAlt: "/images/ois-office-interior2-real.jpg",
+  },
+  location: {
+    /** Real photo: storefront from across the street — clean, no obstruction */
+    exterior: "/images/ois-storefront-real.jpg",
+    /** Real photo: wider exterior showing the shopping center context */
+    exteriorWide: "/images/ois-storefront-wide-real.jpg",
+    /** Real photo: main office interior */
+    interior: "/images/ois-office-interior-real.jpg",
+    /** Real photo: consultation / private office room */
+    consultationRoom: "/images/ois-consultation-room-real.jpg",
   },
   testimonials: {
     auto: "/images/ois-testimonial-auto-client-v4.webp",
@@ -46,9 +60,10 @@ export const images = {
     sr22Consultation: "/images/ois-sr22-hispanic-consult-v4.webp",
     noLicenseConsultation: "/images/ois-no-license-hispanic-consult-v4.webp",
     commercialConsultation: "/images/ois-testimonial-business-client-v4.webp",
-    contactFrontDesk: "/images/ois-contact-reception-v4.webp",
+    /** Real photo: consultation room interior */
+    contactFrontDesk: "/images/ois-consultation-room-real.jpg",
   },
   claims: {
-    docs: "/images/ois-office-desk-detail-v3.webp",
+    docs: "/images/ois-office-interior-real.jpg",
   },
 };

@@ -17,6 +17,7 @@ import Faq from "./pages/Faq";
 import CityLanding from "./pages/CityLanding";
 import AutoInsuranceDowneyCA from "./pages/AutoInsuranceDowneyCA";
 import SR22InsuranceDowney from "./pages/SR22InsuranceDowney";
+import HomeInsuranceDowneyCA from "./pages/HomeInsuranceDowneyCA";
 import NoLicenseInsuranceDowney from "./pages/NoLicenseInsuranceDowney";
 import CommercialAutoInsuranceDowney from "./pages/CommercialAutoInsuranceDowney";
 
@@ -116,6 +117,7 @@ export default function App() {
                 <Route path="/insurance/:citySlug" element={<CityLanding />} />
                 <Route path="/auto-insurance-downey-ca" element={<AutoInsuranceDowneyCA />} />
                 <Route path="/sr22-insurance-downey" element={<SR22InsuranceDowney />} />
+                <Route path="/home-insurance-downey-ca" element={<HomeInsuranceDowneyCA />} />
                 <Route path="/no-license-auto-insurance-downey" element={<NoLicenseInsuranceDowney />} />
                 <Route path="/commercial-auto-insurance-downey" element={<CommercialAutoInsuranceDowney />} />
                 <Route path="*" element={<NotFound />} />

@@ -60,6 +60,11 @@
       "permanent": true
     },
     {
+      "source": "/home-insurance-downey-ca/",
+      "destination": "/home-insurance-downey-ca",
+      "permanent": true
+    },
+    {
       "source": "/insurance/downey/",
       "destination": "/insurance/downey",
       "permanent": true

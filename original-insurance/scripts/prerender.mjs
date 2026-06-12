@@ -39,6 +39,7 @@ const ROUTES = [
   // Money pages — prerendered before city pages so they have priority
   "/auto-insurance-downey-ca",
   "/sr22-insurance-downey",
+  "/home-insurance-downey-ca",
   "/no-license-auto-insurance-downey",
   "/commercial-auto-insurance-downey",
   // City landing pages

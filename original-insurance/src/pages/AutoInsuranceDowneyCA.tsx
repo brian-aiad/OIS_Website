@@ -1,10 +1,10 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { usePageMeta } from "../lib/seo";
 import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
-import FAQSchema from "../components/seo/FAQSchema";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
 import StatsBar from "../components/StatsBar";
@@ -30,6 +30,8 @@ const NEARBY_CITIES = [
 ];
 
 export default function AutoInsuranceDowneyCA() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
   usePageMeta({
     title: "Auto Insurance Downey CA — Same-Day | Original Insurance",
     description:
@@ -40,7 +42,6 @@ export default function AutoInsuranceDowneyCA() {
   return (
     <main id="main-content">
       <LocalBusinessSchema />
-      <FAQSchema questions={AUTO_FAQS} />
       <BreadcrumbSchema crumbs={[
         { name: "Home", url: "https://originalinsurance.net/" },
         { name: "Auto Insurance Downey CA", url: "https://originalinsurance.net/auto-insurance-downey-ca" },
@@ -381,6 +382,45 @@ export default function AutoInsuranceDowneyCA() {
         </div>
       </section>
 
+      {/* Section 7: FAQ */}
+      <section className="sp bg-white">
+        <div className="container max-w-3xl">
+          <Reveal className="text-center mb-10">
+            <span className="eyebrow">Common Questions</span>
+            <h2 className="mt-3 display-2 text-slate-900">Auto insurance questions Downey clients ask</h2>
+          </Reveal>
+          <div className="space-y-3">
+            {AUTO_FAQS.map((faq, i) => (
+              <Reveal key={i}>
+                <div className="bg-slate-50 rounded-2xl ring-1 ring-slate-200/80 overflow-hidden">
+                  <button
+                    className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-white/60 transition-colors"
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    aria-expanded={openFaq === i}
+                  >
+                    <span className="font-semibold text-slate-900 text-[15px] leading-snug">{faq.q}</span>
+                    <svg
+                      className={`w-5 h-5 text-gold-500 flex-shrink-0 transition-transform duration-200 ${openFaq === i ? "rotate-180" : ""}`}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {openFaq === i && (
+                    <div className="px-6 pb-5">
+                      <p className="text-[14px] text-slate-600 leading-relaxed">{faq.a}</p>
+                    </div>
+                  )}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Dual CTA Footer */}
       <section className="sp bg-brand-950">
         <div className="container max-w-3xl text-center">
@@ -411,6 +451,10 @@ export default function AutoInsuranceDowneyCA() {
               ·{" "}
               <NavLink to="/commercial-auto-insurance-downey" className="text-gold-300/80 hover:text-gold-200">
                 Commercial auto insurance
+              </NavLink>{" "}
+              ·{" "}
+              <NavLink to="/home-insurance-downey-ca" className="text-gold-300/80 hover:text-gold-200">
+                Home &amp; renters insurance
               </NavLink>
             </p>
           </Reveal>
