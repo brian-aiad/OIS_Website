@@ -6,6 +6,8 @@ export function srcset(src: string): string {
 /** Centralized image paths — all optimized from /public/images */
 export const images = {
   hero: {
+    /** Generated consultation scene composed for the homepage hero */
+    consultation: "/images/ois-hero-consultation-2026.webp",
     /** Real photo: exterior storefront on Paramount Blvd, Downey */
     storefront: "/images/ois-storefront-real.jpg",
     officeDetail: "/images/ois-office-interior-real.jpg",

@@ -1,5 +1,3 @@
-// TODO: replace count prop value at mount site with real GBP review count
-// Search for data-verify="gbp-review-count" to find all mount points
 import { useId } from "react";
 
 interface ReviewBadgeProps {
@@ -53,7 +51,7 @@ export default function ReviewBadge({
         "hover:shadow-md transition-shadow duration-200 no-underline",
         compact ? "px-3 py-1.5" : "px-4 py-2",
       ].join(" ")}
-      aria-label={`${rating} stars, ${count} Google Reviews — view on Google`}
+      aria-label={`${rating} stars from over ${count} Google reviews — view on Google`}
     >
       {/* Stars */}
       <span className="flex items-center gap-0.5">
@@ -80,7 +78,7 @@ export default function ReviewBadge({
           compact ? "text-xs" : "text-sm",
         ].join(" ")}
       >
-        ({count} reviews)
+        ({count}+ reviews)
       </span>
 
       {/* Label */}

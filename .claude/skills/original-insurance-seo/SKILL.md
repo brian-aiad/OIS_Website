@@ -52,7 +52,7 @@ npm run validate:schema
 ## Schema Rules
 
 - `LocalBusinessSchema`: homepage, city pages, and money pages where explicitly mounted.
-- Do not mount `LocalBusinessSchema` on `/faq`, `/about`, `/contact`, or `/services`.
+- Do not mount `LocalBusinessSchema` on `/faq`, `/about`, `/contact`, `/services`, `/privacy`, or `/accessibility`.
 - Do not emit `FAQPage`, `Review`, or `AggregateRating` JSON-LD. FAQ/review content can remain visible on the page, but unsupported rich-result schema must stay out of prerendered HTML.
 - Every prerendered route needs exactly one self-referencing canonical.
 
@@ -65,6 +65,8 @@ npm run validate:schema
 /locations                         src/pages/Locations.tsx
 /contact                           src/pages/Contact.tsx
 /faq                               src/pages/Faq.tsx
+/privacy                           src/pages/Privacy.tsx
+/accessibility                     src/pages/Accessibility.tsx
 /auto-insurance-downey-ca          src/pages/AutoInsuranceDowneyCA.tsx
 /sr22-insurance-downey             src/pages/SR22InsuranceDowney.tsx
 /no-license-auto-insurance-downey  src/pages/NoLicenseInsuranceDowney.tsx

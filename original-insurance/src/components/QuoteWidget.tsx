@@ -211,6 +211,10 @@ export default function QuoteWidget({ openSignal = 0 }: { openSignal?: number })
                     style={{ height: "calc(90dvh - 166px)", minHeight: "560px" }}
                     onLoad={() => setLoaded(true)}
                   />
+                  <div className="border-t border-slate-200 bg-white px-4 py-2 text-center text-[11px] leading-relaxed text-slate-500">
+                    Protect your information: use this quote form for requested insurance details. Never send passwords or payment-card information.{" "}
+                    <a href="/privacy" className="font-semibold text-brand-700 hover:text-brand-900">Privacy details</a>
+                  </div>
                 </div>
               </div>
             </motion.div>

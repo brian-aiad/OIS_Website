@@ -16,7 +16,7 @@ export const site = {
   },
   reviews: {
     rating: 4.9,
-    count: 92,
+    count: 100,
     googleUrl: "https://g.page/original-insurance",
   },
   identity: {

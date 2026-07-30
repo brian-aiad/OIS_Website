@@ -36,6 +36,8 @@ const ROUTES = [
   "/locations",
   "/contact",
   "/faq",
+  "/privacy",
+  "/accessibility",
   // Money pages — prerendered before city pages so they have priority
   "/auto-insurance-downey-ca",
   "/sr22-insurance-downey",

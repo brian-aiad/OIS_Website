@@ -40,6 +40,16 @@
       "permanent": true
     },
     {
+      "source": "/privacy/",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/accessibility/",
+      "destination": "/accessibility",
+      "permanent": true
+    },
+    {
       "source": "/auto-insurance-downey-ca/",
       "destination": "/auto-insurance-downey-ca",
       "permanent": true
@@ -151,7 +161,7 @@
     {
       "source": "/",
       "headers": [
-        { "key": "Link", "value": "</images/ois-hero-storefront-logo-v4.webp>; rel=preload; as=image; type=image/webp; fetchpriority=high" }
+        { "key": "Link", "value": "</images/ois-hero-consultation-2026.webp>; rel=preload; as=image; type=image/webp; fetchpriority=high" }
       ]
     },
     {

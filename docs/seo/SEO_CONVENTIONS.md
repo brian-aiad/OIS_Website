@@ -22,6 +22,8 @@ This file locks in canonical, routing, schema, sitemap, and deployment rules for
 | `/about` | no | n/a |
 | `/contact` | no | n/a |
 | `/services` | no | n/a |
+| `/privacy` | no | n/a |
+| `/accessibility` | no | n/a |
 
 Do not mount `LocalBusinessSchema` on `/faq`, `/about`, `/contact`, or `/services`.
 

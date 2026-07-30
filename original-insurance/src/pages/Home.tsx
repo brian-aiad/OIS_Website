@@ -13,22 +13,22 @@ import { CTASection, Section, SectionHeader } from "../design-system";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
 
 /* ═══════════════════════════════════════════════
-   HERO — Photo-based with full-bleed storefront background
+   HERO — Photo-based with full-bleed consultation background
    ═══════════════════════════════════════════════ */
 function Hero() {
-  useImagePreload(images.hero.storefront);
+  useImagePreload(images.hero.consultation);
 
   return (
     <section className="relative overflow-hidden noise-overlay diagonal-pattern">
-      {/* Full-bleed background photo (storefront) */}
+      {/* Full-bleed background photo: broker-client consultation */}
       <img
-        src={images.hero.storefront}
+        src={images.hero.consultation}
         alt=""
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover"
         fetchPriority="high"
-        width={1672}
-        height={941}
+        width={1680}
+        height={945}
       />
       {/* Navy overlay */}
       <div className="absolute inset-0" style={{ backgroundColor: "rgba(6,14,31,0.64)" }} />
@@ -36,7 +36,7 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-brand-950/92 via-brand-900/58 to-brand-900/12" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_24%,rgba(245,166,35,0.22),transparent_28%)]" />
 
-      <div className="container relative grid lg:grid-cols-[1.15fr,1fr] gap-10 lg:gap-14 items-center pt-24 pb-20 lg:pt-28 lg:pb-24">
+      <div className="container relative pt-24 pb-20 lg:pt-28 lg:pb-24">
         {/* ── Left: Copy ── */}
         <div className="max-w-xl relative z-[2]">
           {/* Trust badge pill */}
@@ -115,87 +115,6 @@ function Hero() {
           </div>
         </div>
 
-        {/* ── Right: Single elegant Trust Panel ── */}
-        <div className="relative hidden lg:flex justify-end items-center z-[2]">
-          <div
-            className="w-full max-w-[460px] rounded-3xl p-3 relative"
-            style={{
-              background: "rgba(255,255,255,0.08)",
-              backdropFilter: "blur(16px)",
-              WebkitBackdropFilter: "blur(16px)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              borderTop: "2px solid rgba(245,166,35,0.75)",
-              boxShadow: "0 24px 80px rgba(0,0,0,0.42)",
-            }}
-          >
-            <div className="relative overflow-hidden rounded-2xl aspect-[4/3] bg-brand-950">
-              <img
-                src={images.hero.officeDetail}
-                alt="Insurance folders, keys, and policy documents on an Original Insurance broker desk"
-                className="h-full w-full object-cover"
-                width={800}
-                height={600}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/12 to-transparent" />
-              <div className="absolute left-5 right-5 bottom-5">
-                <div className="inline-flex items-center gap-2 rounded-full bg-gold-400 px-3.5 py-2 text-[12px] font-extrabold uppercase tracking-wider text-brand-950 shadow-lg ring-1 ring-gold-200">
-                  <span className="h-2 w-2 rounded-full bg-brand-900" />
-                  Clean quote review
-                </div>
-                <p className="mt-3 max-w-sm text-xl font-extrabold leading-snug text-white drop-shadow-md">
-                  Bring your details. We compare the market and explain the tradeoffs.
-                </p>
-              </div>
-            </div>
-            <div className="p-4">
-            {/* Star rating + label */}
-            <div className="flex items-center gap-2 mb-3">
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3 6 3.6-1.6-6.9 5.3-4.5-7-.6L12 2 9.3 8.9l-7 .6 5.3 4.5L6 20.9z" /></svg>
-                ))}
-              </div>
-              <span className="text-[12px] font-semibold uppercase tracking-wider text-white/70">Google Reviews</span>
-            </div>
-
-            {/* Featured testimonial */}
-            <blockquote className="text-white/90 text-[15px] leading-relaxed italic" style={{ fontFamily: "var(--font-display)" }}>
-              "I've trusted Aiman for over 23 years — auto, home, fire. He always finds the best rates."
-            </blockquote>
-            <div className="mt-2 text-[12px] text-white/60">— RiRi M.</div>
-
-            {/* Divider */}
-            <div className="my-5 h-px bg-white/10" />
-
-            {/* Credibility checklist */}
-            <ul className="space-y-2.5">
-              {[
-                "Licensed CA Broker",
-                "30+ Insurance Carriers",
-                "Response Under 1 Hour",
-                "Arabic · Spanish · English",
-              ].map((t) => (
-                <li key={t} className="flex items-center gap-3 text-[14px] text-white/90">
-                  <span className="shrink-0 w-5 h-5 rounded-full bg-gold-500/20 grid place-items-center">
-                    <svg className="w-3 h-3 text-gold-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                  </span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-
-            {/* CTA */}
-            <button
-              onClick={openQuoteModal}
-              className="mt-6 w-full btn btn-accent"
-              style={{ padding: "12px 16px", fontSize: "14px" }}
-            >
-              Get Your Free Quote
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" /></svg>
-            </button>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Subtle wave divider */}

@@ -310,6 +310,10 @@ export default function Contact() {
                   <p className="text-[12px] text-slate-400 mt-3 text-center">
                     We typically respond within <strong className="text-slate-500">1–2 hours</strong> during business hours
                   </p>
+                  <p className="mt-3 rounded-lg bg-slate-50 px-3 py-2 text-center text-[11px] leading-relaxed text-slate-500 ring-1 ring-slate-200">
+                    Do not include Social Security numbers, payment-card details, passwords, or full driver’s-license images.{" "}
+                    <NavLink to="/privacy" className="font-semibold text-brand-700 hover:text-brand-900">How we handle website data</NavLink>
+                  </p>
                 </form>
               )}
             </Reveal>

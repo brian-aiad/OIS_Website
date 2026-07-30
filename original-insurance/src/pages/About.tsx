@@ -17,7 +17,7 @@ import logoBadge from "../assets/logo-badge.webp";
 export default function About() {
   usePageMeta({
     title: "Downey's Trusted Broker Since 1999 | Original Insurance",
-    description: "Family-run Downey broker since 1999. We shop 30+ carriers in English, Spanish & Arabic for SE LA families. 4.9★, 92 verified reviews. Independent, bilingual, zero pressure.",
+    description: "Family-run Downey broker since 1999. We shop 30+ carriers in English, Spanish & Arabic for SE LA families. 4.9★ with 100+ Google reviews. Independent, bilingual, zero pressure.",
     canonical: "https://originalinsurance.net/about",
   });
 

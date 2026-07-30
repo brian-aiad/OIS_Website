@@ -14,6 +14,8 @@ import Services from "./pages/Services";
 import Locations from "./pages/Locations";
 import Contact from "./pages/Contact";
 import Faq from "./pages/Faq";
+import Privacy from "./pages/Privacy";
+import Accessibility from "./pages/Accessibility";
 import CityLanding from "./pages/CityLanding";
 import AutoInsuranceDowneyCA from "./pages/AutoInsuranceDowneyCA";
 import SR22InsuranceDowney from "./pages/SR22InsuranceDowney";
@@ -103,6 +105,8 @@ export default function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/faq" element={<Faq />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/accessibility" element={<Accessibility />} />
                 <Route path="/insurance/bellflower" element={<BellflowerPage />} />
                 <Route path="/insurance/norwalk" element={<NorwalkPage />} />
                 <Route path="/insurance/cerritos" element={<CerritosPage />} />

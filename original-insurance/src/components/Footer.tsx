@@ -21,6 +21,8 @@ const companyLinks = [
   { label: "FAQ", to: "/faq" },
   { label: "Location", to: "/locations" },
   { label: "Contact", to: "/contact" },
+  { label: "Privacy", to: "/privacy" },
+  { label: "Accessibility", to: "/accessibility" },
 ];
 
 const cityLinks = [
@@ -171,9 +173,11 @@ export default function Footer() {
             </div>
           </div>
 
-          <p className="mt-4 text-[11px] text-white/38">
-            &copy; {year} Original Group Inc. All rights reserved.
-          </p>
+          <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-white/38">
+            <span>&copy; {year} Original Group Inc. All rights reserved.</span>
+            <Link to="/privacy" className="transition-colors hover:text-white/70">Privacy &amp; data handling</Link>
+            <Link to="/accessibility" className="transition-colors hover:text-white/70">Accessibility</Link>
+          </div>
         </div>
       </div>
     </footer>

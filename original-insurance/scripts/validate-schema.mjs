@@ -29,7 +29,14 @@ const DEPRECATED_SCHEMA_TYPES = new Set(["FAQPage", "Review", "AggregateRating"]
 
 // Pages that should have InsuranceAgency schema (homepage, city pages, money pages).
 // /faq, /about, /contact, /services explicitly excluded — see SKILL.md schema rules.
-const NO_INSURANCE_AGENCY = new Set(["/faq", "/about", "/contact", "/services"]);
+const NO_INSURANCE_AGENCY = new Set([
+  "/faq",
+  "/about",
+  "/contact",
+  "/services",
+  "/privacy",
+  "/accessibility",
+]);
 
 // Pages where InsuranceAgency url must be the homepage (not the page's own URL).
 // City pages (/insurance/*) are allowed to have their own canonical URL.
