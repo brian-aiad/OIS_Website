@@ -33,6 +33,7 @@ const ok   = (msg) => { console.log(`  ✓ ok    ${msg}`); };
 // Pages that must NOT mount LocalBusinessSchema.
 const NO_LOCAL_BUSINESS = new Set([
   "Faq.tsx", "About.tsx", "Contact.tsx", "Services.tsx",
+  "Privacy.tsx", "Accessibility.tsx",
 ]);
 
 // Pages that ARE allowed to mount LocalBusinessSchema.
@@ -181,6 +182,12 @@ if (vercelJson.routes) {
   fail('vercel.json must not use legacy "routes" with redirects/rewrites/headers/cleanUrls/trailingSlash.');
 } else {
   ok('No legacy "routes" block is present');
+}
+
+if (vercelJson.ignoreCommand !== "exit 0") {
+  fail('vercel.json must set "ignoreCommand" to "exit 0" so automatic Git builds cannot replace prerendered production output.');
+} else {
+  ok('Automatic Vercel Git builds are disabled; production requires the prebuilt deploy pipeline');
 }
 
 const uppercaseSitemapRedirect = vercelJson.redirects?.some(rule =>

@@ -22,12 +22,13 @@ npm run build
 npm run validate:schema
 ```
 
-`npm run build` performs TypeScript checking, Vite build, and Playwright prerendering for all 22 routes.
+`npm run build` performs TypeScript checking, Vite build, and Playwright prerendering for all 25 routes.
 
 ## Deployment Rules
 
 - Deploy from repo root with `bash scripts/deploy.sh`.
 - Do not use GitHub/Vercel push deploys as the source of truth for production. The deploy script preserves prerendered HTML.
+- `original-insurance/vercel.json` intentionally cancels automatic Git builds. A Git build skips Playwright prerendering and would publish 404s for non-home canonical routes.
 - Keep `.vercel/project.json`; it links this repo to the Vercel project.
 - Generated `.vercel/output/`, `dist/`, `.vite/`, raw Lighthouse JSON, and temp screenshots are disposable.
 

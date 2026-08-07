@@ -63,6 +63,8 @@ bash scripts/deploy.sh
 
 The deploy script runs SEO lint, build/prerender, schema validation, Vercel build, copies prerendered HTML into `.vercel/output/static/`, deploys prebuilt output, then runs live verification.
 
+Automatic Vercel Git builds are intentionally canceled by `ignoreCommand`. Production must receive the prebuilt output from `scripts/deploy.sh`; otherwise only the homepage is emitted and clean canonical routes return 404.
+
 The Vercel project is `ois-website`. Keep `.vercel/project.json`.
 
 ## Commands

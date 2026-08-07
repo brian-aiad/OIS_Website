@@ -48,6 +48,7 @@ npm run validate:schema
 - `middleware.js` strips `?q=` query params with a `308` redirect.
 - `robots.txt` must keep `Disallow: /*?q=`.
 - Do not add global `trailingSlash: false`, global `cleanUrls: true`, a legacy Vercel `routes` block, or a catch-all rewrite from `/(.*)` to `/index.html`.
+- Keep automatic Vercel Git builds disabled with `ignoreCommand`; they skip local Playwright prerendering. Deploy only the prebuilt output produced by `scripts/deploy.sh`.
 
 ## Schema Rules
 

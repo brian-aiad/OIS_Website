@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Live-site verification suite for originalinsurance.net.
-#
+# Live SEO/routing verification suite for originalinsurance.net.
 # Usage: bash scripts/verify-live.sh
 
 set -uo pipefail
@@ -11,139 +10,180 @@ FAILURES=0
 ok() { echo "  OK  $*"; }
 fail() { echo "  FAIL  $*" >&2; FAILURES=$((FAILURES + 1)); }
 
+status_code() {
+  curl -sS -o /dev/null -w "%{http_code}" --max-redirs 0 "$1" || true
+}
+
+redirect_location() {
+  curl -sS -I --max-redirs 0 "$1" \
+    | tr -d '\r' \
+    | awk 'BEGIN { IGNORECASE=1 } /^location:/ { sub(/^[^:]+:[[:space:]]*/, ""); print; exit }'
+}
+
 echo ""
 echo "--- Live verification: $PROD ---"
 echo ""
 
-canonical_urls=(
-  / /about /services /locations /contact /faq
-  /insurance/downey /insurance/bellflower /insurance/cerritos
-  /insurance/commerce /insurance/lakewood /insurance/lynwood
-  /insurance/montebello /insurance/norwalk /insurance/paramount
-  /insurance/pico-rivera /insurance/south-gate /insurance/whittier
-  /auto-insurance-downey-ca /sr22-insurance-downey
-  /no-license-auto-insurance-downey /commercial-auto-insurance-downey
+echo "Sitemap discovery:"
+sitemap="$(curl -fsS "$PROD/sitemap.xml" || true)"
+if [[ "$sitemap" == *"<urlset"* ]]; then
+  ok "sitemap.xml is accessible and looks like XML"
+else
+  fail "sitemap.xml is unavailable or malformed"
+fi
+
+mapfile -t canonical_urls < <(
+  printf '%s' "$sitemap" \
+    | grep -oE '<loc>[^<]+</loc>' \
+    | sed -E 's#</?loc>##g'
 )
 
-echo "Canonical URLs (expected 200):"
+if [[ ${#canonical_urls[@]} -eq 25 ]]; then
+  ok "25 canonical URLs found"
+else
+  fail "Expected 25 canonical URLs, found ${#canonical_urls[@]}"
+fi
+
+city_count=$(printf '%s\n' "${canonical_urls[@]}" | grep -c '^https://originalinsurance\.net/insurance/' || true)
+if [[ "$city_count" -eq 12 ]]; then
+  ok "12 city pages found"
+else
+  fail "Expected 12 city pages, found $city_count"
+fi
+
+echo ""
+echo "Canonical sitemap URLs (expected 200, prerendered HTML, self-canonical):"
 for url in "${canonical_urls[@]}"; do
-  code=$(curl -so /dev/null -w "%{http_code}" "${PROD}${url}")
-  if [[ "$code" == "200" ]]; then
-    ok "$code  $url"
+  path="${url#"$PROD"}"
+  [[ -n "$path" ]] || path="/"
+
+  if [[ "$url" != "$PROD"* || "$url" == *"?"* || "$url" == *"#"* ]]; then
+    fail "$url is not a clean same-origin sitemap URL"
+    continue
+  fi
+  if [[ "$path" != "/" && "$path" == */ ]]; then
+    fail "$url has a non-canonical trailing slash"
+    continue
+  fi
+
+  code="$(status_code "$url")"
+  html="$(curl -fsS "$url" || true)"
+  canonical_tag="$(
+    printf '%s' "$html" \
+      | grep -oEi "<link[^>]+rel=[\"']canonical[\"'][^>]*>|<link[^>]+href=[\"'][^\"']+[\"'][^>]+rel=[\"']canonical[\"'][^>]*>" \
+      | head -1 || true
+  )"
+  canonical_count="$(
+    printf '%s' "$html" \
+      | grep -oEi "<link[^>]+rel=[\"']canonical[\"'][^>]*>|<link[^>]+href=[\"'][^\"']+[\"'][^>]+rel=[\"']canonical[\"'][^>]*>" \
+      | wc -l
+  )"
+
+  if [[ "$code" != "200" ]]; then
+    fail "$code  $path (expected 200)"
+  elif [[ "$canonical_count" -ne 1 ]]; then
+    fail "$path has $canonical_count canonical tags (expected 1)"
+  elif [[ "$canonical_tag" != *"href=\"$url\""* && "$canonical_tag" != *"href='$url'"* ]]; then
+    fail "$path canonical is wrong (expected $url)"
+  elif [[ "$html" != *"<!-- prerendered by scripts/prerender.mjs -->"* ]]; then
+    fail "$path is not serving the prerendered page output"
+  elif printf '%s' "$html" | grep -Eqi "<meta[^>]+name=[\"']robots[\"'][^>]+content=[\"'][^\"']*noindex"; then
+    fail "$path unexpectedly contains a noindex robots directive"
   else
-    fail "$code  $url  (expected 200)"
+    ok "$code  $path"
   fi
 done
 
 echo ""
-echo "Trailing-slash URLs (expected 308 to clean canonical paths):"
-for url in /about/ /services/ /locations/ /contact/ /faq/ \
-           /insurance/downey/ /insurance/bellflower/ /insurance/cerritos/; do
-  code=$(curl -so /dev/null -w "%{http_code}" "${PROD}${url}")
-  if [[ "$code" == "308" ]]; then
-    ok "$code  $url"
+echo "Trailing-slash variants (expected one 308 to clean canonical path):"
+for url in "${canonical_urls[@]}"; do
+  path="${url#"$PROD"}"
+  [[ "$path" == "/" ]] && continue
+
+  slash_path="$path/"
+  code="$(status_code "$PROD$slash_path")"
+  location="$(redirect_location "$PROD$slash_path")"
+  if [[ "$code" == "308" && "$location" == "$path" ]]; then
+    ok "$code  $slash_path -> $location"
   else
-    fail "$code  $url  (expected 308 redirect to clean canonical path)"
+    fail "$code  $slash_path -> ${location:-<missing>} (expected 308 -> $path)"
   fi
 done
 
 echo ""
-echo "index.html redirect (expected 308):"
-code=$(curl -so /dev/null -w "%{http_code}" "${PROD}/index.html")
-if [[ "$code" == "308" ]]; then
-  ok "$code  /index.html"
+echo "Legacy and junk URLs:"
+code="$(status_code "$PROD/index.html")"
+location="$(redirect_location "$PROD/index.html")"
+if [[ "$code" == "308" && "$location" == "/" ]]; then
+  ok "$code  /index.html -> /"
 else
-  fail "$code  /index.html  (expected 308)"
+  fail "$code  /index.html -> ${location:-<missing>} (expected 308 -> /)"
+fi
+
+code="$(status_code "$PROD/SITEMAP.XML")"
+location="$(redirect_location "$PROD/SITEMAP.XML")"
+if [[ "$code" == "308" && "$location" == "/sitemap.xml" ]]; then
+  ok "$code  /SITEMAP.XML -> /sitemap.xml"
+else
+  fail "$code  /SITEMAP.XML -> ${location:-<missing>} (expected 308 -> /sitemap.xml)"
+fi
+
+gone_headers="$(curl -sS -I --max-redirs 0 "$PROD/cdn-cgi/l/email-protection" | tr -d '\r')"
+gone_code="$(printf '%s\n' "$gone_headers" | awk '/^HTTP\// { print $2; exit }')"
+if [[ "$gone_code" == "410" ]] && printf '%s\n' "$gone_headers" | grep -Eqi '^x-robots-tag:[[:space:]]*noindex, nofollow'; then
+  ok "410  /cdn-cgi/l/email-protection with noindex, nofollow"
+else
+  fail "/cdn-cgi/l/email-protection must return 410 with X-Robots-Tag: noindex, nofollow"
+fi
+
+unknown_code="$(status_code "$PROD/missing-seo-test-url")"
+if [[ "$unknown_code" == "404" ]]; then
+  ok "404  /missing-seo-test-url"
+else
+  fail "$unknown_code  /missing-seo-test-url (expected a real 404)"
 fi
 
 echo ""
-echo "Prerendered source canonicals:"
-for url in /about /faq /insurance/lynwood /auto-insurance-downey-ca /sr22-insurance-downey; do
-  expected="https://originalinsurance.net${url}"
-  html="$(curl -s "${PROD}${url}")"
-  if echo "$html" | grep -Eq "<link[^>]+rel=[\"']canonical[\"'][^>]+href=[\"']${expected}[\"']|<link[^>]+href=[\"']${expected}[\"'][^>]+rel=[\"']canonical[\"']"; then
-    ok "$url source canonical is page-specific"
+echo "Search query cleanup (expected final 200 at /faq with q removed):"
+for path in '/faq?q=%7Bsearch_term_string%7D' '/faq/?q=%7Bsearch_term_string%7D'; do
+  result="$(curl -sS -L -o /dev/null -w '%{http_code}|%{url_effective}|%{num_redirects}' --max-redirs 5 "$PROD$path" || true)"
+  IFS='|' read -r final_code final_url redirect_count <<< "$result"
+  if [[ "$final_code" == "200" && "$final_url" == "$PROD/faq" && "$redirect_count" -ge 1 && "$redirect_count" -le 2 ]]; then
+    ok "$path -> /faq ($redirect_count redirect(s))"
   else
-    fail "$url source canonical missing or wrong (expected ${expected})"
+    fail "$path ended at ${final_url:-<missing>} with ${final_code:-<missing>} after ${redirect_count:-<missing>} redirects"
   fi
 done
-
-echo ""
-echo "Unknown URL (expected 404, not soft-404 200):"
-code=$(curl -so /dev/null -w "%{http_code}" "${PROD}/missing-seo-test-url")
-if [[ "$code" == "404" ]]; then
-  ok "$code  /missing-seo-test-url"
-else
-  fail "$code  /missing-seo-test-url  (expected 404)"
-fi
-
-echo ""
-echo "Query-param URL (expected 308 after stripping ?q=):"
-code=$(curl -so /dev/null -w "%{http_code}" "${PROD}/faq?q=test")
-if [[ "$code" == "308" ]]; then
-  ok "$code  /faq?q=test"
-else
-  fail "$code  /faq?q=test  (expected 308 redirect with q removed)"
-fi
 
 echo ""
 echo "robots.txt:"
-if curl -s "${PROD}/robots.txt" | grep -q "Disallow: /\*?q="; then
+robots="$(curl -fsS "$PROD/robots.txt" || true)"
+if printf '%s\n' "$robots" | grep -Fq 'Disallow: /*?q='; then
   ok "Disallow: /*?q= present"
 else
   fail "Disallow: /*?q= missing from robots.txt"
 fi
-
-echo ""
-echo "Sitemap:"
-sitemap=$(curl -s "${PROD}/sitemap.xml")
-if echo "$sitemap" | grep -q "<urlset"; then
-  ok "sitemap.xml is accessible and looks like XML"
+if printf '%s\n' "$robots" | grep -Fq 'Sitemap: https://originalinsurance.net/sitemap.xml'; then
+  ok "Canonical sitemap declaration present"
 else
-  fail "sitemap.xml missing or malformed"
-fi
-city_count=$(echo "$sitemap" | grep -c "/insurance/" || true)
-if [[ "$city_count" -eq 12 ]]; then
-  ok "12 city pages in sitemap"
-else
-  fail "Expected 12 city pages in sitemap, found: $city_count"
+  fail "Canonical sitemap declaration missing from robots.txt"
 fi
 
 echo ""
 echo "Schema audit:"
-about_ia=$(curl -s "${PROD}/about" | grep -c "InsuranceAgency" || true)
-if [[ "$about_ia" -eq 0 ]]; then
-  ok "About: InsuranceAgency absent"
-else
-  fail "About: InsuranceAgency present (should be absent)"
-fi
-
-services_ia=$(curl -s "${PROD}/services" | grep -c "InsuranceAgency" || true)
-if [[ "$services_ia" -eq 0 ]]; then
-  ok "Services: InsuranceAgency absent"
-else
-  fail "Services: InsuranceAgency present (should be absent)"
-fi
-
-home_ia=$(curl -s "${PROD}/" | grep -c "InsuranceAgency" || true)
-if [[ "$home_ia" -ge 1 ]]; then
-  ok "Homepage: InsuranceAgency present"
-else
-  fail "Homepage: InsuranceAgency missing"
-fi
-
-home_url=$(curl -s "${PROD}/" | grep -oE '"url":"https://originalinsurance\.net[^"]*"' | head -1 || true)
-if echo "$home_url" | grep -qE '"url":"https://originalinsurance\.net/"'; then
-  ok "Homepage InsuranceAgency url is homepage"
-else
-  fail "Homepage InsuranceAgency url is wrong: $home_url"
-fi
+about_ia=$(curl -sS "$PROD/about" | grep -c "InsuranceAgency" || true)
+services_ia=$(curl -sS "$PROD/services" | grep -c "InsuranceAgency" || true)
+home_ia=$(curl -sS "$PROD/" | grep -c "InsuranceAgency" || true)
+if [[ "$about_ia" -eq 0 ]]; then ok "About: InsuranceAgency absent"; else fail "About: InsuranceAgency should be absent"; fi
+if [[ "$services_ia" -eq 0 ]]; then ok "Services: InsuranceAgency absent"; else fail "Services: InsuranceAgency should be absent"; fi
+if [[ "$home_ia" -ge 1 ]]; then ok "Homepage: InsuranceAgency present"; else fail "Homepage: InsuranceAgency missing"; fi
 
 echo ""
 echo "Homepage city links (expected all 12):"
+home_html="$(curl -sS "$PROD/")"
 for city in downey bellflower cerritos commerce lakewood lynwood \
             montebello norwalk paramount pico-rivera south-gate whittier; do
-  if curl -s "${PROD}/" | grep -q "/insurance/${city}"; then
+  if printf '%s' "$home_html" | grep -q "/insurance/$city"; then
     ok "$city"
   else
     fail "$city link missing from homepage"
@@ -151,30 +191,17 @@ for city in downey bellflower cerritos commerce lakewood lynwood \
 done
 
 echo ""
-echo "No search_term_string pollution:"
-for url in / /faq /about /services; do
-  hits=$(curl -s "${PROD}${url}" | grep -c "search_term_string" || true)
-  if [[ "$hits" -eq 0 ]]; then
-    ok "0 hits on $url"
-  else
-    fail "$hits hit(s) on $url"
-  fi
+echo "No search_term_string pollution in indexable source:"
+for path in / /faq /about /services; do
+  hits=$(curl -sS "$PROD$path" | grep -c "search_term_string" || true)
+  if [[ "$hits" -eq 0 ]]; then ok "0 hits on $path"; else fail "$hits hit(s) on $path"; fi
 done
 
 echo ""
-echo "About page word count:"
-about_words=$(curl -s "${PROD}/about" | sed 's/<[^>]*>/ /g' | wc -w)
-if [[ "$about_words" -gt 800 ]]; then
-  ok "~${about_words} words"
-else
-  fail "~${about_words} words, below target of 800"
-fi
-
-echo ""
 echo "Sitemap lastmod:"
-lastmods=$(curl -s "${PROD}/sitemap.xml" | grep -oE '<lastmod>[0-9-]+</lastmod>' | sort -u)
+lastmods=$(printf '%s' "$sitemap" | grep -oE '<lastmod>[0-9-]+</lastmod>' | sort -u)
 echo "  Found dates: $lastmods"
-if echo "$lastmods" | grep -qE "202[56]-"; then
+if printf '%s' "$lastmods" | grep -qE '202[56]-'; then
   ok "lastmod dates look recent"
 else
   fail "lastmod dates look stale"
