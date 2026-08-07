@@ -183,7 +183,7 @@ echo "Homepage city links (expected all 12):"
 home_html="$(curl -sS "$PROD/")"
 for city in downey bellflower cerritos commerce lakewood lynwood \
             montebello norwalk paramount pico-rivera south-gate whittier; do
-  if printf '%s' "$home_html" | grep -q "/insurance/$city"; then
+  if [[ "$home_html" == *"/insurance/$city"* ]]; then
     ok "$city"
   else
     fail "$city link missing from homepage"

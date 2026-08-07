@@ -61,7 +61,7 @@ else
   npm run build || fail "npm run build failed"
   PRERENDER_SNAPSHOT="$(mktemp -d)"
   cp -R "$APP_DIR/dist/." "$PRERENDER_SNAPSHOT/"
-  ok "Build complete — 22 pages prerendered in dist/"
+  ok "Build complete — 25 pages prerendered in dist/"
 fi
 
 # ── Step 3: Schema validation ────────────────────────────────────────────────
