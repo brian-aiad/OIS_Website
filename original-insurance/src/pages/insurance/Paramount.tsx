@@ -31,9 +31,9 @@ const NEARBY = [
 export default function ParamountPage() {
   usePageMeta({
     title:
-      "Paramount Auto Insurance — Walk In, Same Day | Original",
+      "Auto Insurance in Paramount, CA | Original Insurance",
     description:
-      "Paramount drivers: walk in or call — our Downey office is minutes up Paramount Blvd. SR-22, no-license, auto & home. Compare 30+ carriers. Same-day eID cards.",
+      "Compare auto, home, SR-22 and commercial coverage for Paramount with an independent broker minutes away on Paramount Boulevard in Downey.",
     canonical,
   });
 
@@ -105,25 +105,25 @@ export default function ParamountPage() {
                 vehicle make, model and year, annual mileage, zip code (90723 in Paramount),
                 prior claims history, and whether you carry continuous or lapsed coverage.
                 Drivers with clean records commuting short distances on surface streets
-                can often find cheap car insurance options with liability-only coverage.
-                Drivers with financed vehicles, or those needing full coverage for higher-value
-                cars, will pay more — but shopping multiple carriers can still cut hundreds
-                of dollars off the annual cost.
+                can often find affordable auto insurance options with liability-only coverage.
+                Financed vehicles may require comprehensive and collision coverage. Comparing
+                multiple carriers shows how price, limits, and deductibles differ for the same
+                vehicle and driver information.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 As an independent insurance broker, we do not represent a single carrier.
-                We compare rates simultaneously from more than 30 top California companies,
+                We compare suitable options from multiple California insurance companies,
                 which means you see the actual market range — not a single quoted price. Going
                 direct to one insurer locks you into whatever that company prices your risk at.
                 Using an independent broker like Original Insurance means competition works in
-                your favor. We identify cheap car insurance solutions that fit your specific
+                your favor. We identify affordable auto insurance solutions that fit your specific
                 driving profile, vehicle, and coverage needs without sacrificing the protections
                 that actually matter.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
                 Because our Downey office is located right on Paramount Blvd, Paramount
                 residents have faster, easier walk-in access than clients from nearly any
-                other neighboring city. Most quotes take under 10 minutes. Same-day proof
+                other neighboring city. Quote timing depends on the coverage and details needed. Same-day proof
                 of insurance is standard when you bind a policy with us.
               </p>
             </div>
@@ -156,21 +156,18 @@ export default function ParamountPage() {
                 conviction, or a court order requiring proof of financial responsibility.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Once your SR-22 is on file, the DMV can process your license reinstatement.
-                California typically requires the SR-22 to remain active for three years. Any
-                lapse or cancellation during that period resets the DMV clock and can result
-                in re-suspension. We help clients understand the ongoing requirement and
-                monitor policy status to prevent unintentional lapses.
+                The required filing period depends on the DMV or court action. If proof is no
+                longer in force, the insurer may notify the DMV and driving privileges can be
+                affected. Confirm your own start and end dates directly with the DMV.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Our electronic filing is submitted the same day you bind a qualifying policy —
-                no waiting for paper documents in the mail. Bring your driver's license or
-                DMV reinstatement paperwork, your vehicle's VIN, and any court or case
-                reference number.
+                Qualifying insurers can file electronically after coverage is bound. Timing
+                depends on the carrier and DMV systems. Bring your driver's license or DMV
+                paperwork, vehicle VIN, and any court or case reference number.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                For complete SR-22 details including cost, carriers, and what to expect during
-                the three-year filing period, visit our dedicated SR-22 page.
+                For complete SR-22 details including costs, carrier processing, and what to
+                expect during the filing period, visit our dedicated SR-22 page.
               </p>
             </div>
             <div className="mt-6">
@@ -387,7 +384,7 @@ export default function ParamountPage() {
                 Get your Paramount auto insurance quote today
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                Most quotes take under 10 minutes. Walk into our Paramount Blvd office,
+                Quote timing depends on the coverage and details needed. Walk into our Paramount Blvd office,
                 call, or click — same-day proof of insurance available.
               </p>
               <div className="flex flex-wrap justify-center gap-3">

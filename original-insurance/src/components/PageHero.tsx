@@ -110,7 +110,7 @@ export default function PageHero({
       {/* ─── Floating decorative accents (brand personality, no impact on layout) ─── */}
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 3 }}>
         <svg
-          className="absolute -top-6 right-6 lg:right-24 w-56 h-56 animate-float"
+          className="absolute -top-6 right-6 lg:right-24 w-56 h-56"
           viewBox="0 0 100 100"
           fill="none"
           stroke="currentColor"
@@ -131,7 +131,7 @@ export default function PageHero({
           ))}
         </svg>
         <svg
-          className="absolute top-[58%] right-2 lg:right-14 w-24 h-24 animate-float-delayed"
+          className="absolute top-[58%] right-2 lg:right-14 w-24 h-24"
           viewBox="0 0 100 100"
           fill="none"
           stroke="currentColor"
@@ -141,11 +141,11 @@ export default function PageHero({
           <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" />
         </svg>
         <div
-          className="absolute top-14 left-[36%] w-16 h-16 rounded-full border animate-spin-slow"
+          className="absolute top-14 left-[36%] w-16 h-16 rounded-full border"
           style={{ borderColor: "rgba(245,158,11,0.07)" }}
         />
         <svg
-          className="absolute top-24 left-8 lg:left-20 w-7 h-7 animate-float"
+          className="absolute top-24 left-8 lg:left-20 w-7 h-7"
           viewBox="0 0 24 24"
           fill="currentColor"
           style={{ color: "rgba(255,255,255,0.05)", animationDelay: "0.8s" }}
@@ -223,7 +223,7 @@ export default function PageHero({
             {children && <div className="mt-7">{children}</div>}
 
             <div className="mt-8 grid max-w-xl grid-cols-1 gap-2 text-[12px] font-semibold text-white/75 sm:grid-cols-3">
-              {["30+ carrier market", "Downey office", "Same-day help"].map((item) => (
+              {["Independent broker", "Downey office", "Serving since 1999"].map((item) => (
                 <span
                   key={item}
                   className="inline-flex items-center gap-2 rounded-xl bg-white/[0.07] px-3 py-2 ring-1 ring-white/10 backdrop-blur-sm transition-colors hover:bg-white/[0.11]"

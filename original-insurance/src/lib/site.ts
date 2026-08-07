@@ -2,7 +2,7 @@ export const site = {
   name: "Original Insurance",
   tagline: "Trusted coverage with personal service.",
   description:
-    "Original Insurance Services is an independent insurance brokerage based in Downey, California, helping individuals, families, and businesses find reliable and affordable insurance coverage. Since 1999, we have specialized in Auto Insurance, Home Insurance, Business and Commercial Insurance, Life Insurance, Motorcycle Insurance, and Boat Insurance. As independent insurance brokers, we work with multiple top rated insurance carriers to compare policies and secure the best rates and coverage options for our clients.",
+    "Original Insurance Services is an independent insurance brokerage in Downey, California. Since 1999, we have helped individuals, families, and businesses compare auto, home, commercial, life, motorcycle, and recreational insurance coverage from multiple carriers.",
   contact: {
     phone: "(310) 538-8666",
     phoneHref: "tel:+13105388666",

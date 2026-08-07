@@ -33,9 +33,9 @@ const NEARBY_CITIES = [
 export default function NorwalkPage() {
   usePageMeta({
     title:
-      "Norwalk Auto Insurance — SR-22, No License | Original",
+      "Auto Insurance in Norwalk, CA | Original Insurance",
     description:
-      "Norwalk auto insurance from an independent broker. SR-22, no-license, foreign-license programs. Near Cerritos College area. 30+ carriers, bilingual, walk-ins OK.",
+      "Compare auto, home and SR-22 coverage for Norwalk with an independent broker at our nearby Downey office. English, Spanish and Arabic service.",
     canonical,
   });
 
@@ -49,7 +49,7 @@ export default function NorwalkPage() {
 
       <PageHero
         title="Auto Insurance in Norwalk, CA"
-        subtitle="Serving Norwalk families and Cerritos College commuters with bilingual insurance from 30+ top California carriers."
+        subtitle="Serving Norwalk families and commuters with bilingual insurance comparisons from our nearby Downey office."
         breadcrumb="Norwalk"
         backgroundImage="/images/ois-city-commercial-corridor-v4.webp"
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
@@ -85,7 +85,7 @@ export default function NorwalkPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Norwalk sits at a busy crossroads in Southeast Los Angeles County, where the 5 Freeway (Santa Ana) and the 605 (San Gabriel River Freeway) intersect and surface streets like Firestone Blvd, Pioneer Blvd, and Rosecrans Ave carry heavy local traffic throughout the day. These corridors connect Norwalk residents to jobs in downtown Los Angeles, Long Beach, and the San Gabriel Valley — and the daily exposure on those roads is one of the biggest factors that shapes what carriers charge for auto insurance in Norwalk. Knowing how to navigate the market and find cheap car insurance that still delivers real protection is where working with an independent broker pays off.
+                Norwalk sits at a busy crossroads in Southeast Los Angeles County, where the 5 Freeway (Santa Ana) and the 605 (San Gabriel River Freeway) intersect and surface streets like Firestone Blvd, Pioneer Blvd, and Rosecrans Ave carry heavy local traffic throughout the day. These corridors connect Norwalk residents to jobs in downtown Los Angeles, Long Beach, and the San Gabriel Valley — and the daily exposure on those roads is one of the biggest factors that shapes what carriers charge for auto insurance in Norwalk. Knowing how to navigate the market and find affordable auto insurance that still delivers real protection is where working with an independent broker pays off.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 California mandates a minimum liability of 30/60/15 for every driver: $30,000 bodily injury per person, $60,000 bodily injury per accident, and $15,000 property damage. For many Norwalk drivers, those minimums represent a starting point — not an endpoint. On the 5 Freeway or Pioneer Blvd during peak hours, a single collision can easily generate repair bills and medical costs that exceed state minimums, leaving you personally responsible for the difference. Adding uninsured motorist coverage is also worth serious consideration in a region where a significant percentage of drivers carry insufficient coverage or none at all.
@@ -94,7 +94,7 @@ export default function NorwalkPage() {
                 The diversity of Norwalk's driving population also creates unique insurance needs. Students and staff commuting to and from Cerritos College on Bloomfield Ave, warehouse and distribution workers heading to industrial corridors off the 5, and families running daily errands on Rosecrans Ave all have different vehicle profiles, risk exposures, and budget constraints. Our approach is to look at your specific situation — driving record, vehicle type, how the car is used, whether it's financed, and your prior coverage history — and then match you to the carrier and coverage tier that fits.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                As an independent broker based in Downey — just minutes west via Firestone Blvd — Original Insurance shops your coverage across more than 30 California-licensed carriers at once. That competition is what consistently produces cheap car insurance options that single-carrier agents simply cannot match. Bundling home or renters insurance, maintaining continuous coverage, and installing safety features are among the factors that can reduce your auto premium further.
+                As an independent broker based in Downey — just minutes west via Firestone Blvd — Original Insurance shops your coverage across more than 30 California-licensed carriers at once. That competition is what consistently produces affordable auto insurance options that single-carrier agents simply cannot match. Bundling home or renters insurance, maintaining continuous coverage, and installing safety features are among the factors that can reduce your auto premium further.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
                 Our bilingual team explains every option in plain language — English, Spanish, or Arabic — so you understand exactly what you're buying before you commit. There is no extra cost to work with us as a broker; we are compensated by the carrier you select.
@@ -119,10 +119,10 @@ export default function NorwalkPage() {
                 Norwalk drivers needing SR-22 filing after a DMV suspension, an uninsured incident, or a court requirement can get same-day electronic filing through our Downey office — just minutes west via Firestone Blvd.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                An SR-22 is a filing, not a separate insurance policy. It is a certificate that your insurance carrier submits electronically to the California DMV confirming you maintain at least the state-required minimum liability coverage. Common reasons Norwalk drivers need SR-22 include: a DUI or DWI conviction, an at-fault accident while driving uninsured, a license suspension for excessive points, a lapse in required coverage, or a reinstatement order from a court. Once the filing is submitted, it is immediately visible to the DMV and your reinstatement process can move forward.
+                An SR-22 is a filing, not a separate insurance policy. It is proof that your insurance carrier submits to the California DMV confirming required financial responsibility. Common triggers can include a DUI conviction, an uninsured accident, a license suspension, or a court or DMV requirement. Filing and reinstatement timing depends on the carrier and DMV systems.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                California typically requires you to maintain SR-22 status for three consecutive years. Any policy lapse during that window triggers a notification to the DMV from your carrier, which can restart the requirement period. Our team helps Norwalk clients build policies that remain active and properly structured so inadvertent lapses do not derail reinstatement progress. We also work with carriers that specialize in higher-risk profiles, which means competitive SR-22 rates even when other insurers have declined.
+                The required filing period depends on the DMV or court action. If proof is no longer in force, the insurer may notify the DMV and driving privileges can be affected. Confirm your own start and end dates with the DMV. We can compare carriers that accept the situation and explain the policy's ongoing requirements.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
                 For full details on SR-22 costs, what documents to bring, and how the process works, visit our dedicated{" "}
@@ -188,7 +188,7 @@ export default function NorwalkPage() {
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>,
                 title: "30+ carriers compared",
-                desc: "Side-by-side quotes from 30+ top-rated California carriers in a single session",
+                desc: "Side-by-side quotes from multiple California carriers in a single session",
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" /></svg>,
@@ -245,10 +245,10 @@ export default function NorwalkPage() {
                 Surface-street traffic in Norwalk is anchored by Alondra Blvd and Firestone Blvd, two east-west arterials that carry heavy commercial and residential traffic throughout the day. Alondra Blvd is particularly important for local trips — connecting Norwalk to Bellflower, Paramount, and Cerritos — and its mix of residential driveways and commercial intersections creates the kind of stop-and-go conditions that increase fender-bender frequency relative to freeway driving. If Alondra Blvd is part of your regular commute, we factor that in when evaluating carrier options.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                The Norwalk/Santa Fe Springs Metrolink station, located near the 5 Freeway, is a key transit hub for commuters riding the 91/Perris Valley Line and the Orange County Line into downtown Los Angeles or toward Riverside. Metrolink users still need to drive or be driven to the station, which means vehicle ownership and insurance remain a practical necessity for most Norwalk households even if they commute by rail for the main leg of their trip. We regularly serve Norwalk clients who park at the Metrolink station during the week and need competitive full coverage for those vehicles.
+                The Norwalk/Santa Fe Springs Metrolink station and the 5 and 605 freeways shape many local commutes. When a vehicle is used for station access, commuting, delivery, or other business activity, accurate use and annual-mileage details help carriers price the policy correctly.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Cerritos College — straddling the Norwalk/Cerritos border along Bloomfield Ave — draws thousands of students and staff daily, many of whom are young or first-time insurance buyers. If you are a student, parent of a student, or staff member looking for affordable auto insurance that fits a student's driving profile, we compare options across 30+ carriers and can often find rates significantly better than what you would get going directly to a single-company agent. Young drivers benefit most from shopping multiple carriers because the rate spread for that demographic is wider than for experienced drivers.
+                Cerritos College sits near the Norwalk and Cerritos border along Bloomfield Avenue. Students, parents, and staff may have different vehicle use, mileage, and household-driver details, so accurate information matters. We compare suitable carriers and explain how limits, deductibles, and optional coverage affect the quote.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
                 Norwalk's residential areas vary from dense apartment corridors near the transit station to quieter single-family neighborhoods east of the 605. ZIP code 90650 covers most of the city's residential areas and generally sees competitive pricing from our carrier network. Drivers with clean records, continuous prior coverage, and vehicles in the mid-range value tier tend to get the strongest results from our shopping process. Those with recent violations, lapses, or SR-22 requirements also have strong options — we access specialty carriers that serve the high-risk segment throughout Southeast LA County.
@@ -331,7 +331,7 @@ export default function NorwalkPage() {
                 {
                   n: "01",
                   title: "Metrolink commuters still need car insurance",
-                  body: "The Norwalk/Santa Fe Springs Metrolink station handles hundreds of daily boarders on the 91/Perris Valley and Orange County Lines. Even if you commute by rail Monday through Friday, your vehicle sits in the park-and-ride all day — and theft, collision in the lot, and vandalism coverage require active comprehensive and collision policies. We structure policies for park-and-ride vehicles that balance low mileage rates with appropriate physical damage coverage."
+                  body: "If you drive to the Norwalk/Santa Fe Springs Metrolink station, tell the carrier how the vehicle is used and where it is parked. Comprehensive and collision cover different physical-damage risks, and each is subject to the policy terms and deductible."
                 },
                 {
                   n: "02",
@@ -376,7 +376,7 @@ export default function NorwalkPage() {
                 Get your Norwalk auto insurance quote
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto leading-relaxed">
-                Most quotes take under 10 minutes. Compare 30+ carriers for the best Norwalk rate — with same-day proof of insurance and SR-22 filing available. Our Downey office is just minutes west via Firestone Blvd.
+                Quote timing depends on the coverage and details needed. Compare 30+ carriers for the best Norwalk rate — with same-day proof of insurance and SR-22 filing available. Our Downey office is just minutes west via Firestone Blvd.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <button onClick={openQuoteModal} className="btn btn-accent">

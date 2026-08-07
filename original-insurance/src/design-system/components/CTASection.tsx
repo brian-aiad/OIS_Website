@@ -22,13 +22,13 @@ interface CTASectionProps {
  *
  * Usage:
  *   <CTASection
- *     title="Ready to compare 30+ carriers?"
- *     lede="We find the best rate for your situation in minutes."
+ *     title="Ready to review your coverage options?"
+ *     lede="Compare suitable carriers with a local insurance broker."
  *   />
  */
 export function CTASection({
-  title = "Ready to compare 30+ carriers?",
-  lede = "Get a personalized quote from a licensed Downey broker. Compare in one conversation.",
+  title = "Ready to review your coverage options?",
+  lede = "Talk with a local Downey broker and compare suitable carriers in one conversation.",
   primaryLabel = "Get Your Free Quote",
   primaryOnClick,
   secondaryLabel = "Call (310) 538-8666",
@@ -43,7 +43,7 @@ export function CTASection({
       <div className="container relative text-center">
         <RevealOnScroll>
           <div className="mb-5 flex flex-wrap justify-center gap-2">
-            {["Licensed CA broker", "30+ carriers", "Call, text, or walk in"].map((item) => (
+            {["Independent broker", "Serving since 1999", "Call, text, or walk in"].map((item) => (
               <span key={item} className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white/70 ring-1 ring-white/15">
                 {item}
               </span>

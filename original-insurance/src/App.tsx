@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollProgress from "./components/ScrollProgress";
 import SectionNavigator from "./components/SectionNavigator";
+import EditorialTrust from "./components/seo/EditorialTrust";
 
 // Eagerly load primary prerendered pages. Keeping these eager prevents direct
 // route loads from replacing prerendered content with a Suspense fallback.
@@ -56,6 +57,19 @@ function LoadingFallback() {
 
 export default function App() {
   const location = useLocation();
+  const showEditorialTrust =
+    location.pathname === "/" ||
+    location.pathname === "/services" ||
+    location.pathname === "/about" ||
+    location.pathname === "/faq" ||
+    location.pathname.startsWith("/insurance/") ||
+    [
+      "/auto-insurance-downey-ca",
+      "/sr22-insurance-downey",
+      "/home-insurance-downey-ca",
+      "/no-license-auto-insurance-downey",
+      "/commercial-auto-insurance-downey",
+    ].includes(location.pathname);
   const [quoteWidgetReady, setQuoteWidgetReady] = useState(false);
   const [quoteOpenSignal, setQuoteOpenSignal] = useState(0);
 
@@ -128,6 +142,7 @@ export default function App() {
               </Routes>
             </Suspense>
           </div>
+          {showEditorialTrust && <EditorialTrust />}
         </div>
         <Footer />
       </div>

@@ -58,7 +58,6 @@ export default function LocalBusinessSchema({
       foundingDate: "1999",
       url,
       telephone: "+1-310-538-8666",
-      priceRange: "$$",
       image: [
         "https://originalinsurance.net/og-image.png",
         "https://originalinsurance.net/images/ois-hero-storefront-logo-v4.webp",

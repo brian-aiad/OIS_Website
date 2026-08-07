@@ -144,8 +144,8 @@ const SERVICE_TABS = [
 
 export default function Services() {
   usePageMeta({
-    title: "Auto, Home & Motorcycle Insurance Downey CA | Original",
-    description: "Compare auto, home, renters, motorcycle, life, SR-22 and commercial insurance in Downey CA with 30+ carriers. Bilingual service and same-day eID cards.",
+    title: "Insurance Services in Downey, CA | Original Insurance",
+    description: "Explore auto, home, renters, motorcycle, life, SR-22 and commercial insurance options from an independent Downey brokerage.",
     canonical: "https://originalinsurance.net/services",
   });
 

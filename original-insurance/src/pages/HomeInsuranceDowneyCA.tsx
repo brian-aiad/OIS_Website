@@ -15,19 +15,19 @@ import { images } from "../lib/images";
 const HOME_FAQS = [
   {
     q: "How much does home insurance cost in Downey, CA?",
-    a: "Most Downey homeowners pay $1,200–$2,400 per year ($100–$200/month) for a standard HO-3 policy. Rates depend on your home's replacement value, construction type, coverage limits, claims history, and chosen carrier. As an independent broker, we compare 30+ carriers simultaneously to find your most competitive rate.",
+    a: "Rates depend on replacement cost, construction, roof and home characteristics, coverage limits, deductibles, claims history, location, and carrier. A current quote using accurate property details is more reliable than a broad price range.",
   },
   {
     q: "Is renters insurance worth it in Downey?",
-    a: "Yes. Renters insurance typically costs $15–$30/month in Downey and covers your personal belongings against theft, fire, and water damage — plus liability if someone is injured inside your unit. Your landlord's policy does not cover your personal property. It is one of the most underutilized and cost-effective policies we offer.",
+    a: "Renters coverage can protect belongings from covered losses and provide personal liability and additional-living-expense coverage. A landlord's policy generally protects the building, not the tenant's belongings. Price depends on limits, deductible, location, and carrier.",
   },
   {
     q: "What does home insurance cover in California?",
     a: "A standard California HO-3 policy covers your dwelling structure, other structures (garage, fence), personal belongings, personal liability, and additional living expenses if a covered loss forces you to stay elsewhere. It does NOT include flood damage or earthquake damage — those require separate policies.",
   },
   {
-    q: "Can I bundle home and auto insurance to save money?",
-    a: "Yes. Most carriers offer 10–15% multi-policy discounts for bundling home and auto. Because we compare 30+ carriers, we can show you the real bundle price vs. buying separately — sometimes the best auto carrier and the best home carrier differ, and splitting saves more. We do the math for you.",
+    q: "Can bundling home and auto reduce the cost?",
+    a: "Many carriers offer multi-policy discounts, but the amount varies. We compare the combined price and coverage with separate-carrier options because a bundle is not automatically the best overall value.",
   },
   {
     q: "Do I need earthquake insurance in Downey, CA?",
@@ -37,9 +37,9 @@ const HOME_FAQS = [
 
 export default function HomeInsuranceDowneyCA() {
   usePageMeta({
-    title: "Home Insurance Downey CA — Bundle & Save | Original Insurance",
+    title: "Home Insurance in Downey, CA | Original Insurance",
     description:
-      "Compare home and renters insurance in Downey, CA. Bundle with auto for 10–15% off. Earthquake coverage available. Free quotes from 30+ carriers. Walk in or call (310) 538-8666.",
+      "Compare homeowners, renters, condo and optional earthquake coverage with an independent insurance broker serving Downey, California.",
     canonical: "https://originalinsurance.net/home-insurance-downey-ca",
   });
 
@@ -59,7 +59,7 @@ export default function HomeInsuranceDowneyCA() {
         title="Home & Renters Insurance in Downey, CA"
         subtitle="We compare 30+ carriers to find the right home or renters policy for your property, budget, and situation — including earthquake coverage and bundle discounts."
         breadcrumb="Home Insurance Downey"
-        badgeText="Bundle & Save 10–15%"
+        badgeText="Home, Renters & Bundle Options"
         backgroundImage={images.products.home}
         imageFilter="contrast(1.06) saturate(1.02) brightness(0.95)"
         imagePosition="center"
@@ -171,7 +171,7 @@ export default function HomeInsuranceDowneyCA() {
                   </svg>
                 ),
                 title: "Bundle Discount",
-                desc: "Home + auto bundles save 10–15% on most carriers. We compare the bundle price against buying separately — sometimes splitting carriers saves more. You get the real number, not the assumption.",
+                desc: "Many carriers offer home and auto bundle discounts. We compare the combined price and coverage with separate-carrier options so you can evaluate the actual value.",
               },
             ].map((item) => (
               <StaggerChild key={item.title}>
@@ -223,10 +223,10 @@ export default function HomeInsuranceDowneyCA() {
             </h2>
             <div className="prose prose-invert max-w-none">
               <p className="text-lg text-white/85 leading-relaxed mb-4">
-                Most carriers offer 10–15% multi-policy discounts when you bundle home and auto. For a Downey homeowner paying $150/month for auto and $150/month for home insurance, that could save $360–$540 per year. The savings are real — but only if the same carrier is competitive for both lines.
+                Many carriers offer multi-policy discounts when you bundle home and auto, but the amount and eligibility vary. A lower combined premium is useful only when the limits, deductibles, exclusions, and service also fit your needs.
               </p>
               <p className="text-base text-white/80 leading-relaxed mb-4">
-                As an independent broker, we compare both the bundled price and the separate-carrier price. Some Downey clients find that one carrier is significantly better for auto while another is better for home — and the total savings from going separate beats the bundle discount. We show you both numbers so you can choose with full information.
+                As an independent broker, we compare both the bundled price and separate-carrier options. Sometimes one insurer is more suitable for auto while another is more suitable for home. We show the resulting price and coverage differences so you can decide with full information.
               </p>
               <p className="text-base text-white/80 leading-relaxed">
                 Other bundle opportunities include home + life insurance and auto + renters insurance. We look at your full household insurance picture, not just one policy at a time.
@@ -293,7 +293,7 @@ export default function HomeInsuranceDowneyCA() {
               Ready to compare Downey home insurance rates?
             </h2>
             <p className="text-white/70 mb-6">
-              Free quotes from 30+ carriers. Bundle with auto for 10–15% off. Same-day digital proof of insurance.
+              Compare homeowners and renters options, including potential auto bundles and optional earthquake coverage.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <button onClick={openQuoteModal} className="btn btn-accent btn-lg">

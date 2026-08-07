@@ -58,9 +58,9 @@ const VEHICLE_TYPES = [
 
 export default function CommercialAutoInsuranceDowneyPage() {
   usePageMeta({
-    title: "Commercial Auto & Business Vehicle Insurance Downey CA | Original",
+    title: "Commercial Auto Insurance in Downey, CA | Original",
     description:
-      "Commercial insurance in Downey CA for business vehicles, fleets, trucks, hired/non-owned auto and BOP bundles. Compare 30+ carriers with same-day proof.",
+      "Compare commercial auto coverage for business vehicles, fleets, contractors and hired or non-owned vehicles with a Downey insurance broker.",
     canonical:
       "https://originalinsurance.net/commercial-auto-insurance-downey",
   });
@@ -200,11 +200,11 @@ export default function CommercialAutoInsuranceDowneyPage() {
                 Some commercial auto operations require more than just a
                 standard policy — they require specific regulatory filings that
                 prove financial responsibility to a federal or state authority.
-                The most common is the <strong>MCS-90 endorsement</strong>, a
-                federally mandated filing for motor carriers operating under
-                FMCSA authority that guarantees minimum liability coverage
-                regardless of policy exclusions. If you haul freight or operate
-                under a USDOT number, this endorsement is typically required.
+                One important form is the <strong>MCS-90 endorsement</strong>,
+                which certain interstate motor carriers use to demonstrate
+                federally required public-liability financial responsibility.
+                Whether it applies depends on the operation, cargo, authority,
+                and federal rules; a USDOT number alone does not answer every filing question.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 <strong>Form E</strong> (also called the Uniform Motor Carrier

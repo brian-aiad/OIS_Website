@@ -31,9 +31,9 @@ const NEARBY = [
 export default function PicoRiveraPage() {
   usePageMeta({
     title:
-      "Pico Rivera Auto Insurance — ITIN OK | Original Insurance",
+      "Auto Insurance in Pico Rivera, CA | Original Insurance",
     description:
-      "Pico Rivera auto insurance: foreign licenses accepted, ITIN-based policies available, SR-22 same-day. Compare 30+ California carriers. Bilingual broker. Free quote.",
+      "Compare auto, SR-22, home and commercial insurance options for Pico Rivera with an independent bilingual broker based nearby in Downey.",
     canonical,
   });
 
@@ -47,7 +47,7 @@ export default function PicoRiveraPage() {
 
       <PageHero
         title="Auto Insurance in Pico Rivera, CA"
-        subtitle="Comparing top California carriers for Pico Rivera drivers — independent broker service in English, Spanish, and Arabic since 1999."
+        subtitle="Independent coverage comparisons for Pico Rivera drivers in English, Spanish, and Arabic from our Downey office."
         breadcrumb="Pico Rivera"
         backgroundImage="/images/ois-city-small-business-v4.webp"
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
@@ -103,7 +103,7 @@ export default function PicoRiveraPage() {
                 Rate factors for Pico Rivera drivers include zip code (90660), vehicle make
                 and model, driving record, prior claims, and whether coverage has been
                 continuous or lapsed. Drivers with clean records and lower-value vehicles
-                can often find cheap car insurance on liability-only coverage. Drivers with
+                can often find affordable auto insurance on liability-only coverage. Drivers with
                 financed or newer vehicles will typically need full coverage, but comparing
                 carriers can still significantly reduce the annual premium.
               </p>
@@ -118,7 +118,7 @@ export default function PicoRiveraPage() {
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
                 Our Downey office is just minutes west via Washington Blvd. Walk-in quotes
-                are welcome, and most are completed in under 10 minutes. Same-day proof of
+                are welcome, and timing depends on the coverage and details needed. Same-day proof of
                 insurance is available when you bind a policy with us. We also offer phone
                 and online quotes for clients who prefer not to come in.
               </p>
@@ -152,16 +152,14 @@ export default function PicoRiveraPage() {
                 or an extended lapse in coverage.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                California generally requires the SR-22 to remain active for three continuous
-                years. If the policy lapses or is cancelled during that window, the DMV clock
-                resets and your driving privileges may be suspended again. We monitor policy
-                status for our clients to minimize the risk of accidental lapses that would
-                extend the filing period.
+                The required filing period depends on the DMV or court action. If proof is no
+                longer in force, the insurer may notify the DMV and driving privileges can be
+                affected. Confirm your own start and end dates directly with the DMV.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                We file SR-22 certificates electronically the same day you bind a qualifying
-                policy. Bring your driver's license or DMV reinstatement paperwork, vehicle
-                VIN, and any court or DMV case reference number.
+                Qualifying insurers can file electronically after coverage is bound. Timing
+                depends on the carrier and DMV systems. Bring your driver's license or DMV
+                paperwork, vehicle VIN, and any court or DMV case reference number.
               </p>
             </div>
             <div className="mt-6">
@@ -378,7 +376,7 @@ export default function PicoRiveraPage() {
                 Get your Pico Rivera auto insurance quote today
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                Most quotes take under 10 minutes. Just minutes west via Washington Blvd —
+                Quote timing depends on the coverage and details needed. Just minutes west via Washington Blvd —
                 walk-ins welcome, or call ahead.
               </p>
               <div className="flex flex-wrap justify-center gap-3">

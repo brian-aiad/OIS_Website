@@ -5,7 +5,7 @@ const trustItems = [
   { label: "English" },
   { label: "Español" },
   { label: "العربية" },
-  { label: "Same-Day Proof of Insurance" },
+  { label: "Proof After Binding" },
 ];
 
 function DotIcon() {

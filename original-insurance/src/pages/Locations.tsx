@@ -43,8 +43,8 @@ function toSchemaTime(value: string) {
 
 export default function Locations() {
   usePageMeta({
-    title: "Our Downey Office — Hours & Directions | Original Insurance",
-    description: "Visit us at 9907-B Paramount Blvd, Downey CA 90240. Open Mon–Fri 10AM–5:30PM. Walk-ins welcome. Serving Downey, Cerritos, Norwalk, Lakewood & surrounding areas.",
+    title: "Downey Insurance Office, Hours & Directions | Original",
+    description: "Visit Original Insurance Services at 9907-B Paramount Boulevard in Downey. Find weekday hours, directions, parking and contact information.",
     canonical: "https://originalinsurance.net/locations",
   });
 

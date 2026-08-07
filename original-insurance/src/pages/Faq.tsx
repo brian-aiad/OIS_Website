@@ -90,7 +90,7 @@ const FAQ_GROUPS: FaqGroup[] = [
     items: [
       {
         q: "What is SR-22 insurance in California?",
-        a: "An SR-22 is a filing — not a separate insurance policy. It is a certificate your insurer sends to the California DMV confirming you carry the state-required minimum liability coverage. The SR-22 itself is a fee of about $15–$25. You still need an underlying auto insurance policy. See our SR-22 page for a full walkthrough.",
+        a: "An SR-22 is a filing — not a separate insurance policy. It is proof an insurer sends to the California DMV confirming required financial responsibility. Filing charges and the underlying policy cost vary by carrier. See our SR-22 page for a full walkthrough.",
         schemaA: "An SR-22 is a filing your insurer sends to the California DMV to confirm you carry the required liability coverage. It is not a separate insurance policy.",
       },
       {
@@ -100,18 +100,18 @@ const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "How long do I need SR-22?",
-        a: "California typically requires SR-22 for three continuous years. Any lapse in coverage resets the clock. Once the three years are complete, you can request that your insurer remove the filing, and your rates will often decrease. Always confirm your specific requirement with the California DMV.",
-        schemaA: "California typically requires SR-22 for three continuous years. Any lapse in coverage resets the requirement period.",
+        a: "The required period depends on the DMV or court action. California DMV materials commonly refer to a three-year period in certain cases. A lapse can affect driving privileges, so confirm your personal start and end dates directly with the DMV.",
+        schemaA: "The required SR-22 period depends on the DMV or court action. Drivers should confirm their own dates directly with the California DMV.",
       },
       {
         q: "What is same-day SR-22 filing?",
-        a: "We file SR-22 certificates electronically with the California DMV the same day you bind a qualifying policy. Walk-ins can leave our Downey office with the filing submitted and proof of insurance in hand. For most clients, the DMV receives the filing within hours.",
+        a: "Qualifying insurers can submit SR-22 proof electronically after a policy is bound. Processing time depends on the carrier, the time of day, and DMV systems; we explain the expected timing before you purchase.",
         schemaA: "Same-day SR-22 filing means the insurer submits the SR-22 certificate electronically to the California DMV on the day the policy is bound.",
       },
       {
         q: "How much does SR-22 cost?",
-        a: "The filing fee itself is typically $15–$25. The larger cost is the impact on your underlying insurance premium — carriers view SR-22 situations as higher risk. However, premiums vary significantly between carriers, and some specialize in non-standard situations. Working with an independent broker means we compare SR-22-eligible carriers to find the most competitive rate for your specific situation.",
-        schemaA: "The SR-22 filing fee is typically $15–$25. The main cost impact is an increase to the underlying auto insurance premium, which varies by carrier.",
+        a: "The filing charge and underlying insurance premium vary by carrier and driving history. We compare eligible carriers and show the filing charge, limits, deductibles, and policy price before you choose coverage.",
+        schemaA: "SR-22 filing charges and the underlying insurance premium vary by carrier and driving history.",
       },
     ],
   },
@@ -136,7 +136,7 @@ const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Can I get help in Spanish or Arabic?",
-        a: "Yes. Our Downey office has native-fluency staff in both Spanish and Arabic. All conversations, policy explanations, and document reviews can be conducted entirely in the language you are most comfortable with. Many of our long-term clients have been with us for 10–20 years in part because of this multilingual service.",
+        a: "Yes. Our Downey office provides service in English, Spanish, and Arabic. Ask for the language you prefer when you call, text, or visit so our team can explain the available options clearly.",
         schemaA: "The office provides service in English, Spanish, and Arabic, including policy explanations and document reviews in each language.",
       },
     ],
@@ -149,9 +149,9 @@ const SCHEMA_FAQS = FAQ_GROUPS.flatMap((g) =>
 
 export default function Faq() {
   usePageMeta({
-    title: "Insurance FAQ: SR-22, No License, ITIN | Original Insurance",
+    title: "California Insurance FAQ | Original Insurance Services",
     description:
-      "Straight answers about car insurance in Downey: SR-22 cost & duration, ITIN and no-license coverage, proof of insurance, claims help, and CA minimums explained.",
+      "Clear answers about California auto insurance, SR-22 filings, foreign-license situations, proof of insurance, claims and required liability limits.",
     canonical: "https://originalinsurance.net/faq",
   });
 

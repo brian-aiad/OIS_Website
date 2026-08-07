@@ -45,7 +45,7 @@ const CITIES: CityInfo[] = [
     slug: "norwalk",
     name: "Norwalk",
     blurb:
-      "Just east of Downey off the 5 freeway, we serve hundreds of Norwalk families and Cerritos College commuters with bilingual auto, home, and SR-22 policies.",
+      "Just east of Downey off the 5 freeway, we help Norwalk families and Cerritos College commuters compare bilingual auto, home, and SR-22 options.",
     distance: "~5 minutes east via Firestone Blvd",
     zips: ["90650", "90651", "90652"],
   },
@@ -53,7 +53,7 @@ const CITIES: CityInfo[] = [
     slug: "bellflower",
     name: "Bellflower",
     blurb:
-      "A quick hop down Lakewood Blvd, Bellflower residents come to us for competitive auto rates, renters coverage, and commercial BOPs.",
+      "A quick trip down Lakewood Blvd, Bellflower residents can compare auto, renters, and commercial coverage with our Downey team.",
     distance: "~7 minutes south via Lakewood Blvd",
     zips: ["90706"],
   },
@@ -61,7 +61,7 @@ const CITIES: CityInfo[] = [
     slug: "lynwood",
     name: "Lynwood",
     blurb:
-      "Our Spanish-speaking team handles Lynwood's auto, no-license, and SR-22 filings with same-day proof of insurance.",
+      "Our Spanish-speaking team helps Lynwood clients review auto, foreign-license, and SR-22 filing options.",
     distance: "~8 minutes west via Imperial Hwy",
     zips: ["90262"],
   },
@@ -77,7 +77,7 @@ const CITIES: CityInfo[] = [
     slug: "whittier",
     name: "Whittier",
     blurb:
-      "From Uptown Whittier to East Whittier, we find Whittier drivers and families better rates on auto, home, and life insurance.",
+      "From Uptown Whittier to East Whittier, we help drivers and families compare auto, home, and life insurance options.",
     distance: "~10 minutes northeast via Whittier Blvd",
     zips: ["90601", "90602", "90603", "90604", "90605", "90606"],
   },
@@ -85,7 +85,7 @@ const CITIES: CityInfo[] = [
     slug: "lakewood",
     name: "Lakewood",
     blurb:
-      "Lakewood homeowners use our multi-carrier shopping to bundle home and auto for 10–15% savings.",
+      "Lakewood homeowners use our multi-carrier comparison to review home, auto, and potential bundle options.",
     distance: "~10 minutes south via Lakewood Blvd",
     zips: ["90712", "90713", "90715"],
   },
@@ -109,7 +109,7 @@ const CITIES: CityInfo[] = [
     slug: "pico-rivera",
     name: "Pico Rivera",
     blurb:
-      "Pico Rivera drivers save by letting us compare California's top carriers in a single phone call.",
+      "Pico Rivera drivers can compare multiple California carriers in a single conversation with our local team.",
     distance: "~8 minutes north via Rosemead Blvd",
     zips: ["90660"],
   },
@@ -135,7 +135,7 @@ const CITY_MAP = Object.fromEntries(CITIES.map((c) => [c.slug, c])) as Record<st
 
 const COVERAGE_LINES = [
   { title: "Auto Insurance", desc: "Liability, full coverage, SR-22, and no-license programs.", Icon: Car },
-  { title: "Home & Renters", desc: "Homeowners, condo, and renters policies from $15/month.", Icon: Home },
+  { title: "Home & Renters", desc: "Homeowners, condo, renters, and optional earthquake coverage.", Icon: Home },
   { title: "Life Insurance", desc: "Term and whole life — protect your family's future.", Icon: Heart },
   { title: "Commercial", desc: "General liability, BOPs, commercial auto, and workers' comp.", Icon: Building2 },
   { title: "Motorcycle & RV", desc: "Riders, recreational vehicles, and weekend toys covered.", Icon: Bike },
@@ -151,8 +151,8 @@ export default function CityLanding() {
   const canonical = `https://originalinsurance.net/insurance/${city.slug}`;
 
   usePageMeta({
-    title: `Auto Insurance ${city.name} CA — Same-Day, No License | Original`,
-    description: `Get auto insurance in ${city.name}, CA. Same-day eID cards, SR-22 filing, no-license programs. Compare 30+ carriers with a bilingual broker. Free quote — call or walk in.`,
+    title: `Insurance Broker in ${city.name}, CA | Original Insurance`,
+    description: `Compare auto, home, commercial, life and SR-22 coverage for ${city.name}, CA with an independent Downey-based broker serving the area since 1999.`,
     canonical,
   });
 
@@ -189,7 +189,7 @@ export default function CityLanding() {
       <LocalBusinessSchema url={canonical} areaServed={areaServed} />
       <PageHero
         title={`Insurance Broker in ${city.name}, CA`}
-        subtitle={`Independent coverage from 30+ carriers — serving ${city.name} since 1999.`}
+        subtitle={`Compare coverage with an independent broker serving ${city.name} from our Downey office.`}
         breadcrumb={city.name}
         backgroundImage={isDowney ? "/images/downey-neighborhood.webp" : "/images/ois-city-community-golden-v4.webp"}
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
@@ -251,7 +251,7 @@ export default function CityLanding() {
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed mb-4">{city.blurb}</p>
             <p className="text-base text-slate-500 leading-relaxed">
-              As an independent brokerage we compare policies from more than 30 top-rated California carriers so{" "}
+              As an independent brokerage we compare policies from multiple California carriers so{" "}
               {city.name} residents only pay for the coverage they actually need. Our bilingual English, Spanish, and
               Arabic team handles everything from same-day SR-22 filings to homeowners bundling. Our Downey office is{" "}
               <strong>{city.distance.toLowerCase()}</strong> from {city.name}, and phone and email quotes are
@@ -311,7 +311,7 @@ export default function CityLanding() {
             <ul className="space-y-3 text-slate-600">
               {[
                 "Independent broker — we work for you, not one insurance company",
-                "30+ top-rated California carriers compared in a single quote",
+                "multiple California carriers compared in a single quote",
                 "Bilingual English, Spanish, and Arabic service — también hablamos español",
                 "Same-day SR-22 electronic filing to the California DMV",
                 "No-license and international-license auto programs",
@@ -367,7 +367,7 @@ export default function CityLanding() {
       {/* CTA */}
       <CTASection
         title={`Ready for a free ${city.name} quote?`}
-        lede="Most quotes take under 10 minutes. Call, message, or stop by our Downey office - walk-ins welcome."
+        lede="Quote timing depends on the coverage and details needed. Call, message, or stop by our Downey office - walk-ins welcome."
         secondaryLabel={`Call ${site.contact.phone}`}
       />
     </main>

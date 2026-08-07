@@ -13,10 +13,10 @@ import { ConsultationImage } from "../components/ConsultationImage";
 import { images } from "../lib/images";
 
 const AUTO_FAQS = [
-  { q: "How much does car insurance cost in Downey, CA?", a: "Most Downey drivers pay $80–$180 per month depending on driving record, vehicle type, coverage level, and ZIP code. Rates vary significantly by carrier." },
+  { q: "How much does car insurance cost in Downey, CA?", a: "The cost varies by driving record, vehicle, coverage, ZIP code, annual mileage, claims history, discounts, and carrier. A quote using accurate details is the reliable way to compare current prices." },
   { q: "What is California's minimum car insurance requirement?", a: "California requires 30/60/15 liability: $30,000 bodily injury per person, $60,000 per accident, and $15,000 for property damage." },
   { q: "Can I get same-day proof of insurance in Downey?", a: "Yes. Once you bind a policy, we issue a digital ID card immediately. SR-22 certificates are filed electronically with the CA DMV the same day." },
-  { q: "What discounts are available for Downey auto insurance?", a: "Common discounts include multi-car, home and auto bundle (10–15%), continuous coverage, and good driver. We compare 30+ carriers to find your best combination." },
+  { q: "What discounts may be available for Downey auto insurance?", a: "Depending on the carrier and eligibility, discounts may include multi-car, home and auto bundles, continuous coverage, safety features, and qualifying driving history." },
   { q: "Do you offer insurance for drivers without a California license?", a: "Yes. We work with carriers that cover vehicle owners with foreign licenses, ITIN-based applicants, and licensed household members as the primary driver." },
 ];
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
@@ -33,9 +33,9 @@ export default function AutoInsuranceDowneyCA() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   usePageMeta({
-    title: "Auto Insurance Downey CA — Same-Day | Original Insurance",
+    title: "Auto Insurance in Downey, CA | Original Insurance",
     description:
-      "Compare 30+ carriers for auto insurance in Downey, CA. Same-day eID cards, SR-22 filing, no-license programs. Cheap car insurance that fits — walk in or call today.",
+      "Compare liability, collision, comprehensive and SR-22 auto insurance options with an independent broker in Downey, California.",
     canonical: "https://originalinsurance.net/auto-insurance-downey-ca",
   });
 
@@ -83,13 +83,13 @@ export default function AutoInsuranceDowneyCA() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Car insurance rates in Downey depend on several factors: your driving history, the type of vehicle you drive, the coverage level you choose, your zip code (90240, 90241, or 90242), and any prior claims. Drivers with clean records and older paid-off vehicles often qualify for cheap car insurance downey rates starting around $80/month for liability-only coverage, while those with newer financed vehicles or prior incidents typically pay more for full coverage.
+                Car insurance rates in Downey depend on several factors: your driving history, the type of vehicle you drive, the coverage level you choose, your zip code (90240, 90241, or 90242), prior claims, annual mileage, and any lender requirements. A quote based on accurate details is more useful than a generic starting price.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 California requires a minimum liability of 30/60/15 — $30,000 bodily injury per person, $60,000 per accident, and $15,000 property damage. Many Downey drivers choose more than this minimum because the limits are low relative to real-world costs. If you cause an accident with an expensive vehicle or medical bills that exceed your coverage, you can be personally responsible for the difference.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                As an independent broker, we do not work for any single insurance company. Instead, we compare rates from 30+ carriers simultaneously, which means you get cheap car insurance downey options that reflect real market competition — not just one company's price. Factors like bundling home and auto, installing safety features, or maintaining continuous coverage can all reduce your premium.
+                As an independent broker, we do not represent only one insurance company. We compare suitable carriers and explain differences in limits, deductibles, exclusions, and price. Factors such as bundling, eligible safety features, and continuous coverage may affect the premium.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
                 Our team walks you through each option in plain language so you understand what you're buying. There is no pressure to choose a specific carrier, and there is no extra cost to work with us — we are compensated by the carrier you choose.
@@ -187,7 +187,7 @@ export default function AutoInsuranceDowneyCA() {
             image={images.clients.autoConsultation}
             alt="Independent insurance broker at Original Insurance in Downey, CA comparing auto insurance rates across 30+ carriers side by side for client"
             eyebrow="Independent Broker Advantage"
-            heading="One conversation. Thirty carrier quotes. Best rate for your situation."
+            heading="One conversation. Multiple carriers. Clear coverage choices."
             badge="Walk-ins welcome · No appointment needed"
             stats={[
               { value: "30+", label: "Carriers quoted" },
@@ -220,10 +220,10 @@ export default function AutoInsuranceDowneyCA() {
                 An SR-22 is a filing — not a separate insurance policy. It is a certificate your insurance company sends electronically to the California DMV confirming that you carry the state-required minimum liability coverage. Common triggers include a lapse in coverage, a license suspension, an at-fault accident while uninsured, a DUI conviction, or a court order.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                We file SR-22s electronically the same day you bind a qualifying policy. What to bring: your driver's license or reinstatement paperwork from the DMV, your vehicle VIN, your current declarations page if you have one, and any court or DMV reference number. Most Downey clients who walk in for SR-22 leave with the filing submitted and proof of insurance in hand before they drive away.
+                Qualifying insurers can file SR-22 proof electronically after coverage is bound. Helpful documents include your driver's license or DMV paperwork, vehicle VIN, current declarations page if available, and any court or DMV reference number. Processing time depends on the carrier and DMV systems.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                California typically requires you to carry SR-22 for three years. During that period, your policy must remain active — any lapse restarts the clock with the DMV. As an independent broker, we have access to carriers that specialize in SR-22 situations and can find competitive rates even when other companies have declined.
+                The required filing period depends on the DMV or court action. If proof is no longer in force, the insurer may notify the DMV and driving privileges can be affected. Confirm your own dates with the DMV; we can compare carriers that accept the situation.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
                 For full details on SR-22 cost, duration, and what to expect, visit our dedicated page.
@@ -282,7 +282,7 @@ export default function AutoInsuranceDowneyCA() {
               {
                 icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>,
                 title: "We work for you",
-                desc: "Independent broker — zero brand quotas, zero pressure. We compare every carrier and recommend what's actually best for your situation.",
+                desc: "Independent broker with access to multiple carrier options. We explain the tradeoffs and let you decide without pressure.",
               },
               {
                 icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>,
@@ -428,7 +428,7 @@ export default function AutoInsuranceDowneyCA() {
             <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "var(--font-display)" }}>
               Ready to compare Downey auto quotes?
             </h2>
-            <p className="text-white/70 mb-6">Most quotes take under 10 minutes. Same-day proof of insurance available.</p>
+            <p className="text-white/70 mb-6">Quote timing depends on the coverage and details needed. Same-day proof of insurance available.</p>
             <div className="flex flex-wrap justify-center gap-3">
               <button onClick={openQuoteModal} className="btn btn-accent btn-lg">
                 Get My Downey Auto Quote

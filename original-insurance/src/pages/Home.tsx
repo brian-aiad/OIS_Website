@@ -5,7 +5,6 @@ import { site } from "../lib/site";
 import { images, srcset } from "../lib/images";
 import { useImagePreload, usePageMeta } from "../lib/seo";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
-import { MagneticButton } from "../components/MagneticButton";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import ReviewBadge from "../components/seo/ReviewBadge";
 import TrustStrip from "../components/seo/TrustStrip";
@@ -42,13 +41,13 @@ function Hero() {
           {/* Trust badge pill */}
           <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
             <svg className="w-4 h-4 text-gold-400" fill="currentColor" viewBox="0 0 24 24"><path d="m12 17.3 6 3.6-1.6-6.9 5.3-4.5-7-.6L12 2 9.3 8.9l-7 .6 5.3 4.5L6 20.9z" /></svg>
-            <span className="text-white/90 text-sm font-semibold">Downey's Trusted Broker Since 1999</span>
+            <span className="text-white/90 text-sm font-semibold">Independent Downey broker since 1999</span>
           </span>
 
           <h1 className="display-1 text-white">
-            Insurance that{" "}
+            Independent insurance{" "}
             <span className="relative inline-block">
-              <span className="relative z-10">works for you</span>
+              <span className="relative z-10">broker in Downey</span>
               <svg
                 className="absolute -bottom-3 left-0 w-full"
                 height="14"
@@ -68,14 +67,14 @@ function Hero() {
           </h1>
 
           <p className="mt-6 text-lg text-white/85 leading-relaxed">
-            We compare 30+ carriers to find you the best rate. Real people, real savings, real fast.
+            Compare auto, home, commercial, life, and specialty coverage with a local team that explains the tradeoffs clearly.
           </p>
 
           <p
             className="mt-4 text-gold-400 font-semibold text-[15px]"
             style={{ borderLeft: "3px solid #F5A623", paddingLeft: "12px" }}
           >
-            No license? No problem.
+            English, Spanish, and Arabic service by phone or at our Downey office.
           </p>
 
           <div className="mt-5">
@@ -83,24 +82,20 @@ function Hero() {
           </div>
 
           <div className="mt-7 flex flex-col sm:flex-row gap-3">
-            <MagneticButton as="div" className="inline-block">
-              <button onClick={openQuoteModal} className="btn btn-accent btn-lg group">
-                Get Your Free Quote
-                <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" /></svg>
-              </button>
-            </MagneticButton>
-            <MagneticButton as="div" className="inline-block" strength={0.2}>
-              <a href={site.contact.phoneHref} className="btn btn-ghost-light btn-lg">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
-                Call {site.contact.phone}
-              </a>
-            </MagneticButton>
+            <button onClick={openQuoteModal} className="btn btn-accent btn-lg group">
+              Request a Coverage Review
+              <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6l6 6-6 6" /></svg>
+            </button>
+            <a href={site.contact.phoneHref} className="btn btn-ghost-light btn-lg">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+              Call {site.contact.phone}
+            </a>
           </div>
 
           {/* Trust signals — compact inline */}
           <div className="mt-8 flex flex-wrap items-center gap-y-2">
             {[
-              { icon: <svg className="w-4 h-4 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 6v6c0 5 3.6 8.7 8 10 4.4-1.3 8-5 8-10V6l-8-4z" /></svg>, text: "Licensed CA Broker" },
+              { icon: <svg className="w-4 h-4 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 6v6c0 5 3.6 8.7 8 10 4.4-1.3 8-5 8-10V6l-8-4z" /></svg>, text: "Independent Broker" },
               { icon: <svg className="w-4 h-4 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="m12 17.3 6 3.6-1.6-6.9 5.3-4.5-7-.6L12 2 9.3 8.9l-7 .6 5.3 4.5L6 20.9z" /></svg>, text: "4.9\u2605 Google Rating" },
               { icon: <svg className="w-4 h-4 text-gold-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z" /></svg>, text: "3 Languages" },
             ].map((b, i) => (
@@ -572,8 +567,8 @@ function ServiceAreas() {
    ═══════════════════════════════════════════════ */
 export default function Home() {
   usePageMeta({
-    title: "Insurance Broker Downey CA — Free Quote | Original Insurance",
-    description: "Tired of paying too much? We compare 30+ carriers for Downey drivers — auto, home, SR-22, no-license programs. 4.9★ rated, bilingual staff. Free quote in minutes.",
+    title: "Independent Insurance Broker in Downey, CA | Original",
+    description: "Compare auto, home, commercial, life and specialty insurance with an independent Downey broker serving southeast Los Angeles County since 1999.",
     canonical: "https://originalinsurance.net/",
   });
 
@@ -594,8 +589,8 @@ export default function Home() {
       <ServiceAreas />
       <FAQ />
       <CTASection
-        title="Ready to compare 30+ carriers?"
-        lede="Get a personalized quote from a licensed Downey broker. Call, text, or start online."
+        title="Ready to review your insurance options?"
+        lede="Talk with a local Downey broker by phone, text, online, or at our Paramount Boulevard office."
         secondaryLabel={`Call ${site.contact.phone}`}
       />
     </main>

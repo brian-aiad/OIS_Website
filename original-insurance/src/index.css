@@ -402,31 +402,6 @@ button.bg-white.rounded-2xl.ring-1:hover {
   transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ─── Button ripple effect ─── */
-.btn-primary,
-.btn-accent {
-  position: relative;
-  overflow: hidden;
-}
-.btn-primary::before,
-.btn-accent::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  transform: translate(-50%, -50%);
-  transition: width 0.5s, height 0.5s;
-}
-.btn-primary:hover::before,
-.btn-accent:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
 /* ─── Card hover lift ─── */
 .card-hover {
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -515,23 +490,6 @@ button.bg-white.rounded-2xl.ring-1:hover {
   }
 }
 
-/* ─── Shimmer sweep on accent buttons ─── */
-@keyframes shimmer-slide {
-  0%   { transform: translateX(-100%) skewX(-15deg); }
-  100% { transform: translateX(220%) skewX(-15deg); }
-}
-.btn-accent::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 36%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
-  animation: shimmer-slide 3s ease-in-out infinite;
-  pointer-events: none;
-  border-radius: inherit;
-}
-
 /* ─── Slow rotation for decorative SVG rings ─── */
 @keyframes spin-slow {
   from { transform: rotate(0deg); }
@@ -586,11 +544,6 @@ button.bg-white.rounded-2xl.ring-1:hover {
   .hero-copy-enter,
   .hero-aside-enter {
     animation: none;
-  }
-
-  .btn-accent::after {
-    animation: none;
-    display: none;
   }
 
   *, *::before, *::after {

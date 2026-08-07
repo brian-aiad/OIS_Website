@@ -31,9 +31,9 @@ const NEARBY = [
 export default function SouthGatePage() {
   usePageMeta({
     title:
-      "South Gate Auto Insurance — SR-22 & No License | Original",
+      "Auto Insurance in South Gate, CA | Original Insurance",
     description:
-      "South Gate drivers: SR-22 filing, no-license programs, and competitive auto rates from 30+ carriers. Firestone Blvd and the 710 corridor. Bilingual. Same-day quotes.",
+      "Compare auto, SR-22, renters and commercial insurance options for South Gate with an independent bilingual broker serving the 710 corridor.",
     canonical,
   });
 
@@ -47,7 +47,7 @@ export default function SouthGatePage() {
 
       <PageHero
         title="Auto Insurance in South Gate, CA"
-        subtitle="Bilingual auto, home, and SR-22 insurance for South Gate families — comparing 30+ top California carriers with English, Spanish, and Arabic service."
+        subtitle="Auto, home, commercial, and SR-22 insurance comparisons for South Gate in English, Spanish, and Arabic."
         breadcrumb="South Gate"
         backgroundImage="/images/ois-city-community-golden-v4.webp"
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
@@ -105,11 +105,11 @@ export default function SouthGatePage() {
                 vehicle type and year, annual mileage, and prior claims or coverage lapses.
                 Drivers who maintain continuous coverage, bundle home and auto policies, or
                 take a defensive driving course can often qualify for meaningful discounts.
-                For drivers seeking cheap car insurance, comparing multiple carriers is
+                For drivers seeking affordable auto insurance, comparing multiple carriers is
                 essential — every insurer prices South Gate's 90280 zip code differently.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                As an independent broker, we compare more than 30 top-rated California carriers
+                As an independent broker, we compare multiple California carriers
                 in a single visit or phone call. A captive agent at one insurance company can
                 only offer that company's rates. We work across the market to find the
                 combination of price, coverage, and carrier financial strength that fits each
@@ -122,8 +122,8 @@ export default function SouthGatePage() {
                 uninsured motorist coverage, comprehensive, and collision all add meaningful
                 protection in a dense urban driving environment. We explain every option in
                 plain language and never pressure clients toward higher coverage than they
-                actually need. If cheap car insurance that meets legal minimums is the right
-                fit for your situation, we'll find you the best available rate for that too.
+                actually need. If affordable auto insurance that meets legal minimums is the right
+                fit for your situation, we can compare qualifying options and explain the tradeoffs.
               </p>
             </div>
           </Reveal>
@@ -155,16 +155,14 @@ export default function SouthGatePage() {
                 uninsured, or an extended lapse in coverage.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Once the SR-22 is on file, the DMV can proceed with reinstating your driving
-                privileges. California generally requires the filing to stay active for three
-                years. A cancellation or lapse during that period restarts the DMV clock and
-                may trigger a new suspension. We help South Gate clients avoid accidental
-                lapses by keeping their policy current.
+                The required filing period depends on the DMV or court action. If proof is no
+                longer in force, the insurer may notify the DMV and driving privileges can be
+                affected. Confirm your own start and end dates directly with the DMV.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                We file SR-22 certificates electronically the same day you bind a qualifying
-                policy — same-day proof of insurance included. Bring your license or DMV
-                reinstatement letter, vehicle VIN, and any court reference number.
+                Qualifying insurers can file electronically after coverage is bound. Timing
+                depends on the carrier and DMV systems. Bring your license or DMV letter,
+                vehicle VIN, and any court reference number.
               </p>
             </div>
             <div className="mt-6">
@@ -382,7 +380,7 @@ export default function SouthGatePage() {
                 Get your South Gate auto insurance quote today
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                Most quotes take under 10 minutes. Walk in, call, or click — same-day
+                Quote timing depends on the coverage and details needed. Walk in, call, or click — same-day
                 proof of insurance available.
               </p>
               <div className="flex flex-wrap justify-center gap-3">

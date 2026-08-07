@@ -16,8 +16,8 @@ import logoBadge from "../assets/logo-badge.webp";
 
 export default function About() {
   usePageMeta({
-    title: "Downey's Trusted Broker Since 1999 | Original Insurance",
-    description: "Family-run Downey broker since 1999. We shop 30+ carriers in English, Spanish & Arabic for SE LA families. 4.9★ with 100+ Google reviews. Independent, bilingual, zero pressure.",
+    title: "About Original Insurance Services in Downey, CA",
+    description: "Meet the independent Downey insurance brokerage serving southeast Los Angeles County since 1999 in English, Spanish and Arabic.",
     canonical: "https://originalinsurance.net/about",
   });
 
@@ -193,7 +193,7 @@ export default function About() {
                 From a small Downey office to 30+ carrier partners
               </h2>
               <p className="mt-4 text-slate-500 leading-relaxed">
-                We opened our doors on Paramount Blvd in Downey in 1999, when the Southeast LA community needed a local broker who would compare options honestly instead of pushing a single company's policies. Over 25 years, we have helped thousands of Downey-area families and businesses find the right coverage for auto, home, life, and commercial needs — including SR-22 filings, no-license auto programs, and commercial fleet policies.
+                We opened our doors on Paramount Blvd in Downey in 1999 to give the Southeast LA community a local broker who could compare options instead of representing only one insurer. We help area families and businesses review auto, home, life, and commercial coverage, including SR-22 filings, foreign-license situations, and commercial vehicle policies.
               </p>
               <p className="mt-3 text-slate-500 leading-relaxed">
                 Our roots are in the Downey community. Downey and the surrounding Southeast LA cities — Norwalk, Bellflower, Cerritos, Lakewood, Paramount, South Gate, Pico Rivera, Montebello, Lynwood, Whittier, and Commerce — make up one of the most culturally diverse, working-class corridors in Southern California. Many of our clients are first-generation immigrants, small-business owners, or families for whom insurance has historically been confusing, expensive, or inaccessible. Our ability to serve clients in English, Spanish, and Arabic was not an afterthought — it is central to who we are.
@@ -380,18 +380,18 @@ export default function About() {
       <section className="sp-sm bg-slate-50 border-t border-slate-100">
         <div className="container">
           <Reveal className="text-center mb-10 max-w-2xl mx-auto">
-            <span className="eyebrow mb-4">Credentials</span>
-            <h2 className="display-2 text-slate-900">Licenses &amp; Affiliations</h2>
+            <span className="eyebrow mb-4">Professional Standards</span>
+            <h2 className="display-2 text-slate-900">Local service you can verify</h2>
             <p className="mt-3 text-slate-500 leading-relaxed">
-              Licensed by the California Department of Insurance since 1999, and proud members of
-              local and national industry associations.
+              Original Insurance Services has served the community since 1999. We encourage every consumer
+              to verify insurance professionals through the California Department of Insurance.
             </p>
           </Reveal>
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {[
               {
-                title: "CA DOI Licensed",
-                sub: "California Dept. of Insurance",
+                title: "California Brokerage",
+                sub: "State license lookup available",
                 icon: (
                   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 2l8 4v6c0 5-3.6 8.7-8 10-4.4-1.3-8-5-8-10V6l8-4z" />
@@ -400,8 +400,8 @@ export default function About() {
                 ),
               },
               {
-                title: "IIAB Member",
-                sub: "Independent Insurance Agents & Brokers",
+                title: "Independent Comparison",
+                sub: "Multiple carrier options",
                 icon: (
                   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
@@ -411,8 +411,8 @@ export default function About() {
                 ),
               },
               {
-                title: "BBB Accredited",
-                sub: "Better Business Bureau",
+                title: "Established Locally",
+                sub: "Serving since 1999",
                 icon: (
                   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                     <circle cx="12" cy="8" r="6" strokeLinecap="round" strokeLinejoin="round" />
@@ -421,8 +421,8 @@ export default function About() {
                 ),
               },
               {
-                title: "Downey Chamber",
-                sub: "Member of Commerce",
+                title: "Downey Office",
+                sub: "English, Spanish & Arabic",
                 icon: (
                   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6" />
@@ -450,6 +450,16 @@ export default function About() {
               </StaggerChild>
             ))}
           </Stagger>
+          <div className="mt-7 text-center">
+            <a
+              href="https://cdicloud.insurance.ca.gov/cal/"
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-outline"
+            >
+              Verify a California insurance license
+            </a>
+          </div>
         </div>
       </section>
 
@@ -468,7 +478,7 @@ export default function About() {
               {
                 step: "01",
                 title: "A real person answers",
-                desc: "When you call our Downey office at (310) 538-8666, you speak with someone who knows our carrier network — not a scripted call center representative routing you to a queue. Most calls are answered within one ring during business hours."
+                desc: "When you call our Downey office at (310) 538-8666, you connect with a local team that knows our carrier network rather than a national sales queue. If we are assisting another client, you can also text or leave a message."
               },
               {
                 step: "02",
@@ -478,7 +488,7 @@ export default function About() {
               {
                 step: "03",
                 title: "You get real options, explained plainly",
-                desc: "We walk through the top options in plain English, Spanish, or Arabic — whichever you prefer. No pressure to choose on the spot. We explain the difference between minimum liability and full coverage, what each deductible means in practice, and which carriers have the strongest local claims reputation."
+                desc: "We walk through suitable options in plain English, Spanish, or Arabic — whichever you prefer. We explain the difference between minimum liability and broader coverage, what each deductible means, and the service details that affect your decision."
               },
               {
                 step: "04",

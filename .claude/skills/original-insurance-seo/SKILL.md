@@ -25,7 +25,7 @@ vite build
 node scripts/prerender.mjs
 ```
 
-The prerender script uses Playwright to visit all 22 routes and save rendered HTML under `dist/`.
+The prerender script uses Playwright to visit all 25 canonical routes and save rendered HTML under `dist/`.
 
 ## Required Checks
 

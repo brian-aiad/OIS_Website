@@ -30,9 +30,9 @@ const NEARBY = [
 export default function CommercePage() {
   usePageMeta({
     title:
-      "Auto Insurance Commerce CA — Fleet & Commercial | Original",
+      "Auto & Commercial Insurance in Commerce, CA | Original",
     description:
-      "City of Commerce auto and commercial insurance. Personal vehicles and business fleets — SR-22, no-license, BOP bundles. Independent broker, 30+ carriers, same-day quotes.",
+      "Compare personal auto, commercial auto, fleet and business insurance for the City of Commerce with an independent Downey-based broker.",
     canonical,
   });
 
@@ -112,7 +112,7 @@ export default function CommercePage() {
                 Rate factors for Commerce drivers and businesses include zip code (90022 or
                 90040), vehicle type and use, annual mileage, driver history, and whether
                 vehicles are used for personal or commercial purposes. Drivers seeking
-                cheap car insurance for personal vehicles with clean records will find
+                affordable auto insurance for personal vehicles with clean records will find
                 competitive options among the 30+ carriers we represent. Business owners
                 need accurate commercial classification to avoid coverage gaps — we help
                 ensure the policy matches the actual use.
@@ -155,18 +155,15 @@ export default function CommercePage() {
                 requiring proof of financial responsibility.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Once the SR-22 is filed, the DMV can process license reinstatement. California
-                typically requires the filing to remain continuously active for three years.
-                A cancellation or lapse during that period resets the DMV timeline and may
-                result in immediate re-suspension of driving privileges. For owner-operators
-                whose livelihood depends on their driving record, maintaining the SR-22 without
-                interruption is critical.
+                The required filing period depends on the DMV or court action. If proof is no
+                longer in force, the insurer may notify the DMV and driving privileges can be
+                affected. Confirm your own start and end dates directly with the DMV, especially
+                when driving is essential to your work.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                We file SR-22 certificates electronically the same day you bind a qualifying
-                policy — same-day proof of insurance included. Bring your driver's license or
-                DMV reinstatement letter, vehicle VIN, and any court or DMV case reference
-                number.
+                Qualifying insurers can submit SR-22 proof electronically after coverage is
+                bound. Timing depends on the carrier and DMV systems. Bring your driver's license
+                or DMV letter, vehicle VIN, and any court or DMV case reference number.
               </p>
             </div>
             <div className="mt-6">

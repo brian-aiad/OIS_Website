@@ -5,6 +5,27 @@ All SEO-relevant changes, ordered newest-first. Format:
 
 ---
 
+## 2026-08-07
+
+### People-first insurance trust, search-intent, and visual refinement
+**Commit:** pending
+
+**What changed:**
+- Reworked titles and descriptions across all canonical page families to use clear service-and-location intent instead of repetitive urgency, fixed discounts, low-price language, and same-day promises.
+- Separated homepage brokerage intent, Downey service-area intent, and the Downey auto money-page intent to reduce keyword cannibalization.
+- Added a visible reviewed-date and primary-source panel to substantive insurance routes, linking to the California insurance license lookup, California Department of Insurance auto guide, and California DMV financial-responsibility guidance.
+- Corrected and qualified California SR-22 duration, filing-fee, lapse, electronic-processing, and DMV-timing language throughout the core guide, FAQ, auto page, and city pages.
+- Corrected the 2025 California 30/60/15 liability-limit context and removed volatile price ranges, fixed bundle savings, unsupported volume claims, and repetitive exact-match “cheap car insurance” copy.
+- Removed unverified BBB, association, and chamber affiliation claims. Replaced them with verifiable professional standards and an official California license-lookup link without inventing a license number.
+- Refined the visual system with calmer static hero accents, non-animated CTA buttons, clearer quote-process language, and a restrained editorial trust panel.
+- Refreshed sitemap `lastmod` dates after substantive changes to all 25 prerendered routes.
+
+**Why:** Google Search Console showed strong impression growth but very low click-through, stale exclusions, and overlapping Downey page signals. Google treats insurance as high-trust/YMYL content, so the site now emphasizes clarity, source quality, verifiability, and genuine local service over search-first promotional copy.
+
+**Validation:** `npm run lint`, `npm run seo-lint`, `npm run build`, `npm run validate:schema`, and `npm run deploy:check` passed. Playwright responsive smoke passed on all 25 canonical routes at desktop and mobile widths with one H1, canonical metadata, and no horizontal overflow.
+
+---
+
 ## 2026-05-07
 
 ### Shared broker hero and quote-widget refinement

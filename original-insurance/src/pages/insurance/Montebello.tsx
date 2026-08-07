@@ -31,9 +31,9 @@ const NEARBY = [
 export default function MontebelloPage() {
   usePageMeta({
     title:
-      "Car Insurance Quotes Montebello CA | Original Insurance",
+      "Auto Insurance in Montebello, CA | Original Insurance",
     description:
-      "Compare car insurance quotes in Montebello, CA from 30+ carriers. SR-22, no-license, home bundles, bilingual broker. Free same-day quote.",
+      "Compare auto, SR-22, home and commercial insurance options for Montebello with an independent Downey-based broker serving southeast Los Angeles County.",
     canonical,
   });
 
@@ -105,7 +105,7 @@ export default function MontebelloPage() {
                 Rates for Montebello drivers (zip code 90640) depend on driving record,
                 vehicle make and model, annual mileage, prior claims history, and coverage
                 continuity. Drivers with clean records and older paid-off vehicles can often
-                find cheap car insurance rates on liability-only coverage. Drivers with
+                find affordable auto insurance rates on liability-only coverage. Drivers with
                 financed vehicles or a history of incidents will see higher premiums for full
                 coverage — but shopping the full market consistently produces better outcomes
                 than going direct to a single insurer.
@@ -121,8 +121,8 @@ export default function MontebelloPage() {
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
                 Our Downey office is accessible from Montebello via the 60 freeway or Garfield
-                Ave. Walk-ins are welcome, most quotes are completed in under 10 minutes, and
-                same-day proof of insurance is standard when you bind a policy with us. Phone
+                Ave. Walk-ins are welcome, quote timing depends on the coverage and details needed, and
+                proof of insurance is available after a qualifying policy is bound. Phone
                 and online quotes are available for clients who prefer not to come in.
               </p>
             </div>
@@ -155,17 +155,14 @@ export default function MontebelloPage() {
                 specific court order requiring proof of financial responsibility.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                The California DMV typically requires SR-22 filing to remain continuously
-                active for three years. If the policy lapses or is cancelled at any point
-                during that period, the DMV timeline resets and your driving privileges can
-                be re-suspended. Our team helps Montebello clients understand this requirement
-                and monitors policy status to prevent unintentional gaps.
+                The required filing period depends on the DMV or court action. If proof is no
+                longer in force, the insurer may notify the DMV and driving privileges can be
+                affected. Confirm your own start and end dates directly with the DMV.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                We file SR-22 certificates electronically the same day you bind a qualifying
-                policy — no waiting for paper documents. Bring your driver's license or DMV
-                reinstatement paperwork, vehicle VIN, and any court or DMV case reference
-                number.
+                Qualifying insurers can file electronically after coverage is bound. Timing
+                depends on the carrier and DMV systems. Bring your driver's license or DMV
+                paperwork, vehicle VIN, and any court or DMV case reference number.
               </p>
             </div>
             <div className="mt-6">
@@ -383,7 +380,7 @@ export default function MontebelloPage() {
                 Get your Montebello auto insurance quote today
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                Most quotes take under 10 minutes. Reach us via the 60 or Garfield Ave —
+                Quote timing depends on the coverage and details needed. Reach us via the 60 or Garfield Ave —
                 walk-ins welcome, or call ahead.
               </p>
               <div className="flex flex-wrap justify-center gap-3">

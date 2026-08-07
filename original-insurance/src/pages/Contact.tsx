@@ -39,8 +39,8 @@ export default function Contact() {
   const [company, setCompany] = useState(""); // honeypot
 
   usePageMeta({
-    title: "Contact Original Insurance Downey — Call or Visit",
-    description: "Call, email, or walk in. Our Downey office is open Mon–Fri 10AM–5:30PM. Bilingual English, Spanish & Arabic. Same-day quotes and SR-22 filing. Call (310) 538-8666.",
+    title: "Contact Original Insurance Services in Downey, CA",
+    description: "Call, text, email or visit our Downey insurance office. Open Monday through Friday, 10:00 a.m. to 5:30 p.m. English, Spanish and Arabic.",
     canonical: "https://originalinsurance.net/contact",
   });
 

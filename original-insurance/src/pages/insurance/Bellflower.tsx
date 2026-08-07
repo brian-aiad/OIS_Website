@@ -33,9 +33,9 @@ const NEARBY_CITIES = [
 export default function BellflowerPage() {
   usePageMeta({
     title:
-      "Bellflower Auto Insurance — SR-22, No License | Original",
+      "Auto Insurance in Bellflower, CA | Original Insurance",
     description:
-      "Bellflower drivers: compare auto from 30+ carriers. SR-22 same-day, no-license programs, home & auto bundles. Our Downey office is ~7 min south on Lakewood Blvd.",
+      "Compare auto, renters, home and SR-22 coverage for Bellflower with an independent broker at our nearby Downey office on Paramount Boulevard.",
     canonical,
   });
 
@@ -85,7 +85,7 @@ export default function BellflowerPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Bellflower drivers navigate some of the busiest corridors in Southeast Los Angeles County every day. Whether you commute east on the 91 Freeway (Artesia Freeway), merge onto the 605 (San Gabriel River Freeway) to reach Long Beach or the San Gabriel Valley, or travel local arterials like Lakewood Blvd and Bellflower Blvd, the traffic density and vehicle volume on these routes directly influence what carriers charge for auto insurance in Bellflower. Understanding how those factors affect your premium — and knowing how to find cheap car insurance that still provides real protection — is where an independent broker makes a genuine difference.
+                Bellflower drivers navigate some of the busiest corridors in Southeast Los Angeles County every day. Whether you commute east on the 91 Freeway (Artesia Freeway), merge onto the 605 (San Gabriel River Freeway) to reach Long Beach or the San Gabriel Valley, or travel local arterials like Lakewood Blvd and Bellflower Blvd, the traffic density and vehicle volume on these routes directly influence what carriers charge for auto insurance in Bellflower. Understanding how those factors affect your premium — and knowing how to find affordable auto insurance that still provides real protection — is where an independent broker makes a genuine difference.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 California state law requires every driver to carry a minimum liability of 30/60/15: $30,000 bodily injury per person, $60,000 bodily injury per accident, and $15,000 property damage liability. While these minimums let you legally register a vehicle and drive in Bellflower, they often fall short when a real accident involves a newer vehicle or serious injuries. Medical costs alone can exceed the 30/60 threshold quickly, leaving you personally exposed for anything beyond your policy limits. Many Bellflower residents opt for higher liability limits and add uninsured motorist coverage — a smart choice given that California consistently ranks among the states with the highest proportion of uninsured drivers on the road.
@@ -94,10 +94,10 @@ export default function BellflowerPage() {
                 The specific corridors you drive also matter to underwriters. The 91 Freeway through the Bellflower/Artesia area sees heavy congestion during both morning and evening peak hours, and the 605/91 interchange carries interchange-specific risk factors that carriers weigh when calculating premiums. If you park on Bellflower Blvd or in areas with higher foot traffic, comprehensive coverage for theft and vandalism becomes more relevant than it might be in a quieter suburb.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                As an independent insurance broker based in Downey — just minutes north via Lakewood Blvd — Original Insurance compares rates from more than 30 top-rated California carriers simultaneously. That means you see real market competition rather than one company's take-it-or-leave-it price. Rate factors we look at together include your driving record, vehicle year and value, whether the car is financed, your zip code within Bellflower (90706), your prior coverage history, and any multi-policy discounts from bundling home or renters insurance.
+                As an independent insurance broker based in Downey — just minutes north via Lakewood Blvd — Original Insurance compares rates from multiple California carriers simultaneously. That means you see real market competition rather than one company's take-it-or-leave-it price. Rate factors we look at together include your driving record, vehicle year and value, whether the car is financed, your zip code within Bellflower (90706), your prior coverage history, and any multi-policy discounts from bundling home or renters insurance.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                Whether you need cheap car insurance to satisfy a lender's requirement, full coverage on a newer vehicle, or just want to make sure you're not overpaying on a policy you've held for years without shopping it, our team is ready to compare options for you in plain language. There is no extra charge to work with us — we are compensated by the carrier you choose.
+                Whether you need affordable auto insurance to satisfy a lender's requirement, full coverage on a newer vehicle, or just want to make sure you're not overpaying on a policy you've held for years without shopping it, our team is ready to compare options for you in plain language. There is no extra charge to work with us — we are compensated by the carrier you choose.
               </p>
             </div>
           </Reveal>
@@ -122,7 +122,7 @@ export default function BellflowerPage() {
                 It is important to understand that an SR-22 is a filing, not a separate insurance policy. It is a certificate that your insurance company submits electronically to the California DMV confirming you carry at least the state-required minimum liability coverage. Common triggers include a DUI conviction, a lapse in coverage, an at-fault accident while uninsured, excessive points on your driving record, or a court-ordered reinstatement requirement. Once your insurer files the SR-22, the DMV acknowledges it and your reinstatement process can move forward.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                California generally requires SR-22 maintenance for three consecutive years. If your policy lapses at any point during that period, your carrier is required to notify the DMV and your reinstatement clock can restart. Our team helps Bellflower clients structure their policies to avoid unintentional lapses — and if you do need same-day filing, we can have the SR-22 submitted to the DMV electronically on the same day you bind coverage. Most clients leave with proof of insurance and confirmation of the filing in hand.
+                The required filing period depends on the DMV or court action. If proof is no longer in force, the insurer may notify the DMV and driving privileges can be affected. Electronic filing may be available after a qualifying policy is bound; timing depends on the carrier and DMV systems. Confirm your own start and end dates directly with the DMV.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
                 For a detailed guide on SR-22 costs, requirements, and what to bring to your appointment, visit our{" "}
@@ -255,7 +255,7 @@ export default function BellflowerPage() {
                 Bellflower has a substantial working-class and immigrant community, which creates real demand for no-license programs, SR-22 filings, and minimum-liability policies that let residents maintain legal vehicle registration at the lowest possible cost. At the same time, many Bellflower homeowners bundle auto and renters or homeowners insurance — a combination we can often package across the same carrier to unlock multi-policy discounts. Whether you are a renter in the apartment corridors near Bellflower Blvd or a homeowner in the quieter residential streets between Clark Ave and Woodruff Ave, we have options for your situation.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                One practical note for Bellflower commuters: California's minimum liability limits (30/60/15) were last updated decades ago, and repair costs for modern vehicles have far outpaced them. A $15,000 property damage limit may not cover the full repair bill for a newer SUV or pickup truck. We take time in every quote session to walk through what the real-world numbers mean, so you can decide whether the cheapest option genuinely fits your risk tolerance or whether slightly higher limits offer much better protection for a modest premium difference.
+                California's minimum liability limits increased to 30/60/15 on January 1, 2025: $30,000 bodily injury per person, $60,000 per accident, and $15,000 property damage. Those are legal minimums, not a recommendation for every household. We explain how higher limits and optional coverages change both protection and premium so you can make an informed choice.
               </p>
             </div>
           </Reveal>
@@ -373,7 +373,7 @@ export default function BellflowerPage() {
                 Get your Bellflower auto insurance quote
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto leading-relaxed">
-                Most quotes take under 10 minutes. Compare 30+ carriers and get same-day proof of insurance — or same-day SR-22 filing if you need it. Call, message, or stop by our Downey office, just minutes north via Lakewood Blvd.
+                Quote timing depends on the coverage and details needed. Compare 30+ carriers and get same-day proof of insurance — or same-day SR-22 filing if you need it. Call, message, or stop by our Downey office, just minutes north via Lakewood Blvd.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <button onClick={openQuoteModal} className="btn btn-accent">

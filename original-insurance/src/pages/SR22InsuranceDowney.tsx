@@ -14,10 +14,10 @@ import { ConsultationImage } from "../components/ConsultationImage";
 import { images } from "../lib/images";
 
 const SR22_FAQS = [
-  { q: "How long do I need SR-22 in California?", a: "California requires SR-22 for 3 continuous years from license reinstatement. Any policy lapse or cancellation resets the clock with the DMV." },
-  { q: "What does SR-22 filing cost in Downey, CA?", a: "The SR-22 filing fee is $15–$25. Your underlying auto insurance premium also increases based on your driving record and the carrier." },
-  { q: "Can I get same-day SR-22 filing?", a: "Yes. We file SR-22 certificates electronically with the California DMV the same day you bind a qualifying policy." },
-  { q: "What happens if I miss a payment while on SR-22?", a: "If your policy lapses, the carrier notifies the DMV. Your license can be re-suspended, restarting the 3-year reinstatement requirement." },
+  { q: "How long might I need an SR-22 in California?", a: "The required period depends on the DMV or court action. California DMV materials commonly refer to maintaining proof during a three-year period in certain cases, but confirm your own end date directly with the DMV." },
+  { q: "What does an SR-22 filing cost in Downey, CA?", a: "Filing fees and the underlying insurance premium vary by carrier and driving history. We show the filing charge and policy cost before you choose coverage." },
+  { q: "Can an SR-22 be filed electronically?", a: "Qualifying insurers can submit SR-22 proof electronically. Timing depends on when the policy is bound, carrier processing, and DMV systems." },
+  { q: "What happens if my policy lapses while an SR-22 is required?", a: "The insurer may notify the DMV that proof is no longer in force, which can affect driving privileges. Contact the DMV and insurer promptly for instructions specific to your case." },
   { q: "Do I need SR-22 if I don't own a car?", a: "Yes. A non-owner SR-22 policy provides the required liability coverage without a specific vehicle, covering you in borrowed or rented cars." },
 ];
 
@@ -25,9 +25,9 @@ export default function SR22InsuranceDowney() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   usePageMeta({
-    title: "SR-22 Downey CA — Same-Day Filing, $15 Fee | Original",
+    title: "SR-22 Insurance in Downey, CA | Original Insurance",
     description:
-      "Need SR-22 in Downey? We file electronically with the CA DMV same day. $15–$25 filing fee. We find your cheapest qualifying carrier. Walk in or call (310) 538-8666.",
+      "Learn how California SR-22 filings work and compare qualifying auto insurance options with an independent broker in Downey. Call or visit our office.",
     canonical: "https://originalinsurance.net/sr22-insurance-downey",
   });
 
@@ -75,7 +75,7 @@ export default function SR22InsuranceDowney() {
               What is SR-22?
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed mb-4">
-              An SR-22 is a filing — not a separate insurance policy. It is a certificate that your insurance company sends to the California DMV electronically, confirming that you carry at least the state-required minimum liability coverage (currently 30/60/15 in California). The SR-22 itself typically costs between $15 and $25 as a filing fee, separate from your underlying auto insurance premium.
+              An SR-22 is a filing — not a separate insurance policy. It is proof that your insurance company sends to the California DMV confirming required financial responsibility. California's minimum auto liability limits are currently 30/60/15. Filing charges and the underlying policy premium vary by carrier and situation.
             </p>
             <p className="text-base text-slate-600 leading-relaxed">
               Think of it this way: you still need a standard auto insurance policy. The SR-22 is simply the official documentation that your insurer sends to the DMV on your behalf, verifying you're covered. If your policy lapses at any point while you're required to carry SR-22, the insurer notifies the DMV automatically, which can result in further license suspension.
@@ -91,21 +91,21 @@ export default function SR22InsuranceDowney() {
             image={images.clients.sr22Consultation}
             alt="Original Insurance broker in Downey, CA reviewing SR-22 filing documents with client and coordinating same-day electronic DMV submission"
             eyebrow="Serving Downey Since 1999"
-            heading="SR-22 specialists who know the CA DMV process inside out"
+            heading="Local help with California SR-22 requirements"
             imageLeft
             badge="Same-day electronic filing"
             stats={[
-              { value: "Same day", label: "Filing speed" },
-              { value: "$15–$25", label: "Filing fee" },
-              { value: "3 years", label: "CA requirement" },
+              { value: "Electronic", label: "Filing method" },
+              { value: "Varies", label: "Carrier fee" },
+              { value: "DMV", label: "Confirms duration" },
             ]}
             body={
               <>
                 <p className="text-lg leading-relaxed">
-                  Our team has filed thousands of SR-22 certificates with the California DMV across 25 years in Downey. We know which carriers accept high-risk drivers at the most competitive rates — and which ones file the fastest after binding.
+                  Our team helps clients understand the SR-22 notice, compare qualifying insurance options, and prepare the details a carrier needs for electronic filing.
                 </p>
                 <p className="leading-relaxed">
-                  Walk in without an appointment. Most clients leave with written proof of SR-22 filing the same day. We explain the 3-year continuous coverage requirement clearly and monitor your policy so no lapse restarts the clock. Service in English, Spanish, and Arabic.
+                  Walk-ins are welcome. Filing availability and timing depend on the qualifying carrier, when coverage is bound, and DMV systems. Service is available in English, Spanish, and Arabic.
                 </p>
               </>
             }
@@ -178,10 +178,10 @@ export default function SR22InsuranceDowney() {
               How long do I need to carry SR-22?
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed mb-4">
-              California typically requires SR-22 coverage for three continuous years from the date the DMV imposes the requirement. The key word is continuous — any lapse in coverage resets your obligation, and your insurer is required to notify the DMV immediately when a policy cancels or lapses.
+              The required period depends on the DMV or court action. California DMV materials commonly refer to maintaining proof during a three-year period in certain cases, but that is not a universal start or end date. Use your notice and confirm the exact dates directly with the DMV.
             </p>
             <p className="text-base text-slate-600 leading-relaxed mb-4">
-              After the three-year period is complete, you can ask your insurer to remove the SR-22 filing. At that point, your insurance rate will often decrease, since SR-22 situations can carry a premium surcharge that disappears once the filing requirement ends.
+              Do not remove the filing based only on a general timeline. Ask the DMV whether the requirement has ended, then coordinate any policy change with your insurer so you do not create an unintended lapse.
             </p>
             <p className="text-base text-slate-600 leading-relaxed">
               Always confirm your specific requirement directly with the California DMV. Courts or the DMV may impose a different duration depending on the severity of the underlying violation.
@@ -197,7 +197,7 @@ export default function SR22InsuranceDowney() {
             <span className="eyebrow">Walk-In Ready</span>
             <h2 className="mt-3 display-2 text-slate-900">What to bring for same-day filing</h2>
             <p className="mt-3 text-slate-500 max-w-xl mx-auto">
-              Walk-ins are welcome. Bringing these items makes the process faster and ensures we can file the same day.
+              Walk-ins are welcome. Bringing these items can make quoting and carrier processing more efficient.
             </p>
           </Reveal>
           <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -250,13 +250,13 @@ export default function SR22InsuranceDowney() {
               SR-22 cost in Downey
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed mb-4">
-              The SR-22 filing fee itself is typically $15–$25, paid once. However, the more significant cost is the impact on your underlying auto insurance premium. Carriers view an SR-22 requirement as higher risk, which usually increases your monthly premium.
+              The filing charge and the cost of the underlying auto insurance policy vary by carrier, driving history, vehicle, coverage, and other rating factors. We show both before you choose coverage.
             </p>
             <p className="text-base text-slate-600 leading-relaxed mb-4">
               The premium increase varies significantly by carrier. Some companies specialize in non-standard or high-risk auto insurance and offer more competitive rates for SR-22 situations than standard carriers. This is exactly where an independent broker provides real value — we compare SR-22-eligible carriers side by side so you're not overpaying simply because your first call was to the wrong company.
             </p>
             <p className="text-base text-slate-600 leading-relaxed">
-              After your three-year filing requirement ends and your record improves, we can re-shop your policy to bring your rate back down. We proactively monitor these milestones for long-term clients.
+              When the DMV confirms that your filing requirement has ended, we can review the policy again and compare current options. Any change should be coordinated with the insurer to avoid a coverage gap.
             </p>
           </Reveal>
         </div>

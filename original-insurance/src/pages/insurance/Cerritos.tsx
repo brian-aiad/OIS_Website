@@ -31,9 +31,9 @@ const NEARBY_CITIES = [
 export default function CerritosPage() {
   usePageMeta({
     title:
-      "Cerritos Auto Insurance — 605 Corridor | Original Insurance",
+      "Auto Insurance in Cerritos, CA | Original Insurance",
     description:
-      "Auto insurance for Cerritos drivers in the 605 corridor. Compare 30+ carriers — SR-22, full coverage, no-license options. Bilingual broker just minutes away.",
+      "Compare auto, home, umbrella and commercial insurance options for Cerritos with an independent Downey-area broker serving the 605 corridor.",
     canonical,
   });
 
@@ -89,10 +89,10 @@ export default function CerritosPage() {
                 California law requires every registered vehicle to carry minimum liability limits of 30/60/15 — $30,000 bodily injury per person, $60,000 per accident, and $15,000 property damage. These minimums are a legal floor, not a recommendation. A single serious accident in today's market can easily exceed those limits, leaving the at-fault driver personally responsible for the gap. Many Cerritos families choose higher liability limits and add uninsured motorist coverage given the volume of daily traffic on the 605 corridor.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                As an independent broker, we compare rates from more than 30 top-rated California carriers at once. That means you get cheap car insurance options that reflect real market competition, not a single company's pricing. Rate factors in Cerritos include your driving record, vehicle make and model, annual mileage, prior claims, and whether you bundle home and auto — which frequently unlocks multi-policy discounts of 10–15%. Drivers with clean records and older paid-off vehicles often qualify for liability-only rates that are genuinely affordable; those with newer financed vehicles benefit most from full coverage comparisons.
+                As an independent broker, we compare multiple California carriers. Rate factors in Cerritos include your driving record, vehicle make and model, annual mileage, prior claims, coverage history, ZIP code, and whether you qualify for a home and auto bundle. Discounts vary, so we compare the resulting price, limits, and deductibles rather than assuming one carrier or bundle is best.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Our bilingual English, Spanish, and Arabic team walks every Cerritos client through policy options in plain language. There is no pressure to choose a specific carrier, no extra fee to use our services, and no obligation to buy. We are compensated by the carrier you select, which means our only job is to find you the best match for your situation. Whether you commute on the 605, run a business near Artesia Blvd, or are simply looking for cheap car insurance that doesn't sacrifice essential coverage, we can help you compare and decide with confidence.
+                Our team explains policy options in English, Spanish, or Arabic. There is no pressure to choose a specific carrier and no obligation to buy. Whether you commute on the 605, run a business near Artesia Boulevard, or are reviewing auto coverage, we help you compare limits, deductibles, exclusions, and price before deciding.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
                 Cerritos homeowners who bundle home and auto policies consistently see the strongest discounts. If you own a home in one of Cerritos's well-maintained residential neighborhoods, asking about a bundle quote alongside your auto policy is one of the easiest ways to reduce your overall insurance spend without changing your coverage levels.
@@ -120,10 +120,10 @@ export default function CerritosPage() {
                 It is important to understand that an SR-22 is a filing, not a separate insurance policy. It is a certificate your insurance carrier submits electronically to the California DMV confirming you carry the state-required minimum liability coverage. Common triggers include a coverage lapse, an at-fault accident while uninsured, a DUI or reckless driving conviction, a court order, or a DMV-mandated reinstatement requirement.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                California typically requires SR-22 status for three years from the date of reinstatement. During that entire period, your policy must remain active and in force — any lapse, cancellation, or missed payment resets the clock with the DMV and can trigger a new suspension. Our team monitors policy status and can alert you before a payment is missed so your reinstatement is never jeopardized.
+                The required filing period depends on the DMV or court action. If proof is no longer in force, the insurer may notify the DMV and driving privileges can be affected. Confirm your own end date with the DMV and keep carrier contact and payment information current.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                When you visit our Downey office, bring your driver's license or DMV reinstatement paperwork, your vehicle VIN, and any court or DMV reference numbers. Most Cerritos clients leave with the SR-22 electronically submitted and proof of insurance in hand the same day. For a complete guide to cost, duration, and the process, visit our dedicated SR-22 page.
+                When you visit our Downey office, bring your driver's license or DMV paperwork, vehicle VIN, and any court or DMV reference numbers. Electronic filing may be available after a qualifying policy is bound; timing depends on the carrier and DMV systems. Our SR-22 guide explains the process.
               </p>
             </div>
             <div className="mt-6">
@@ -308,7 +308,7 @@ export default function CerritosPage() {
                 Ready for a Free Cerritos Auto Quote?
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                Most quotes take under 10 minutes. Compare 30+ carriers for cheap car insurance, SR-22 filings, and home bundles — same-day proof of insurance available.
+                Quote timing depends on the coverage and details needed. Compare 30+ carriers for affordable auto insurance, SR-22 filings, and home bundles — same-day proof of insurance available.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <button onClick={openQuoteModal} className="btn btn-accent">

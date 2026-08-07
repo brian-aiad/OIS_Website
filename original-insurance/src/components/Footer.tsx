@@ -155,8 +155,15 @@ export default function Footer() {
         <div className="mt-8 border-t border-white/[0.07] pt-5">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex flex-wrap gap-x-4 gap-y-2 text-[11px] font-medium text-white/45">
-              <span>CA DOI Licensed</span>
-              <span>BBB Accredited</span>
+              <span>California insurance broker</span>
+              <a
+                href="https://cdicloud.insurance.ca.gov/cal/"
+                target="_blank"
+                rel="noreferrer"
+                className="transition-colors hover:text-white/75"
+              >
+                Verify a California license
+              </a>
               <span>{site.reviews.rating} Google rating</span>
               <span>English / Spanish / Arabic</span>
             </div>

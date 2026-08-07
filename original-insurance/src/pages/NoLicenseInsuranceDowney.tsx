@@ -23,9 +23,9 @@ const NO_LICENSE_FAQS = [
 
 export default function NoLicenseInsuranceDowney() {
   usePageMeta({
-    title: "No-License Auto Insurance Downey — ITIN OK | Original",
+    title: "Auto Insurance Options Without a CA License | Original",
     description:
-      "No CA license? We help Downey vehicle owners get covered — foreign license, ITIN, international drivers welcome. Licensed CA broker. Tell us your situation, we find options.",
+      "Review lawful California auto insurance options for vehicle owners, foreign-license holders and households with a licensed primary driver. Eligibility varies.",
     canonical: "https://originalinsurance.net/no-license-auto-insurance-downey",
   });
 
@@ -120,7 +120,7 @@ export default function NoLicenseInsuranceDowney() {
             image={images.clients.noLicenseConsultation}
             alt="Original Insurance agent in Downey, CA helping ITIN holder and foreign driver's license applicant obtain California auto insurance coverage"
             eyebrow="Non-Standard Insurance Specialists"
-            heading="We've helped hundreds of Downey-area families get covered without a CA license"
+            heading="Coverage guidance for non-standard license situations"
             imageLeft
             badge="ITIN accepted · Foreign license OK"
             stats={[
@@ -131,7 +131,7 @@ export default function NoLicenseInsuranceDowney() {
             body={
               <>
                 <p className="text-lg leading-relaxed">
-                  Most offices turn away clients who don't have a California driver's license. We specialize in exactly these situations — vehicle owners with foreign licenses, ITIN-based applicants, and named-insured arrangements where a licensed household member drives.
+                  Some carriers do not accept every license or ownership situation. We compare lawful options for vehicle owners with foreign licenses, applicants using an ITIN, and households where a licensed primary driver operates the vehicle.
                 </p>
                 <p className="leading-relaxed">
                   Our bilingual and trilingual staff explain your options in English, Spanish, or Arabic. We know which carriers have the most flexible underwriting and which documents they require. We never advise unlicensed vehicle operation — every driver on the policy must hold a valid license.
@@ -288,7 +288,7 @@ export default function NoLicenseInsuranceDowney() {
               Tell us your situation — we'll find the options
             </h2>
             <p className="text-white/70 mb-6">
-              No judgment, no pressure. We've helped hundreds of Downey-area clients with non-standard license situations find coverage that works.
+              No judgment and no shortcuts. We explain lawful options for non-standard license and vehicle-ownership situations.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <button onClick={openQuoteModal} className="btn btn-accent btn-lg">

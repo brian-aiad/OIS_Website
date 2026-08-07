@@ -29,9 +29,9 @@ const NEARBY_CITIES = [
 export default function LynwoodPage() {
   usePageMeta({
     title:
-      "Lynwood Auto Insurance — Bilingual, SR-22 | Original",
+      "Auto Insurance in Lynwood, CA | Original Insurance",
     description:
-      "Bilingual auto insurance for Lynwood — English, Spanish, Arabic. SR-22 same day, no-license and ITIN programs, 30+ carriers. Free quote — call or walk in.",
+      "Compare auto and SR-22 insurance options for Lynwood with an independent nearby broker offering service in English, Spanish and Arabic.",
     canonical,
   });
 
@@ -87,13 +87,13 @@ export default function LynwoodPage() {
                 California requires all registered vehicles to carry minimum liability of 30/60/15 — $30,000 bodily injury per person, $60,000 per accident, and $15,000 property damage. These minimums represent the legal floor. In a city with heavy daily commutes, significant commercial truck traffic on the 710, and proximity to freeway on- and off-ramps, many Lynwood families choose higher limits and add uninsured motorist coverage to protect against the substantial number of uninsured drivers on California roads.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                As an independent broker, we compare rates from more than 30 top-rated California carriers simultaneously. Lynwood residents who are looking for cheap car insurance get real market options, not a single company's pricing. Rate factors that affect your premium include driving history, vehicle type, ZIP code, annual mileage, and continuous coverage history. Drivers who have maintained uninterrupted insurance coverage — even at minimum limits — often qualify for better rates when upgrading to full coverage. Those coming off a lapse or an SR-22 situation still have options; our carrier access means we can find policies where standard carriers may decline.
+                As an independent broker, we compare rates from multiple California carriers simultaneously. Lynwood residents who are looking for affordable auto insurance get real market options, not a single company's pricing. Rate factors that affect your premium include driving history, vehicle type, ZIP code, annual mileage, and continuous coverage history. Drivers who have maintained uninterrupted insurance coverage — even at minimum limits — often qualify for better rates when upgrading to full coverage. Those coming off a lapse or an SR-22 situation still have options; our carrier access means we can find policies where standard carriers may decline.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 Our bilingual English, Spanish, and Arabic team has served Southeast LA families since 1999. Lynwood's diverse community is one we know well — many of our clients speak Spanish or Arabic as their primary language, and every one of our bilingual staff members explains policy options clearly so there is never a language barrier when making an important coverage decision. We are paid by the carrier you choose, not by steering you toward a specific policy, which means the advice you receive is genuinely independent.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                Whether you commute on Imperial Hwy each morning, drive on Long Beach Blvd for work, or are a vehicle owner looking for cheap car insurance that covers your specific situation, we can compare options and have proof of insurance ready often the same day you contact us.
+                Whether you commute on Imperial Hwy each morning, drive on Long Beach Blvd for work, or are a vehicle owner looking for affordable auto insurance that covers your specific situation, we can compare options and have proof of insurance ready often the same day you contact us.
               </p>
             </div>
           </Reveal>
@@ -118,10 +118,10 @@ export default function LynwoodPage() {
                 It is essential to understand that an SR-22 is a filing, not a separate insurance policy. It is a certificate your insurance carrier transmits electronically to the California DMV confirming you carry the state-required minimum liability coverage. Common triggers include an uninsured at-fault accident, a policy lapse or cancellation, a DUI or reckless driving conviction, a court-ordered reinstatement requirement, or a DMV-mandated filing following a license suspension.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                In California, SR-22 status typically must be maintained continuously for three years. Any lapse in coverage, missed payment, or policy cancellation during that period triggers a notification from the carrier to the DMV and can result in an immediate re-suspension of your license — restarting the entire reinstatement timeline. Lynwood clients who come to us for SR-22 filing benefit from our monitoring of policy status throughout the three-year requirement period.
+                The required filing period depends on the DMV or court action. If proof is no longer in force, the insurer may notify the DMV and driving privileges can be affected. We encourage clients to confirm their own end date with the DMV and keep carrier contact and payment information current.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                To get started at our Downey office, bring your driver's license or DMV reinstatement paperwork, your vehicle VIN, and any court or DMV reference numbers. Most Lynwood clients leave with the SR-22 electronically submitted and proof of insurance in hand the same day they visit. For a full explanation of SR-22 cost, duration, and what the process looks like step by step, visit our dedicated SR-22 page.
+                To get started at our Downey office, bring your driver's license or DMV paperwork, vehicle VIN, and any court or DMV reference numbers. Electronic filing may be available after a qualifying policy is bound; timing depends on the carrier and DMV systems. Our SR-22 guide explains the process in more detail.
               </p>
             </div>
             <div className="mt-6">
@@ -306,7 +306,7 @@ export default function LynwoodPage() {
                 Ready for a Free Lynwood Auto Quote?
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                Most quotes take under 10 minutes. Bilingual service in English, Spanish, and Arabic — SR-22 filing, no-license programs, and 30+ carrier comparisons available same day.
+                Quote timing depends on the coverage and details needed. Bilingual service in English, Spanish, and Arabic — SR-22 filing, no-license programs, and 30+ carrier comparisons available same day.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <button onClick={openQuoteModal} className="btn btn-accent">

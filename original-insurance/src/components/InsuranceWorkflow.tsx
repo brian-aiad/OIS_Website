@@ -5,18 +5,18 @@ import { Card, RevealOnScroll, Section, SectionHeader } from "../design-system";
 
 const STEPS = [
   {
-    title: "Review your real situation",
-    text: "License status, vehicle use, current coverage, home details, business operations, or SR-22 needs.",
+    title: "Understand your needs",
+    text: "We review who or what needs protection, current coverage, required documents, budget, and timing.",
     Icon: FileCheck2,
   },
   {
-    title: "Shop carrier appetite",
-    text: "We compare carriers that actually write your risk instead of forcing every client into one company.",
+    title: "Compare suitable carriers",
+    text: "We identify insurers that serve your situation, then explain meaningful differences in price, limits, and deductibles.",
     Icon: Gauge,
   },
   {
-    title: "Bind coverage and service it",
-    text: "Same-day ID cards when available, electronic SR-22 filing, renewal checks, and claim guidance.",
+    title: "Choose coverage with confidence",
+    text: "You decide after reviewing the options. We help with documents, proof of insurance, renewals, and claim questions.",
     Icon: ShieldCheck,
   },
 ];
@@ -37,7 +37,7 @@ interface InsuranceWorkflowProps {
 export default function InsuranceWorkflow({
   tone = "offwhite",
   title = "How a better insurance quote should work",
-  lede = "A good quote is not a price guess. It is a clean comparison of coverage, carrier fit, documents, and timing.",
+  lede = "A useful quote compares more than price. We help you understand coverage, carrier fit, documents, and next steps.",
 }: InsuranceWorkflowProps) {
   return (
     <Section tone={tone}>

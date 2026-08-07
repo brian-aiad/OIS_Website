@@ -53,6 +53,26 @@ lakewood, paramount, south-gate, pico-rivera, montebello, commerce
 
 All React `<Link>` and `<NavLink>` values must use clean canonical paths without trailing slashes. `npm run seo-lint` checks this.
 
+## Search Intent Ownership
+
+Keep the three Downey entry points distinct so they answer different searches instead of competing with one another:
+
+| Canonical page | Primary intent |
+|---|---|
+| `/` | Independent insurance broker in Downey; all major coverage lines |
+| `/insurance/downey` | Local Downey service-area overview and office relationship |
+| `/auto-insurance-downey-ca` | Auto coverage types, California limits, rating factors, and quotes |
+
+City pages should contain useful local service information and disclose that the physical office is in Downey. Do not turn them into near-duplicate doorway pages, stuff exact-match phrases, or add unsupported local statistics, savings, prices, filing times, or superlatives.
+
+## Insurance Information Trust
+
+- Substantive insurance pages include a visible reviewer, review date, primary California consumer resources, and a policy-terms disclaimer through `EditorialTrust`.
+- Prefer California Department of Insurance, California DMV, and other first-party regulatory sources for legal or coverage guidance.
+- Qualify prices, discounts, eligibility, policy availability, and processing times because they vary by carrier and applicant.
+- Do not publish a license number, accreditation, membership, award, or carrier relationship unless it has been verified from a current primary source or supplied by the business owner.
+- California minimum auto liability limits are 30/60/15 for policies issued or renewed on or after January 1, 2025. Date the fact where context benefits readers.
+
 ## Deployment
 
 Deploy manually from repo root:

@@ -31,9 +31,9 @@ const NEARBY = [
 export default function WhittierPage() {
   usePageMeta({
     title:
-      "Whittier Auto Insurance — SR-22, Home Bundle | Original",
+      "Auto Insurance in Whittier, CA | Original Insurance",
     description:
-      "Whittier auto insurance from Uptown to East Whittier. Compare 30+ carriers — SR-22, home bundles, no-license programs. Bilingual service via the 605.",
+      "Compare auto, home, SR-22 and commercial insurance options from Uptown to East Whittier with an independent Downey-based broker.",
     canonical,
   });
 
@@ -102,7 +102,7 @@ export default function WhittierPage() {
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 Auto insurance rates in Whittier vary by zip code (90601–90606), vehicle
                 type, annual mileage, driving record, and prior claims. Drivers with clean
-                records and older paid-off vehicles often qualify for cheap car insurance
+                records and older paid-off vehicles often qualify for affordable auto insurance
                 rates on liability-only coverage. Those with financed vehicles, newer models,
                 or prior incidents will see higher premiums for full coverage — but comparing
                 carriers can still produce meaningful savings.
@@ -118,7 +118,7 @@ export default function WhittierPage() {
               <p className="text-base text-slate-600 leading-relaxed">
                 Our Downey office is accessible from Whittier via the 605 or Whittier Blvd.
                 We also offer phone and online quotes for clients who prefer not to drive in.
-                Most quotes are completed in under 10 minutes, with same-day proof of insurance
+                Quote timing depends on the coverage and details needed, with same-day proof of insurance
                 available when you bind a policy with us.
               </p>
             </div>
@@ -151,16 +151,14 @@ export default function WhittierPage() {
                 uninsured, excessive points on a driving record, or a specific court order.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                California generally requires the SR-22 filing to remain active for three
-                continuous years. Any cancellation or policy lapse during that period resets
-                the DMV timeline and can result in a new suspension. Our team monitors policy
-                status to help Whittier clients avoid accidental lapses that would restart
-                the clock.
+                The required filing period depends on the DMV or court action. If proof is no
+                longer in force, the insurer may notify the DMV and driving privileges can be
+                affected. Confirm your own start and end dates directly with the DMV.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                We file electronically the same day you bind a qualifying policy. What to
-                bring: your driver's license or DMV reinstatement paperwork, vehicle VIN,
-                and any court or case reference numbers.
+                Qualifying insurers can file electronically after coverage is bound. Timing
+                depends on the carrier and DMV systems. Bring your driver's license or DMV
+                paperwork, vehicle VIN, and any court or case reference numbers.
               </p>
             </div>
             <div className="mt-6">
@@ -378,7 +376,7 @@ export default function WhittierPage() {
                 Get your Whittier auto insurance quote today
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                Most quotes take under 10 minutes. Walk in via the 605 or Whittier Blvd,
+                Quote timing depends on the coverage and details needed. Walk in via the 605 or Whittier Blvd,
                 call, or click — same-day proof of insurance available.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
