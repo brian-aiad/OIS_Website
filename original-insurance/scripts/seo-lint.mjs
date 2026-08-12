@@ -8,6 +8,7 @@
  *   4. Sitemap and homepage ServiceAreas city list mismatch
  *   5. Redirect rules in vercel.json that could preserve query-string and loop
  *   6. Any canonical URL with a trailing slash
+ *   7. SearchAction/query-placeholder regressions and unsupported marketing claims
  *
  * Usage:  node scripts/seo-lint.mjs
  * Or:     npm run seo-lint
@@ -350,6 +351,57 @@ for (const f of srcFiles) {
   }
 }
 if (!canonicalSlashFound) ok("No trailing-slash canonical URLs found");
+
+// ── Check 7: Search placeholder and people-first content safeguards ──────────
+console.log("\n7. Search placeholders and people-first content safeguards:");
+let contentGuardFailure = false;
+
+const publicFiles = collectFiles(PUBLIC_DIR, [".html", ".xml", ".txt"]);
+for (const f of [...srcFiles, ...publicFiles]) {
+  const content = readFileSync(f, "utf-8");
+  const rel = relative(APP_DIR, f);
+  if (/search_term_string|"@type"\s*:\s*"SearchAction"/i.test(content)) {
+    fail(`${rel}: search placeholder/SearchAction can recreate indexable ?q= URLs`);
+    contentGuardFailure = true;
+  }
+  if (/FAQSchema/.test(content)) {
+    fail(`${rel}: obsolete FAQSchema reference found; visible FAQ content must not use FAQPage markup`);
+    contentGuardFailure = true;
+  }
+}
+
+const pageFiles = collectFiles(join(SRC_DIR, "pages"), [".tsx", ".ts", ".jsx"]);
+const unsupportedClaimPatterns = [
+  { label: "fixed monthly insurance price range", regex: /\$\d[\d,]*(?:\s*[–-]\s*\$\d[\d,]*)?\s+per\s+month/i },
+  { label: "unqualified same-day promise", regex: /same[- ]day/i },
+  { label: "unqualified within-hours promise", regex: /within\s+hours/i },
+  { label: "unsupported fastest superlative", regex: /\bfastest\b/i },
+  { label: "unsupported trust superlative", regex: /trusted\s+broker|we\s+know\s+this\s+market/i },
+  { label: "speculative neighborhood underwriting claim", regex: /underwriters?\s+(?:use|treat)|directly\s+influence|rate\s+profiles?|above\s+average\s+for\s+LA\s+County/i },
+  { label: "unsupported lowest-price claim", regex: /lowest\s+possible|typically\s+costs/i },
+];
+
+for (const f of pageFiles) {
+  const content = readFileSync(f, "utf-8");
+  const rel = relative(APP_DIR, f);
+  for (const { label, regex } of unsupportedClaimPatterns) {
+    if (regex.test(content)) {
+      fail(`${rel}: ${label}`);
+      contentGuardFailure = true;
+    }
+  }
+}
+
+const websiteSchemaPath = join(SRC_DIR, "components", "seo", "WebSiteSchema.tsx");
+const homePagePath = join(SRC_DIR, "pages", "Home.tsx");
+if (!existsSync(websiteSchemaPath) || !readFileSync(homePagePath, "utf-8").includes("<WebSiteSchema />")) {
+  fail("Homepage must mount WebSiteSchema for Google site-name identity");
+  contentGuardFailure = true;
+}
+
+if (!contentGuardFailure) {
+  ok("No SearchAction/query placeholders, obsolete FAQ schema, fixed price ranges, or unsupported timing/local-rate claims found");
+}
 
 // ── Summary ──────────────────────────────────────────────────────────────────
 console.log("\n" + "─".repeat(50));

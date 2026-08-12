@@ -47,7 +47,7 @@ export default function MontebelloPage() {
 
       <PageHero
         title="Car Insurance Quotes in Montebello, CA"
-        subtitle="Independent insurance broker serving Montebello commuters and families with same-day auto quotes and multilingual English, Spanish, and Arabic support from our Downey office."
+        subtitle="Independent insurance broker serving Montebello commuters and families with multilingual English, Spanish, and Arabic support from our Downey office."
         breadcrumb="Montebello"
         backgroundImage="/images/ois-city-community-golden-v4.webp"
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
@@ -83,41 +83,27 @@ export default function MontebelloPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Montebello sits at the crossroads of several major Southern California
-                corridors. The 60 (Pomona Freeway) cuts through the city, connecting Montebello
-                commuters directly to Downtown LA and the Inland Empire. The 710 (Long Beach
-                Freeway) is accessible a short drive west, offering a fast route south toward
-                the ports. On the surface, Garfield Ave, Washington Blvd, and Montebello Blvd
-                carry steady local and pass-through traffic. Navigating this mix of freeway
-                interchanges and active surface streets creates real exposure for Montebello
-                drivers — exposure that adequate auto insurance needs to address.
+                Montebello residents can work with our Downey office in person or remotely. We
+                compare auto coverage using the actual driver, vehicle, garaging address,
+                annual mileage, use, limits, and deductibles rather than assigning one price
+                or risk profile to the entire city.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                California requires a minimum liability of 30/60/15 — $30,000 bodily injury
-                per person, $60,000 per accident, and $15,000 in property damage. These
-                minimums represent the legal floor, not necessarily adequate real-world
-                protection. A single at-fault accident on a busy stretch of the 60 or
-                Garfield Ave can exceed the property damage minimum with one modern vehicle.
-                Many Montebello drivers choose higher limits and add uninsured motorist
-                coverage given California's substantial uninsured driver population.
+                For policies issued or renewed on or after January 1, 2025, California's
+                minimum liability limits are 30/60/15: $30,000 bodily injury per person,
+                $60,000 per accident, and $15,000 property damage. Those limits are a legal
+                minimum, not a recommendation for every household.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Rates for Montebello drivers (zip code 90640) depend on driving record,
-                vehicle make and model, annual mileage, prior claims history, and coverage
-                continuity. Drivers with clean records and older paid-off vehicles can often
-                find affordable auto insurance rates on liability-only coverage. Drivers with
-                financed vehicles or a history of incidents will see higher premiums for full
-                coverage — but shopping the full market consistently produces better outcomes
-                than going direct to a single insurer.
+                Premiums are individualized using factors such as driving history, vehicle,
+                annual mileage, garaging location, coverage choices, and available discounts.
+                Comparing multiple available carriers can reveal different prices, eligibility
+                rules, payment plans, and coverage terms.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                As an independent broker, we compare more than 30 California carriers in a
-                single quote. When you go directly to one company, you receive only that
-                company's rate for your profile. An independent broker like Original Insurance
-                exposes your risk to the full market — and finds the carrier that prices it
-                most favorably. Our multilingual English, Spanish, and Arabic team explains
-                every coverage option clearly so Montebello clients fully understand what
-                they are buying before they commit.
+                As an independent broker, we can compare available options from multiple
+                carriers. We keep limits and deductibles consistent across quotes and explain
+                differences in English, Spanish, or Arabic before you choose.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
                 Our Downey office is accessible from Montebello via the 60 freeway or Garfield
@@ -142,9 +128,9 @@ export default function MontebelloPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Montebello drivers ordered to file SR-22 by the DMV or a court after a
-                suspension, lapse, or DUI can get same-day electronic filing through our
-                Downey office, easily reached via the 60 freeway or Garfield Ave.
+                Montebello drivers with an SR-22 requirement can compare qualifying policies
+                through our Downey office. Electronic filing availability and timing depend on
+                the selected carrier, completed binding requirements, and DMV systems.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 An SR-22 is a filing, not a separate insurance policy. It is a certificate
@@ -278,8 +264,8 @@ export default function MontebelloPage() {
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-                title: "Same-day SR-22 filing",
-                desc: "Electronic filing to the California DMV the day you bind",
+                title: "SR-22 filing support",
+                desc: "Electronic filing timing depends on the qualifying carrier and DMV systems",
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
@@ -289,7 +275,7 @@ export default function MontebelloPage() {
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
                 title: "25+ years serving SE LA",
-                desc: "Downey's trusted broker since 1999 — we know this market",
+                desc: "Downey-based independent brokerage serving Southeast LA since 1999",
               },
             ].map((item) => (
               <StaggerChild key={item.title}>

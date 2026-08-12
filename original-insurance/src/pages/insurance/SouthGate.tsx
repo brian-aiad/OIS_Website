@@ -83,47 +83,32 @@ export default function SouthGatePage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                South Gate sits in the heart of Southeast Los Angeles, bounded by the 710
-                (Long Beach Freeway) to the west and crisscrossed by busy surface streets like
-                Firestone Blvd, Garfield Ave, and Long Beach Blvd. The 105 (Century Freeway)
-                clips the northern edge of the city, connecting South Gate commuters to LAX
-                and the wider metro freeway network. Daily driving in South Gate means
-                navigating high-traffic commercial corridors, dense residential neighborhoods,
-                and one of the most truck-heavy freight routes in Southern California along
-                the 710.
+                South Gate residents can work with our Downey office in person or remotely.
+                We compare auto coverage using the actual driver, vehicle, garaging address,
+                annual mileage, use, limits, and deductibles rather than assigning one price
+                or risk profile to the entire city.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                California's minimum liability requirement — 30/60/15 — provides $30,000
-                bodily injury per person, $60,000 per accident, and $15,000 in property
-                damage coverage. Along a busy stretch of Firestone Blvd or at a busy
-                intersection on Garfield Ave, where vehicle values and medical costs can
-                exceed these minimums, many South Gate drivers choose higher liability
-                limits for genuine protection.
+                For policies issued or renewed on or after January 1, 2025, California's
+                minimum liability limits are 30/60/15: $30,000 bodily injury per person,
+                $60,000 per accident, and $15,000 property damage. Those limits are a legal
+                minimum, not a recommendation for every household.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Rate factors for South Gate drivers include zip code (90280), driving history,
-                vehicle type and year, annual mileage, and prior claims or coverage lapses.
-                Drivers who maintain continuous coverage, bundle home and auto policies, or
-                take a defensive driving course can often qualify for meaningful discounts.
-                For drivers seeking affordable auto insurance, comparing multiple carriers is
-                essential — every insurer prices South Gate's 90280 zip code differently.
+                Premiums are individualized using factors such as driving history, vehicle,
+                annual mileage, garaging location, coverage choices, and available discounts.
+                We quote each applicant's actual information instead of publishing a citywide
+                price estimate.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                As an independent broker, we compare multiple California carriers
-                in a single visit or phone call. A captive agent at one insurance company can
-                only offer that company's rates. We work across the market to find the
-                combination of price, coverage, and carrier financial strength that fits each
-                South Gate client's needs. Our bilingual English, Spanish, and Arabic service
-                means that language is never a barrier to understanding exactly what you're
-                buying.
+                As an independent broker, we can compare available options from multiple
+                carriers. We keep limits and deductibles consistent across quotes and explain
+                eligibility, payment, and policy differences in English, Spanish, or Arabic.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                South Gate families often need more than just a minimum liability policy —
-                uninsured motorist coverage, comprehensive, and collision all add meaningful
-                protection in a dense urban driving environment. We explain every option in
-                plain language and never pressure clients toward higher coverage than they
-                actually need. If affordable auto insurance that meets legal minimums is the right
-                fit for your situation, we can compare qualifying options and explain the tradeoffs.
+                Optional uninsured-motorist, comprehensive, collision, rental, and roadside
+                coverages may be available. We explain what each option does, its deductible or
+                limit, and how it changes the quote without presenting one choice as right for everyone.
               </p>
             </div>
           </Reveal>
@@ -142,9 +127,9 @@ export default function SouthGatePage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                South Gate drivers needing SR-22 filing after an uninsured accident, a license
-                suspension, or a lapse in coverage can get same-day electronic filing through
-                our Downey office, easily reached via the 710 or Firestone Blvd.
+                South Gate drivers with an SR-22 requirement can compare qualifying policies
+                through our Downey office. Electronic filing availability and timing depend on
+                the selected carrier, completed binding requirements, and DMV systems.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 An SR-22 is a filing, not a separate insurance policy. It is a certificate
@@ -278,8 +263,8 @@ export default function SouthGatePage() {
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-                title: "Same-day SR-22 filing",
-                desc: "Electronic filing to the California DMV the day you bind",
+                title: "SR-22 filing support",
+                desc: "Electronic filing timing depends on the qualifying carrier and DMV systems",
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
@@ -289,7 +274,7 @@ export default function SouthGatePage() {
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
                 title: "25+ years serving SE LA",
-                desc: "Downey's trusted broker since 1999 — we know this market",
+                desc: "Downey-based independent brokerage serving Southeast LA since 1999",
               },
             ].map((item) => (
               <StaggerChild key={item.title}>
@@ -380,8 +365,8 @@ export default function SouthGatePage() {
                 Get your South Gate auto insurance quote today
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                Quote timing depends on the coverage and details needed. Walk in, call, or click — same-day
-                proof of insurance available.
+                Quote, binding, policy-document, and SR-22 filing timing depend on the carrier and information required.
+                Visit, call, or start online to review available options.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <button onClick={openQuoteModal} className="btn btn-accent">

@@ -83,43 +83,32 @@ export default function WhittierPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Whittier drivers travel a mix of freeway and surface-street terrain that
-                demands solid auto coverage. The 605 (San Gabriel River Freeway) carries heavy
-                traffic between the Whittier Narrows and the 91, while the 60 (Pomona Freeway)
-                runs across the northern edge of the city, connecting Whittier commuters to
-                Downtown LA and the Inland Empire. Surface arteries like Whittier Blvd, Painter
-                Ave, and Colima Rd handle the day-to-day neighborhood driving from Uptown
-                Whittier through East Whittier.
+                Whittier residents can work with our Downey office in person or remotely. We
+                compare auto coverage using the actual driver, vehicle, garaging address,
+                annual mileage, use, limits, and deductibles rather than assigning one price
+                or risk profile to the entire city.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                California's minimum liability requirement is 30/60/15 — $30,000 bodily injury
-                per person, $60,000 per accident, and $15,000 property damage. The state sets
-                these as a floor, not a recommended coverage level. Given the mix of newer
-                vehicles and high-traffic corridors in Whittier, many drivers opt for higher
-                liability limits and add uninsured motorist coverage. California's uninsured
-                driver rate makes this addition particularly valuable.
+                For policies issued or renewed on or after January 1, 2025, California's
+                minimum liability limits are 30/60/15: $30,000 bodily injury per person,
+                $60,000 per accident, and $15,000 property damage. Those limits are a legal
+                minimum, not a recommendation for every household.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Auto insurance rates in Whittier vary by zip code (90601–90606), vehicle
-                type, annual mileage, driving record, and prior claims. Drivers with clean
-                records and older paid-off vehicles often qualify for affordable auto insurance
-                rates on liability-only coverage. Those with financed vehicles, newer models,
-                or prior incidents will see higher premiums for full coverage — but comparing
-                carriers can still produce meaningful savings.
+                Premiums are individualized using factors such as driving history, vehicle,
+                annual mileage, garaging location, coverage choices, and available discounts.
+                Financed or leased vehicles may also be subject to lender coverage requirements.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                As an independent broker, we compare more than 30 California carriers at once.
-                Going direct to a single insurer means you only see one price for your risk
-                profile. Working with an independent broker like Original Insurance means the
-                entire market is working for you — we identify the carriers that price Whittier's
-                zip codes most competitively and match them to your specific driving history
-                and coverage needs.
+                As an independent broker, we can compare available options from multiple
+                carriers. We keep limits and deductibles consistent across quotes and explain
+                eligibility, payment, and policy differences before you choose.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
                 Our Downey office is accessible from Whittier via the 605 or Whittier Blvd.
                 We also offer phone and online quotes for clients who prefer not to drive in.
-                Quote timing depends on the coverage and details needed, with same-day proof of insurance
-                available when you bind a policy with us.
+                Quote, binding, and policy-document timing depend on the carrier, completed
+                information, payment, and underwriting requirements.
               </p>
             </div>
           </Reveal>
@@ -138,9 +127,9 @@ export default function WhittierPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Whittier drivers ordered to carry SR-22 by the DMV or a court — after a
-                suspension, DUI, or uninsured accident — can get same-day electronic filing
-                at our Downey office, accessible via the 605 or Whittier Blvd.
+                Whittier drivers with an SR-22 requirement can compare qualifying policies
+                through our Downey office. Electronic filing availability and timing depend on
+                the selected carrier, completed binding requirements, and DMV systems.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 An SR-22 is a filing, not a standalone insurance policy. It is a certificate
@@ -274,8 +263,8 @@ export default function WhittierPage() {
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-                title: "Same-day SR-22 filing",
-                desc: "Electronic filing to the California DMV the day you bind",
+                title: "SR-22 filing support",
+                desc: "Electronic filing timing depends on the qualifying carrier and DMV systems",
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
@@ -285,7 +274,7 @@ export default function WhittierPage() {
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
                 title: "25+ years serving SE LA",
-                desc: "Downey's trusted broker since 1999 — we know this market",
+                desc: "Downey-based independent brokerage serving Southeast LA since 1999",
               },
             ].map((item) => (
               <StaggerChild key={item.title}>
@@ -376,8 +365,8 @@ export default function WhittierPage() {
                 Get your Whittier auto insurance quote today
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                Quote timing depends on the coverage and details needed. Walk in via the 605 or Whittier Blvd,
-                call, or click — same-day proof of insurance available.
+                Quote, binding, policy-document, and SR-22 filing timing depend on the carrier and information required.
+                Visit, call, or start online to review available options.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <button onClick={openQuoteModal} className="btn btn-accent">

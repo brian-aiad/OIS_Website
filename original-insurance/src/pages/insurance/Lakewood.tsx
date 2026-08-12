@@ -83,19 +83,19 @@ export default function LakewoodPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Lakewood is a predominantly residential community with major arterials — Lakewood Blvd, Carson St, and Del Amo Blvd — carrying significant daily traffic between the 605 (San Gabriel River Freeway) to the east and the 91 (Artesia Freeway) to the north. Commuters heading to Long Beach, Downey, or Cerritos cross these corridors every day, and the density of intersections and shopping centers along Lakewood Blvd contributes to the kind of low-speed collision risk that drives insurance pricing in this area.
+                Lakewood residents can work with our Downey office in person or remotely. We compare auto coverage using the actual driver, vehicle, garaging address, annual mileage, use, limits, and deductibles rather than assigning one price or risk profile to the entire city.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                California's minimum auto liability requirement is 30/60/15 — $30,000 bodily injury per person, $60,000 per accident, and $15,000 property damage. These limits are a legal baseline, not a safety net. Repair costs for newer vehicles and medical costs in Los Angeles County can easily exceed those figures in a single serious accident. Many Lakewood drivers choose higher limits and add comprehensive and collision coverage, especially for financed or leased vehicles where lenders require full coverage.
+                For policies issued or renewed on or after January 1, 2025, California's minimum liability limits are 30/60/15: $30,000 bodily injury per person, $60,000 per accident, and $15,000 property damage. Those limits are a legal minimum, not a recommendation for every household. Financed or leased vehicles may be subject to lender coverage requirements.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 As an independent broker, we compare multiple California carriers. Lakewood residents can review options from more than one company instead of seeing a single carrier's price. Rate factors include driving history, vehicle type, ZIP code, prior claims, annual mileage, and whether you qualify for a home and auto bundle. Multi-policy discounts vary, so we compare the combined price and coverage with separate-carrier options.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Our bilingual English, Spanish, and Arabic team takes time to explain each option clearly. We do not work for any single insurance company, and we do not receive extra compensation for steering you toward a specific carrier. Our only goal is to find the right policy at the right price for your household or business. Whether you drive on Del Amo Blvd daily or commute across the 605 to work, we can find affordable auto insurance options that match your actual coverage needs — not just the cheapest policy on paper.
+                Our team can explain options in English, Spanish, or Arabic. Before purchase, we review limits, deductibles, exclusions, payment requirements, and documents the selected carrier still needs so the comparison is based on more than price alone.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                Lakewood homeowners who take advantage of home and auto bundling consistently see the largest premium reductions. If you own a home in Lakewood and are paying separate premiums for home and auto with different carriers, a combined quote from a single carrier through our office is often the fastest way to lower your total annual insurance cost without reducing coverage.
+                Some carriers offer home-and-auto discounts, but a bundle is not automatically the lowest total cost or best coverage fit. We compare the combined premium, limits, deductibles, and exclusions with separate-carrier options before you decide.
               </p>
             </div>
           </Reveal>
@@ -114,7 +114,7 @@ export default function LakewoodPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Lakewood drivers with a suspended license, a lapsed policy, or a court-ordered SR-22 requirement can get same-day electronic filing through our Downey office — just south on Lakewood Blvd.
+                Lakewood drivers with an SR-22 requirement can compare qualifying policies through our Downey office. Electronic filing availability and timing depend on the selected carrier, completed binding requirements, and DMV systems.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 An SR-22 is a filing, not a standalone insurance policy. It is a certificate your insurance carrier submits electronically to the California DMV confirming that you carry the state-required minimum liability coverage. Common reasons a Lakewood driver might need one include a lapse in insurance coverage, an at-fault accident while uninsured, a DUI or reckless driving conviction, a license suspension, or a reinstatement order from the DMV or a court.
@@ -207,8 +207,8 @@ export default function LakewoodPage() {
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-                title: "Same-day SR-22 filing",
-                desc: "Electronic filing to the California DMV the day you bind",
+                title: "SR-22 filing support",
+                desc: "Electronic filing timing depends on the qualifying carrier and DMV systems",
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
@@ -218,7 +218,7 @@ export default function LakewoodPage() {
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
                 title: "25+ years serving SE LA",
-                desc: "Downey's trusted broker since 1999 — we know this market",
+                desc: "Downey-based independent brokerage serving Southeast LA since 1999",
               },
             ].map((item) => (
               <StaggerChild key={item.title}>
@@ -308,7 +308,7 @@ export default function LakewoodPage() {
                 Ready for a Free Lakewood Auto Quote?
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                Quote timing depends on the coverage and details needed. Bundle home and auto, compare 30+ carriers for affordable auto insurance, or get same-day SR-22 filing — all from one office.
+                Quote, binding, policy-document, and SR-22 filing timing depend on the carrier and information required. Review auto, home, and SR-22 options through one nearby office.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <button onClick={openQuoteModal} className="btn btn-accent">

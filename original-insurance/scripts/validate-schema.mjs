@@ -25,7 +25,7 @@ const NO_BREADCRUMB = new Set(["/"]);
 
 // Google is deprecating FAQ rich results and review snippets are not valid for this site.
 // Keep visible FAQ/review content, but do not emit these JSON-LD types.
-const DEPRECATED_SCHEMA_TYPES = new Set(["FAQPage", "Review", "AggregateRating"]);
+const DEPRECATED_SCHEMA_TYPES = new Set(["FAQPage", "Review", "AggregateRating", "SearchAction"]);
 
 // Pages that should have InsuranceAgency schema (homepage, city pages, money pages).
 // /faq, /about, /contact, /services explicitly excluded — see SKILL.md schema rules.
@@ -164,10 +164,12 @@ for (const { path: htmlPath, route } of files) {
 
   const hasReviewSnippetFields = rawJson.includes('"aggregateRating"') || rawJson.includes('"reviewRating"');
   check(routeKey, !hasReviewSnippetFields, "Review snippet fields must not be emitted");
+  check(routeKey, !rawJson.includes('"SearchAction"') && !rawJson.includes("search_term_string"), "SearchAction/query placeholders must not be emitted");
 
-  // 7. Home page should have WebSite or LocalBusiness at root level
+  // 7. Homepage needs WebSite identity schema without a query-based SearchAction.
   if (routeKey === "/") {
     const hasWebSite = types.includes("WebSite");
+    check(routeKey, hasWebSite, "Homepage is missing WebSite schema");
     if (hasWebSite) pass(routeKey, "WebSite schema present");
     pass(routeKey, `Types found: ${types.join(", ")}`);
   }

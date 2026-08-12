@@ -12,6 +12,16 @@ const resources = [
     Icon: Landmark,
   },
   {
+    label: "California home and renters guide",
+    href: "https://www.insurance.ca.gov/01-consumers/105-type/95-guides/03-res/res-ins-guide.cfm",
+    Icon: Landmark,
+  },
+  {
+    label: "California driver license guide",
+    href: "https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/driver-licenses-dl/",
+    Icon: MapPin,
+  },
+  {
     label: "DMV financial responsibility guide",
     href: "https://www.dmv.ca.gov/portal/handbook/california-driver-handbook/financial-responsibility-insurance-requirements-and-collisions/",
     Icon: MapPin,
@@ -35,14 +45,14 @@ export default function EditorialTrust() {
               </div>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-slate-600">
-              Updated August 7, 2026. Our team reviews insurance information for clarity and California relevance.
+              Updated August 12, 2026. Our team reviews insurance information for clarity and California relevance.
               Coverage, eligibility, pricing, and filing times vary by carrier and individual circumstances.
             </p>
           </div>
 
           <div className="md:border-l md:border-slate-200 md:pl-7">
             <p className="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">Primary consumer resources</p>
-            <div className="mt-3 grid gap-2 sm:grid-cols-3">
+            <div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-5">
               {resources.map(({ label, href, Icon }) => (
                 <a
                   key={href}

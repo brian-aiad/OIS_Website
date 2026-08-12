@@ -81,19 +81,19 @@ export default function LynwoodPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Lynwood is a dense, working-class community in the heart of southeast Los Angeles County, bordered by major transportation corridors including the 710 (Long Beach Freeway) to the west and the 105 (Century Freeway) along the northern edge. Surface streets like Imperial Hwy, Long Beach Blvd, and Atlantic Ave carry heavy traffic throughout the day, connecting Lynwood residents to employment centers in downtown Los Angeles, Long Beach, and the industrial areas of the 710 corridor. This combination of freeway access and busy surface streets means auto insurance pricing in Lynwood reflects a high-traffic environment.
+                Lynwood residents can work with our Downey office in person or remotely. We compare auto coverage using the actual driver, vehicle, garaging address, annual mileage, use, limits, and deductibles rather than assigning one price or risk profile to the entire city.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                California requires all registered vehicles to carry minimum liability of 30/60/15 — $30,000 bodily injury per person, $60,000 per accident, and $15,000 property damage. These minimums represent the legal floor. In a city with heavy daily commutes, significant commercial truck traffic on the 710, and proximity to freeway on- and off-ramps, many Lynwood families choose higher limits and add uninsured motorist coverage to protect against the substantial number of uninsured drivers on California roads.
+                For policies issued or renewed on or after January 1, 2025, California's minimum liability limits are 30/60/15: $30,000 bodily injury per person, $60,000 per accident, and $15,000 property damage. Those limits are a legal minimum, not a recommendation for every household. Higher limits and optional coverages may also be quoted when available.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                As an independent broker, we compare rates from multiple California carriers simultaneously. Lynwood residents who are looking for affordable auto insurance get real market options, not a single company's pricing. Rate factors that affect your premium include driving history, vehicle type, ZIP code, annual mileage, and continuous coverage history. Drivers who have maintained uninterrupted insurance coverage — even at minimum limits — often qualify for better rates when upgrading to full coverage. Those coming off a lapse or an SR-22 situation still have options; our carrier access means we can find policies where standard carriers may decline.
+                As an independent broker, we can compare available options from multiple carriers. Eligibility, discounts, and prices vary, so we keep coverage limits and deductibles consistent across quotes and identify carrier-specific differences before you decide.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Our bilingual English, Spanish, and Arabic team has served Southeast LA families since 1999. Lynwood's diverse community is one we know well — many of our clients speak Spanish or Arabic as their primary language, and every one of our bilingual staff members explains policy options clearly so there is never a language barrier when making an important coverage decision. We are paid by the carrier you choose, not by steering you toward a specific policy, which means the advice you receive is genuinely independent.
+                Service is available in English, Spanish, and Arabic. We explain the available options, documents, payment requirements, and policy differences in the client's preferred available language before purchase.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                Whether you commute on Imperial Hwy each morning, drive on Long Beach Blvd for work, or are a vehicle owner looking for affordable auto insurance that covers your specific situation, we can compare options and have proof of insurance ready often the same day you contact us.
+                Whether you commute, use a vehicle for work, or are reviewing household coverage, we can compare options using consistent limits and deductibles. Policy-document timing depends on carrier approval, payment, and the information required to bind.
               </p>
             </div>
           </Reveal>
@@ -112,7 +112,7 @@ export default function LynwoodPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Lynwood drivers needing SR-22 filing after an uninsured accident, a license suspension, or a lapse in coverage can get same-day electronic filing through our Downey office, accessible via the 710 or Imperial Hwy.
+                Lynwood drivers with an SR-22 requirement can compare qualifying policies through our Downey office. Electronic filing availability and timing depend on the selected carrier, completed binding requirements, and DMV systems.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 It is essential to understand that an SR-22 is a filing, not a separate insurance policy. It is a certificate your insurance carrier transmits electronically to the California DMV confirming you carry the state-required minimum liability coverage. Common triggers include an uninsured at-fault accident, a policy lapse or cancellation, a DUI or reckless driving conviction, a court-ordered reinstatement requirement, or a DMV-mandated filing following a license suspension.
@@ -154,7 +154,7 @@ export default function LynwoodPage() {
                 Under California law, vehicle ownership and driving are distinct legal matters. There are several entirely lawful situations in which a Lynwood vehicle owner needs auto insurance but does not hold a traditional California driver's license. We work with carriers that specifically offer programs for these circumstances.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Situations we regularly assist with include: vehicle owners who do not personally drive but need the car covered under a licensed primary driver named on the policy; holders of a valid foreign driver's license issued by another country; international visitors or temporary California residents carrying a recognized international driving permit; and ITIN-based applicants who do not have a Social Security Number. Lynwood's significant immigrant community includes many households that fall into one of these categories. In all cases, the person listed as the primary driver must be the individual who is legally permitted to and actually operates the vehicle. We are clear with every client that operating a vehicle without a valid California or recognized foreign license is not lawful and is not something we advise, suggest, or facilitate.
+                Situations we can review include a non-driving vehicle owner with a licensed primary driver, a driver presenting a valid foreign license, or an applicant using an ITIN where a carrier permits it. Eligibility varies, and every person who operates the vehicle must be accurately disclosed and legally permitted to drive.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
                 Our access to more than 30 carriers means we can find qualifying policies where a single-carrier agent cannot. Documents that help expedite the process include a foreign or international driver's license, passport, ITIN letter, current vehicle registration, and any existing declarations page. For a detailed guide to how these programs work and what documentation is required, visit our no-license insurance page.
@@ -205,8 +205,8 @@ export default function LynwoodPage() {
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-                title: "Same-day SR-22 filing",
-                desc: "Electronic filing to the California DMV the day you bind",
+                title: "SR-22 filing support",
+                desc: "Electronic filing timing depends on the qualifying carrier and DMV systems",
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
@@ -216,7 +216,7 @@ export default function LynwoodPage() {
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
                 title: "25+ years serving SE LA",
-                desc: "Downey's trusted broker since 1999 — we know this market",
+                desc: "Downey-based independent brokerage serving Southeast LA since 1999",
               },
             ].map((item) => (
               <StaggerChild key={item.title}>
@@ -306,7 +306,7 @@ export default function LynwoodPage() {
                 Ready for a Free Lynwood Auto Quote?
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                Quote timing depends on the coverage and details needed. Bilingual service in English, Spanish, and Arabic — SR-22 filing, no-license programs, and 30+ carrier comparisons available same day.
+                Quote, binding, policy-document, and SR-22 filing timing depend on the carrier and information required. Service is available in English, Spanish, and Arabic.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <button onClick={openQuoteModal} className="btn btn-accent">

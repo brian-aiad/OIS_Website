@@ -199,7 +199,7 @@ export default function About() {
                 Our roots are in the Downey community. Downey and the surrounding Southeast LA cities — Norwalk, Bellflower, Cerritos, Lakewood, Paramount, South Gate, Pico Rivera, Montebello, Lynwood, Whittier, and Commerce — make up one of the most culturally diverse, working-class corridors in Southern California. Many of our clients are first-generation immigrants, small-business owners, or families for whom insurance has historically been confusing, expensive, or inaccessible. Our ability to serve clients in English, Spanish, and Arabic was not an afterthought — it is central to who we are.
               </p>
               <p className="mt-3 text-slate-500 leading-relaxed">
-                Independent brokerage means we are not tied to any single insurance company's products, pricing, or sales targets. Every client who walks through our door or calls our Paramount Blvd office gets an honest comparison across our full carrier network. We have seen the Southeast LA market through major events — rising uninsured rates, carrier exits, regulatory changes, and economic cycles — and that long view shapes how we advise our clients. We know which carriers consistently pay claims fairly, which offer the most competitive rates for specific driver profiles, and where gaps in coverage most commonly catch families off guard.
+                Independent brokerage means we are not tied to one insurance company's products. We compare available carrier options, explain differences in limits and exclusions, and help clients prepare the information underwriters request. Carrier appetite and pricing change, so recommendations are based on the current quotes and policy documents available for each household or business.
               </p>
               <p className="mt-3 text-slate-500 leading-relaxed">
                 Original Insurance is a Black- and Latino-owned independent brokerage. Our office is wheelchair accessible, LGBTQ+ friendly, and a transgender safespace — because the people who walk through our door deserve to feel respected before they even sit down. We have always served clients who were turned away or underserved elsewhere, and that commitment has not changed in 25 years.
@@ -260,7 +260,7 @@ export default function About() {
             <h2 className="display-2 text-slate-900">Our Downey office on Paramount Blvd</h2>
             <p className="mt-3 text-slate-500 leading-relaxed max-w-2xl mx-auto">
               Walk-ins welcome. Street and rear parking available. Bilingual staff on-site.
-              Same-day quotes and SR-22 filings.
+              Quote and SR-22 filing support, with timing confirmed for the selected carrier.
             </p>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 rounded-2xl overflow-hidden">
@@ -492,8 +492,8 @@ export default function About() {
               },
               {
                 step: "04",
-                title: "Same-day binding and ID cards",
-                desc: "When you're ready, we bind the policy and issue electronic proof of insurance the same day. SR-22 certificates are filed electronically with the California DMV within hours of policy binding — so your reinstatement is never delayed by paperwork."
+                title: "Binding and policy documents",
+                desc: "When you choose an option, we coordinate the carrier's binding requirements and electronic policy documents. SR-22 availability and timing depend on the qualifying carrier and DMV systems."
               },
             ].map((item) => (
               <StaggerChild key={item.step}>

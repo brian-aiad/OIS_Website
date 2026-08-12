@@ -33,7 +33,7 @@ export default function ParamountPage() {
     title:
       "Auto Insurance in Paramount, CA | Original Insurance",
     description:
-      "Compare auto, home, SR-22 and commercial coverage for Paramount with an independent broker minutes away on Paramount Boulevard in Downey.",
+      "Compare auto, home, SR-22 and commercial coverage for Paramount with an independent broker on nearby Paramount Boulevard in Downey.",
     canonical,
   });
 
@@ -47,7 +47,7 @@ export default function ParamountPage() {
 
       <PageHero
         title="Auto Insurance in Paramount, CA"
-        subtitle="Our Downey office sits right on Paramount Blvd — Paramount residents get the fastest walk-in service and same-day SR-22 filings from 30+ carriers."
+        subtitle="Our Downey office is on Paramount Boulevard, giving Paramount residents a direct nearby option for auto, home, commercial, and SR-22 filing support."
         breadcrumb="Paramount"
         backgroundImage="/images/ois-city-small-business-v4.webp"
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
@@ -83,48 +83,31 @@ export default function ParamountPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Paramount drivers navigate some of the busiest corridors in Southeast Los
-                Angeles every day — the 710 (Long Beach Freeway), the 91 (Artesia Freeway),
-                Rosecrans Ave, Alondra Blvd, and Paramount Blvd itself. Heavy freeway
-                interchange traffic at the 710/91 split means exposure to rear-end collisions,
-                lane changes at speed, and a high density of commercial trucks traveling between
-                the ports and inland distribution centers. Your auto insurance needs to reflect
-                that reality.
+                Paramount residents can work with our Downey office directly on Paramount
+                Boulevard or complete the quote process remotely. We compare coverage using
+                the actual driver, vehicle, garaging address, annual mileage, use, limits, and
+                deductibles rather than assigning one price or risk profile to the entire city.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                California sets a minimum liability requirement of 30/60/15 — $30,000 bodily
-                injury per person, $60,000 per accident, and $15,000 property damage. These
-                limits are a legal floor, not a recommended coverage level. A single multi-car
-                accident on the 710 can easily exceed $15,000 in property damage alone.
-                Many Paramount drivers wisely choose higher liability limits and add
-                uninsured/underinsured motorist coverage, given the significant number of
-                uninsured drivers on California roads.
+                For policies issued or renewed on or after January 1, 2025, California's
+                minimum liability limits are 30/60/15: $30,000 bodily injury per person,
+                $60,000 per accident, and $15,000 property damage. Those limits are a legal
+                minimum, not a recommendation for every household.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Rate factors that directly affect your premium include your driving record,
-                vehicle make, model and year, annual mileage, zip code (90723 in Paramount),
-                prior claims history, and whether you carry continuous or lapsed coverage.
-                Drivers with clean records commuting short distances on surface streets
-                can often find affordable auto insurance options with liability-only coverage.
-                Financed vehicles may require comprehensive and collision coverage. Comparing
-                multiple carriers shows how price, limits, and deductibles differ for the same
-                vehicle and driver information.
+                Premiums are individualized using factors such as driving history, vehicle,
+                annual mileage, garaging location, coverage choices, and available discounts.
+                Financed or leased vehicles may also be subject to lender coverage requirements.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                As an independent insurance broker, we do not represent a single carrier.
-                We compare suitable options from multiple California insurance companies,
-                which means you see the actual market range — not a single quoted price. Going
-                direct to one insurer locks you into whatever that company prices your risk at.
-                Using an independent broker like Original Insurance means competition works in
-                your favor. We identify affordable auto insurance solutions that fit your specific
-                driving profile, vehicle, and coverage needs without sacrificing the protections
-                that actually matter.
+                As an independent broker, we can compare available options from multiple
+                carriers. We keep limits and deductibles consistent across quotes and explain
+                eligibility, payment, and policy differences before you choose.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                Because our Downey office is located right on Paramount Blvd, Paramount
-                residents have faster, easier walk-in access than clients from nearly any
-                other neighboring city. Quote timing depends on the coverage and details needed. Same-day proof
-                of insurance is standard when you bind a policy with us.
+                Because our Downey office is on Paramount Boulevard, Paramount residents have
+                a direct nearby option for in-person service. Quote, binding, and policy-document
+                timing depend on the coverage, completed documents, payment, and carrier approval.
               </p>
             </div>
           </Reveal>
@@ -143,9 +126,9 @@ export default function ParamountPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Paramount drivers needing same-day SR-22 filing are steps from our office on
-                Paramount Blvd — we can file electronically to the California DMV the same day
-                you walk in.
+                Paramount drivers with an SR-22 requirement can compare qualifying policies at our
+                office on Paramount Boulevard. Electronic filing availability and timing depend on
+                the selected carrier, completed binding requirements, and DMV systems.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 It is important to understand that an SR-22 is a filing, not a separate
@@ -282,8 +265,8 @@ export default function ParamountPage() {
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-                title: "Same-day SR-22 filing",
-                desc: "Electronic filing to the California DMV the day you bind",
+                title: "SR-22 filing support",
+                desc: "Electronic filing timing depends on the qualifying carrier and DMV systems",
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
@@ -293,7 +276,7 @@ export default function ParamountPage() {
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
                 title: "25+ years serving SE LA",
-                desc: "Downey's trusted broker since 1999 — we know this market",
+                desc: "Downey-based independent brokerage serving Southeast LA since 1999",
               },
             ].map((item) => (
               <StaggerChild key={item.title}>
@@ -384,8 +367,8 @@ export default function ParamountPage() {
                 Get your Paramount auto insurance quote today
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                Quote timing depends on the coverage and details needed. Walk into our Paramount Blvd office,
-                call, or click — same-day proof of insurance available.
+                Quote, binding, policy-document, and SR-22 filing timing depend on the carrier and information required.
+                Walk into our Paramount Boulevard office, call, or start online.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <button onClick={openQuoteModal} className="btn btn-accent">

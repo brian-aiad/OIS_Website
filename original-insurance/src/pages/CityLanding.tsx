@@ -93,7 +93,7 @@ const CITIES: CityInfo[] = [
     slug: "paramount",
     name: "Paramount",
     blurb:
-      "Our office sits right on Paramount Blvd — Paramount residents and businesses get the fastest turnaround and walk-in service.",
+      "Our Downey office is on Paramount Boulevard, giving Paramount residents and businesses a direct nearby option for in-person service.",
     distance: "Neighboring city — 3 minutes away",
     zips: ["90723"],
   },
@@ -101,7 +101,7 @@ const CITIES: CityInfo[] = [
     slug: "south-gate",
     name: "South Gate",
     blurb:
-      "Bilingual auto, home, and commercial coverage for South Gate families and small businesses, with same-day SR-22 filings.",
+      "Auto, home, and commercial coverage review for South Gate families and small businesses, with SR-22 filing support when required.",
     distance: "~10 minutes west via Firestone Blvd",
     zips: ["90280"],
   },
@@ -139,7 +139,7 @@ const COVERAGE_LINES = [
   { title: "Life Insurance", desc: "Term and whole life — protect your family's future.", Icon: Heart },
   { title: "Commercial", desc: "General liability, BOPs, commercial auto, and workers' comp.", Icon: Building2 },
   { title: "Motorcycle & RV", desc: "Riders, recreational vehicles, and weekend toys covered.", Icon: Bike },
-  { title: "SR-22 Filing", desc: "Same-day electronic SR-22 filing to the California DMV.", Icon: FileText },
+  { title: "SR-22 Filing", desc: "Electronic filing support through qualifying auto insurers.", Icon: FileText },
 ];
 
 export default function CityLanding() {
@@ -218,8 +218,8 @@ export default function CityLanding() {
               </h2>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
-                  { title: "Auto Insurance in Downey", desc: "Compare 30+ carriers for liability, full coverage, and same-day quotes.", to: "/auto-insurance-downey-ca" },
-                  { title: "SR-22 Filing", desc: "Same-day electronic SR-22 filing to the California DMV.", to: "/sr22-insurance-downey" },
+                  { title: "Auto Insurance in Downey", desc: "Compare liability, comprehensive, collision, and optional coverage choices.", to: "/auto-insurance-downey-ca" },
+                  { title: "SR-22 Filing", desc: "Review qualifying policies and the carrier's electronic filing process.", to: "/sr22-insurance-downey" },
                   { title: "No-License / Foreign-License", desc: "Coverage options for vehicle owners without a traditional CA license.", to: "/no-license-auto-insurance-downey" },
                   { title: "Commercial Auto Insurance", desc: "Business auto and fleet coverage for Downey area companies.", to: "/services" },
                 ].map((card, i) => (
@@ -253,7 +253,7 @@ export default function CityLanding() {
             <p className="text-base text-slate-500 leading-relaxed">
               As an independent brokerage we compare policies from multiple California carriers so{" "}
               {city.name} residents only pay for the coverage they actually need. Our bilingual English, Spanish, and
-              Arabic team handles everything from same-day SR-22 filings to homeowners bundling. Our Downey office is{" "}
+              Arabic team can help explain SR-22 filing requirements and homeowners bundle options. Our Downey office is{" "}
               <strong>{city.distance.toLowerCase()}</strong> from {city.name}, and phone and email quotes are
               available if driving in isn't convenient.
             </p>
@@ -313,7 +313,7 @@ export default function CityLanding() {
                 "Independent broker — we work for you, not one insurance company",
                 "multiple California carriers compared in a single quote",
                 "Bilingual English, Spanish, and Arabic service — también hablamos español",
-                "Same-day SR-22 electronic filing to the California DMV",
+                "SR-22 electronic filing support through qualifying carriers",
                 "No-license and international-license auto programs",
                 "25+ years serving the Downey / Southeast LA community",
               ].map((point) => (

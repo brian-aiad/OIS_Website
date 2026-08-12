@@ -85,19 +85,19 @@ export default function NorwalkPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Norwalk sits at a busy crossroads in Southeast Los Angeles County, where the 5 Freeway (Santa Ana) and the 605 (San Gabriel River Freeway) intersect and surface streets like Firestone Blvd, Pioneer Blvd, and Rosecrans Ave carry heavy local traffic throughout the day. These corridors connect Norwalk residents to jobs in downtown Los Angeles, Long Beach, and the San Gabriel Valley — and the daily exposure on those roads is one of the biggest factors that shapes what carriers charge for auto insurance in Norwalk. Knowing how to navigate the market and find affordable auto insurance that still delivers real protection is where working with an independent broker pays off.
+                Norwalk residents can work with our Downey office in person or remotely. We quote the actual driver, vehicle, garaging address, mileage, use, coverage limits, and deductibles rather than publishing a generic citywide price that may not apply to an individual household.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                California mandates a minimum liability of 30/60/15 for every driver: $30,000 bodily injury per person, $60,000 bodily injury per accident, and $15,000 property damage. For many Norwalk drivers, those minimums represent a starting point — not an endpoint. On the 5 Freeway or Pioneer Blvd during peak hours, a single collision can easily generate repair bills and medical costs that exceed state minimums, leaving you personally responsible for the difference. Adding uninsured motorist coverage is also worth serious consideration in a region where a significant percentage of drivers carry insufficient coverage or none at all.
+                For policies issued or renewed on or after January 1, 2025, California's minimum liability limits are 30/60/15: $30,000 bodily injury per person, $60,000 per accident, and $15,000 property damage. Those limits are a legal minimum, not a recommendation for every household. Higher limits and optional uninsured-motorist, comprehensive, and collision coverage may also be quoted when available.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                The diversity of Norwalk's driving population also creates unique insurance needs. Students and staff commuting to and from Cerritos College on Bloomfield Ave, warehouse and distribution workers heading to industrial corridors off the 5, and families running daily errands on Rosecrans Ave all have different vehicle profiles, risk exposures, and budget constraints. Our approach is to look at your specific situation — driving record, vehicle type, how the car is used, whether it's financed, and your prior coverage history — and then match you to the carrier and coverage tier that fits.
+                Vehicle use matters. Tell us whether a car is used for commuting, school, delivery, rideshare, or business activity, and provide lender requirements for financed or leased vehicles. Accurate use and mileage help us approach appropriate carriers and avoid a misleading quote.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                As an independent broker based in Downey — just minutes west via Firestone Blvd — Original Insurance shops your coverage across more than 30 California-licensed carriers at once. That competition is what consistently produces affordable auto insurance options that single-carrier agents simply cannot match. Bundling home or renters insurance, maintaining continuous coverage, and installing safety features are among the factors that can reduce your auto premium further.
+                As an independent broker based in Downey, Original Insurance can compare available options from multiple carriers. Discounts and eligibility vary, so we use the same coverage limits and deductibles across quotes and show qualifying discounts separately.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                Our bilingual team explains every option in plain language — English, Spanish, or Arabic — so you understand exactly what you're buying before you commit. There is no extra cost to work with us as a broker; we are compensated by the carrier you select.
+                Our team can explain options in English, Spanish, or Arabic. Before purchase, we review the limits, deductibles, exclusions, payment requirements, and documents the selected carrier still needs.
               </p>
             </div>
           </Reveal>
@@ -116,7 +116,7 @@ export default function NorwalkPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Norwalk drivers needing SR-22 filing after a DMV suspension, an uninsured incident, or a court requirement can get same-day electronic filing through our Downey office — just minutes west via Firestone Blvd.
+                Norwalk drivers with an SR-22 requirement can compare qualifying policies through our Downey office. Electronic filing availability and timing depend on the selected carrier, completed binding requirements, and DMV systems.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 An SR-22 is a filing, not a separate insurance policy. It is proof that your insurance carrier submits to the California DMV confirming required financial responsibility. Common triggers can include a DUI conviction, an uninsured accident, a license suspension, or a court or DMV requirement. Filing and reinstatement timing depends on the carrier and DMV systems.
@@ -197,8 +197,8 @@ export default function NorwalkPage() {
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-                title: "Same-day SR-22 filing",
-                desc: "Electronic SR-22 filing to the California DMV the day you bind your policy",
+                title: "SR-22 filing support",
+                desc: "Electronic filing timing depends on the qualifying carrier and DMV systems",
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
@@ -235,14 +235,14 @@ export default function NorwalkPage() {
               className="text-3xl md:text-4xl font-bold text-slate-900 mb-6"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Norwalk Roads, Transit, and Auto Insurance Context
+              Norwalk vehicle-use details that affect a quote
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Norwalk sits at the junction of three major freeways: the 605 (San Gabriel River Freeway) runs along the western edge, the 5 (Santa Ana Freeway) cuts through the center, and the 105 (Century Freeway) forms the northern boundary. For daily commuters, these three corridors offer fast connections to downtown Los Angeles, Long Beach, and the San Gabriel Valley — but they also create high-volume merge zones that affect how carriers price coverage for Norwalk ZIP codes 90650, 90651, and 90652.
+                Norwalk clients use vehicles for many different purposes, including commuting, school, delivery, household errands, and business activity. Accurately describing the use and estimated annual mileage helps carriers evaluate the actual application instead of relying on a generic city assumption.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Surface-street traffic in Norwalk is anchored by Alondra Blvd and Firestone Blvd, two east-west arterials that carry heavy commercial and residential traffic throughout the day. Alondra Blvd is particularly important for local trips — connecting Norwalk to Bellflower, Paramount, and Cerritos — and its mix of residential driveways and commercial intersections creates the kind of stop-and-go conditions that increase fender-bender frequency relative to freeway driving. If Alondra Blvd is part of your regular commute, we factor that in when evaluating carrier options.
+                Tell us whether each vehicle is personally owned, financed, leased, or used for an employer or independent business. A personal auto policy may restrict delivery, rideshare, or other commercial use, and lenders may require particular physical-damage coverage and deductibles.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 The Norwalk/Santa Fe Springs Metrolink station and the 5 and 605 freeways shape many local commutes. When a vehicle is used for station access, commuting, delivery, or other business activity, accurate use and annual-mileage details help carriers price the policy correctly.
@@ -251,7 +251,7 @@ export default function NorwalkPage() {
                 Cerritos College sits near the Norwalk and Cerritos border along Bloomfield Avenue. Students, parents, and staff may have different vehicle use, mileage, and household-driver details, so accurate information matters. We compare suitable carriers and explain how limits, deductibles, and optional coverage affect the quote.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                Norwalk's residential areas vary from dense apartment corridors near the transit station to quieter single-family neighborhoods east of the 605. ZIP code 90650 covers most of the city's residential areas and generally sees competitive pricing from our carrier network. Drivers with clean records, continuous prior coverage, and vehicles in the mid-range value tier tend to get the strongest results from our shopping process. Those with recent violations, lapses, or SR-22 requirements also have strong options — we access specialty carriers that serve the high-risk segment throughout Southeast LA County.
+                Use the complete address where the vehicle is principally garaged, list household and regular drivers accurately, and disclose recent incidents or coverage lapses. Complete information lets us compare proposals consistently and reduces the risk that a carrier changes or withdraws a preliminary quote.
               </p>
             </div>
           </Reveal>
@@ -269,7 +269,7 @@ export default function NorwalkPage() {
               Cities Near Norwalk We Also Serve
             </h2>
             <p className="text-slate-600 mb-6 leading-relaxed">
-              Our Downey office is just minutes west of Norwalk via Firestone Blvd, and we serve drivers and families throughout the surrounding communities in Southeast Los Angeles County. We know the roads, the commute patterns, and the neighborhoods in each of these cities.
+              Our office is in Downey on Paramount Boulevard. Norwalk clients can visit in person or complete the quote process remotely by phone, text, or online.
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
               {NEARBY_CITIES.map((city) => (
@@ -335,18 +335,18 @@ export default function NorwalkPage() {
                 },
                 {
                   n: "02",
-                  title: "Cerritos College students: compare rates before defaulting to your parents' policy",
-                  body: "Adding a young driver to a parent's policy is often cheaper than a standalone policy — but not always. Cerritos College students who own their own vehicles can sometimes save by qualifying for good-student discounts, low-mileage programs, or telematics-based rates. We run both scenarios and show you the real numbers, so you're not paying more than necessary for your situation."
+                  title: "Students should disclose the actual driver and garaging address",
+                  body: "A student's ownership, household, primary driver, school location, vehicle location, and use can affect eligibility. Some carriers offer qualifying student or mileage-based discounts; availability and privacy terms should be reviewed before enrollment."
                 },
                 {
                   n: "03",
-                  title: "ZIP 90650 vs 90651/90652: know your rate zone",
-                  body: "Most residential Norwalk is in ZIP 90650. The 90651 and 90652 codes cover smaller geographic areas but may produce different rate profiles depending on the carrier. When we run quotes, we use your exact street address — not just the city name — to get accurate pricing. A one-block difference in address can sometimes matter to certain carriers."
+                  title: "Use the correct garaging address",
+                  body: "Insurers require the address where the vehicle is principally garaged. Use the complete, accurate address and tell us if the vehicle is kept somewhere different from the mailing address so each quote is based on consistent information."
                 },
                 {
                   n: "04",
-                  title: "The 5/605/105 merge zone affects your premium",
-                  body: "Underwriters use ZIP code and address-level data to estimate accident frequency. Norwalk's position between three major freeways means some carriers price this area slightly above average for LA County. Others — particularly those that weigh individual driving record more heavily than geography — can price Norwalk drivers competitively. Our job is to find which carriers work in your favor."
+                  title: "Compare the same coverage on every proposal",
+                  body: "California premiums are individualized. We keep liability limits, optional coverages, and deductibles consistent across proposals, then identify carrier-specific differences instead of claiming that Norwalk has one universal premium."
                 },
               ].map((item) => (
                 <div key={item.n} className="flex gap-5 bg-white rounded-2xl p-6 ring-1 ring-slate-200 shadow-soft">
@@ -376,7 +376,7 @@ export default function NorwalkPage() {
                 Get your Norwalk auto insurance quote
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto leading-relaxed">
-                Quote timing depends on the coverage and details needed. Compare 30+ carriers for the best Norwalk rate — with same-day proof of insurance and SR-22 filing available. Our Downey office is just minutes west via Firestone Blvd.
+                Quote, binding, policy-document, and SR-22 filing timing depend on the carrier and information required. Our Downey office serves Norwalk clients in person and remotely.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <button onClick={openQuoteModal} className="btn btn-accent">

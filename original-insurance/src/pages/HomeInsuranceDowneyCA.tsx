@@ -23,7 +23,7 @@ const HOME_FAQS = [
   },
   {
     q: "What does home insurance cover in California?",
-    a: "A standard California HO-3 policy covers your dwelling structure, other structures (garage, fence), personal belongings, personal liability, and additional living expenses if a covered loss forces you to stay elsewhere. It does NOT include flood damage or earthquake damage — those require separate policies.",
+    a: "Homeowners policies commonly include dwelling, other structures, personal property, loss of use, personal liability, and medical-payments coverage, subject to the policy's limits and exclusions. Flood and earthquake damage generally require separate coverage.",
   },
   {
     q: "Can bundling home and auto reduce the cost?",
@@ -31,7 +31,7 @@ const HOME_FAQS = [
   },
   {
     q: "Do I need earthquake insurance in Downey, CA?",
-    a: "Standard home policies exclude earthquake damage. Downey sits in a seismically active corridor of Southern California. We offer earthquake coverage through the California Earthquake Authority (CEA) and private carriers — we can add it to any homeowners policy we write.",
+    a: "Standard homeowners policies generally exclude earthquake damage. Earthquake coverage may be available through the California Earthquake Authority or another insurer, depending on the qualifying home insurer and property. We can explain the available quote options.",
   },
 ];
 
@@ -57,7 +57,7 @@ export default function HomeInsuranceDowneyCA() {
 
       <PageHero
         title="Home & Renters Insurance in Downey, CA"
-        subtitle="We compare 30+ carriers to find the right home or renters policy for your property, budget, and situation — including earthquake coverage and bundle discounts."
+        subtitle="Compare homeowners, renters, condo, and optional earthquake coverage based on your property details, limits, deductibles, and available carrier programs."
         breadcrumb="Home Insurance Downey"
         badgeText="Home, Renters & Bundle Options"
         backgroundImage={images.products.home}
@@ -78,8 +78,8 @@ export default function HomeInsuranceDowneyCA() {
 
       <InsuranceWorkflow
         tone="offwhite"
-        title="Home insurance that fits the property — and the budget"
-        lede="Home value, construction type, prior claims, coverage limits, and bundle status all determine which carrier prices your home most competitively."
+        title="Home insurance matched to the property"
+        lede="Replacement cost, construction, roof and home characteristics, prior claims, coverage limits, deductibles, and available discounts can affect eligibility and price."
       />
 
       {/* Section 1: What home insurance covers */}
@@ -94,10 +94,10 @@ export default function HomeInsuranceDowneyCA() {
                 A standard California homeowners policy (HO-3) protects your dwelling and your financial liability in one package. Coverage is organized into six components: dwelling (the structure), other structures (detached garage, fence, shed), personal property (your belongings), loss of use (hotel and living expenses if a covered loss displaces you), personal liability (injury or property damage claims against you), and medical payments (minor injuries to guests regardless of fault).
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                In Downey and surrounding Southeast Los Angeles cities, the most common covered perils include fire, windstorm, hail, vandalism, theft, and accidental water damage from plumbing or appliances. Standard policies do NOT cover flood damage — that requires a separate National Flood Insurance Program (NFIP) or private flood policy. Earthquake damage also requires a separate policy or endorsement, and Downey's proximity to active fault lines in the greater LA area makes this worth considering.
+                Policies commonly cover losses caused by fire, windstorm, theft, vandalism, and certain sudden water events, subject to the contract. Flood and earthquake damage are generally excluded from a standard homeowners policy and require separate coverage. We review the exclusions and available options rather than assuming every loss is covered.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                The dwelling coverage limit should reflect the cost to rebuild your home from the ground up — not its market value. Rebuild costs in Southern California have risen significantly in recent years due to labor and materials costs. We help you set the right replacement cost so you're fully covered in a total loss, not underinsured.
+                The dwelling limit is based on estimated reconstruction cost rather than the home's sale price. We collect accurate property details and review the carrier's replacement-cost estimate with you; the selected limit, endorsements, deductible, and policy terms determine how a covered loss is handled.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
                 As an independent broker, we compare coverage terms and exclusions across carriers, not just price. A policy that appears cheaper may have a higher deductible, lower personal property limits, or ACV (actual cash value) settlement instead of replacement cost. We explain every difference in plain language before you choose.
@@ -126,7 +126,7 @@ export default function HomeInsuranceDowneyCA() {
                   </svg>
                 ),
                 title: "Dwelling Coverage",
-                desc: "Protects the structure of your home — walls, roof, floors, built-in appliances. We set replacement cost limits that reflect real SoCal rebuild costs, not just market value.",
+                desc: "Protects the home's structure for covered losses, subject to limits and exclusions. We review the carrier's reconstruction estimate and available endorsements.",
               },
               {
                 icon: (
@@ -144,7 +144,7 @@ export default function HomeInsuranceDowneyCA() {
                   </svg>
                 ),
                 title: "Liability Protection",
-                desc: "Covers you if someone is injured on your property or you accidentally damage someone else's property. Most standard policies offer $100K–$300K — we can increase this with an umbrella policy.",
+                desc: "Can respond to covered bodily-injury or property-damage claims against you. Available limits and umbrella options vary by carrier and eligibility.",
               },
               {
                 icon: (
@@ -162,7 +162,7 @@ export default function HomeInsuranceDowneyCA() {
                   </svg>
                 ),
                 title: "Earthquake Coverage",
-                desc: "Not included in standard policies. Available through the California Earthquake Authority (CEA) or private carriers. Given Downey's proximity to active Southern California fault zones, worth a serious look.",
+                desc: "Generally not included in standard policies. Availability through the California Earthquake Authority or other insurers depends on the property and qualifying home insurer.",
               },
               {
                 icon: (
@@ -197,16 +197,16 @@ export default function HomeInsuranceDowneyCA() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                If you rent an apartment or house in Downey, your landlord's insurance covers the building — not your belongings. A renters policy (HO-4) fills that gap: it covers your personal property against theft, fire, and accidental water damage, plus liability if a guest is injured in your unit. Most renters policies in the Downey area cost $15–$30 per month.
+                A landlord's policy generally covers the building, not a tenant's belongings. A renters policy can cover personal property, loss of use, personal liability, and medical payments for covered events. Price depends on the address, limits, deductible, claims history, discounts, and carrier, so we use current quotes instead of a generic monthly estimate.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Renters insurance is particularly valuable in Downey's denser apartment corridors and mixed-use neighborhoods where a fire or plumbing issue in a neighboring unit can affect your belongings. Many Downey landlords now require proof of renters insurance at lease signing. We issue digital proof of insurance the same day you bind a policy.
+                A lease may require renters insurance or particular liability limits. After a carrier confirms binding and payment, policy documents are generally available electronically; delivery timing varies by carrier and the information still required.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Renters policies also include personal liability — the same coverage that protects homeowners if someone is injured in their home. If your dog bites a neighbor or a guest trips on a rug, the liability portion of your renters policy responds. Coverage limits typically start at $100,000.
+                Renters policies can also include personal liability coverage for covered claims. Limits, exclusions, animal-liability rules, and eligibility differ by carrier, so the declarations and policy language should be reviewed before purchase.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                We bundle renters and auto insurance with carriers that offer meaningful combined discounts, which often makes the renters policy close to cost-neutral when weighed against the auto savings.
+                Some carriers offer an auto-and-renters discount. We compare the combined premium and coverage with separate-policy options because a bundle is not automatically the lowest total cost.
               </p>
             </div>
           </Reveal>

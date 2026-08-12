@@ -15,7 +15,7 @@ import { images } from "../lib/images";
 const AUTO_FAQS = [
   { q: "How much does car insurance cost in Downey, CA?", a: "The cost varies by driving record, vehicle, coverage, ZIP code, annual mileage, claims history, discounts, and carrier. A quote using accurate details is the reliable way to compare current prices." },
   { q: "What is California's minimum car insurance requirement?", a: "California requires 30/60/15 liability: $30,000 bodily injury per person, $60,000 per accident, and $15,000 for property damage." },
-  { q: "Can I get same-day proof of insurance in Downey?", a: "Yes. Once you bind a policy, we issue a digital ID card immediately. SR-22 certificates are filed electronically with the CA DMV the same day." },
+  { q: "When will I receive proof of insurance?", a: "After the carrier confirms that coverage is bound, policy documents are generally delivered electronically. Timing for ID cards and any SR-22 filing depends on the carrier, payment, required documents, and DMV systems." },
   { q: "What discounts may be available for Downey auto insurance?", a: "Depending on the carrier and eligibility, discounts may include multi-car, home and auto bundles, continuous coverage, safety features, and qualifying driving history." },
   { q: "Do you offer insurance for drivers without a California license?", a: "Yes. We work with carriers that cover vehicle owners with foreign licenses, ITIN-based applicants, and licensed household members as the primary driver." },
 ];
@@ -51,7 +51,7 @@ export default function AutoInsuranceDowneyCA() {
         title="Auto Insurance in Downey, CA"
         subtitle="Auto insurance in Downey should be simple. We compare 30+ carriers for liability, full coverage, SR-22 filings, and no-license or international-license situations so you can choose the right price and protection without calling five different companies."
         breadcrumb="Auto Insurance Downey"
-        badgeText="Same-Day Quotes Available"
+        badgeText="Side-by-Side Coverage Review"
         backgroundImage={images.products.auto}
         imageFilter="contrast(1.08) saturate(1.03) brightness(0.96)"
         imagePosition="center"
@@ -61,7 +61,7 @@ export default function AutoInsuranceDowneyCA() {
             Get My Downey Auto Quote
           </button>
           <a href="#sr22" className="btn btn-ghost-light btn-lg">
-            Same-Day SR-22 Help
+            SR-22 Filing Help
           </a>
         </div>
       </PageHero>
@@ -192,7 +192,7 @@ export default function AutoInsuranceDowneyCA() {
             stats={[
               { value: "30+", label: "Carriers quoted" },
               { value: "10 min", label: "Avg. quote time" },
-              { value: "Same day", label: "ID card issued" },
+              { value: "Digital", label: "Policy documents" },
             ]}
             body={
               <>
@@ -200,7 +200,7 @@ export default function AutoInsuranceDowneyCA() {
                   A captive agent shows you one company's prices. We show you 30+. That difference matters most when your situation is non-standard — SR-22 requirement, foreign license, prior lapse, or a financed vehicle with strict lender requirements.
                 </p>
                 <p className="leading-relaxed">
-                  Our office at 9907-B Paramount Blvd, Downey is open Monday through Friday, 10 AM to 5:30 PM. Walk in, get covered, and drive away with same-day proof of insurance. We serve in English, Spanish, and Arabic.
+                  Our office at 9907-B Paramount Blvd, Downey is open Monday through Friday, 10 AM to 5:30 PM. Walk-ins are welcome, and policy-document timing depends on carrier approval and binding. We serve in English, Spanish, and Arabic.
                 </p>
               </>
             }
@@ -296,8 +296,8 @@ export default function AutoInsuranceDowneyCA() {
               },
               {
                 icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-                title: "Same-day proof",
-                desc: "eID cards issued immediately after binding. SR-22 certificates filed electronically with the CA DMV the same day you bind your policy.",
+                title: "Electronic documents",
+                desc: "After binding, carriers generally provide policy documents electronically. SR-22 availability and processing time vary by carrier and DMV systems.",
               },
               {
                 icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" /></svg>,
@@ -428,13 +428,13 @@ export default function AutoInsuranceDowneyCA() {
             <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "var(--font-display)" }}>
               Ready to compare Downey auto quotes?
             </h2>
-            <p className="text-white/70 mb-6">Quote timing depends on the coverage and details needed. Same-day proof of insurance available.</p>
+            <p className="text-white/70 mb-6">Quote and document timing depend on the coverage, carrier approval, payment, and details required.</p>
             <div className="flex flex-wrap justify-center gap-3">
               <button onClick={openQuoteModal} className="btn btn-accent btn-lg">
                 Get My Downey Auto Quote
               </button>
               <NavLink to="/sr22-insurance-downey" className="btn btn-ghost-light btn-lg">
-                Need same-day SR-22 help?
+                Need SR-22 filing help?
               </NavLink>
             </div>
             <p className="mt-5 text-white/60 text-sm">

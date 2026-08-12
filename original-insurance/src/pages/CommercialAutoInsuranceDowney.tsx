@@ -4,7 +4,6 @@ import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
-import FAQSchema from "../components/seo/FAQSchema";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
 import StatsBar from "../components/StatsBar";
@@ -12,12 +11,6 @@ import PageTestimonials from "../components/PageTestimonials";
 import { ConsultationImage } from "../components/ConsultationImage";
 import { images } from "../lib/images";
 
-const COMMERCIAL_FAQS = [
-  { q: "What is commercial auto insurance?", a: "Commercial auto insurance covers vehicles used for business, including delivery vehicles, work trucks, and company cars not covered by personal auto policies." },
-  { q: "Do I need commercial auto if I use my personal car for work?", a: "If you use your vehicle for business beyond commuting, your personal policy may not cover accidents during business use. A commercial policy closes that gap." },
-  { q: "What is hired and non-owned auto coverage?", a: "Hired auto covers vehicles your business rents. Non-owned auto covers employee vehicles used for company purposes. Both fill liability gaps in standard policies." },
-  { q: "How much does commercial auto insurance cost in Downey?", a: "Commercial auto premiums vary by vehicle type, use, driver history, and coverage needs. We compare 30+ carriers to find the most competitive rate." },
-];
 import { Reveal } from "../components/AnimatedSection";
 
 const NEARBY_CITIES = [
@@ -32,27 +25,27 @@ const NEARBY_CITIES = [
 const VEHICLE_TYPES = [
   {
     title: "Single commercial vehicle",
-    desc: "Tradespeople, sales representatives, and independent contractors who use one truck, van, or car primarily for business purposes need a commercial auto policy rather than a personal one. Personal policies commonly exclude business use, meaning a claim filed while you were on the job can be denied outright. A properly structured commercial policy closes that gap and keeps your work vehicle covered whether you are on a job site in Downey or across the county.",
+    desc: "A truck, van, or car used primarily for business may require commercial classification. We review ownership, use, drivers, radius, equipment, and contract requirements before requesting quotes.",
   },
   {
     title: "Small fleet (2–10 vehicles)",
-    desc: "Small fleets present unique underwriting challenges — different drivers, different vehicles, and varying exposure levels all need to roll up into one manageable policy. We work with carriers that specialize in small commercial fleets and can often secure fleet discounts that bring per-vehicle costs down compared to insuring each vehicle individually.",
+    desc: "Small fleets require complete driver and vehicle schedules plus accurate use, radius, garaging, and loss information. Available fleet programs and discounts vary by carrier and risk.",
   },
   {
     title: "For-hire and delivery vehicles",
-    desc: "Rideshare drivers operating their own vehicles for commercial delivery, courier services, and last-mile logistics require specific for-hire vehicle coverage. Standard personal policies exclude commercial delivery use, and the penalties for a claim denial in this category can be severe. We compare carriers with appetite for TNCs, app-based delivery drivers, and independent courier operations.",
+    desc: "For-hire, delivery, courier, and app-based use must be disclosed because personal and commercial policy terms differ. Program availability depends on the platform, operation, vehicle, driver, and carrier.",
   },
   {
     title: "Contractor pickups and vans",
-    desc: "General contractors, plumbers, electricians, HVAC technicians, and landscapers all depend on their trucks and vans daily. We write commercial auto coverage for contractor vehicles that includes tools and equipment endorsements when needed, and we coordinate with your general liability broker if you need a package approach.",
+    desc: "Contractor vehicles may need commercial auto plus separate tools, equipment, or general-liability coverage. We review the operation and explain which proposal addresses each exposure.",
   },
   {
     title: "Non-emergency medical transport (NEMT)",
-    desc: "NEMT operators face elevated liability exposure because they carry vulnerable passengers. Carriers that write NEMT coverage are a smaller subset of the market, and rates vary significantly based on radius of operation, driver records, and the number of vehicles. Our access to specialty commercial markets means we can find NEMT coverage where many agents cannot.",
+    desc: "NEMT underwriting can require detailed vehicle, driver, passenger, radius, contract, and safety information. Availability and required filings vary; a complete submission is needed before coverage can be evaluated.",
   },
   {
     title: "Food trucks and mobile services",
-    desc: "Food trucks, mobile pet groomers, pop-up retail vehicles, and other mobile business concepts need coverage that follows the vehicle and the operation. We place commercial auto coverage for mobile service operators throughout Southeast Los Angeles County, often pairing it with a commercial general liability policy for full protection.",
+    desc: "Food trucks, mobile pet groomers, pop-up retail vehicles, and other mobile operations may need both vehicle and business liability coverage. Available policies, classifications, and limits depend on the operation and underwriting.",
   },
 ];
 
@@ -68,7 +61,6 @@ export default function CommercialAutoInsuranceDowneyPage() {
   return (
     <main id="main-content">
       <LocalBusinessSchema />
-      <FAQSchema questions={COMMERCIAL_FAQS} />
       <BreadcrumbSchema crumbs={[
         { name: "Home", url: "https://originalinsurance.net/" },
         { name: "Commercial Auto Insurance Downey", url: "https://originalinsurance.net/commercial-auto-insurance-downey" },
@@ -76,7 +68,7 @@ export default function CommercialAutoInsuranceDowneyPage() {
 
       <PageHero
         title="Commercial Auto & Business Vehicle Insurance in Downey, CA"
-        subtitle="Protect your trucks, vans, fleets, and business vehicles without shopping five carriers yourself. We compare 30+ commercial auto markets for Downey-area owner-operators, small fleets, and local businesses with same-day proof of insurance when you need it."
+        subtitle="Compare commercial auto options for trucks, vans, fleets, and business vehicles. Carrier eligibility, required documents, certificates, and binding time depend on the operation and risk details."
         breadcrumb="Commercial Auto"
         backgroundImage={images.products.commercial}
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
@@ -237,7 +229,7 @@ export default function CommercialAutoInsuranceDowneyPage() {
             badge="Fleet · Single vehicle · NEMT · Delivery"
             stats={[
               { value: "30+", label: "Commercial markets" },
-              { value: "Same day", label: "COI available" },
+              { value: "COI", label: "Certificate support" },
               { value: "25+", label: "Years experience" },
             ]}
             body={
@@ -246,7 +238,7 @@ export default function CommercialAutoInsuranceDowneyPage() {
                   Commercial auto is not one-size-fits-all. A single contractor pickup needs entirely different coverage than a three-van HVAC fleet or a food truck operation. We open with questions about your operation before we touch a quote form.
                 </p>
                 <p className="leading-relaxed">
-                  We have access to specialty commercial markets most standard agents don't — including NEMT operators, for-hire vehicles, and non-owner commercial policies for businesses that use employee vehicles. Certificates of insurance available same day when binding allows.
+                  We can review specialty-market options for operations such as NEMT, for-hire vehicles, and businesses that use employee vehicles. Eligibility and certificate timing depend on the carrier, classification, complete documents, payment, and confirmed binding.
                 </p>
               </>
             }
@@ -315,11 +307,10 @@ export default function CommercialAutoInsuranceDowneyPage() {
                 underwriting issues specific to vehicles working these routes.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                Walk-ins are welcome. Most commercial auto quotes can be
-                completed the same day, and we provide same-day proof of
-                insurance for clients who need it to start a job or satisfy a
-                contract requirement. Call us or start your quote online and
-                we'll reach out promptly.
+                Walk-ins are welcome. Quote and binding time depend on the
+                business classification, driver and vehicle information,
+                documents, payment, and carrier review. We confirm the steps
+                and expected certificate timing before you choose coverage.
               </p>
             </div>
           </Reveal>
@@ -394,8 +385,8 @@ export default function CommercialAutoInsuranceDowneyPage() {
               Ready to protect your business vehicles?
             </h2>
             <p className="text-white/70 mb-6">
-              We compare 30+ commercial auto markets. Same-day proof of
-              insurance and DOT filing coordination available.
+              Compare available commercial auto markets and confirm the
+              documents, binding steps, and certificate timing for your operation.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <button onClick={openQuoteModal} className="btn btn-accent btn-lg">

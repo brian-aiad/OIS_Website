@@ -83,44 +83,31 @@ export default function PicoRiveraPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Pico Rivera drivers have immediate access to two major freeway systems:
-                the 605 (San Gabriel River Freeway) running north-south through the city,
-                and Washington Blvd, Rosemead Blvd, Beverly Blvd, and Whittier Blvd
-                serving as key east-west surface connectors. These corridors bring Pico Rivera
-                residents into close contact with freight traffic, commuters from Whittier and
-                the San Gabriel Valley, and the dense urban driving environment shared with
-                neighboring cities like Montebello, Commerce, and Downey.
+                Pico Rivera residents can work with our Downey office in person or remotely.
+                We compare auto coverage using the actual driver, vehicle, garaging address,
+                annual mileage, use, limits, and deductibles rather than assigning one price
+                or risk profile to the entire city.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                California law requires minimum liability coverage of 30/60/15 — $30,000
-                bodily injury per person, $60,000 per accident, and $15,000 in property
-                damage. These minimums can be exceeded quickly in a real accident involving
-                newer vehicles or significant medical costs. Many Pico Rivera drivers choose
-                higher liability limits and add uninsured motorist protection for more
-                complete coverage.
+                For policies issued or renewed on or after January 1, 2025, California's
+                minimum liability limits are 30/60/15: $30,000 bodily injury per person,
+                $60,000 per accident, and $15,000 property damage. Those limits are a legal
+                minimum, not a recommendation for every household.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Rate factors for Pico Rivera drivers include zip code (90660), vehicle make
-                and model, driving record, prior claims, and whether coverage has been
-                continuous or lapsed. Drivers with clean records and lower-value vehicles
-                can often find affordable auto insurance on liability-only coverage. Drivers with
-                financed or newer vehicles will typically need full coverage, but comparing
-                carriers can still significantly reduce the annual premium.
+                Premiums are individualized using factors such as driving history, vehicle,
+                annual mileage, garaging location, coverage choices, and available discounts.
+                Financed or leased vehicles may also be subject to lender coverage requirements.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                As an independent broker, we compare more than 30 California carriers
-                simultaneously so Pico Rivera drivers see actual market competition — not
-                a single company's rate. Going direct to one insurer means you only get one
-                data point. Working with an independent broker like Original Insurance means
-                every carrier we work with is competing for your business. Our team identifies
-                the ones that price your zip code, vehicle, and driving profile most favorably
-                and walks you through the tradeoffs in plain, bilingual language.
+                As an independent broker, we can compare available options from multiple
+                carriers. We keep limits and deductibles consistent across quotes and explain
+                eligibility, payment, and policy differences before you choose.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                Our Downey office is just minutes west via Washington Blvd. Walk-in quotes
-                are welcome, and timing depends on the coverage and details needed. Same-day proof of
-                insurance is available when you bind a policy with us. We also offer phone
-                and online quotes for clients who prefer not to come in.
+                Our Downey office serves Pico Rivera clients in person and remotely. Walk-in
+                quotes are welcome; quote, binding, and policy-document timing depend on the
+                carrier, completed information, and payment requirements.
               </p>
             </div>
           </Reveal>
@@ -139,9 +126,9 @@ export default function PicoRiveraPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Pico Rivera drivers facing DMV reinstatement requirements after a suspension,
-                uninsured incident, or lapse in coverage can get same-day SR-22 filing through
-                our Downey office, just minutes west via Washington Blvd.
+                Pico Rivera drivers with an SR-22 requirement can compare qualifying policies
+                through our Downey office. Electronic filing availability and timing depend on
+                the selected carrier, completed binding requirements, and DMV systems.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 An SR-22 is a filing, not a separate insurance policy. It is a certificate your
@@ -274,8 +261,8 @@ export default function PicoRiveraPage() {
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-                title: "Same-day SR-22 filing",
-                desc: "Electronic filing to the California DMV the day you bind",
+                title: "SR-22 filing support",
+                desc: "Electronic filing timing depends on the qualifying carrier and DMV systems",
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
@@ -285,7 +272,7 @@ export default function PicoRiveraPage() {
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
                 title: "25+ years serving SE LA",
-                desc: "Downey's trusted broker since 1999 — we know this market",
+                desc: "Downey-based independent brokerage serving Southeast LA since 1999",
               },
             ].map((item) => (
               <StaggerChild key={item.title}>
@@ -376,8 +363,8 @@ export default function PicoRiveraPage() {
                 Get your Pico Rivera auto insurance quote today
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                Quote timing depends on the coverage and details needed. Just minutes west via Washington Blvd —
-                walk-ins welcome, or call ahead.
+                Quote, binding, policy-document, and SR-22 filing timing depend on the carrier and information required.
+                Walk-ins are welcome, or call ahead.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <button onClick={openQuoteModal} className="btn btn-accent">

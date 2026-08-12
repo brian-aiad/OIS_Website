@@ -48,6 +48,7 @@ npm run validate:schema
 - `LocalBusinessSchema` belongs on homepage and city/money pages where explicitly used.
 - Do not add `LocalBusinessSchema` to `/faq`, `/about`, `/contact`, `/services`, `/privacy`, or `/accessibility`.
 - Do not emit `FAQPage`, `Review`, or `AggregateRating` JSON-LD. Google deprecated FAQ rich results and GSC flags the old FAQ/review schema as invalid. Keep visible FAQ and review content only.
+- Homepage `WebSite` schema must not include `SearchAction`, `potentialAction`, or `{search_term_string}` query templates.
 - Every prerendered route needs one self-referencing canonical.
 
 ## File Organization

@@ -4,7 +4,6 @@ import { openQuoteModal } from "../lib/openQuote";
 import { site } from "../lib/site";
 import PageHero from "../components/PageHero";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
-import FAQSchema from "../components/seo/FAQSchema";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 import StatsBar from "../components/StatsBar";
@@ -12,14 +11,6 @@ import PageTestimonials from "../components/PageTestimonials";
 import InsuranceWorkflow from "../components/InsuranceWorkflow";
 import { ConsultationImage } from "../components/ConsultationImage";
 import { images } from "../lib/images";
-
-const NO_LICENSE_FAQS = [
-  { q: "Can I insure a car without a California driver's license?", a: "In certain lawful situations, yes. Vehicle owners who are not the primary driver, foreign-license holders, and ITIN-based applicants may have coverage options." },
-  { q: "Does Original Insurance accept ITIN for car insurance?", a: "Yes. Several California carriers we work with accept ITIN-based applicants who do not have a Social Security Number." },
-  { q: "Will a foreign driver's license work for auto insurance in California?", a: "Many California carriers accept valid licenses issued by other countries. An International Driving Permit can expand your carrier options." },
-  { q: "What documents do I need for no-license auto insurance?", a: "Bring your foreign driver's license, passport, ITIN letter if applicable, vehicle registration, and any current declarations page." },
-  { q: "Is it legal to insure a car you don't personally drive?", a: "Yes. A vehicle owner can be the named insured with a licensed household member listed as the primary driver on the policy." },
-];
 
 export default function NoLicenseInsuranceDowney() {
   usePageMeta({
@@ -32,15 +23,14 @@ export default function NoLicenseInsuranceDowney() {
   return (
     <main id="main-content">
       <LocalBusinessSchema />
-      <FAQSchema questions={NO_LICENSE_FAQS} />
       <BreadcrumbSchema crumbs={[
         { name: "Home", url: "https://originalinsurance.net/" },
         { name: "No-License Insurance Downey", url: "https://originalinsurance.net/no-license-auto-insurance-downey" },
       ]} />
 
       <PageHero
-        title="No-License & International-License Auto Insurance in Downey, CA"
-        subtitle="Vehicle ownership and driving are separate legal situations. We work with carriers that understand the difference and write policies for foreign-license holders, international drivers, and vehicle owners who are not the primary driver."
+        title="Foreign-License & Vehicle-Owner Insurance Options in Downey"
+        subtitle="Review carrier eligibility for foreign-license holders, applicants using an ITIN, and vehicle owners who are not the primary driver. Insurance eligibility does not determine whether someone is legally permitted to drive."
         breadcrumb="No-License Insurance Downey"
         backgroundImage={images.products.noLicense}
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
@@ -61,7 +51,7 @@ export default function NoLicenseInsuranceDowney() {
       <InsuranceWorkflow
         tone="offwhite"
         title="Non-standard license situations need carrier fit"
-        lede="We identify which carriers can consider foreign licenses, ITIN-based applicants, excluded-owner setups, and named-insured arrangements."
+        lede="We ask carriers whether they can consider the applicant's license, identification, ownership, driver, and household details. Eligibility and required documents vary."
       />
 
       {/* Common Scenarios */}
@@ -72,34 +62,34 @@ export default function NoLicenseInsuranceDowney() {
               Common scenarios we help with
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed mb-8">
-              Every situation below involves a lawful vehicle ownership or insurance need. We never advise driving without a valid license, and the policies we write always require that anyone operating the insured vehicle hold a valid license for the jurisdiction where they are driving.
+              Insurance eligibility and legal permission to drive are separate questions. Applicants must disclose every owner, household member, and actual driver accurately. The California DMV—not an insurance quote—determines licensing requirements, including when a new resident must obtain a California license.
             </p>
           </Reveal>
           <Stagger className="grid sm:grid-cols-2 gap-5">
             {[
               {
                 title: "Vehicle Owner Who Doesn't Drive",
-                desc: "You own and register the vehicle but a licensed family member or household member is the primary driver. You can be listed as the named insured with the licensed driver on the policy.",
+                desc: "You own the vehicle but do not operate it. Some carriers may consider an application that accurately lists the owner and licensed primary driver; ownership and household rules vary.",
               },
               {
                 title: "Foreign License Holder",
-                desc: "You hold a valid driver's license issued by another country. Many California carriers accept foreign licenses for coverage. We identify which carriers accept your specific country of origin.",
+                desc: "You present a valid license issued by another country. Carrier acceptance, documentation, and driving-history treatment vary, and California residents must follow DMV licensing rules.",
               },
               {
                 title: "International License Driver",
-                desc: "You are temporarily in California and hold an International Driving Permit (IDP) alongside your home country license. Coverage is available for this situation through select carriers.",
+                desc: "You are temporarily in California and present your home-country license plus an International Driving Permit. An IDP is supporting documentation, not a guarantee of carrier eligibility or permission to drive.",
               },
               {
                 title: "Household Named-Insured Setup",
-                desc: "The vehicle owner and primary driver are different household members. This is a common and legal insurance structure. The named insured on the policy owns the vehicle; the listed driver is the one operating it.",
+                desc: "The vehicle owner and primary driver are different household members. Some carriers may consider this structure after reviewing ownership, household, garaging, and actual-use details.",
               },
               {
                 title: "ITIN-Based Applicants",
-                desc: "You have an Individual Taxpayer Identification Number (ITIN) rather than a Social Security Number. Several carriers accept ITIN for insurance purposes, and we know which ones.",
+                desc: "You use an Individual Taxpayer Identification Number rather than a Social Security number. Acceptance and alternative identification requirements vary by carrier.",
               },
               {
                 title: "Excluded Unlicensed Owner",
-                desc: "In some cases, an unlicensed owner can be excluded from a policy — meaning they are listed as an excluded driver — while a licensed household member is the covered driver. We explain the implications so you fully understand what you're signing.",
+                desc: "Some carriers may permit a non-driving owner to be excluded while a licensed household member is listed as the driver. An excluded person has no driving coverage under that policy and must not operate the vehicle.",
               },
             ].map((item, i) => (
               <StaggerChild key={i}>
@@ -118,11 +108,11 @@ export default function NoLicenseInsuranceDowney() {
         <div className="container max-w-6xl">
           <ConsultationImage
             image={images.clients.noLicenseConsultation}
-            alt="Original Insurance agent in Downey, CA helping ITIN holder and foreign driver's license applicant obtain California auto insurance coverage"
+            alt="Original Insurance agent in Downey reviewing identification and driver information for an auto insurance application"
             eyebrow="Non-Standard Insurance Specialists"
             heading="Coverage guidance for non-standard license situations"
             imageLeft
-            badge="ITIN accepted · Foreign license OK"
+            badge="Eligibility and documents vary"
             stats={[
               { value: "25+", label: "Years experience" },
               { value: "30+", label: "Carriers compared" },
@@ -134,7 +124,7 @@ export default function NoLicenseInsuranceDowney() {
                   Some carriers do not accept every license or ownership situation. We compare lawful options for vehicle owners with foreign licenses, applicants using an ITIN, and households where a licensed primary driver operates the vehicle.
                 </p>
                 <p className="leading-relaxed">
-                  Our bilingual and trilingual staff explain your options in English, Spanish, or Arabic. We know which carriers have the most flexible underwriting and which documents they require. We never advise unlicensed vehicle operation — every driver on the policy must hold a valid license.
+                  Our staff can explain available options in English, Spanish, or Arabic. Carrier requirements change, so we confirm current documentation and underwriting rules for the actual application. We do not advise anyone to operate a vehicle without legal permission to drive.
                 </p>
               </>
             }
@@ -182,10 +172,10 @@ export default function NoLicenseInsuranceDowney() {
               Carrier access for non-standard license situations
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed mb-4">
-              No-license, foreign-license, and international-license situations are not standard applications at most insurance companies. A captive agent who works for one carrier may simply tell you they cannot help — because their single carrier does not write these situations.
+              Foreign-license, ITIN, non-driving-owner, and international-license situations can require additional carrier review and documentation. A decline from one insurer does not establish what another insurer will do.
             </p>
             <p className="text-base text-slate-600 leading-relaxed mb-4">
-              As an independent broker with access to 30+ carriers, we can identify the companies that specifically handle foreign license holders, ITIN applicants, and complex named-insured setups. This carrier knowledge has been built over 25 years of serving Downey and Southeast LA — a community where these situations are common.
+              As an independent broker, we can ask multiple available carriers whether they will consider the disclosed situation. A quote is not guaranteed, and the carrier's application, underwriting decision, and policy documents control.
             </p>
             <p className="text-base text-slate-600 leading-relaxed">
               We will always explain your options clearly and let you choose. If a particular carrier requires additional documentation or has restrictions, we tell you upfront so there are no surprises at the time of claim.
@@ -225,18 +215,18 @@ export default function NoLicenseInsuranceDowney() {
               },
               {
                 icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-                title: "Same-day SR-22 filing",
-                desc: "Electronic filing to the California DMV the same day you bind coverage.",
+                title: "SR-22 filing support",
+                desc: "Electronic filing availability and timing vary by qualifying carrier and DMV systems.",
               },
               {
                 icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
-                title: "No-license programs",
-                desc: "Foreign license, ITIN, and international driver options — we know which carriers say yes.",
+                title: "Non-standard applications",
+                desc: "Foreign-license, ITIN, and non-driving-owner situations reviewed individually.",
               },
               {
                 icon: <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
                 title: "25+ years serving SE LA",
-                desc: "Downey's trusted broker since 1999 — we know this community's situations.",
+                desc: "Downey-based independent brokerage serving Southeast Los Angeles since 1999.",
               },
             ].map((item) => (
               <StaggerChild key={item.title}>

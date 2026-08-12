@@ -11,6 +11,7 @@ Critical rules:
 - Deploy only through `bash scripts/deploy.sh` from the repo root. Do not rely on GitHub/Vercel push deploys for this site.
 - Canonical paths do not use trailing slashes. Explicit trailing-slash redirects in `original-insurance/vercel.json` are intentional.
 - `?q=` URLs are stripped by `original-insurance/middleware.js` with a `308` redirect and also disallowed in `robots.txt`.
+- Do not add `SearchAction` or `{search_term_string}` schema; the site has no public search feature.
 - Do not delete `.vercel/project.json`; it links the repo to the correct Vercel project.
 
 Current source-of-truth docs:

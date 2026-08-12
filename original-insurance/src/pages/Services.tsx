@@ -20,17 +20,17 @@ const SERVICE_TABS = [
     icon: Car,
     badge: "Most Popular",
     title: "Auto Insurance",
-    desc: "From daily drivers to weekend classics — comprehensive coverage with competitive rates and same-day eID cards.",
+    desc: "Coverage options for daily drivers, households, and specialty vehicles, including liability, collision, comprehensive, and uninsured-motorist choices.",
     img: images.services.auto,
     alt: "Premium auto insurance coverage",
     highlights: [
       { title: "Full coverage options", sub: "Liability, comprehensive, collision" },
-      { title: "SR-22 filing included", sub: "Fast processing, no hassle" },
+      { title: "SR-22 filing support", sub: "Carrier timing and eligibility explained" },
       { title: "No license? We can help", sub: "Special programs available" },
       { title: "Multi-car discounts", sub: "Save on family policies" },
     ],
     stats: [
-      { value: "Same Day", label: "eID Cards" },
+      { value: "Digital", label: "Policy Documents" },
       { value: "30+", label: "Carriers" },
       { value: "SR-22", label: "Filing Help" },
     ],
@@ -46,9 +46,9 @@ const SERVICE_TABS = [
     alt: "Comprehensive home insurance protection",
     highlights: [
       { title: "Dwelling & personal property", sub: "Full replacement options" },
-      { title: "Liability protection", sub: "Coverage up to $1M+" },
+      { title: "Liability protection", sub: "Limits vary by carrier and policy" },
       { title: "Renters coverage too", sub: "Coverage for belongings and liability" },
-      { title: "Bundle & save", sub: "Home + Auto discounts" },
+      { title: "Bundle comparison", sub: "Home + auto options reviewed" },
     ],
     stats: [
       { value: "Bundle", label: "Auto + Home" },
@@ -62,11 +62,11 @@ const SERVICE_TABS = [
     icon: Heart,
     badge: null,
     title: "Life Insurance",
-    desc: "Term and whole life options that protect your family's future. Affordable premiums with flexible coverage amounts.",
+    desc: "Term and permanent life options evaluated around your goals, beneficiaries, budget, health, and carrier eligibility.",
     img: images.services.life,
     alt: "Family life insurance planning",
     highlights: [
-      { title: "Term & whole life", sub: "Options for every budget" },
+      { title: "Term & permanent life", sub: "Availability depends on underwriting" },
       { title: "Family protection", sub: "Peace of mind for loved ones" },
       { title: "Flexible coverage amounts", sub: "Matched to family and budget needs" },
       { title: "Clear beneficiary review", sub: "Help structuring who is protected" },
@@ -108,13 +108,13 @@ const SERVICE_TABS = [
     img: images.services.motorcycle,
     alt: "Motorcycle insurance coverage",
     highlights: [
-      { title: "Liability & collision", sub: "Full protection on the road" },
+      { title: "Liability & physical damage", sub: "Limits and deductibles reviewed" },
       { title: "Gear protection", sub: "Helmets, jackets, accessories" },
       { title: "Multi-bike discounts", sub: "Garage policy savings" },
-      { title: "Same day coverage", sub: "Ride today, insured today" },
+      { title: "Binding support", sub: "Timing depends on carrier approval" },
     ],
     stats: [
-      { value: "Same Day", label: "Coverage Available" },
+      { value: "Policy", label: "Options Reviewed" },
       { value: "Gear", label: "Coverage Review" },
       { value: "30+", label: "Carriers" },
     ],
@@ -297,9 +297,9 @@ export default function Services() {
           {/* Quick access grid */}
           <Stagger className="mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
             {[
-              { title: "Need SR-22?", sub: "Fast filing, same-day service" },
-              { title: "Bundle & Save", sub: "Home + Auto discounts" },
-              { title: "Claims Support", sub: "We handle the paperwork" },
+              { title: "Need SR-22?", sub: "Filing process and timing explained" },
+              { title: "Bundle Review", sub: "Compare combined and separate policies" },
+              { title: "Claims Support", sub: "Help locating contacts and documents" },
             ].map((item) => (
               <StaggerChild key={item.title}>
                 <button onClick={openQuoteModal} className="group bg-white hover:bg-brand-50/40 p-5 md:p-6 rounded-2xl ring-1 ring-slate-200/80 hover:ring-brand-200 hover:shadow-lifted transition-all duration-300 block w-full text-left">

@@ -40,10 +40,10 @@ export default function SR22InsuranceDowney() {
       ]} />
 
       <PageHero
-        title="SR-22 Insurance & Same-Day Filing in Downey, CA"
-        subtitle="We file SR-22 certificates electronically with the California DMV the same day you bind your policy. Walk in, get covered, drive away with proof."
+        title="SR-22 Insurance Filing Help in Downey, CA"
+        subtitle="Compare qualifying auto policies, understand the filing requirement, and confirm the carrier's electronic filing process and expected timing before you purchase."
         breadcrumb="SR-22 Insurance Downey"
-        badgeText="Same-Day Electronic Filing"
+        badgeText="Electronic Filing Support"
         badgeType="open"
         backgroundImage={images.products.sr22}
         imageFilter="contrast(1.08) saturate(1.02) brightness(0.96)"
@@ -89,11 +89,11 @@ export default function SR22InsuranceDowney() {
         <div className="container max-w-6xl">
           <ConsultationImage
             image={images.clients.sr22Consultation}
-            alt="Original Insurance broker in Downey, CA reviewing SR-22 filing documents with client and coordinating same-day electronic DMV submission"
+            alt="Original Insurance broker in Downey reviewing SR-22 filing documents and carrier requirements with a client"
             eyebrow="Serving Downey Since 1999"
             heading="Local help with California SR-22 requirements"
             imageLeft
-            badge="Same-day electronic filing"
+            badge="Electronic filing support"
             stats={[
               { value: "Electronic", label: "Filing method" },
               { value: "Varies", label: "Carrier fee" },
@@ -195,7 +195,7 @@ export default function SR22InsuranceDowney() {
         <div className="container max-w-5xl">
           <Reveal className="text-center mb-10">
             <span className="eyebrow">Walk-In Ready</span>
-            <h2 className="mt-3 display-2 text-slate-900">What to bring for same-day filing</h2>
+            <h2 className="mt-3 display-2 text-slate-900">What to bring for an SR-22 quote</h2>
             <p className="mt-3 text-slate-500 max-w-xl mx-auto">
               Walk-ins are welcome. Bringing these items can make quoting and carrier processing more efficient.
             </p>
@@ -253,7 +253,7 @@ export default function SR22InsuranceDowney() {
               The filing charge and the cost of the underlying auto insurance policy vary by carrier, driving history, vehicle, coverage, and other rating factors. We show both before you choose coverage.
             </p>
             <p className="text-base text-slate-600 leading-relaxed mb-4">
-              The premium increase varies significantly by carrier. Some companies specialize in non-standard or high-risk auto insurance and offer more competitive rates for SR-22 situations than standard carriers. This is exactly where an independent broker provides real value — we compare SR-22-eligible carriers side by side so you're not overpaying simply because your first call was to the wrong company.
+              Carrier eligibility and premiums vary for drivers with an SR-22 requirement. We compare available proposals using consistent liability limits, payment terms, and filing details so you can evaluate the differences before choosing.
             </p>
             <p className="text-base text-slate-600 leading-relaxed">
               When the DMV confirms that your filing requirement has ended, we can review the policy again and compare current options. Any change should be coordinated with the insurer to avoid a coverage gap.
@@ -276,7 +276,7 @@ export default function SR22InsuranceDowney() {
               We have been filing SR-22 certificates in Downey and Southeast Los Angeles since 1999. Our team understands the DMV reinstatement process, can answer questions about what documentation the DMV needs, and can communicate in English, Spanish, and Arabic to make sure nothing is misunderstood.
             </p>
             <p className="text-base text-slate-600 leading-relaxed">
-              Once your filing is submitted, we can provide you with written confirmation of the electronic filing for your DMV appointment or court date. Most filings are submitted within hours of binding your policy.
+              When a qualifying carrier submits the filing, we can provide available confirmation for your records. Submission and DMV processing time vary by carrier, time of binding, and DMV systems.
             </p>
             <p className="mt-3 text-sm text-slate-500">
               Want to learn more about our brokerage?{" "}
@@ -335,9 +335,9 @@ export default function SR22InsuranceDowney() {
         <div className="container max-w-3xl text-center">
           <Reveal>
             <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "var(--font-display)" }}>
-              Need same-day SR-22 filing in Downey?
+              Need SR-22 filing help in Downey?
             </h2>
-            <p className="text-white/70 mb-6">Walk in or call — most SR-22 filings are submitted the same day.</p>
+            <p className="text-white/70 mb-6">Walk in or call to compare qualifying policies and confirm the filing steps and expected timing.</p>
             <div className="flex flex-wrap justify-center gap-3">
               <button onClick={openQuoteModal} className="btn btn-accent btn-lg">
                 Get SR-22 Quote Now

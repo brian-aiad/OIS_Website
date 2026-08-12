@@ -6,6 +6,7 @@ import { images, srcset } from "../lib/images";
 import { useImagePreload, usePageMeta } from "../lib/seo";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
+import WebSiteSchema from "../components/seo/WebSiteSchema";
 import ReviewBadge from "../components/seo/ReviewBadge";
 import TrustStrip from "../components/seo/TrustStrip";
 import { CTASection, Section, SectionHeader } from "../design-system";
@@ -429,7 +430,7 @@ function Testimonials() {
 function FAQ() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const qa = [
-    { q: "How fast can I get a quote?", a: "Many quotes are same-day. For specialty lines or complex risks, usually 24-48 hours." },
+    { q: "How long does a quote take?", a: "Timing depends on the coverage type, carrier systems, underwriting questions, and documents required. We confirm what is still needed and keep you updated rather than promising a fixed turnaround." },
     { q: "Do you offer free SR-22 filings?", a: "Yes — free SR-22 filing with qualifying auto policies." },
     { q: "Can you help me after I buy?", a: "Absolutely. Policy changes, claims guidance, renewal checkups — we're here." },
     { q: "Which carriers do you work with?", a: "30+ carriers across personal and commercial lines. Availability varies by risk and location." },
@@ -515,7 +516,7 @@ function ServiceAreas() {
     { name: "Pico Rivera", slug: "pico-rivera", note: "Foreign-license specialists" },
     { name: "Montebello", slug: "montebello", note: "Home & renters coverage" },
     { name: "Commerce", slug: "commerce", note: "Commercial auto & BOP" },
-    { name: "Whittier", slug: "whittier", note: "SR-22 same-day filing" },
+    { name: "Whittier", slug: "whittier", note: "SR-22 filing support" },
   ];
 
   return (
@@ -576,6 +577,7 @@ export default function Home() {
   return (
     <main id="main-content">
       <LocalBusinessSchema />
+      <WebSiteSchema />
       <Hero />
       <div className="bg-white border-b border-slate-100 py-4 text-slate-600">
         <div className="container">

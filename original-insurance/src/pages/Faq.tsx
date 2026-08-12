@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { site } from "../lib/site";
 import { usePageMeta } from "../lib/seo";
 import { openQuoteModal } from "../lib/openQuote";
 import PageHero from "../components/PageHero";
-import FAQSchema from "../components/seo/FAQSchema";
 import BreadcrumbSchema from "../components/seo/BreadcrumbSchema";
 import StatsBar from "../components/StatsBar";
 import PageTestimonials from "../components/PageTestimonials";
@@ -13,16 +12,13 @@ import { Icons } from "../components/Icons";
 import { images } from "../lib/images";
 
 /**
- * Visible answers — rich, 2-5 sentences, may include links and local context.
- * Schema answers — short, factual, no CTAs, no phone numbers.
+ * Visible answers only. This page intentionally emits no FAQPage structured
+ * data because the site is not eligible for Google's FAQ rich results.
  */
 
 type FaqItem = {
   q: string;
-  /** Displayed on page — can include links via renderA */
   a: string;
-  /** Visible FAQ copy only. FAQPage JSON-LD is intentionally disabled. */
-  schemaA: string;
 };
 
 type FaqGroup = {
@@ -38,23 +34,19 @@ const FAQ_GROUPS: FaqGroup[] = [
     items: [
       {
         q: "How much does car insurance cost in Downey?",
-        a: "Most Downey drivers pay between $80 and $180 per month depending on age, driving record, vehicle type, coverage level, and zip code. Rates also vary significantly by carrier — which is exactly why working with an independent broker who compares 30+ carriers in one call makes a real difference. See our full breakdown on the Downey auto insurance page.",
-        schemaA: "Car insurance in Downey, CA typically costs between $80 and $180 per month for most drivers, varying by driving record, vehicle type, coverage level, and zip code.",
+        a: "There is no reliable citywide price range. California auto premiums are individualized using factors such as driving history, years of experience, annual mileage, vehicle, coverage choices, discounts, and where the vehicle is garaged. We compare current quotes using the same limits and deductibles so the prices are genuinely comparable.",
       },
       {
         q: "What is the difference between liability and full coverage?",
         a: "Liability-only covers damage and injuries you cause to others. Full coverage adds collision (damage to your own vehicle in a crash) and comprehensive (theft, weather, vandalism, fire). California's minimum requires liability only, but lenders typically require full coverage on financed or leased vehicles. Most Downey commuters with newer or higher-value cars benefit from full coverage.",
-        schemaA: "Liability insurance covers damage and injuries you cause to others. Full coverage adds collision and comprehensive, which cover damage to your own vehicle from crashes, theft, weather, and other events.",
       },
       {
         q: "What affects my car insurance rate?",
         a: "The main factors are your driving history (at-fault accidents, tickets, DUIs), your vehicle's make, model, and year, the coverage level you select, your zip code, your age, and whether you've had prior coverage lapses. Bundling home and auto or maintaining continuous coverage can reduce your rate.",
-        schemaA: "Car insurance rates are primarily affected by driving history, vehicle type and value, coverage level, zip code, age, and prior coverage history.",
       },
       {
         q: "What is California's minimum liability requirement?",
         a: "California requires 30/60/15 minimum liability — $30,000 for bodily injury per person, $60,000 per accident, and $15,000 for property damage. These limits are relatively low compared to real accident costs, so many drivers in Downey choose higher limits or additional coverage for better protection.",
-        schemaA: "California requires minimum liability coverage of 30/60/15: $30,000 bodily injury per person, $60,000 per accident, and $15,000 for property damage.",
       },
     ],
   },
@@ -64,23 +56,19 @@ const FAQ_GROUPS: FaqGroup[] = [
     items: [
       {
         q: "Can I insure a vehicle if I do not have a traditional California license?",
-        a: "Yes, in certain lawful situations. If you are a vehicle owner who does not drive, a licensed household member can be listed as the primary driver while you remain the named insured. We also work with carriers that accept foreign licenses, international licenses, and ITIN-based applicants. We never facilitate coverage for unlicensed operation of a vehicle. See our full guide for specific scenarios.",
-        schemaA: "Vehicle owners without a traditional California license may have coverage options depending on their situation, including foreign license holders and those with a licensed primary driver listed on the policy. All drivers operating the vehicle must hold a valid license.",
+        a: "Possibly, depending on the carrier and disclosed facts. Some insurers may consider a non-driving vehicle owner, a foreign-license holder, an applicant using an ITIN, or a household with a different licensed primary driver. Insurance eligibility does not establish legal permission to drive, and every owner, household member, and actual driver must be disclosed accurately.",
       },
       {
         q: "Do you work with foreign or international license holders?",
-        a: "Yes. Many California carriers accept valid driver's licenses issued by other countries. If your license is not in the Latin alphabet, bringing an English translation or an International Driving Permit alongside it helps. We identify which of our 30+ carriers accept your specific country's license. See our no-license and foreign-license page for details.",
-        schemaA: "Many California carriers accept valid driver's licenses issued by other countries. An International Driving Permit or English translation of a foreign license can help expand available carrier options.",
+        a: "Some carriers may consider a valid license issued by another country. Acceptance, translations, identification, driving-history treatment, and residency requirements vary. California residents must follow DMV licensing rules; an International Driving Permit does not replace the underlying license or guarantee coverage.",
       },
       {
         q: "What documents help you find coverage?",
         a: "Bring whatever you have — we'll work with it. Most helpful: a foreign driver's license, passport, ITIN letter, vehicle registration, and any existing declarations page. If a licensed household member is the primary driver, their license is also needed. The more documentation you have, the more carriers we can approach on your behalf.",
-        schemaA: "Helpful documents include a foreign driver's license, passport, ITIN letter, vehicle registration, and any current declarations page. A licensed household member's license is also needed if they are the primary driver.",
       },
       {
         q: "Can a vehicle owner who doesn't drive still be insured?",
-        a: "Yes. A vehicle owner can be listed as the named insured on a policy with a licensed family member or household member listed as the primary driver. The named insured owns and registers the vehicle; the listed driver is covered to operate it. This is a common and legal insurance arrangement.",
-        schemaA: "A vehicle owner who does not drive can be listed as the named insured with a licensed household member listed as the primary driver on the policy.",
+        a: "Some carriers may consider a non-driving owner with a different licensed primary driver after reviewing ownership, household, garaging, and use. The application must identify the actual drivers, and an excluded person has no driving coverage under that policy.",
       },
     ],
   },
@@ -91,27 +79,22 @@ const FAQ_GROUPS: FaqGroup[] = [
       {
         q: "What is SR-22 insurance in California?",
         a: "An SR-22 is a filing — not a separate insurance policy. It is proof an insurer sends to the California DMV confirming required financial responsibility. Filing charges and the underlying policy cost vary by carrier. See our SR-22 page for a full walkthrough.",
-        schemaA: "An SR-22 is a filing your insurer sends to the California DMV to confirm you carry the required liability coverage. It is not a separate insurance policy.",
       },
       {
         q: "Who usually needs SR-22?",
         a: "Common triggers in California include: a lapse in auto insurance while your vehicle is registered, a DUI conviction, a license suspension or revocation, an at-fault accident while uninsured, a hit-and-run determination, or a court order. The California DMV will notify you if SR-22 is required.",
-        schemaA: "SR-22 is commonly required after a coverage lapse, DUI conviction, license suspension, at-fault accident while uninsured, or by court order.",
       },
       {
         q: "How long do I need SR-22?",
         a: "The required period depends on the DMV or court action. California DMV materials commonly refer to a three-year period in certain cases. A lapse can affect driving privileges, so confirm your personal start and end dates directly with the DMV.",
-        schemaA: "The required SR-22 period depends on the DMV or court action. Drivers should confirm their own dates directly with the California DMV.",
       },
       {
-        q: "What is same-day SR-22 filing?",
+        q: "How quickly can an SR-22 be filed?",
         a: "Qualifying insurers can submit SR-22 proof electronically after a policy is bound. Processing time depends on the carrier, the time of day, and DMV systems; we explain the expected timing before you purchase.",
-        schemaA: "Same-day SR-22 filing means the insurer submits the SR-22 certificate electronically to the California DMV on the day the policy is bound.",
       },
       {
         q: "How much does SR-22 cost?",
         a: "The filing charge and underlying insurance premium vary by carrier and driving history. We compare eligible carriers and show the filing charge, limits, deductibles, and policy price before you choose coverage.",
-        schemaA: "SR-22 filing charges and the underlying insurance premium vary by carrier and driving history.",
       },
     ],
   },
@@ -121,31 +104,23 @@ const FAQ_GROUPS: FaqGroup[] = [
     items: [
       {
         q: "How fast can I get proof of insurance?",
-        a: "In most cases, immediately. Once we bind your policy we email you an eID card and a declarations page. For SR-22 situations, we file electronically with the DMV the same day. Walk-ins at our Downey office typically leave with physical proof of coverage before they drive away.",
-        schemaA: "Proof of insurance is typically issued immediately after a policy is bound, including a digital ID card emailed to the client.",
+        a: "After a carrier confirms that coverage is bound, proof of insurance is generally delivered electronically. Timing depends on the carrier, payment confirmation, required documents, and the type of policy. For SR-22 situations, we explain the carrier's filing process and expected timing before you purchase.",
       },
       {
         q: "What do I do after an accident?",
         a: "First, make sure everyone is safe and call 911 if there are injuries. Then document the scene — photos, the other driver's license and insurance information, and the police report number if applicable. Notify your carrier's 24-hour claims line as soon as possible. Then call us — we can help you understand the process, communicate with adjusters, and follow up on the status of your claim.",
-        schemaA: "After an accident, document the scene, exchange insurance information, and notify your carrier's claims line. Your insurance broker can help navigate the claims process.",
       },
       {
         q: "How does your office help with claims?",
-        a: "We act as your advocate with the carrier. We help you understand what your policy covers, assist with documentation, answer questions from adjusters, recommend repair shops if needed, and follow up on delays. This service is included — there is no separate fee for claims guidance.",
-        schemaA: "An independent broker can assist with claims documentation, communication with adjusters, and follow-up on claim status as part of their ongoing client service.",
+        a: "We help you locate the carrier's claims contact, understand requested documents, and follow up on communication questions. The carrier and assigned adjuster decide coverage and settlement under the policy; we do not replace the adjuster or make claim decisions.",
       },
       {
         q: "Can I get help in Spanish or Arabic?",
         a: "Yes. Our Downey office provides service in English, Spanish, and Arabic. Ask for the language you prefer when you call, text, or visit so our team can explain the available options clearly.",
-        schemaA: "The office provides service in English, Spanish, and Arabic, including policy explanations and document reviews in each language.",
       },
     ],
   },
 ];
-
-const SCHEMA_FAQS = FAQ_GROUPS.flatMap((g) =>
-  g.items.map((item) => ({ q: item.q, a: item.schemaA }))
-);
 
 export default function Faq() {
   usePageMeta({
@@ -155,25 +130,18 @@ export default function Faq() {
     canonical: "https://originalinsurance.net/faq",
   });
 
-  const navigate = useNavigate();
-  const { search } = useLocation();
-  useEffect(() => {
-    if (search) navigate("/faq", { replace: true });
-  }, [search, navigate]);
-
   const [openKey, setOpenKey] = useState<string | null>(null);
 
   return (
     <main id="main-content">
-      <FAQSchema questions={SCHEMA_FAQS} />
       <BreadcrumbSchema crumbs={[
         { name: "Home", url: "https://originalinsurance.net/" },
         { name: "FAQ", url: "https://originalinsurance.net/faq" },
       ]} />
 
       <PageHero
-        title="Downey Auto Insurance FAQ"
-        subtitle="Straight answers for Downey drivers about car insurance cost, SR-22, no-license options, proof of insurance, and claims help."
+        title="California insurance questions, answered"
+        subtitle="Plain-language guidance on auto coverage, SR-22 filings, foreign-license situations, proof of insurance, and claims support from our Downey office."
         breadcrumb="FAQ"
         backgroundImage={images.claims.docs}
         imageFilter="contrast(1.08) saturate(1.02) brightness(0.96)"
@@ -239,7 +207,7 @@ export default function Faq() {
                               {group.id === "cost-coverage" && i === 0 && (
                                 <p className="mt-3">
                                   <Link to="/auto-insurance-downey-ca" className="text-brand-700 font-medium hover:underline">
-                                    See full cost breakdown for Downey auto insurance →
+                                    Read the Downey auto insurance guide →
                                   </Link>
                                 </p>
                               )}

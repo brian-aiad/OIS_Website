@@ -308,7 +308,7 @@ export default function Contact() {
                   </button>
 
                   <p className="text-[12px] text-slate-400 mt-3 text-center">
-                    We typically respond within <strong className="text-slate-500">1–2 hours</strong> during business hours
+                    Response time varies with call volume and the information needed; urgent requests are best handled by phone
                   </p>
                   <p className="mt-3 rounded-lg bg-slate-50 px-3 py-2 text-center text-[11px] leading-relaxed text-slate-500 ring-1 ring-slate-200">
                     Do not include Social Security numbers, payment-card details, passwords, or full driver’s-license images.{" "}

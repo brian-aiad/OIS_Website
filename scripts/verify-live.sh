@@ -146,12 +146,16 @@ fi
 echo ""
 echo "Search query cleanup (expected final 200 at /faq with q removed):"
 for path in '/faq?q=%7Bsearch_term_string%7D' '/faq/?q=%7Bsearch_term_string%7D'; do
+  expected_first_location="/faq"
+  [[ "$path" == /faq/* ]] && expected_first_location="/faq/"
+  first_code="$(status_code "$PROD$path")"
+  first_location="$(redirect_location "$PROD$path")"
   result="$(curl -sS -L -o /dev/null -w '%{http_code}|%{url_effective}|%{num_redirects}' --max-redirs 5 "$PROD$path" || true)"
   IFS='|' read -r final_code final_url redirect_count <<< "$result"
-  if [[ "$final_code" == "200" && "$final_url" == "$PROD/faq" && "$redirect_count" -ge 1 && "$redirect_count" -le 2 ]]; then
+  if [[ "$first_code" == "308" && "$first_location" == "$expected_first_location" && "$final_code" == "200" && "$final_url" == "$PROD/faq" && "$redirect_count" -ge 1 && "$redirect_count" -le 2 ]]; then
     ok "$path -> /faq ($redirect_count redirect(s))"
   else
-    fail "$path ended at ${final_url:-<missing>} with ${final_code:-<missing>} after ${redirect_count:-<missing>} redirects"
+    fail "$path first hop ${first_code:-<missing>} -> ${first_location:-<missing>}; final ${final_code:-<missing>} at ${final_url:-<missing>}"
   fi
 done
 
@@ -174,9 +178,13 @@ echo "Schema audit:"
 about_ia=$(curl -sS "$PROD/about" | grep -c "InsuranceAgency" || true)
 services_ia=$(curl -sS "$PROD/services" | grep -c "InsuranceAgency" || true)
 home_ia=$(curl -sS "$PROD/" | grep -c "InsuranceAgency" || true)
+home_website=$(curl -sS "$PROD/" | grep -c '"@type":"WebSite"' || true)
+home_search_action=$(curl -sS "$PROD/" | grep -c 'SearchAction\|search_term_string' || true)
 if [[ "$about_ia" -eq 0 ]]; then ok "About: InsuranceAgency absent"; else fail "About: InsuranceAgency should be absent"; fi
 if [[ "$services_ia" -eq 0 ]]; then ok "Services: InsuranceAgency absent"; else fail "Services: InsuranceAgency should be absent"; fi
 if [[ "$home_ia" -ge 1 ]]; then ok "Homepage: InsuranceAgency present"; else fail "Homepage: InsuranceAgency missing"; fi
+if [[ "$home_website" -ge 1 ]]; then ok "Homepage: WebSite identity present"; else fail "Homepage: WebSite identity missing"; fi
+if [[ "$home_search_action" -eq 0 ]]; then ok "Homepage: no query-based SearchAction"; else fail "Homepage: SearchAction/query placeholder must be absent"; fi
 
 echo ""
 echo "Homepage city links (expected all 12):"

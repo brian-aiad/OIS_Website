@@ -83,10 +83,10 @@ export default function CerritosPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Cerritos sits at the junction of two major freeways — the 605 (San Gabriel River Freeway) running north–south and the 91 (Artesia Freeway) cutting east–west — making it one of the higher-traffic communities in southeast Los Angeles County. Daily commuters navigating Studebaker Rd, Gridley Rd, and Artesia Blvd know that congestion and stop-and-go conditions increase the statistical risk of a fender-bender or rear-end collision, which is one reason insurers price coverage in this ZIP code the way they do.
+                Cerritos residents can work with our Downey office in person or remotely. We compare auto coverage using the actual driver, vehicle, garaging address, annual mileage, use, limits, and deductibles rather than assigning one price or risk profile to the entire city.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                California law requires every registered vehicle to carry minimum liability limits of 30/60/15 — $30,000 bodily injury per person, $60,000 per accident, and $15,000 property damage. These minimums are a legal floor, not a recommendation. A single serious accident in today's market can easily exceed those limits, leaving the at-fault driver personally responsible for the gap. Many Cerritos families choose higher liability limits and add uninsured motorist coverage given the volume of daily traffic on the 605 corridor.
+                For policies issued or renewed on or after January 1, 2025, California's minimum liability limits are 30/60/15: $30,000 bodily injury per person, $60,000 per accident, and $15,000 property damage. Those limits are a legal minimum, not a recommendation for every household. Higher limits and optional coverages may also be quoted when available.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 As an independent broker, we compare multiple California carriers. Rate factors in Cerritos include your driving record, vehicle make and model, annual mileage, prior claims, coverage history, ZIP code, and whether you qualify for a home and auto bundle. Discounts vary, so we compare the resulting price, limits, and deductibles rather than assuming one carrier or bundle is best.
@@ -95,7 +95,7 @@ export default function CerritosPage() {
                 Our team explains policy options in English, Spanish, or Arabic. There is no pressure to choose a specific carrier and no obligation to buy. Whether you commute on the 605, run a business near Artesia Boulevard, or are reviewing auto coverage, we help you compare limits, deductibles, exclusions, and price before deciding.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                Cerritos homeowners who bundle home and auto policies consistently see the strongest discounts. If you own a home in one of Cerritos's well-maintained residential neighborhoods, asking about a bundle quote alongside your auto policy is one of the easiest ways to reduce your overall insurance spend without changing your coverage levels.
+                Some carriers offer home-and-auto discounts, but the amount and eligibility vary. We compare the combined premium, limits, deductibles, and exclusions with separate-carrier options so the bundle can be evaluated on total value rather than the discount label alone.
               </p>
             </div>
           </Reveal>
@@ -114,7 +114,7 @@ export default function CerritosPage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Cerritos residents needing SR-22 filing to reinstate a California driver's license after a suspension, lapse, or DUI can file same-day through our Downey office, just minutes away via the 605.
+                Cerritos residents with an SR-22 requirement can compare qualifying policies through our Downey office. Electronic filing availability and timing depend on the selected carrier, completed binding requirements, and DMV systems.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 It is important to understand that an SR-22 is a filing, not a separate insurance policy. It is a certificate your insurance carrier submits electronically to the California DMV confirming you carry the state-required minimum liability coverage. Common triggers include a coverage lapse, an at-fault accident while uninsured, a DUI or reckless driving conviction, a court order, or a DMV-mandated reinstatement requirement.
@@ -207,8 +207,8 @@ export default function CerritosPage() {
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-                title: "Same-day SR-22 filing",
-                desc: "Electronic filing to the California DMV the day you bind",
+                title: "SR-22 filing support",
+                desc: "Electronic filing timing depends on the qualifying carrier and DMV systems",
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
@@ -218,7 +218,7 @@ export default function CerritosPage() {
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
                 title: "25+ years serving SE LA",
-                desc: "Downey's trusted broker since 1999 — we know this market",
+                desc: "Downey-based independent brokerage serving Southeast LA since 1999",
               },
             ].map((item) => (
               <StaggerChild key={item.title}>
@@ -308,7 +308,7 @@ export default function CerritosPage() {
                 Ready for a Free Cerritos Auto Quote?
               </h2>
               <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                Quote timing depends on the coverage and details needed. Compare 30+ carriers for affordable auto insurance, SR-22 filings, and home bundles — same-day proof of insurance available.
+                Quote, binding, policy-document, and SR-22 filing timing depend on the carrier and information required. Compare auto, SR-22, and home bundle options with consistent limits and deductibles.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <button onClick={openQuoteModal} className="btn btn-accent">

@@ -46,7 +46,7 @@ export default function CommercePage() {
 
       <PageHero
         title="Auto Insurance in City of Commerce, CA"
-        subtitle="Commercial and personal auto insurance for City of Commerce businesses and residents — 30+ carriers, same-day SR-22, bilingual service."
+        subtitle="Commercial and personal auto insurance review for City of Commerce businesses and residents, with multilingual service and SR-22 filing support."
         breadcrumb="Commerce"
         backgroundImage="/images/ois-city-small-business-v4.webp"
         imageFilter="contrast(1.08) saturate(1.04) brightness(0.96)"
@@ -82,48 +82,33 @@ export default function CommercePage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                The City of Commerce sits at the intersection of three major Southern
-                California freeways — the 710 (Long Beach Freeway), the 5 (Santa Ana
-                Freeway), and the 60 (Pomona Freeway) — making it one of the most logistically
-                significant small cities in the region. Eastern Ave and Garfield Ave carry
-                heavy surface traffic connecting Commerce to neighboring Montebello, Pico
-                Rivera, and the broader Southeast LA corridor.
+                City of Commerce residents and businesses can work with our Downey office in
+                person or remotely. We begin by identifying whether each vehicle is used
+                personally, commercially, or both because the correct policy classification
+                matters more than a generic citywide price estimate.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Commerce is home to a large concentration of industrial employers, distribution
-                warehouses, and manufacturing operations. Many residents and owner-operators
-                here need both commercial auto coverage — for business vehicles, delivery vans,
-                and work trucks — and personal auto coverage for their private vehicles. As an
-                independent broker, we write both, and we can bundle commercial and personal
-                policies to simplify your coverage and potentially reduce your overall premiums.
-                If you run a small fleet, operate as an independent contractor, or use a vehicle
-                for any business purpose, a personal auto policy alone may not cover you when it
-                matters most.
+                A contractor truck, delivery van, fleet vehicle, and personally used car can
+                require different underwriting information and coverage. Tell us who owns the
+                vehicle, how it is used, where it travels, what it carries, and who drives it so
+                we can approach carriers that consider the actual operation.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                California's minimum liability requirement is 30/60/15 — $30,000 bodily injury
-                per person, $60,000 per accident, and $15,000 property damage. For personal
-                vehicles, many Commerce drivers choose higher limits given the high volume of
-                commercial traffic on the 710 and 5. For commercial vehicles, minimum liability
-                limits are set even higher by state and federal regulations depending on vehicle
-                type and use.
+                For personal auto policies issued or renewed on or after January 1, 2025,
+                California's minimum liability limits are 30/60/15. Commercial requirements
+                vary by vehicle, ownership, use, contracts, filings, and applicable state or
+                federal rules, so the operation must be reviewed individually.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
-                Rate factors for Commerce drivers and businesses include zip code (90022 or
-                90040), vehicle type and use, annual mileage, driver history, and whether
-                vehicles are used for personal or commercial purposes. Drivers seeking
-                affordable auto insurance for personal vehicles with clean records will find
-                competitive options among the 30+ carriers we represent. Business owners
-                need accurate commercial classification to avoid coverage gaps — we help
-                ensure the policy matches the actual use.
+                Quotes depend on vehicle type and use, radius, mileage, driver history,
+                garaging location, limits, deductibles, and requested filings or certificates.
+                We compare proposals only after checking that each carrier received the same
+                material information.
               </p>
               <p className="text-base text-slate-600 leading-relaxed">
-                As an independent broker, we never steer you toward a single carrier's
-                product. We compare the market and identify the combination of price, coverage,
-                and carrier strength that fits each Commerce client — whether that is a personal
-                liability policy, a commercial auto program, a business owner's policy (BOP),
-                or a bundle of multiple lines. Our Downey office is accessible via the 710,
-                5, or 60 freeways.
+                We can review personal auto, commercial auto, hired and non-owned auto, and
+                related business coverage where available. The proposal and policy documents
+                control; we explain material differences before you choose.
               </p>
             </div>
           </Reveal>
@@ -142,9 +127,9 @@ export default function CommercePage() {
             </h2>
             <div className="prose prose-slate max-w-none">
               <p className="text-lg text-slate-600 leading-relaxed mb-4">
-                Commerce drivers and owner-operators needing SR-22 filing or commercial fleet
-                coverage can get same-day service through our Downey office, accessible via
-                the 710, 5, or 60 freeways.
+                Commerce drivers and owner-operators can ask our Downey office to review SR-22
+                or commercial fleet options. Quote, binding, certificate, and filing timing
+                depend on the carrier and completed underwriting information.
               </p>
               <p className="text-base text-slate-600 leading-relaxed mb-4">
                 An SR-22 is a filing, not a standalone insurance policy. It is a certificate
@@ -277,8 +262,8 @@ export default function CommercePage() {
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
-                title: "Same-day SR-22 filing",
-                desc: "Electronic filing to the California DMV the day you bind",
+                title: "SR-22 filing support",
+                desc: "Electronic filing timing depends on the qualifying carrier and DMV systems",
               },
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
@@ -288,7 +273,7 @@ export default function CommercePage() {
               {
                 icon: <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
                 title: "25+ years serving SE LA",
-                desc: "Downey's trusted broker since 1999 — we know this market",
+                desc: "Downey-based independent brokerage serving Southeast LA since 1999",
               },
             ].map((item) => (
               <StaggerChild key={item.title}>

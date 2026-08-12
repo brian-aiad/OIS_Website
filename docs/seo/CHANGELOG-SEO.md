@@ -5,6 +5,24 @@ All SEO-relevant changes, ordered newest-first. Format:
 
 ---
 
+## 2026-08-12
+
+### Search Console cleanup and people-first insurance content hardening
+**Commit:** pending
+
+**What changed:**
+- Verified the two historical `/faq?q={search_term_string}` variants now permanently redirect to `/faq` without a loop; strengthened live verification to assert the first hop and final canonical URL.
+- Added homepage `WebSite` identity schema without `SearchAction` or query templates, and added source/build checks that reject future `SearchAction`, `{search_term_string}`, FAQ schema, and unsupported review schema regressions.
+- Removed obsolete no-op `FAQSchema` code and retained visible FAQ content only.
+- Removed unsupported fixed auto/renters price ranges, same-day guarantees, response-time promises, superlatives, and speculative neighborhood/ZIP underwriting claims.
+- Reworked Bellflower and Norwalk content around useful quote preparation, consistent comparison, accurate vehicle use, and office transparency instead of search-first local rate claims.
+- Qualified all city-page SR-22 timing and rewrote foreign-license, ITIN, non-driving-owner, and excluded-driver language to distinguish carrier eligibility from California DMV licensing rules.
+- Expanded the visible information-standards panel with California home/renters and driver-license primary sources and updated the review date.
+
+**Why:** Search Console still displayed URLs last crawled in April–June 2026, while current performance showed rising impressions but weak clicks. Google guidance prioritizes people-first, sourced content and warns against doorway-like city pages and scaled content without added value. California consumer guidance also makes clear that premiums are individualized and survey examples are not quotes.
+
+**Validation:** `npm run lint`, `npm run seo-lint`, `npm run build`, and `npm run validate:schema` passed. Production deployment and live verification pending.
+
 ## 2026-08-07
 
 ### People-first insurance trust, search-intent, and visual refinement

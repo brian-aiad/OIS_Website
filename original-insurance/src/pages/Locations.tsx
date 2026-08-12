@@ -116,7 +116,7 @@ export default function Locations() {
       <InsuranceWorkflow
         tone="offwhite"
         title="Walk in ready — no appointment needed"
-        lede="Bring your vehicle info, current coverage, and any specific situation details. We'll compare carriers, explain options, and bind same-day."
+        lede="Bring your vehicle information, current coverage, and situation details. We'll compare available options, explain the differences, and confirm what the carrier needs to bind."
       />
 
       {/* ── Main content: 2-column ── */}
