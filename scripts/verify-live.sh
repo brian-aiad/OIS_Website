@@ -147,12 +147,18 @@ echo ""
 echo "Search query cleanup (expected final 200 at /faq with q removed):"
 for path in '/faq?q=%7Bsearch_term_string%7D' '/faq/?q=%7Bsearch_term_string%7D'; do
   expected_first_location="/faq"
-  [[ "$path" == /faq/* ]] && expected_first_location="/faq/"
+  expected_redirects=1
+  if [[ "$path" == /faq/* ]]; then
+    # Vercel canonicalizes the trailing slash first while preserving the query;
+    # middleware then removes q on the second permanent redirect.
+    expected_first_location="/faq?q=%7Bsearch_term_string%7D"
+    expected_redirects=2
+  fi
   first_code="$(status_code "$PROD$path")"
   first_location="$(redirect_location "$PROD$path")"
   result="$(curl -sS -L -o /dev/null -w '%{http_code}|%{url_effective}|%{num_redirects}' --max-redirs 5 "$PROD$path" || true)"
   IFS='|' read -r final_code final_url redirect_count <<< "$result"
-  if [[ "$first_code" == "308" && "$first_location" == "$expected_first_location" && "$final_code" == "200" && "$final_url" == "$PROD/faq" && "$redirect_count" -ge 1 && "$redirect_count" -le 2 ]]; then
+  if [[ "$first_code" == "308" && "$first_location" == "$expected_first_location" && "$final_code" == "200" && "$final_url" == "$PROD/faq" && "$redirect_count" -eq "$expected_redirects" ]]; then
     ok "$path -> /faq ($redirect_count redirect(s))"
   else
     fail "$path first hop ${first_code:-<missing>} -> ${first_location:-<missing>}; final ${final_code:-<missing>} at ${final_url:-<missing>}"

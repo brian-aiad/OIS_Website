@@ -8,7 +8,7 @@ All SEO-relevant changes, ordered newest-first. Format:
 ## 2026-08-12
 
 ### Search Console cleanup and people-first insurance content hardening
-**Commit:** pending
+**Commit:** `b0d918cc`
 
 **What changed:**
 - Verified the two historical `/faq?q={search_term_string}` variants now permanently redirect to `/faq` without a loop; strengthened live verification to assert the first hop and final canonical URL.
@@ -21,7 +21,7 @@ All SEO-relevant changes, ordered newest-first. Format:
 
 **Why:** Search Console still displayed URLs last crawled in April–June 2026, while current performance showed rising impressions but weak clicks. Google guidance prioritizes people-first, sourced content and warns against doorway-like city pages and scaled content without added value. California consumer guidance also makes clear that premiums are individualized and survey examples are not quotes.
 
-**Validation:** `npm run lint`, `npm run seo-lint`, `npm run build`, and `npm run validate:schema` passed. Production deployment and live verification pending.
+**Validation:** `npm run lint`, `npm run seo-lint`, `npm run build`, and `npm run validate:schema` passed. Deployed to production on 2026-08-12 through `scripts/deploy.sh`; the live suite passed all canonical, redirect, junk-URL, sitemap, robots, prerender, and schema checks.
 
 ## 2026-08-07
 
