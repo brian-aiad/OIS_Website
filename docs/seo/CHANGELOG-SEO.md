@@ -8,7 +8,7 @@ All SEO-relevant changes, ordered newest-first. Format:
 ## 2026-08-20
 
 ### Google text-result thumbnail eligibility
-**Commit:** pending
+**Commit:** `f6d9577e`
 
 **What changed:**
 - Generated and web-optimized a 1448x1086 insurance consultation image composed to remain clear in Google's small square thumbnail crop.
@@ -19,7 +19,7 @@ All SEO-relevant changes, ordered newest-first. Format:
 
 **Why:** Google chooses text-result thumbnails automatically. These changes follow Google's image SEO guidance by using a relevant, high-resolution, non-text-heavy photo and exposing a consistent preferred image through crawlable HTML and metadata.
 
-**Validation:** `npm run lint`, `npm run seo-lint`, `npm run build`, and `npm run validate:schema` passed. Playwright confirmed the preferred image is visible at its intended 4:3 layout with descriptive alt text. Production deployment and live verification pending.
+**Validation:** `npm run lint`, `npm run seo-lint`, `npm run build`, and `npm run validate:schema` passed. Playwright confirmed the preferred image is visible at its intended 4:3 layout with descriptive alt text. Deployed to production through `scripts/deploy.sh` on 2026-08-20; all routing, sitemap, schema, and live image checks passed.
 
 ## 2026-08-12
 

@@ -181,11 +181,12 @@ fi
 
 echo ""
 echo "Schema audit:"
+home_html="$(curl -sS "$PROD/")"
 about_ia=$(curl -sS "$PROD/about" | grep -c "InsuranceAgency" || true)
 services_ia=$(curl -sS "$PROD/services" | grep -c "InsuranceAgency" || true)
-home_ia=$(curl -sS "$PROD/" | grep -c "InsuranceAgency" || true)
-home_website=$(curl -sS "$PROD/" | grep -c '"@type":"WebSite"' || true)
-home_search_action=$(curl -sS "$PROD/" | grep -c 'SearchAction\|search_term_string' || true)
+home_ia=$(printf '%s' "$home_html" | grep -c "InsuranceAgency" || true)
+home_website=$(printf '%s' "$home_html" | grep -c '"@type":"WebSite"' || true)
+home_search_action=$(printf '%s' "$home_html" | grep -c 'SearchAction\|search_term_string' || true)
 if [[ "$about_ia" -eq 0 ]]; then ok "About: InsuranceAgency absent"; else fail "About: InsuranceAgency should be absent"; fi
 if [[ "$services_ia" -eq 0 ]]; then ok "Services: InsuranceAgency absent"; else fail "Services: InsuranceAgency should be absent"; fi
 if [[ "$home_ia" -ge 1 ]]; then ok "Homepage: InsuranceAgency present"; else fail "Homepage: InsuranceAgency missing"; fi
@@ -193,8 +194,23 @@ if [[ "$home_website" -ge 1 ]]; then ok "Homepage: WebSite identity present"; el
 if [[ "$home_search_action" -eq 0 ]]; then ok "Homepage: no query-based SearchAction"; else fail "Homepage: SearchAction/query placeholder must be absent"; fi
 
 echo ""
+echo "Homepage preferred image:"
+preferred_image="$PROD/images/ois-insurance-consultation-thumbnail-2026.jpg"
+preferred_headers="$(curl -sS -I --max-redirs 0 "$preferred_image" | tr -d '\r')"
+preferred_code="$(printf '%s\n' "$preferred_headers" | awk '/^HTTP\// { print $2; exit }')"
+preferred_type="$(printf '%s\n' "$preferred_headers" | awk 'BEGIN { IGNORECASE=1 } /^content-type:/ { sub(/^[^:]+:[[:space:]]*/, ""); print; exit }')"
+if [[ "$preferred_code" == "200" && "$preferred_type" == "image/jpeg" ]]; then
+  ok "Preferred image returns 200 image/jpeg"
+else
+  fail "Preferred image returned ${preferred_code:-<missing>} ${preferred_type:-<missing>}"
+fi
+if [[ "$home_html" == *"<meta property=\"og:image\" content=\"$preferred_image\""* ]]; then ok "Homepage og:image matches"; else fail "Homepage og:image is missing or incorrect"; fi
+if [[ "$home_html" == *'"primaryImageOfPage"'* && "$home_html" == *"$preferred_image"* ]]; then ok "Homepage primaryImageOfPage matches"; else fail "Homepage primaryImageOfPage is missing or incorrect"; fi
+if [[ "$home_html" == *'src="/images/ois-insurance-consultation-thumbnail-2026.jpg"'* ]]; then ok "Preferred image is visibly embedded"; else fail "Preferred image is not visibly embedded"; fi
+if [[ "$sitemap" == *'<image:loc>https://originalinsurance.net/images/ois-insurance-consultation-thumbnail-2026.jpg</image:loc>'* ]]; then ok "Preferred image is in sitemap"; else fail "Preferred image is missing from sitemap"; fi
+
+echo ""
 echo "Homepage city links (expected all 12):"
-home_html="$(curl -sS "$PROD/")"
 for city in downey bellflower cerritos commerce lakewood lynwood \
             montebello norwalk paramount pico-rivera south-gate whittier; do
   if [[ "$home_html" == *"/insurance/$city"* ]]; then
