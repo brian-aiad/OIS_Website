@@ -13,6 +13,8 @@ export const images = {
     officeDetail: "/images/ois-office-interior-real.jpg",
   },
   home: {
+    /** Preferred homepage/search-preview image; centered for square thumbnail crops */
+    searchThumbnail: "/images/ois-insurance-consultation-thumbnail-2026.jpg",
     why: "/images/ois-home-why-hispanic-consult-v4.webp",
     reviews: "/images/ois-home-reviews-client-v4.webp",
   },

@@ -59,9 +59,9 @@ export default function LocalBusinessSchema({
       url,
       telephone: "+1-310-538-8666",
       image: [
-        "https://originalinsurance.net/og-image.png",
-        "https://originalinsurance.net/images/ois-hero-storefront-logo-v4.webp",
-        "https://originalinsurance.net/images/ois-contact-reception-v4.webp",
+        "https://originalinsurance.net/images/ois-insurance-consultation-thumbnail-2026.jpg",
+        "https://originalinsurance.net/images/ois-storefront-real.jpg",
+        "https://originalinsurance.net/images/ois-office-interior-real.jpg",
       ],
       contactPoint: [
         {

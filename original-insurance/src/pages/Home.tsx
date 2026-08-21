@@ -7,6 +7,7 @@ import { useImagePreload, usePageMeta } from "../lib/seo";
 import { Reveal, Stagger, StaggerChild } from "../components/AnimatedSection";
 import LocalBusinessSchema from "../components/seo/LocalBusinessSchema";
 import WebSiteSchema from "../components/seo/WebSiteSchema";
+import HomePageSchema from "../components/seo/HomePageSchema";
 import ReviewBadge from "../components/seo/ReviewBadge";
 import TrustStrip from "../components/seo/TrustStrip";
 import { CTASection, Section, SectionHeader } from "../design-system";
@@ -238,10 +239,10 @@ function AboutSplit() {
           <Reveal direction="left" className="relative">
             <div className="rounded-3xl overflow-hidden shadow-heavy ring-1 ring-slate-100 aspect-[4/3]">
               <img
-                src={images.home.why}
-                srcSet={srcset(images.home.why)}
+                src={images.home.searchThumbnail}
+                srcSet={srcset(images.home.searchThumbnail)}
                 sizes="(max-width: 1024px) 100vw, 600px"
-                alt="Original Insurance broker reviewing coverage options with Downey clients"
+                alt="Insurance advisor reviewing auto and home coverage options with a client"
                 className="h-full w-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -578,6 +579,7 @@ export default function Home() {
     <main id="main-content">
       <LocalBusinessSchema />
       <WebSiteSchema />
+      <HomePageSchema />
       <Hero />
       <div className="bg-white border-b border-slate-100 py-4 text-slate-600">
         <div className="container">

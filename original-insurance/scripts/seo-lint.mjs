@@ -9,6 +9,7 @@
  *   5. Redirect rules in vercel.json that could preserve query-string and loop
  *   6. Any canonical URL with a trailing slash
  *   7. SearchAction/query-placeholder regressions and unsupported marketing claims
+ *   8. Homepage preferred-image discovery signals
  *
  * Usage:  node scripts/seo-lint.mjs
  * Or:     npm run seo-lint
@@ -401,6 +402,39 @@ if (!existsSync(websiteSchemaPath) || !readFileSync(homePagePath, "utf-8").inclu
 
 if (!contentGuardFailure) {
   ok("No SearchAction/query placeholders, obsolete FAQ schema, fixed price ranges, or unsupported timing/local-rate claims found");
+}
+
+// â”€â”€ Check 8: Homepage preferred-image signals â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+console.log("\n8. Homepage preferred-image discovery signals:");
+const preferredImage = "https://originalinsurance.net/images/ois-insurance-consultation-thumbnail-2026.jpg";
+const indexHtml = readFileSync(join(APP_DIR, "index.html"), "utf-8");
+const homeSource = readFileSync(homePagePath, "utf-8");
+const homeSchemaPath = join(SRC_DIR, "components", "seo", "HomePageSchema.tsx");
+const sitemapSource = readFileSync(join(PUBLIC_DIR, "sitemap.xml"), "utf-8");
+let imageSignalFailure = false;
+
+if (!indexHtml.includes(`<meta property="og:image" content="${preferredImage}"`)) {
+  fail("Homepage og:image must point to the preferred consultation photo");
+  imageSignalFailure = true;
+}
+if (!indexHtml.includes("max-image-preview:large")) {
+  fail("Homepage must allow large image previews");
+  imageSignalFailure = true;
+}
+if (!existsSync(homeSchemaPath) || !readFileSync(homeSchemaPath, "utf-8").includes("primaryImageOfPage") || !homeSource.includes("<HomePageSchema />")) {
+  fail("Homepage must emit WebPage primaryImageOfPage schema");
+  imageSignalFailure = true;
+}
+if (!homeSource.includes("images.home.searchThumbnail")) {
+  fail("Homepage preferred image must be visibly embedded in an img element");
+  imageSignalFailure = true;
+}
+if (!sitemapSource.includes('xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"') || !sitemapSource.includes(`<image:loc>${preferredImage}</image:loc>`)) {
+  fail("Sitemap must expose the preferred homepage image");
+  imageSignalFailure = true;
+}
+if (!imageSignalFailure) {
+  ok("Preferred image is exposed through visible HTML, Open Graph, WebPage schema, and the image sitemap");
 }
 
 // ── Summary ──────────────────────────────────────────────────────────────────

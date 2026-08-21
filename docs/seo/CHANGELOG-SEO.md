@@ -5,6 +5,22 @@ All SEO-relevant changes, ordered newest-first. Format:
 
 ---
 
+## 2026-08-20
+
+### Google text-result thumbnail eligibility
+**Commit:** pending
+
+**What changed:**
+- Generated and web-optimized a 1448x1086 insurance consultation image composed to remain clear in Google's small square thumbnail crop.
+- Replaced the homepage's generic logo `og:image` with the representative consultation photo and added image dimensions, MIME type, and accessible descriptions.
+- Embedded the same preferred image visibly on the homepage, placed it first in `InsuranceAgency.image`, and added `WebPage.primaryImageOfPage` plus `thumbnailUrl` schema.
+- Added the preferred photo to the XML sitemap using Google's image sitemap namespace.
+- Added source and prerender validation so the image-preview signals cannot silently disappear.
+
+**Why:** Google chooses text-result thumbnails automatically. These changes follow Google's image SEO guidance by using a relevant, high-resolution, non-text-heavy photo and exposing a consistent preferred image through crawlable HTML and metadata.
+
+**Validation:** `npm run lint`, `npm run seo-lint`, `npm run build`, and `npm run validate:schema` passed. Playwright confirmed the preferred image is visible at its intended 4:3 layout with descriptive alt text. Production deployment and live verification pending.
+
 ## 2026-08-12
 
 ### Search Console cleanup and people-first insurance content hardening

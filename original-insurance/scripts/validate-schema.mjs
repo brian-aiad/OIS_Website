@@ -19,6 +19,7 @@ import { dirname } from "path";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = resolve(__dirname, "..", "dist");
 const PROD_ORIGIN = "https://originalinsurance.net";
+const PREFERRED_HOME_IMAGE = `${PROD_ORIGIN}/images/ois-insurance-consultation-thumbnail-2026.jpg`;
 
 // Pages that should NOT have BreadcrumbList (home only)
 const NO_BREADCRUMB = new Set(["/"]);
@@ -169,7 +170,13 @@ for (const { path: htmlPath, route } of files) {
   // 7. Homepage needs WebSite identity schema without a query-based SearchAction.
   if (routeKey === "/") {
     const hasWebSite = types.includes("WebSite");
+    const hasWebPage = types.includes("WebPage");
     check(routeKey, hasWebSite, "Homepage is missing WebSite schema");
+    check(routeKey, hasWebPage, "Homepage is missing WebPage schema");
+    check(routeKey, rawJson.includes('"primaryImageOfPage"') && rawJson.includes(PREFERRED_HOME_IMAGE), "Homepage preferred image schema is missing or incorrect");
+    check(routeKey, html.includes(`<meta property="og:image" content="${PREFERRED_HOME_IMAGE}">`), "Homepage og:image is missing or incorrect");
+    check(routeKey, html.includes('max-image-preview:large'), "Homepage must allow large image previews");
+    check(routeKey, html.includes('src="/images/ois-insurance-consultation-thumbnail-2026.jpg"'), "Homepage preferred image must be visibly embedded");
     if (hasWebSite) pass(routeKey, "WebSite schema present");
     pass(routeKey, `Types found: ${types.join(", ")}`);
   }
