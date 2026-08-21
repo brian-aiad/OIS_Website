@@ -180,6 +180,17 @@ else
 fi
 
 echo ""
+echo "Security contact publication:"
+security_txt="$(curl -fsS "$PROD/.well-known/security.txt" || true)"
+security_code="$(status_code "$PROD/.well-known/security.txt")"
+security_type="$(curl -sS -I --max-redirs 0 "$PROD/.well-known/security.txt" | tr -d '\r' | awk 'BEGIN { IGNORECASE=1 } /^content-type:/ { sub(/^[^:]+:[[:space:]]*/, ""); print; exit }')"
+root_security_code="$(status_code "$PROD/security.txt")"
+root_security_location="$(redirect_location "$PROD/security.txt")"
+if [[ "$security_code" == "200" && "$security_type" == "text/plain; charset=utf-8" ]]; then ok "RFC security.txt returns 200 text/plain"; else fail "security.txt returned ${security_code:-<missing>} ${security_type:-<missing>}"; fi
+if [[ "$security_txt" == *'Contact: mailto:originalinsurance@gmail.com'* && "$security_txt" == *'Canonical: https://originalinsurance.net/.well-known/security.txt'* && "$security_txt" == *'Expires:'* ]]; then ok "security.txt required fields present"; else fail "security.txt required fields missing"; fi
+if [[ "$root_security_code" == "308" && "$root_security_location" == "/.well-known/security.txt" ]]; then ok "/security.txt redirects to RFC location"; else fail "/security.txt did not permanently redirect to RFC location"; fi
+
+echo ""
 echo "Schema audit:"
 home_html="$(curl -sS "$PROD/")"
 about_ia=$(curl -sS "$PROD/about" | grep -c "InsuranceAgency" || true)

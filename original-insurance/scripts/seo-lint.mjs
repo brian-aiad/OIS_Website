@@ -10,6 +10,7 @@
  *   6. Any canonical URL with a trailing slash
  *   7. SearchAction/query-placeholder regressions and unsupported marketing claims
  *   8. Homepage preferred-image discovery signals
+ *   9. RFC 9116 security.txt publication
  *
  * Usage:  node scripts/seo-lint.mjs
  * Or:     npm run seo-lint
@@ -435,6 +436,44 @@ if (!sitemapSource.includes('xmlns:image="http://www.google.com/schemas/sitemap-
 }
 if (!imageSignalFailure) {
   ok("Preferred image is exposed through visible HTML, Open Graph, WebPage schema, and the image sitemap");
+}
+
+// â”€â”€ Check 9: security.txt publication â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+console.log("\n9. RFC 9116 security.txt publication:");
+const securityTxtPath = join(PUBLIC_DIR, ".well-known", "security.txt");
+const vercelConfigSource = readFileSync(join(APP_DIR, "vercel.json"), "utf-8");
+let securityTxtFailure = false;
+
+if (!existsSync(securityTxtPath)) {
+  fail("public/.well-known/security.txt is missing");
+  securityTxtFailure = true;
+} else {
+  const securityTxt = readFileSync(securityTxtPath, "utf-8");
+  const expiresMatch = securityTxt.match(/^Expires:\s*(.+)$/mi);
+  const expiresAt = expiresMatch ? Date.parse(expiresMatch[1].trim()) : Number.NaN;
+  const maxExpiry = Date.now() + 366 * 24 * 60 * 60 * 1000;
+
+  for (const requiredLine of [
+    "Contact: mailto:originalinsurance@gmail.com",
+    "Canonical: https://originalinsurance.net/.well-known/security.txt",
+    "Preferred-Languages: en, es, ar",
+  ]) {
+    if (!securityTxt.includes(requiredLine)) {
+      fail(`security.txt missing required field: ${requiredLine}`);
+      securityTxtFailure = true;
+    }
+  }
+  if (!Number.isFinite(expiresAt) || expiresAt <= Date.now() || expiresAt > maxExpiry) {
+    fail("security.txt Expires must be valid, future-dated, and no more than one year away");
+    securityTxtFailure = true;
+  }
+}
+if (!vercelConfigSource.includes('"source": "/security.txt"') || !vercelConfigSource.includes('"destination": "/.well-known/security.txt"')) {
+  fail("vercel.json must redirect /security.txt to the RFC location");
+  securityTxtFailure = true;
+}
+if (!securityTxtFailure) {
+  ok("security.txt has a public contact, canonical URL, languages, safe expiry, and root redirect");
 }
 
 // ── Summary ──────────────────────────────────────────────────────────────────
