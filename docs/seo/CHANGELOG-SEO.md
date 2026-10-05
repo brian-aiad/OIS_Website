@@ -5,7 +5,9 @@ All SEO-relevant changes, ordered newest-first. Format:
 
 ---
 
-## 2026-10-05 — local Astro rebuild, not deployed
+## 2026-10-05 — Astro rebuild deployed
+
+Website commit c31992ce pushed to main and published through scripts/deploy.sh. All live verification checks passed; live mobile/desktop browser checks confirmed the new site and Quotzal integration.
 
 Follow-up: refined home/renters, Norwalk, Lynwood, Montebello and commercial-auto metadata using existing GSC intent; added privacy-conscious contact/quote-open measurement, three responsive decorative assets, and reduced-motion-safe finite animation. No additional URLs or external account changes. See [click opportunities](CLICK_OPPORTUNITIES_2026-10-05.md).
 
