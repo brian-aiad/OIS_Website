@@ -187,7 +187,7 @@ security_type="$(curl -sS -I --max-redirs 0 "$PROD/.well-known/security.txt" | t
 root_security_code="$(status_code "$PROD/security.txt")"
 root_security_location="$(redirect_location "$PROD/security.txt")"
 if [[ "$security_code" == "200" && "$security_type" == "text/plain; charset=utf-8" ]]; then ok "RFC security.txt returns 200 text/plain"; else fail "security.txt returned ${security_code:-<missing>} ${security_type:-<missing>}"; fi
-if [[ "$security_txt" == *'Contact: mailto:originalinsurance@gmail.com'* && "$security_txt" == *'Canonical: https://originalinsurance.net/.well-known/security.txt'* && "$security_txt" == *'Expires:'* ]]; then ok "security.txt required fields present"; else fail "security.txt required fields missing"; fi
+if [[ "$security_txt" == *'Contact: mailto:contact@originalinsurance.net'* && "$security_txt" == *'Canonical: https://originalinsurance.net/.well-known/security.txt'* && "$security_txt" == *'Expires:'* ]]; then ok "security.txt required fields present"; else fail "security.txt required fields missing"; fi
 if [[ "$root_security_code" == "308" && "$root_security_location" == "/.well-known/security.txt" ]]; then ok "/security.txt redirects to RFC location"; else fail "/security.txt did not permanently redirect to RFC location"; fi
 
 echo ""
