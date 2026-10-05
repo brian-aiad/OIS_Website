@@ -85,7 +85,7 @@ for url in "${canonical_urls[@]}"; do
     fail "$path has $canonical_count canonical tags (expected 1)"
   elif [[ "$canonical_tag" != *"href=\"$url\""* && "$canonical_tag" != *"href='$url'"* ]]; then
     fail "$path canonical is wrong (expected $url)"
-  elif [[ "$html" != *"<!-- prerendered by scripts/prerender.mjs -->"* ]]; then
+  elif [[ "$html" != *'<meta name="generator" content="Astro'* || "$html" != *'<main id="main-content"'* || "$html" != *"<h1"* ]]; then
     fail "$path is not serving the prerendered page output"
   elif printf '%s' "$html" | grep -Eqi "<meta[^>]+name=[\"']robots[\"'][^>]+content=[\"'][^\"']*noindex"; then
     fail "$path unexpectedly contains a noindex robots directive"
@@ -206,7 +206,7 @@ if [[ "$home_search_action" -eq 0 ]]; then ok "Homepage: no query-based SearchAc
 
 echo ""
 echo "Homepage preferred image:"
-preferred_image="$PROD/images/ois-insurance-consultation-thumbnail-2026.jpg"
+preferred_image="$PROD/images/ois-california-coverage-illustration-v2-2026.jpg"
 preferred_headers="$(curl -sS -I --max-redirs 0 "$preferred_image" | tr -d '\r')"
 preferred_code="$(printf '%s\n' "$preferred_headers" | awk '/^HTTP\// { print $2; exit }')"
 preferred_type="$(printf '%s\n' "$preferred_headers" | awk 'BEGIN { IGNORECASE=1 } /^content-type:/ { sub(/^[^:]+:[[:space:]]*/, ""); print; exit }')"
@@ -217,8 +217,8 @@ else
 fi
 if [[ "$home_html" == *"<meta property=\"og:image\" content=\"$preferred_image\""* ]]; then ok "Homepage og:image matches"; else fail "Homepage og:image is missing or incorrect"; fi
 if [[ "$home_html" == *'"primaryImageOfPage"'* && "$home_html" == *"$preferred_image"* ]]; then ok "Homepage primaryImageOfPage matches"; else fail "Homepage primaryImageOfPage is missing or incorrect"; fi
-if [[ "$home_html" == *'src="/images/ois-insurance-consultation-thumbnail-2026.jpg"'* ]]; then ok "Preferred image is visibly embedded"; else fail "Preferred image is not visibly embedded"; fi
-if [[ "$sitemap" == *'<image:loc>https://originalinsurance.net/images/ois-insurance-consultation-thumbnail-2026.jpg</image:loc>'* ]]; then ok "Preferred image is in sitemap"; else fail "Preferred image is missing from sitemap"; fi
+if [[ "$home_html" == *'california-coverage-editorial-v2.'* ]]; then ok "Preferred image is visibly embedded"; else fail "Preferred image is not visibly embedded"; fi
+if [[ "$sitemap" == *'<image:loc>https://originalinsurance.net/images/ois-california-coverage-illustration-v2-2026.jpg</image:loc>'* ]]; then ok "Preferred image is in sitemap"; else fail "Preferred image is missing from sitemap"; fi
 
 echo ""
 echo "Homepage city links (expected all 12):"

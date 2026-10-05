@@ -1,0 +1,245 @@
+.neighborhood-section {
+  background: #eeeade;
+  padding: 54px 0 58px;
+  overflow: hidden;
+  color: var(--ink, #142b44);
+}
+.neighborhood-heading {
+  max-width: 790px;
+  position: relative;
+  z-index: 1;
+}
+.neighborhood-heading .eyebrow {
+  margin-bottom: 14px;
+}
+.neighborhood-heading h2 {
+  font-size: clamp(34px, 4.3vw, 61px);
+  line-height: 1.05;
+  margin: 0 0 16px;
+  letter-spacing: -0.045em;
+}
+.neighborhood-heading h2 em {
+  color: #886b36;
+  font-weight: 400;
+}
+.neighborhood-heading > p:last-child {
+  max-width: 610px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
+}
+.neighborhood-scene {
+  position: relative;
+  margin: 0 -22px -1px;
+  min-width: 0;
+}
+.neighborhood-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+}
+.neighborhood-office-label {
+  position: absolute;
+  left: 50%;
+  top: 14%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 10px;
+  line-height: 1.45;
+  background: #eeeade;
+  border: 1px solid #d2c9b4;
+  padding: 8px 13px;
+  white-space: nowrap;
+}
+.neighborhood-office-label strong {
+  font-size: 12px;
+  font-weight: 600;
+}
+.neighborhood-directory {
+  background: #142b44;
+  color: #f7f2e8;
+  padding: 27px 34px 0;
+  position: relative;
+}
+.neighborhood-directory-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+}
+.neighborhood-directory-top .eyebrow {
+  color: #dcc8a2;
+  margin: 0;
+  font-size: 10px;
+}
+.neighborhood-directory-top > span {
+  font-size: 11px;
+  color: #d5dfdf;
+}
+.neighborhood-city-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 30px;
+}
+.neighborhood-city-links > a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  min-height: 49px;
+  padding: 10px 0;
+  border-top: 1px solid #405364;
+  color: #f7f2e8;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+.neighborhood-city-links > a svg {
+  color: #c6ab78;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.neighborhood-city-links > a:hover {
+  color: #ecd5a9;
+}
+.neighborhood-city-links > a:hover svg {
+  transform: translateX(4px);
+}
+.neighborhood-city-links > a:focus-visible,
+.neighborhood-visit-button:focus-visible {
+  outline: 2px solid #ebc886;
+  outline-offset: 5px;
+}
+.neighborhood-visit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 23px 0 26px;
+  margin-top: 10px;
+  border-top: 1px solid #6c725f;
+}
+.neighborhood-visit strong {
+  display: block;
+  font-family: var(--font-display, 'Newsreader Variable', Georgia, serif);
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 7px;
+}
+.neighborhood-visit address,
+.neighborhood-visit p {
+  font-size: 12px;
+  line-height: 1.6;
+  font-style: normal;
+  margin: 0;
+  color: #d5dfdf;
+}
+.neighborhood-visit-button {
+  background: #eee4ce;
+  color: #142b44 !important;
+  flex-shrink: 0;
+  border: 1px solid #eee4ce;
+  min-height: 47px;
+  font-size: 12px;
+  padding: 13px 18px !important;
+}
+.neighborhood-visit-button:hover {
+  background: #fff7e6;
+  border-color: #fff7e6;
+}
+@media (min-width: 1000px) {
+  .neighborhood-heading {
+    padding-right: 80px;
+  }
+  .neighborhood-scene {
+    margin-top: -30px;
+  }
+  .neighborhood-office-label {
+    top: 9%;
+  }
+}
+@media (max-width: 700px) {
+  .neighborhood-section {
+    padding: 36px 0;
+  }
+  .neighborhood-heading h2 {
+    font-size: clamp(34px, 7.8vw, 49px);
+  }
+  .neighborhood-heading > p:last-child {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .neighborhood-scene {
+    margin: 16px -32px -1px;
+  }
+  .neighborhood-office-label {
+    top: 3%;
+    padding: 5px 8px;
+    font-size: 8px;
+    gap: 5px;
+  }
+  .neighborhood-office-label strong {
+    font-size: 10px;
+  }
+  .neighborhood-office-label svg {
+    width: 15px;
+  }
+  .neighborhood-directory {
+    padding: 20px 19px 0;
+  }
+  .neighborhood-directory-top {
+    display: block;
+    padding-bottom: 12px;
+  }
+  .neighborhood-directory-top > span {
+    display: block;
+    font-size: 10px;
+    margin-top: 5px;
+  }
+  .neighborhood-city-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+  }
+  .neighborhood-city-links > a {
+    font-size: 14px;
+    min-height: 45px;
+    padding: 8px 0;
+  }
+  .neighborhood-city-links > a svg {
+    width: 15px;
+  }
+  .neighborhood-visit {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 0;
+  }
+  .neighborhood-visit strong {
+    font-size: 23px;
+  }
+  .neighborhood-visit address,
+  .neighborhood-visit p {
+    font-size: 11px;
+  }
+  .neighborhood-visit-button {
+    min-height: 44px;
+    padding: 11px 14px !important;
+  }
+  .neighborhood-art {
+    min-height: 128px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .neighborhood-city-links > a,
+  .neighborhood-city-links > a svg {
+    transition: none;
+  }
+  .neighborhood-city-links > a:hover svg {
+    transform: none;
+  }
+}

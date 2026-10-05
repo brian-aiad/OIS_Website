@@ -1,0 +1,36 @@
+---
+import Icon from './Icon.astro';
+import PaintedAccent from './PaintedAccent.astro';
+interface Props {
+  items: string[];
+  kind?: 'home' | 'business' | 'renewal' | 'policy';
+}
+const { items, kind = 'policy' } = Astro.props;
+---
+
+<section class="guide-preparation" id="prepare">
+  <div class="guide-preparation-heading">
+    <div>
+      <p class="eyebrow">A useful starting point</p>
+      <h2>What to have ready.</h2>
+    </div>
+    <figure aria-hidden="true">
+      <PaintedAccent kind={kind} />
+    </figure>
+  </div>
+  <p>Bring what you have. If something is missing, we can explain what’s needed next.</p>
+  <ul class="guide-preparation-list">
+    {items.map((item) => (
+      <li>
+        <span aria-hidden="true">
+          <Icon name="check" size={17} />
+        </span>
+        <span>{item}</span>
+      </li>
+    ))}
+  </ul>
+  <p class="guide-preparation-footnote">
+    <Icon name="phone" size={17} />
+    Prefer to talk it through? Our team can help you get started.
+  </p>
+</section>

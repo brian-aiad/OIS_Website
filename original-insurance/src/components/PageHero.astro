@@ -1,0 +1,62 @@
+---
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+import { quoteUrl, contact } from '../data/site';
+interface Props {
+  label: string;
+  title: string;
+  text: string;
+  image?: string;
+  alt?: string;
+  imageCaption?: string;
+  variant?: string;
+  quote?: boolean;
+}
+const {
+  label,
+  title,
+  text,
+  image,
+  alt = '',
+  imageCaption = 'Downey, California',
+  variant = '',
+  quote = true,
+} = Astro.props;
+---
+
+<section class:list={['page-hero', variant, image ? 'has-image' : 'text-hero']}>
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{label}</span>
+    </nav>
+    <div class="page-hero-grid">
+      <div class="page-hero-copy">
+        <p class="eyebrow">{label}</p>
+        <h1>{title}</h1>
+        <p class="lede">{text}</p>
+        {quote && (
+          <div class="actions">
+            <a href={quoteUrl} data-quote class="button button-ink">
+              Compare my options <Icon />
+            </a>
+            <a href={contact.phoneHref} class="text-link">
+              Talk to a real person <Icon name="phone" size={17} />
+            </a>
+          </div>
+        )}
+        <slot />
+      </div>
+      {image && (
+        <figure class="page-hero-image">
+          <Photo src={image} alt={alt} eager />
+          <figcaption>
+            <span>Original Insurance Services</span>
+            <span>{imageCaption}</span>
+          </figcaption>
+        </figure>
+      )}
+    </div>
+  </div>
+</section>

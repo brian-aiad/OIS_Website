@@ -1,0 +1,54 @@
+---
+import Photo from './Photo.astro';
+interface Props {
+  kind?: 'home' | 'business' | 'renewal' | 'policy';
+  size?: 'small' | 'medium';
+}
+const { kind = 'renewal', size = 'medium' } = Astro.props;
+const images = {
+  home: 'home-keys-accent.png',
+  business: 'business-van-accent.png',
+  renewal: 'renewal-papers-accent.png',
+  policy: 'policy-folder-accent.png',
+};
+---
+
+<span
+  class:list={['painted-accent', `painted-accent-${size}`]}
+  aria-hidden="true"
+  data-motion="art"
+>
+  <Photo
+    src={images[kind]}
+    alt=""
+    widths={[160, 240, 400, 640]}
+    sizes={size === 'small' ? '110px' : '(max-width:760px) 130px, 190px'}
+  />
+</span>
+
+<style>
+  .painted-accent {
+    display: block;
+    width: 190px;
+    max-width: 100%;
+    flex-shrink: 0;
+    pointer-events: none;
+  }
+  .painted-accent :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .painted-accent-small {
+    width: 110px;
+  }
+  @media (max-width: 760px) {
+    .painted-accent {
+      width: 130px;
+    }
+    .painted-accent-small {
+      width: 90px;
+    }
+  }
+</style>

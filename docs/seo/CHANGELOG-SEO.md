@@ -5,6 +5,17 @@ All SEO-relevant changes, ordered newest-first. Format:
 
 ---
 
+## 2026-10-05 — local Astro rebuild, not deployed
+
+Follow-up: refined home/renters, Norwalk, Lynwood, Montebello and commercial-auto metadata using existing GSC intent; added privacy-conscious contact/quote-open measurement, three responsive decorative assets, and reduced-motion-safe finite animation. No additional URLs or external account changes. See [click opportunities](CLICK_OPPORTUNITIES_2026-10-05.md).
+
+- Rebuilt all 25 established canonical routes as static Astro 7.3.5 pages; added an intentionally noindex quote utility and retained a genuine 404.
+- Preserved trailing-slash/index redirects, query cleanup, retired email-protection 410, robots rules, and sitemap routes.
+- Added five accurate Service entities, maintained agency/breadcrumb safeguards, and replaced preferred image signals with the displayed California hero illustration.
+- Improved coverage and city-page intent, internal linking, mobile readability, accessible navigation, responsive imagery, and quote access. Preserved Quotzal and changed displayed email to contact@originalinsurance.net.
+- Removed unsupported claims and inherited drafting residue. Unknown crawled/discovered exclusions still require the actual GSC URLs; redirect exclusions are expected canonical consolidation.
+- Full audit, route inventory, validation results and account-side follow-up: [rebuild handoff](../handoffs/REBUILD_2026-10-05.md).
+
 ## 2026-08-20
 
 ### Google text-result thumbnail eligibility

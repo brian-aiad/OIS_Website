@@ -1,0 +1,104 @@
+---
+import type { PageData } from '../data/content';
+import PageHero from './PageHero.astro';
+import { contact } from '../data/site';
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+import '../styles/information.css';
+interface Props {
+  page: PageData;
+}
+const { page } = Astro.props;
+const privacy = page.path === '/privacy';
+---
+
+<PageHero
+  label={privacy ? 'Privacy & data handling' : 'Accessibility'}
+  title={privacy ? 'Privacy notice' : 'Accessibility & assistance'}
+  text={page.intro}
+  quote={false}
+/>
+<section class="information-section information-legal">
+  <div class="container information-layout">
+    <aside class="information-sidebar">
+      <nav class="information-topics" aria-label="On this page">
+        <p class="eyebrow">In this notice</p>
+        {page.sections.map((s, i) => (
+          <a href={`#information-${i + 1}`}>
+            <span class="information-topic-number">0{i + 1}</span>
+            <span>{s.title}</span>
+            <Icon size={15} />
+          </a>
+        ))}
+        <a href="#information-contact">
+          <span class="information-topic-number">0{page.sections.length + 1}</span>
+          <span>Contact our office</span>
+          <Icon size={15} />
+        </a>
+      </nav>
+      <div class="information-help">
+        <Photo
+          src={privacy ? 'policy-folder-accent.png' : 'citrus-branch-accent.png'}
+          alt=""
+          class="information-help-art"
+          sizes="150px"
+        />
+        <p class="eyebrow">{privacy ? 'Privacy questions' : 'Need assistance?'}</p>
+        <h2>{privacy ? 'Talk to our office.' : 'A person can help.'}</h2>
+        <p>
+          You can reach our team by phone, text, email, or in person in English, Spanish, and
+          Arabic.
+        </p>
+        <a href={contact.phoneHref} class="text-link">
+          <Icon name="phone" size={16} />
+          {contact.phone}
+        </a>
+      </div>
+    </aside>
+    <div class="legal-content information-reading">
+      {page.sections.map((s, sectionIndex) => (
+        <section id={`information-${sectionIndex + 1}`}>
+          <header class="information-group-heading">
+            <span aria-hidden="true">0{sectionIndex + 1}</span>
+            <h2>{s.title}</h2>
+          </header>
+          {s.paragraphs.map((p, i) => (
+            <>
+              {s.subheads.length > 0 &&
+                ((s.subheads.length === s.paragraphs.length && s.subheads[i]) ||
+                  (s.subheads.length === s.paragraphs.length - 1 && i > 0)) && (
+                  <h3>{s.subheads[s.subheads.length === s.paragraphs.length ? i : i - 1]}</h3>
+                )}
+              <p>{p}</p>
+            </>
+          ))}
+        </section>
+      ))}
+      <section id="information-contact">
+        <header class="information-group-heading">
+          <span aria-hidden="true">0{page.sections.length + 1}</span>
+          <h2>Contact our office</h2>
+        </header>
+        <p>
+          <a href={contact.emailHref}>{contact.email}</a>
+          <br />
+          <a href={contact.phoneHref}>{contact.phone}</a>
+          <br />
+          {contact.address}
+        </p>
+        {privacy ? (
+          <p>
+            For policy documents or identity information, call first so we can direct you to an
+            appropriate submission method.
+          </p>
+        ) : (
+          <p>
+            Please tell us the page or task that caused a problem, and the device or assistive
+            technology you used. We can provide information through another channel and use your
+            report to improve the site.
+          </p>
+        )}
+      </section>
+    </div>
+  </div>
+</section>

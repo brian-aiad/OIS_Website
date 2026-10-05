@@ -5,3 +5,12 @@ dist
 lh-*.json
 audit-lighthouse-*/
 tmp-*
+
+output/
+.playwright-cli/
+.astro/
+*.tsbuildinfo
+
+# Local source photography and customer records are not website assets.
+/DSC_*.JPG
+/OIS_CLIENT_EMAIL_LIST.xlsx

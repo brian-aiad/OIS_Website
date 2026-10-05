@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<Base
+  title="Page not found | Original Insurance"
+  description="Find insurance coverage or contact the Original Insurance team in Downey."
+  path="/404"
+  noindex
+>
+  <section class="not-found">
+    <span class="error-number" aria-hidden="true">
+      404
+    </span>
+    <h1>A turn we didn’t expect.</h1>
+    <p>This page isn’t here. Let’s get you back to a useful place.</p>
+    <div class="actions">
+      <a href="/" class="button button-ink">
+        Back to home <Icon />
+      </a>
+      <a href="/contact" class="button button-outline">
+        Contact our team
+      </a>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,53 @@
+---
+import Icon from './Icon.astro';
+import Photo from './Photo.astro';
+const steps = [
+  {
+    n: '01',
+    title: 'Tell us what you need.',
+    text: 'What you drive. Where you live. What you’re building. We start with the details that matter to you.',
+  },
+  {
+    n: '02',
+    title: 'Compare available options.',
+    text: 'We compare available carriers and explain limits, deductibles, exclusions, and price in plain language.',
+  },
+  {
+    n: '03',
+    title: 'Get help after you choose.',
+    text: 'You make the decision. We help with the documents, then stay available for renewals and policy questions.',
+  },
+];
+---
+
+<section class="broker-process section">
+  <div class="container">
+    <div class="broker-process-opening">
+      <div>
+        <p class="eyebrow">Your independent insurance broker</p>
+        <h2>
+          More than a quote. <br />
+          Help at every step.
+        </h2>
+        <p>We help you understand the choices, so you can make the decision.</p>
+      </div>
+      <figure class="broker-policy-art" data-reveal aria-hidden="true">
+        <Photo src="policy-folder-accent.png" alt="" sizes="(max-width: 760px) 40vw, 28vw" />
+      </figure>
+    </div>
+    <ol class="broker-steps">
+      {steps.map((step) => (
+        <li data-reveal>
+          <div class="broker-step-top">
+            <span>{step.n}</span>
+            <Icon size={22} />
+          </div>
+          <div>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

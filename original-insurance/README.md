@@ -1,6 +1,6 @@
 # Original Insurance App
 
-Vite app for `https://originalinsurance.net`.
+Astro 7.3.5 static site for `https://originalinsurance.net`. Quote requests use the existing Quotzal integration; the general contact form uses Web3Forms.
 
 ## Commands
 
@@ -12,6 +12,8 @@ npm run seo-lint
 npm run build
 npm run validate:schema
 npm run deploy:check
+npm run test:site
+npm run format:check
 ```
 
 The dev server uses port `3002`.
@@ -22,13 +24,14 @@ The dev server uses port `3002`.
 src/
   components/
   data/
-  design-system/
-  lib/
+  layouts/
+  styles/
+  scripts/
   pages/
 public/
   images/
 scripts/
-  prerender.mjs
+  qa-site.mjs
   seo-lint.mjs
   validate-schema.mjs
 ```

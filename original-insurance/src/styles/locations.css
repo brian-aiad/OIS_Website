@@ -1,0 +1,208 @@
+.locations-visit {
+  background: #faf8f2;
+  border-block: 1px solid var(--line);
+}
+.locations-visit .visit-layout {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(32px, 6vw, 80px);
+  align-items: start;
+}
+.locations-visit .locations-map-column > h2 {
+  font-size: clamp(32px, 3vw, 43px);
+  margin: 15px 0 20px;
+}
+.locations-visit .visit-address {
+  font-style: normal;
+  font-family: var(--display);
+  font-size: clamp(25px, 2.2vw, 33px);
+  line-height: 1.3;
+  margin-bottom: 24px;
+}
+.locations-visit [data-copy-address] {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  padding-inline: 0;
+}
+.locations-visit #copy-status:empty {
+  display: none;
+}
+.locations-visit .office-map {
+  position: relative;
+  height: 340px;
+  margin-top: 26px;
+  border: 1px solid #142b4430;
+  background: var(--sand);
+}
+.locations-visit .locations-map-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 8px;
+  padding: 20px;
+  text-align: center;
+  color: var(--ink);
+}
+.locations-visit .locations-map-fallback span {
+  font-family: var(--display);
+  font-size: 25px;
+}
+.locations-visit .office-map iframe {
+  position: relative;
+  z-index: 1;
+}
+.locations-visit .locations-map-external {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  min-height: 38px;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.locations-visit .locations-map-caption {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+  padding-block: 11px;
+  border-bottom: 1px solid var(--line);
+}
+.locations-visit .locations-prepare {
+  display: grid;
+  grid-template-columns: 25px minmax(0, 1fr);
+  align-items: start;
+  gap: 15px;
+  margin-top: 24px;
+}
+.locations-visit .locations-prepare > svg,
+.locations-visit .locations-practical > svg {
+  color: #8a6429;
+  margin-top: 3px;
+}
+.locations-visit .locations-prepare h3,
+.locations-visit .locations-practical h3 {
+  font-family: var(--display);
+  font-size: 27px;
+  font-weight: 450;
+  margin-bottom: 10px;
+}
+.locations-visit .locations-prepare p {
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 470px;
+}
+.locations-visit .locations-hours {
+  background: #ede6d6;
+  padding: 27px 30px;
+  border: 1px solid #d2c8b5;
+  border-top: 3px solid var(--gold);
+  box-shadow: 5px 5px 0 #e4ddcf;
+  margin-bottom: 0;
+}
+.locations-visit .locations-hours > h3 {
+  font-family: var(--display);
+  font-size: 34px;
+  font-weight: 450;
+  margin: 9px 0 12px;
+}
+.locations-visit .locations-hours > p:not(.eyebrow) {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.locations-visit .hours-list {
+  margin-block: 21px 12px;
+}
+.locations-visit .hours-list > div {
+  font-size: 13px;
+  gap: 15px;
+  padding-block: 10px;
+  border-color: #142b4426;
+}
+.locations-visit .hours-list dd {
+  text-align: right;
+}
+.locations-visit .locations-practical {
+  display: grid;
+  background: transparent;
+  box-shadow: none;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 14px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding-block: 27px;
+  margin: 0;
+}
+.locations-visit .locations-practical p {
+  font-size: 14px;
+  line-height: 1.7;
+}
+.locations-visit .locations-practical p + p {
+  margin-top: 12px;
+}
+.locations-visit .locations-practical .text-link {
+  margin-top: 9px;
+}
+@media (max-width: 980px) {
+  .locations-visit .visit-layout {
+    gap: 30px;
+    grid-template-columns: 1fr;
+  }
+  .locations-visit .locations-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 30px;
+    align-items: start;
+  }
+  .locations-visit .locations-hours {
+    grid-row: 1 / 3;
+  }
+  .locations-visit .locations-practical {
+    padding-top: 0;
+    margin-bottom: 20px;
+  }
+  .locations-visit .locations-hours {
+    padding: 23px 21px;
+  }
+  .locations-visit .hours-list > div {
+    font-size: 12px;
+    gap: 10px;
+  }
+  .locations-visit .office-map {
+    height: 310px;
+  }
+}
+@media (max-width: 760px) {
+  .locations-visit .locations-info {
+    display: block;
+  }
+  .locations-visit .visit-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .locations-visit .office-map {
+    height: 280px;
+  }
+  .locations-visit .locations-map-column > h2 {
+    font-size: 34px;
+  }
+  .locations-visit .locations-hours {
+    padding: 25px;
+  }
+  .locations-visit .hours-list > div {
+    font-size: 13px;
+  }
+  .locations-visit .locations-practical {
+    padding-block: 24px;
+  }
+  .locations-visit .locations-map-caption {
+    align-items: flex-start;
+  }
+  .locations-visit .locations-map-caption svg {
+    margin-top: 2px;
+  }
+}

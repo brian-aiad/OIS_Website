@@ -53,7 +53,7 @@ lakewood, paramount, south-gate, pico-rivera, montebello, commerce
 
 ## Internal Links
 
-All React `<Link>` and `<NavLink>` values must use clean canonical paths without trailing slashes. `npm run seo-lint` checks this.
+All server-rendered anchor URLs must use clean canonical paths without trailing slashes. `npm run seo-lint` checks this.
 
 ## Search Intent Ownership
 
@@ -69,7 +69,7 @@ City pages should contain useful local service information and disclose that the
 
 ## Insurance Information Trust
 
-- Substantive insurance pages include a visible reviewer, review date, primary California consumer resources, and a policy-terms disclaimer through `EditorialTrust`.
+- Substantive insurance pages include a website update date, primary California consumer resources, and a policy-terms disclaimer through `EditorialTrust`. Do not claim that newly rewritten copy has been reviewed by the business until that review occurs.
 - Prefer California Department of Insurance, California DMV, and other first-party regulatory sources for legal or coverage guidance.
 - Qualify prices, discounts, eligibility, policy availability, and processing times because they vary by carrier and applicant.
 - Do not publish generic monthly price ranges, guaranteed filing/binding times, neighborhood crime or collision assumptions, ZIP-level savings claims, or claims about how a specific local road changes a premium without a current primary source and applicable methodology.
@@ -85,9 +85,9 @@ Deploy manually from repo root:
 bash scripts/deploy.sh
 ```
 
-The deploy script runs SEO lint, build/prerender, schema validation, Vercel build, copies prerendered HTML into `.vercel/output/static/`, deploys prebuilt output, then runs live verification.
+The deploy script runs SEO lint, Astro build, schema validation, Vercel build, copies prerendered HTML into `.vercel/output/static/`, deploys prebuilt output, then runs live verification.
 
-Automatic Vercel Git builds are intentionally canceled by `ignoreCommand`. Production must receive the prebuilt output from `scripts/deploy.sh`; otherwise only the homepage is emitted and clean canonical routes return 404.
+Automatic Vercel Git builds are intentionally canceled by `ignoreCommand`. Production must receive the prebuilt output from `scripts/deploy.sh`; this keeps route overrides, middleware, API handling, and the validated static output in the established deployment path.
 
 The Vercel project is `ois-website`. Keep `.vercel/project.json`.
 
@@ -110,3 +110,7 @@ bash scripts/deploy.sh
 bash scripts/deploy.sh --dry-run
 bash scripts/verify-live.sh
 ```
+
+## Astro conversion route
+
+`/quote` embeds the existing Quotzal integration. It is intentionally `noindex, follow`, excluded from the 25-URL sitemap, and has no InsuranceAgency or breadcrumb JSON-LD. The five coverage guides additionally emit Service schema for their visible offerings.

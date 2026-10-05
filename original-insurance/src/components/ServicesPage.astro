@@ -1,0 +1,143 @@
+---
+import PageHero from './PageHero.astro';
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+import Process from './Process.astro';
+import CTA from './CTA.astro';
+import Reviews from './Reviews.astro';
+import PaintedAccent from './PaintedAccent.astro';
+import { coverage, additional } from '../data/site';
+import '../styles/catalog.css';
+const audiences = [
+  'For daily drivers, family vehicles, and your next car.',
+  'For homeowners and renters, with options for the place and belongings you protect.',
+  'For the vehicles you use for work and the business behind them.',
+];
+---
+
+<PageHero
+  label="Coverage & services"
+  title="Insurance for your car, home, and business."
+  text="Start with what you need to protect. Our Downey team will explain the coverage, compare available carriers, and help you understand your choices."
+  quote={false}
+/>
+<section class="coverage-catalog">
+  <div class="container">
+    <nav class="catalog-jump" aria-label="Choose a coverage category">
+      {coverage.map((c) => (
+        <a href={`#${c.key}`}>
+          {c.name}
+          <Icon size={15} />
+        </a>
+      ))}
+    </nav>
+    {coverage.slice(0, 3).map((c, i) => (
+      <article class="catalog-row" id={c.key} data-reveal>
+        <a class="catalog-image" href={c.path} aria-label={`Explore ${c.name}`}>
+          <Photo src={c.image} alt={c.alt} sizes="(max-width: 760px) 92vw, 38vw" />
+        </a>
+        <div class="catalog-copy">
+          <p class="eyebrow">0{i + 1} / Coverage options</p>
+          <h2>{c.name}</h2>
+          <p class="catalog-audience">{audiences[i]}</p>
+          <p>{c.description}</p>
+          <a href={c.path} class="text-link">
+            Explore {c.name.toLowerCase()} <Icon />
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+<section class="catalog-guidance section">
+  <div class="container catalog-guidance-layout">
+    <div class="catalog-guidance-intro">
+      <p class="eyebrow">Help with the next step</p>
+      <h2>SR-22 or a license question?</h2>
+      <p>
+        Tell us about your situation. We can explain what insurers may need and which requirements
+        to confirm with the DMV.
+      </p>
+      <Photo src={coverage[3].image} alt={coverage[3].alt} sizes="(max-width: 760px) 92vw, 35vw" />
+    </div>
+    <div class="catalog-guidance-links">
+      {coverage.slice(3).map((c) => (
+        <article id={c.key}>
+          <h3>{c.name}</h3>
+          <p>{c.description}</p>
+          <a class="text-link" href={c.path}>
+            Read the guide <Icon />
+          </a>
+        </article>
+      ))}
+      <p class="catalog-guidance-note">
+        An SR-22 is a filing made by an insurer. Insurance does not give an unlicensed person
+        permission to drive.
+      </p>
+    </div>
+  </div>
+</section>
+<section class="section catalog-additional">
+  <div class="container">
+    <div class="catalog-extra-heading">
+      <div>
+        <p class="eyebrow">Also at our Downey office</p>
+        <h2>
+          More coverage.
+          <br />
+          Practical everyday help.
+        </h2>
+      </div>
+      <PaintedAccent kind="renewal" />
+    </div>
+    <div class="additional-services">
+      {additional.map((s, i) => (
+        <article id={s.id}>
+          <span class="service-number">0{i + 1}</span>
+          <div>
+            <h3>{s.name}</h3>
+            <p>{s.text}</p>
+            <a href="/contact">Ask our team about {s.name.toLowerCase()} ↗</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+<Process />
+<Reviews />
+<CTA />
+<style>
+  .catalog-extra-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    margin-bottom: 30px;
+  }
+  .catalog-extra-heading h2 {
+    margin: 12px 0 0;
+  }
+  @media (max-width: 760px) {
+    .catalog-extra-heading {
+      gap: 12px;
+    }
+    .catalog-extra-heading :global(.painted-accent) {
+      width: 95px;
+    }
+    .catalog-extra-heading h2 {
+      font-size: 32px;
+    }
+  }
+  @media (max-width: 380px) {
+    .catalog-extra-heading {
+      align-items: start;
+    }
+    .catalog-extra-heading :global(.painted-accent) {
+      width: 75px;
+    }
+    .catalog-extra-heading h2 {
+      font-size: 28px;
+    }
+  }
+</style>

@@ -1,0 +1,34 @@
+---
+import Icon from './Icon.astro';
+import JourneyLine from './JourneyLine.astro';
+import { quoteUrl, contact } from '../data/site';
+interface Props {
+  title?: string;
+  text?: string;
+}
+const {
+  title = 'Ready to compare insurance?',
+  text = 'Tell us what you need to protect. We’ll help you understand the options and choose your next step.',
+} = Astro.props;
+---
+
+<section class="cta-section illustrated-cta" data-reveal>
+  <div class="container cta-inner">
+    <div>
+      <p class="eyebrow">Let’s make insurance personal</p>
+      <h2>{title}</h2>
+      <p>{text}</p>
+    </div>
+    <div class="cta-actions">
+      <a href={quoteUrl} data-quote class="button button-ink">
+        Get a quote <Icon />
+      </a>
+      <a href={contact.phoneHref} class="text-link">
+        Or call {contact.phone}
+      </a>
+    </div>
+  </div>
+  <div class="container cta-landscape">
+    <JourneyLine />
+  </div>
+</section>

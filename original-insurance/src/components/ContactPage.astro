@@ -1,0 +1,176 @@
+---
+import PageHero from './PageHero.astro';
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+import { contact, quoteUrl } from '../data/site';
+import '../styles/contact.css';
+const key = import.meta.env.PUBLIC_WEB3FORMS_KEY || import.meta.env.VITE_WEB3FORMS_KEY || '';
+---
+
+<PageHero
+  label="Contact & support"
+  title="Talk with our Downey team."
+  text="A coverage question, a policy change, or something you’re unsure about. Tell us what’s on your mind."
+  quote={false}
+>
+  <div class="actions contact-intro-actions">
+    <a href="#contact-form" class="button button-ink">
+      Send us a message <Icon />
+    </a>
+    <a href={quoteUrl} data-quote class="text-link">
+      Looking for a quote? <Icon />
+    </a>
+  </div>
+</PageHero>
+<section class="section contact-workspace" aria-label="Contact options and message form">
+  <div class="container contact-layout">
+    <div class="contact-direct">
+      <p class="eyebrow">Your local team, within reach</p>
+      <div class="contact-channels">
+        <a href={contact.phoneHref}>
+          <Icon name="phone" />
+          <span>
+            <span class="eyebrow">Call</span>
+            <strong>{contact.phone}</strong>
+            <small>Mon–Fri · 10 AM–5:30 PM Pacific</small>
+          </span>
+        </a>
+        <a href={contact.textHref}>
+          <Icon name="mail" />
+          <span>
+            <span class="eyebrow">Text</span>
+            <strong>{contact.text}</strong>
+            <small>During office hours</small>
+          </span>
+        </a>
+        <a href={contact.emailHref}>
+          <Icon name="mail" />
+          <span>
+            <span class="eyebrow">Email</span>
+            <strong>{contact.email}</strong>
+            <small>Please keep sensitive documents out of email.</small>
+          </span>
+        </a>
+        <a href="/locations">
+          <Icon name="pin" />
+          <span>
+            <span class="eyebrow">Visit</span>
+            <strong>Our Downey office</strong>
+            <small>
+              9907-B Paramount Blvd
+              <br />
+              Downey, CA 90240
+            </small>
+          </span>
+        </a>
+      </div>
+      <div class="contact-quote-note">
+        <div>
+          <p class="eyebrow">Shopping for coverage?</p>
+          <h3>Start with a quote.</h3>
+          <p>
+            Share what you need to protect in our quote form. Use the message form for questions or
+            help with an existing policy.
+          </p>
+          <a href={quoteUrl} data-quote class="text-link">
+            Start a quote <Icon />
+          </a>
+        </div>
+        <Photo src="policy-folder-accent.png" alt="" sizes="(max-width: 760px) 110px, 160px" />
+      </div>
+      <figure class="contact-office-image">
+        <Photo
+          src="ois-consultation-room-real.jpg"
+          alt="A consultation room at the Original Insurance office"
+        />
+        <figcaption>A place to talk things through. Inside our Downey office.</figcaption>
+      </figure>
+    </div>
+    <div class="form-panel">
+      <div class="contact-form-heading">
+        <p class="eyebrow">Questions & policy support</p>
+        <h2>How can we help?</h2>
+        <p>Tell us a little about what you need. Our team will follow up during office hours.</p>
+      </div>
+      <p class="contact-required-note">Required fields are marked with an asterisk (*).</p>
+      <form
+        id="contact-form"
+        class="contact-form"
+        action="https://api.web3forms.com/submit"
+        method="POST"
+      >
+        <input type="hidden" name="access_key" value={key} />
+        <input type="hidden" name="subject" value="New message — Original Insurance Website" />
+        <input type="hidden" name="from_name" value="Original Insurance Website" />
+        <div class="honeypot" aria-hidden="true">
+          <label for="botcheck">Leave this blank</label>
+          <input id="botcheck" type="text" name="botcheck" tabindex="-1" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="name">Your name *</label>
+          <input id="name" name="name" autocomplete="name" required maxlength="120" />
+        </div>
+        <div class="field-pair">
+          <div class="field">
+            <label for="email">Email *</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              maxlength="254"
+            />
+          </div>
+          <div class="field">
+            <label for="phone">
+              Phone <span>(optional)</span>
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              inputmode="tel"
+              autocomplete="tel"
+              maxlength="40"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <label for="topic">What can we help with? *</label>
+          <select id="topic" name="topic" required>
+            <option value="">Choose a topic</option>
+            <option>Question about my policy</option>
+            <option>Help with a claim</option>
+            <option>Coverage question</option>
+            <option>Billing question</option>
+            <option>General question</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Your message *</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            maxlength="5000"
+            aria-describedby="sensitive-note"
+          ></textarea>
+        </div>
+        <p id="sensitive-note" class="form-note">
+          Please don’t include Social Security numbers, payment details, or driver’s-license images.
+          Read our <a href="/privacy">privacy notice</a>.
+        </p>
+        <button type="submit" class="button button-ink">
+          Send message <Icon />
+        </button>
+        <p id="form-status" class="form-status" role="status" aria-live="polite" tabindex="-1"></p>
+        <noscript>
+          <p class="form-note">Submitting opens our form provider’s confirmation page.</p>
+        </noscript>
+      </form>
+    </div>
+  </div>
+</section>

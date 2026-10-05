@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import { pages, type PageData } from '../data/content';
+import { cities, coverage } from '../data/site';
+import AboutPage from '../components/AboutPage.astro';
+import ContactPage from '../components/ContactPage.astro';
+import ServicesPage from '../components/ServicesPage.astro';
+import LocationsPage from '../components/LocationsPage.astro';
+import FAQPage from '../components/FAQPage.astro';
+import LegalPage from '../components/LegalPage.astro';
+import ServicePage from '../components/ServicePage.astro';
+import CityPage from '../components/CityPage.astro';
+export function getStaticPaths() {
+  return pages
+    .filter((p) => p.path !== '/')
+    .map((page) => ({ params: { path: page.path.slice(1) }, props: { page } }));
+}
+interface Props {
+  page: PageData;
+}
+const { page } = Astro.props;
+const path = page.path;
+const city = cities.find((c) => path === `/insurance/${c.slug}`);
+const service = coverage.find((c) => c.path === path);
+const label = city
+  ? city.name
+  : service
+    ? service.name
+    : {
+        '/about': 'Our story',
+        '/services': 'Coverage & services',
+        '/locations': 'Our Downey office',
+        '/contact': 'Contact',
+        '/faq': 'Questions & answers',
+        '/privacy': 'Privacy',
+        '/accessibility': 'Accessibility',
+      }[path];
+---
+
+<Base
+  title={page.title}
+  description={page.description}
+  path={path}
+  label={label}
+  editorial={!['/contact', '/locations', '/privacy', '/accessibility'].includes(path)}
+>
+  {path === '/about' && <AboutPage />}
+  {path === '/contact' && <ContactPage />}
+  {path === '/services' && <ServicesPage />}
+  {path === '/locations' && <LocationsPage />}
+  {path === '/faq' && <FAQPage />}
+  {['/privacy', '/accessibility'].includes(path) && <LegalPage page={page} />}
+  {service && <ServicePage page={page} />}
+  {city && <CityPage page={page} />}
+</Base>

@@ -1,0 +1,68 @@
+---
+import { faqGroups } from '../data/content';
+import PageHero from './PageHero.astro';
+import FAQ from './FAQ.astro';
+import CTA from './CTA.astro';
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+import { contact } from '../data/site';
+import '../styles/information.css';
+---
+
+<PageHero
+  label="Questions & answers"
+  title="Less jargon. More understanding."
+  text="Plain-language answers about California insurance, SR-22 filings, license situations, and the help available after you buy a policy."
+  quote={false}
+/>
+<section class="information-section information-faq">
+  <div class="container information-layout">
+    <aside class="information-sidebar">
+      <nav class="information-topics" aria-label="Question topics">
+        <p class="eyebrow">Find your question</p>
+        {faqGroups.map((g, i) => (
+          <a href={`#${g.id}`}>
+            <span class="information-topic-number">0{i + 1}</span>
+            <span>{g.heading}</span>
+            <Icon size={15} />
+          </a>
+        ))}
+      </nav>
+      <div class="information-help">
+        <Photo src="renewal-papers-accent.png" alt="" class="information-help-art" sizes="150px" />
+        <p class="eyebrow">Have your policy handy?</p>
+        <h2>Let’s look at it together.</h2>
+        <p>Call with your coverage question. Our team can help you understand the details.</p>
+        <a href={contact.phoneHref} class="text-link">
+          <Icon name="phone" size={16} />
+          {contact.phone}
+        </a>
+      </div>
+    </aside>
+    <div class="information-answers">
+      {faqGroups.map((g, i) => (
+        <section class="faq-group information-group" id={g.id}>
+          <header class="information-group-heading">
+            <span aria-hidden="true">0{i + 1}</span>
+            <div>
+              <p class="eyebrow">{g.items.length} questions</p>
+              <h2>{g.heading}</h2>
+            </div>
+          </header>
+          <FAQ
+            items={g.items.map((item) => ({
+              ...item,
+              ...(/SR.?22 page/i.test(item.a)
+                ? { link: { href: '/sr22-insurance-downey', label: 'Read the SR-22 guide' } }
+                : {}),
+            }))}
+          />
+        </section>
+      ))}
+    </div>
+  </div>
+</section>
+<CTA
+  title="Some questions need a conversation."
+  text="If your situation doesn’t fit neatly into an answer, our team is here to work through it with you."
+/>

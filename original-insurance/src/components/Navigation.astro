@@ -1,0 +1,118 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo-badge.webp';
+import Icon from './Icon.astro';
+import { contact, coverage, quoteUrl } from '../data/site';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const links = [
+  ['/about', 'Our story'],
+  ['/locations', 'Visit us'],
+  ['/faq', 'Questions'],
+  ['/contact', 'Contact'],
+];
+---
+
+<a href="#main-content" class="skip-link">
+  Skip to content
+</a>
+<div class="utility-bar">
+  <div class="container">
+    <span>Independent insurance. Personal since 1999.</span>
+    <span>
+      English · Español · <bdi lang="ar">العربية</bdi> <span class="utility-separator">/</span>{' '}
+      <a href={contact.phoneHref}>
+        <bdi>{contact.phone}</bdi>
+      </a>
+    </span>
+  </div>
+</div>
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="/" class="brand">
+      <Image src={logo} width={48} height={48} densities={[1, 2, 3]} loading="eager" alt="" />
+      <span>
+        ORIGINAL <small>INSURANCE SERVICES</small>
+      </span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <details class="coverage-menu">
+        <summary
+          class:list={[
+            path === '/services' || coverage.some((c) => c.path === path) ? 'current' : '',
+          ]}
+        >
+          Coverage <Icon name="plus" size={14} />
+        </summary>
+        <div class="coverage-dropdown">
+          <p class="eyebrow">Protection, made personal</p>
+          {coverage.map((c) => (
+            <a href={c.path}>
+              <span>{c.name}</span>
+              <Icon size={17} />
+            </a>
+          ))}
+          <a href="/services" class="all-coverage">
+            Explore all services <Icon size={17} />
+          </a>
+        </div>
+      </details>
+      {links.map(([url, label]) => (
+        <a href={url} aria-current={path === url ? 'page' : undefined}>
+          {label}
+        </a>
+      ))}
+    </nav>
+    <div class="nav-actions">
+      <a href={quoteUrl} data-quote class="button button-ink nav-quote">
+        Get a quote <Icon size={17} />
+      </a>
+      <button
+        class="menu-toggle"
+        aria-label="Open navigation"
+        aria-controls="mobile-nav"
+        aria-expanded="false"
+      >
+        <Icon name="menu" />
+      </button>
+    </div>
+  </div>
+</header>
+<dialog id="mobile-nav" class="mobile-menu" aria-labelledby="mobile-title">
+  <div class="mobile-menu-top">
+    <span id="mobile-title" class="eyebrow">
+      Original Insurance
+    </span>
+    <button data-close-menu class="icon-button" aria-label="Close navigation">
+      <Icon name="close" />
+    </button>
+  </div>
+  <nav aria-label="Mobile navigation">
+    <a href="/">
+      Home <Icon />
+    </a>
+    <details>
+      <summary>
+        Explore coverage <Icon name="plus" />
+      </summary>
+      <div>
+        {coverage.map((c) => (
+          <a href={c.path}>{c.name}</a>
+        ))}
+        <a href="/services">All services</a>
+      </div>
+    </details>
+    {links.map(([url, label]) => (
+      <a href={url} aria-current={path === url ? 'page' : undefined}>
+        {label}
+        <Icon />
+      </a>
+    ))}
+  </nav>
+  <div class="mobile-menu-bottom">
+    <a href={contact.phoneHref}>{contact.phone}</a>
+    <p>Mon–Fri · 10:00 AM–5:30 PM Pacific</p>
+    <a href={quoteUrl} data-quote class="button button-gold">
+      Start your quote <Icon />
+    </a>
+  </div>
+</dialog>

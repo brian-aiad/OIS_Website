@@ -1,6 +1,6 @@
 ---
 name: original-insurance-seo
-description: SEO methodology for originalinsurance.net, a React/Vite prerendered SPA deployed on Vercel for Original Insurance Services in Downey, CA.
+description: SEO methodology for originalinsurance.net, an Astro static website deployed on Vercel for Original Insurance Services in Downey, CA.
 ---
 
 # Original Insurance SEO Skill
@@ -10,22 +10,21 @@ Use this skill for schema markup, sitemap edits, canonical tags, city landing pa
 ## Site Context
 
 - URL: `https://originalinsurance.net`
-- Stack: React 19 + Vite 7 + TypeScript + Tailwind
+- Stack: Astro 7.3.5 + TypeScript + native CSS
 - App directory: `original-insurance/`
 - Dev server: `http://localhost:3002`
 - Deploy command: `bash scripts/deploy.sh` from repo root
 
 ## Build Model
 
-This is a prerendered SPA. `npm run build` runs:
+This is a static Astro site. `npm run build` runs:
 
 ```bash
-tsc -b
-vite build
-node scripts/prerender.mjs
+astro check
+astro build
 ```
 
-The prerender script uses Playwright to visit all 25 canonical routes and save rendered HTML under `dist/`.
+Astro emits HTML for all 25 canonical routes plus `/quote` (noindex) and `404.html`. Playwright is used for browser QA, not rendering production content. The authoritative route inventory is `src/data/pages.json`; shared metadata and JSON-LD live in `src/layouts/Base.astro`.
 
 ## Required Checks
 
@@ -49,7 +48,7 @@ npm run validate:schema
 - Homepage `WebSite` schema must not include `SearchAction`, `potentialAction`, or `{search_term_string}` query templates.
 - `robots.txt` must keep `Disallow: /*?q=`.
 - Do not add global `trailingSlash: false`, global `cleanUrls: true`, a legacy Vercel `routes` block, or a catch-all rewrite from `/(.*)` to `/index.html`.
-- Keep automatic Vercel Git builds disabled with `ignoreCommand`; they skip local Playwright prerendering. Deploy only the prebuilt output produced by `scripts/deploy.sh`.
+- Keep automatic Vercel Git builds disabled with `ignoreCommand`. Deploy only the validated prebuilt output produced by `scripts/deploy.sh`.
 
 ## Schema Rules
 
@@ -60,32 +59,33 @@ npm run validate:schema
 
 ## Route Map
 
-```text
-/                                  src/pages/Home.tsx
-/about                             src/pages/About.tsx
-/services                          src/pages/Services.tsx
-/locations                         src/pages/Locations.tsx
-/contact                           src/pages/Contact.tsx
-/faq                               src/pages/Faq.tsx
-/privacy                           src/pages/Privacy.tsx
-/accessibility                     src/pages/Accessibility.tsx
-/auto-insurance-downey-ca          src/pages/AutoInsuranceDowneyCA.tsx
-/sr22-insurance-downey             src/pages/SR22InsuranceDowney.tsx
-/no-license-auto-insurance-downey  src/pages/NoLicenseInsuranceDowney.tsx
-/commercial-auto-insurance-downey  src/pages/CommercialAutoInsuranceDowney.tsx
-/insurance/downey                  src/pages/CityLanding.tsx
-/insurance/norwalk                 src/pages/insurance/Norwalk.tsx
-/insurance/bellflower              src/pages/insurance/Bellflower.tsx
-/insurance/lynwood                 src/pages/insurance/Lynwood.tsx
-/insurance/cerritos                src/pages/insurance/Cerritos.tsx
-/insurance/lakewood                src/pages/insurance/Lakewood.tsx
-/insurance/paramount               src/pages/insurance/Paramount.tsx
-/insurance/south-gate              src/pages/insurance/SouthGate.tsx
-/insurance/whittier                src/pages/insurance/Whittier.tsx
-/insurance/pico-rivera             src/pages/insurance/PicoRivera.tsx
-/insurance/montebello              src/pages/insurance/Montebello.tsx
-/insurance/commerce                src/pages/insurance/Commerce.tsx
-```
+All25 canonical paths are retained in `src/data/pages.json`. The homepage uses `src/pages/index.astro`; `src/pages/[...path].astro` generates the remaining24 through the corresponding page-family components. `/quote` is a noindex conversion utility; `src/pages/404.astro` supplies the real404.
+
+- `/`
+- `/services`
+- `/locations`
+- `/about`
+- `/contact`
+- `/faq`
+- `/privacy`
+- `/accessibility`
+- `/auto-insurance-downey-ca`
+- `/sr22-insurance-downey`
+- `/home-insurance-downey-ca`
+- `/no-license-auto-insurance-downey`
+- `/commercial-auto-insurance-downey`
+- `/insurance/downey`
+- `/insurance/norwalk`
+- `/insurance/bellflower`
+- `/insurance/lynwood`
+- `/insurance/cerritos`
+- `/insurance/whittier`
+- `/insurance/lakewood`
+- `/insurance/paramount`
+- `/insurance/south-gate`
+- `/insurance/pico-rivera`
+- `/insurance/montebello`
+- `/insurance/commerce`
 
 ## Current Docs
 

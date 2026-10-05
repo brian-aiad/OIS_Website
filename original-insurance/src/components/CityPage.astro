@@ -1,0 +1,253 @@
+---
+import type { PageData } from '../data/content';
+import { cities, contact, coverage, quoteUrl } from '../data/site';
+import PageHero from './PageHero.astro';
+import CoverageDiagram from './CoverageDiagram.astro';
+import Icon from './Icon.astro';
+import AreaLinks from './AreaLinks.astro';
+import CTA from './CTA.astro';
+import Reviews from './Reviews.astro';
+import PaintedAccent from './PaintedAccent.astro';
+interface Props {
+  page: PageData;
+}
+const { page } = Astro.props;
+const slug = page.path.split('/').pop()!;
+const city = cities.find((c) => c.slug === slug)!;
+const local = slug === 'downey';
+const focus =
+  slug === 'commerce'
+    ? 'business vehicles and everyday driving'
+    : slug === 'lakewood'
+      ? 'home, renters, and auto coverage'
+      : 'drivers, families, and everyday life';
+const unique: Record<string, string> = {
+  norwalk:
+    'If you commute, share a household vehicle, or have a student driver, tell us who uses each car and where it is kept. The actual driver and garaging details belong in the quote.',
+  bellflower:
+    'Bring the same limits and deductibles to every comparison. Your current declarations page is a useful starting point for reviewing auto, renters, and home options.',
+  lynwood:
+    'Ask for the language you prefer when you contact us. Our English-, Spanish-, and Arabic-speaking team can walk through coverage and documentation questions.',
+  cerritos:
+    'Review all the drivers and vehicles in your household together. Ask how available multi-car and home-and-auto options compare with separate policies.',
+  whittier:
+    'A renewal is a useful time to review mileage, drivers, and coverage choices. Share what has changed since your current policy was written.',
+  lakewood:
+    'If you want to compare home and auto together, have both declarations pages ready. A bundle is worth comparing, but it is not automatically the best combined value.',
+  paramount:
+    'If your car or truck is used for work, deliveries, or a business, disclose that use before the quote. The right policy depends on the actual operation.',
+  'south-gate':
+    'Your budget matters, and so do the limits behind the price. Compare matching coverage and deductibles before deciding which quote is a better fit.',
+  'pico-rivera':
+    'If you rent, review your belongings and any landlord requirements alongside your auto policy. The building owner’s insurance and your coverage serve different needs.',
+  montebello:
+    'Looking for a lower car insurance price? Start by comparing the same coverage, then review eligible discounts. Lower limits or a higher deductible change what you are buying.',
+  commerce:
+    'For a work vehicle, prepare driver information, VINs, operating radius, and any contract or certificate requirements. Personal and business use need a careful review.',
+  downey:
+    'Our office is at 9907-B Paramount Boulevard in Downey. Walk-ins are welcome on weekdays, and phone, text, and online help are available if a visit is not convenient.',
+};
+---
+
+<PageHero
+  label={`${city.name}, California`}
+  title={
+    local
+      ? 'Your local insurance people. Right here in Downey.'
+      : `Insurance for your life in ${city.name}.`
+  }
+  text={
+    local
+      ? 'Independent insurance guidance from our Paramount Boulevard office since 1999. Compare coverage for your home, vehicles, family, and business.'
+      : `Personal help for ${city.name} ${focus}, from our nearby Downey office. Compare available carriers with a team that explains your options.`
+  }
+  image={`city-${slug}-illustration.png`}
+  imageCaption={`${city.name} service area`}
+  alt={`California neighborhood illustration for our ${city.name} service-area guide; not a photograph of a local property`}
+  variant="city-hero"
+/>
+<div class="city-ribbon">
+  <div class="container">
+    <p>
+      {local ? 'Visit our Downey office' : 'Serving ' + city.name + ' from our Downey office'} ·
+      English, Spanish & Arabic
+    </p>
+    <a href={contact.phoneHref}>Call {contact.phone} ↗</a>
+  </div>
+</div>
+<section class="section" style="background:white">
+  <div class="container city-intro">
+    <div>
+      <p class="eyebrow">A useful place to begin</p>
+      <h2>
+        {local ? 'Local guidance. A wider choice.' : `A thoughtful comparison for ${city.name}.`}
+      </h2>
+      <p>{unique[slug]}</p>
+      <p>
+        We compare the actual driver, vehicle, garaging address, use, limits, and deductibles. A
+        generic citywide price cannot tell you what your individual policy will cost.
+      </p>
+      <div class="actions">
+        <a href={quoteUrl} data-quote class="button button-ink">
+          Compare my options <Icon />
+        </a>
+      </div>
+    </div>
+    <aside class="city-note">
+      <h3>Visit, call, or start online.</h3>
+      <p>
+        {local
+          ? 'Visit our Paramount Boulevard office or reach us by phone and online.'
+          : `Visit our Downey office or work with us by phone and online from ${city.name}.`}
+      </p>
+      <ul class="checklist">
+        <li>
+          <Icon name="phone" size={18} />
+          <a href={contact.phoneHref}>{contact.phone}</a>
+        </li>
+        <li>
+          <Icon name="pin" size={18} />
+          <span>
+            9907-B Paramount Blvd
+            <br />
+            Downey, CA 90240
+          </span>
+        </li>
+        <li>
+          <Icon name="check" size={18} />
+          <span>
+            Monday–Friday
+            <br />
+            10:00 AM–5:30 PM Pacific
+          </span>
+        </li>
+      </ul>
+      <div class="city-note-footer">
+        <a href="/locations" class="text-link">
+          Plan your visit <Icon size={18} />
+        </a>
+        <div class="city-note-art">
+          <PaintedAccent
+            kind={
+              slug === 'commerce' || slug === 'paramount'
+                ? 'business'
+                : slug === 'lakewood' || slug === 'cerritos' || slug === 'pico-rivera'
+                  ? 'home'
+                  : 'renewal'
+            }
+          />
+        </div>
+      </div>
+    </aside>
+  </div>
+  <div class="container city-service-links">
+    {[coverage[0], coverage[1], coverage[2]].map((c, i) => (
+      <a href={c.path}>
+        <Icon name={i === 0 ? 'car' : i === 1 ? 'home' : 'file'} size={27} />
+        <h3>{c.name}</h3>
+        <p>{c.description}</p>
+        <span class="text-link">
+          Explore coverage <Icon size={17} />
+        </span>
+      </a>
+    ))}
+  </div>
+</section>
+<section class="section">
+  <div class="container overview-grid">
+    <div class="overview-copy">
+      <p class="eyebrow">Coverage before price</p>
+      <h2>
+        Compare what
+        <br />
+        you’re protecting.
+      </h2>
+      <p>
+        {slug === 'lakewood'
+          ? 'Your home, belongings, and personal liability need different protections. We can help compare homeowners or renters coverage alongside your auto policy, including limits, deductibles, and exclusions.'
+          : slug === 'commerce'
+            ? 'Work vehicles need a policy that reflects their actual use. We review your drivers, operations, travel radius, and contract requirements before comparing commercial auto options.'
+            : 'Liability, protection for your own vehicle, and optional coverage all play different roles. We explain those differences so you can compare quotes on the same basis.'}
+      </p>
+      <a
+        href={
+          slug === 'lakewood'
+            ? '/home-insurance-downey-ca'
+            : slug === 'commerce'
+              ? '/commercial-auto-insurance-downey'
+              : '/auto-insurance-downey-ca'
+        }
+        class="text-link"
+        style="margin-top:20px"
+      >
+        Explore{' '}
+        {slug === 'lakewood' ? 'home & renters' : slug === 'commerce' ? 'commercial auto' : 'auto'}{' '}
+        coverage <Icon />
+      </a>
+    </div>
+    <CoverageDiagram
+      type={slug === 'lakewood' ? 'home' : slug === 'commerce' ? 'commercial' : 'auto'}
+    />
+  </div>
+  <div class="container city-next-guides">
+    <section class="city-guide">
+      <h2>SR-22 help for {city.name} drivers</h2>
+      <p>
+        An SR-22 is an insurer’s filing of financial responsibility. If the DMV or a court requires
+        it, bring your notice so we can compare qualifying policies. Carrier filing and DMV
+        reinstatement are separate steps; timing depends on your situation.
+      </p>
+      <a href="/sr22-insurance-downey" class="text-link">
+        Understand the SR-22 process <Icon />
+      </a>
+    </section>
+    <section class="city-guide">
+      <h2>A non-standard license situation?</h2>
+      <p>
+        Some insurers may consider a foreign-license holder or a non-driving vehicle owner with a
+        licensed primary driver. Eligibility depends on the carrier and complete, accurate
+        information. Insurance does not establish legal permission to drive.
+      </p>
+      <a href="/no-license-auto-insurance-downey" class="text-link">
+        Explore license-related options <Icon />
+      </a>
+    </section>
+  </div>
+</section>
+<AreaLinks current={slug} />
+<Reviews />
+<CTA
+  title={`Let’s talk about life in ${city.name}.`}
+  text="Share your coverage needs with our Downey team. We’ll explain the available choices and what to have ready."
+/>
+<style>
+  .city-note-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 12px;
+  }
+  .city-note-art {
+    width: 110px;
+    flex-shrink: 0;
+  }
+  .city-note-footer .text-link {
+    font-size: 14px;
+    gap: 9px;
+  }
+  .city-note h3 {
+    max-width: 350px;
+  }
+  @media (max-width: 980px) {
+    .city-note-art {
+      width: 80px;
+    }
+    .city-note-footer {
+      gap: 10px;
+    }
+    .city-note-footer .text-link {
+      font-size: 13px;
+    }
+  }
+</style>

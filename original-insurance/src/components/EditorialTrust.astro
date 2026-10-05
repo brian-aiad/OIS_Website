@@ -1,0 +1,24 @@
+---
+import { resources } from '../data/site';
+---
+
+<aside class="editorial-trust" aria-label="Insurance information standards">
+  <div class="container">
+    <div>
+      <p class="eyebrow">California insurance resources</p>
+      <p>Website information updated October 5, 2026.</p>
+      <small>
+        Coverage, eligibility, pricing, and filing times vary by carrier and circumstances. Policy
+        terms, exclusions, and underwriting control. Insurance does not establish legal permission
+        to drive.
+      </small>
+    </div>
+    <div class="resource-links">
+      {resources.map((r) => (
+        <a href={r.url} target="_blank" rel="noreferrer">
+          {r.name} ↗
+        </a>
+      ))}
+    </div>
+  </div>
+</aside>

@@ -1,0 +1,228 @@
+---
+import type { PageData } from '../data/content';
+import { guides } from '../data/service-guides';
+import { coverage, quoteUrl } from '../data/site';
+import PageHero from './PageHero.astro';
+import CoverageDiagram from './CoverageDiagram.astro';
+import Icon from './Icon.astro';
+import FAQ from './FAQ.astro';
+import CTA from './CTA.astro';
+import Reviews from './Reviews.astro';
+import Photo from './Photo.astro';
+import PreparationChecklist from './PreparationChecklist.astro';
+import '../styles/guides.css';
+interface Props {
+  page: PageData;
+}
+const { page } = Astro.props;
+const service = coverage.find((c) => c.path === page.path)!;
+const guide = guides[service.key];
+const chapters = page.sections.filter(
+  (s) =>
+    s.paragraphs.length &&
+    s.title &&
+    !/why a broker|carrier access|coverage guidance|commercial auto quoting/i.test(s.title),
+);
+---
+
+<PageHero
+  label={guide.label}
+  title={guide.headline}
+  text={guide.intro}
+  image={service.image}
+  alt={service.alt}
+  imageCaption="Coverage illustration"
+  variant="service-hero"
+/>
+<section class="section service-overview">
+  <div class="container overview-grid">
+    <div class="overview-copy">
+      <p class="eyebrow">Understand your options</p>
+      <h2>{guide.overview}</h2>
+      <p>{guide.summary}</p>
+      {service.key === 'no-license' && (
+        <div class="note-panel">
+          <h3>Insurance is not permission to drive.</h3>
+          <p>
+            Follow California DMV licensing requirements. A policy does not authorize an unlicensed
+            or excluded person to drive.
+          </p>
+        </div>
+      )}
+    </div>
+    <CoverageDiagram type={service.key} />
+  </div>
+  <div class="container coverage-rows">
+    {guide.coverage.map((c) => (
+      <article class="coverage-row">
+        <h3>{c.title}</h3>
+        <p>{c.text}</p>
+      </article>
+    ))}
+  </div>
+</section>
+<section class="section service-editorial-guide">
+  <div class="container guide-layout">
+    <aside class="guide-nav">
+      <p class="eyebrow">Your coverage guide</p>
+      {chapters.map((c, i) => (
+        <a href={`#guide-${i + 1}`}>{c.title}</a>
+      ))}
+      <a href="#prepare">What to have ready</a>
+      {page.faq.length > 0 && <a href="#questions">Common questions</a>}
+      <a href={quoteUrl} data-quote class="button button-ink">
+        Compare options <Icon size={16} />
+      </a>
+    </aside>
+    <div>
+      {chapters.map((c, i) => (
+        <section class="guide-chapter" id={`guide-${i + 1}`}>
+          <p class="chapter-kicker">
+            <span class="chapter-symbol" aria-hidden="true">
+              <Icon
+                name={
+                  service.key === 'home'
+                    ? 'home'
+                    : service.key === 'auto' || service.key === 'commercial'
+                      ? 'car'
+                      : 'file'
+                }
+                size={18}
+              />
+            </span>
+            0{i + 1} / {service.name}
+          </p>
+          <h2>{c.title}</h2>
+          {c.paragraphs.map((p, j) => (
+            <div class={c.subheads.length ? 'subtopic' : ''}>
+              {c.subheads.length > 0 &&
+                ((c.subheads.length === c.paragraphs.length && c.subheads[j]) ||
+                  (c.subheads.length === c.paragraphs.length - 1 && j > 0)) && (
+                  <h3>{c.subheads[c.subheads.length === c.paragraphs.length ? j : j - 1]}</h3>
+                )}
+              <p lang={/Seguro de Auto/.test(c.title) ? 'es' : undefined}>{p}</p>
+            </div>
+          ))}
+          {service.key === 'auto' && i === 0 && (
+            <div class="note-panel">
+              <h3>California minimum liability limits</h3>
+              <div class="limits-strip">
+                <div>
+                  <strong>30</strong>
+                  <span>
+                    $30,000 bodily injury
+                    <br />
+                    per person
+                  </span>
+                </div>
+                <div>
+                  <strong>60</strong>
+                  <span>
+                    $60,000 bodily injury
+                    <br />
+                    per accident
+                  </span>
+                </div>
+                <div>
+                  <strong>15</strong>
+                  <span>
+                    $15,000 property damage
+                    <br />
+                    per accident
+                  </span>
+                </div>
+              </div>
+              <p style="margin-top:20px">
+                For policies issued or renewed on or after January 1, 2025. These are minimum
+                limits; consider whether higher limits fit your needs.
+              </p>
+              <a
+                class="text-link"
+                href="https://www.dmv.ca.gov/portal/vehicle-registration/insurance-requirements/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                California DMV requirements ↗
+              </a>
+            </div>
+          )}
+          {service.key === 'home' && i === 0 && (
+            <div class="note-panel">
+              <h3>Ask about the exclusions.</h3>
+              <p>
+                Standard homeowners policies generally exclude flood and earthquake damage. Discuss
+                separate coverage and property-specific requirements.
+              </p>
+              <a
+                class="text-link"
+                href="https://www.insurance.ca.gov/01-consumers/105-type/95-guides/03-res/res-ins-guide.cfm"
+                target="_blank"
+                rel="noreferrer"
+              >
+                California home insurance guide ↗
+              </a>
+            </div>
+          )}
+        </section>
+      ))}
+      <PreparationChecklist
+        items={guide.checklist}
+        kind={
+          service.key === 'home'
+            ? 'home'
+            : service.key === 'commercial'
+              ? 'business'
+              : service.key === 'auto'
+                ? 'policy'
+                : 'renewal'
+        }
+      />
+    </div>
+  </div>
+</section>
+{page.faq.length > 0 && (
+  <section class="section" id="questions" style="background:white">
+    <div class="container faq-grid">
+      <div>
+        <p class="eyebrow">Before you decide</p>
+        <h2>
+          Let’s clear
+          <br />a few things up.
+        </h2>
+        <a class="text-link" href="/faq">
+          More questions & answers <Icon />
+        </a>
+      </div>
+      <FAQ items={page.faq} />
+    </div>
+  </section>
+)}
+<section class="section service-related">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">See the bigger picture</p>
+      <h2>Explore related coverage.</h2>
+    </div>
+    <div class="service-related-options">
+      {coverage
+        .filter((c) => c.key !== service.key)
+        .slice(0, 3)
+        .map((c) => (
+          <a href={c.path}>
+            <Photo src={c.image} alt="" sizes="100px" />
+            <div>
+              <h3>{c.name}</h3>
+              <span class="related-detail">
+                Explore your options <Icon size={17} />
+              </span>
+            </div>
+          </a>
+        ))}
+    </div>
+  </div>
+</section>
+<Reviews />
+<CTA
+  title="Let’s find your next step."
+  text="A conversation with our Downey team can help you make sense of your coverage options. English, Spanish, and Arabic service available."
+/>

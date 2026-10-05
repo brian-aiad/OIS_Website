@@ -1,0 +1,30 @@
+---
+import Icon from './Icon.astro';
+interface Props {
+  items: { q: string; a: string; link?: { href: string; label: string } }[];
+}
+const { items } = Astro.props;
+---
+
+<div class="faq-list">
+  {items.map((item, index) => (
+    <details>
+      <summary>
+        <span class="faq-number" aria-hidden="true">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+        <span>{item.q}</span>
+        <Icon name="plus" size={20} />
+      </summary>
+      <div class="faq-answer">
+        <p>{item.a}</p>
+        {item.link && (
+          <a class="text-link" href={item.link.href}>
+            {item.link.label}
+            <Icon size={16} />
+          </a>
+        )}
+      </div>
+    </details>
+  ))}
+</div>

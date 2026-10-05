@@ -1,0 +1,157 @@
+---
+import PageHero from './PageHero.astro';
+import Photo from './Photo.astro';
+import Icon from './Icon.astro';
+import Process from './Process.astro';
+import CTA from './CTA.astro';
+import Reviews from './Reviews.astro';
+import '../styles/about.css';
+---
+
+<PageHero
+  label="Our story · Since 1999"
+  title="Your insurance team in Downey."
+  text="Original Insurance Services is an independent brokerage on Paramount Boulevard. We help individuals, families, and businesses compare coverage and understand what they’re buying."
+  image="ois-office-interior-real.jpg"
+  alt="Inside the Original Insurance office, with teal walls and wood floors"
+  quote={false}
+/>
+<section class="original-story" aria-labelledby="original-story-title">
+  <div class="container">
+    <div class="original-story-heading">
+      <div>
+        <p class="eyebrow">The story behind Original</p>
+        <h2 id="original-story-title">
+          Insurance changes.
+          <br />
+          <em>Personal service stays.</em>
+        </h2>
+      </div>
+      <div class="original-story-mark" aria-label="Established 1999">
+        <span>Established</span>
+        <strong>1999</strong>
+        <span>Original Insurance Services</span>
+        <Photo src="citrus-branch-accent.png" alt="" sizes="160px" />
+      </div>
+    </div>
+    <div class="original-story-copy">
+      <p class="original-story-lead">
+        Original Insurance Services has been helping people understand their insurance options since
+        1999. Today, our independent brokerage serves individuals, families, and businesses from our
+        office on Paramount Boulevard in Downey.
+      </p>
+      <div>
+        <p>
+          A first car, a home to look after, a vehicle you use for work—each starts a different
+          conversation. We ask about the details, compare available insurance companies, and explain
+          what the price includes. Limits, deductibles, and exclusions should be part of the
+          conversation, too.
+        </p>
+        <p>
+          You can speak with our team in English, Spanish, or Arabic. Whether you visit the office
+          or get in touch from home, you have a place to bring your questions before choosing a
+          policy—and when you need help with documents, renewals, or carrier contacts afterward.
+        </p>
+        <a href="/services" class="text-link">
+          Explore the coverage we help with <Icon />
+        </a>
+      </div>
+    </div>
+    <div class="original-history" aria-label="Our history and approach">
+      <div class="original-history-heading">
+        <p class="eyebrow">From our beginning to your next policy</p>
+        <span>Independent advice. A local team.</span>
+      </div>
+      <ol class="original-history-line">
+        <li>
+          <div class="original-history-marker" aria-hidden="true">
+            <span></span>
+          </div>
+          <p class="original-history-date">1999</p>
+          <h3>Our story begins.</h3>
+          <p>
+            Original Insurance Services is established. That founding year remains part of who we
+            are today.
+          </p>
+        </li>
+        <li>
+          <div class="original-history-marker" aria-hidden="true">
+            <span></span>
+          </div>
+          <p class="original-history-date original-history-principle">Our approach</p>
+          <h3>Choice, with an explanation.</h3>
+          <p>
+            As an independent brokerage, we compare available carriers and help you understand the
+            differences. You decide which option fits.
+          </p>
+        </li>
+        <li>
+          <div class="original-history-marker" aria-hidden="true">
+            <span></span>
+          </div>
+          <p class="original-history-date">Today</p>
+          <h3>Here in Downey. Within reach.</h3>
+          <p>
+            Visit our local office or connect by phone, text, email, and online. Our team offers
+            help in English, Spanish, and Arabic.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+<Process />
+<section class="section about-visit">
+  <div class="container about-office">
+    <Photo
+      src="ois-storefront-real.jpg"
+      alt="Original Insurance Services storefront at 9907-B Paramount Boulevard in Downey"
+    />
+    <div>
+      <p class="eyebrow">Visit the people behind your policy</p>
+      <h2>
+        Stop by our
+        <br />
+        Downey office.
+      </h2>
+      <p class="about-street">
+        9907-B Paramount Boulevard
+        <br />
+        Downey, CA 90240
+      </p>
+      <p>
+        Walk-ins are welcome. Bring your questions and whatever documents you have. We’ll work
+        through the next steps together.
+      </p>
+      <a href="/locations" class="text-link">
+        Hours, parking & directions <Icon />
+      </a>
+    </div>
+  </div>
+</section>
+<Reviews />
+<CTA title="Let’s get to know your needs." />
+<style>
+  .about-office {
+    align-items: center;
+  }
+  .about-office h2 {
+    font-size: clamp(35px, 3.5vw, 48px);
+  }
+  .about-street {
+    font-weight: 550;
+    color: var(--ink);
+  }
+  .about-visit :global(picture img) {
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+  .about-visit :global(picture) {
+    display: block;
+  }
+  @media (max-width: 760px) {
+    .about-visit .about-office {
+      gap: 26px;
+    }
+  }
+</style>

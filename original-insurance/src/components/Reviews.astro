@@ -1,0 +1,92 @@
+---
+import Icon from './Icon.astro';
+import Photo from './Photo.astro';
+
+const reviews = [
+  {
+    name: 'RiRi Martinez',
+    quote:
+      'I’ve trusted Aiman as my insurance broker for over 23 years for my auto, home, and fire insurance. He consistently finds the best rates and provides outstanding service.',
+    theme: 'A relationship that lasts.',
+  },
+  {
+    name: 'Sheila Redmond',
+    quote:
+      'The best ever. They’re very helpful and I just love them. I’ve been with them for about 20 years. You won’t find a more friendly company.',
+    theme: 'People who feel familiar.',
+  },
+  {
+    name: 'Sameh Ezzat',
+    quote:
+      'I’ve been a loyal customer with Original Insurance for over ten years. Their customer service is consistently amazing.',
+    theme: 'Here beyond the paperwork.',
+  },
+  {
+    name: 'Bishoy Metry',
+    quote:
+      'I got my auto & renters insurance here and couldn’t be more satisfied. They found me an excellent rate, easily the best I’ve come across.',
+    theme: 'Coverage that comes together.',
+  },
+];
+---
+
+<section class="customer-stories section" data-review-gallery>
+  <div class="story-botanical" aria-hidden="true">
+    <Photo src="citrus-branch-accent.png" alt="" sizes="(max-width:760px) 35vw, 22vw" />
+  </div>
+  <div class="container">
+    <div class="customer-stories-heading">
+      <div>
+        <p class="eyebrow">From our customers</p>
+        <h2>
+          Local people.
+          <br />
+          Lasting relationships.
+        </h2>
+      </div>
+      <div class="customer-stories-actions">
+        <a
+          href="https://g.page/original-insurance"
+          target="_blank"
+          rel="noreferrer"
+          class="text-link"
+        >
+          Read our Google reviews <Icon name="diagonal" size={17} />
+        </a>
+        <div class="review-controls" hidden>
+          <button class="icon-button" data-review-prev aria-label="Previous customer review">
+            <Icon name="arrow" class="reverse-arrow" />
+          </button>
+          <span data-review-count aria-live="polite">
+            01 / 04
+          </span>
+          <button class="icon-button" data-review-next aria-label="Next customer review">
+            <Icon />
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="customer-stage">
+      {reviews.map((r, i) => (
+        <figure data-review={i}>
+          <span class="story-quote-mark" aria-hidden="true">
+            “
+          </span>
+          <div>
+            <blockquote>{r.quote}</blockquote>
+            <figcaption>
+              <span class="review-initial" aria-hidden="true">
+                {r.name.charAt(0)}
+              </span>
+              <span>
+                <strong>{r.name}</strong>
+                <small>Customer review · Google</small>
+              </span>
+              <span class="story-theme">{r.theme}</span>
+            </figcaption>
+          </div>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

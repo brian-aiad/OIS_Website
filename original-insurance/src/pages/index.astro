@@ -1,0 +1,262 @@
+---
+import { Picture } from 'astro:assets';
+import art from '../assets/california-coverage-editorial-v2.png';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Photo from '../components/Photo.astro';
+import Process from '../components/Process.astro';
+import Reviews from '../components/Reviews.astro';
+import AreaLinks from '../components/AreaLinks.astro';
+import CTA from '../components/CTA.astro';
+import FAQ from '../components/FAQ.astro';
+import PaintedAccent from '../components/PaintedAccent.astro';
+import { coverage, additional, quoteUrl, contact } from '../data/site';
+---
+
+<Base
+  title="Independent Insurance Broker in Downey, CA | Original"
+  description="Personal insurance guidance from an independent Downey broker since 1999. Compare auto, home and business coverage in English, Spanish or Arabic."
+  path="/"
+  editorial
+>
+  <section class="home-hero">
+    <div class="container home-hero-grid">
+      <div class="home-hero-copy">
+        <p class="eyebrow">
+          <span class="small-line"></span>Independent insurance · Downey, CA
+        </p>
+        <h1>
+          For the life
+          <br />
+          you call <em>yours.</em>
+        </h1>
+        <p class="lede">
+          Auto, home, and business insurance.
+          <br />
+          Let’s find the coverage that fits—with a local broker who takes the time to know you.
+        </p>
+        <div class="actions">
+          <a href={quoteUrl} data-quote class="button button-ink">
+            Find my coverage <Icon />
+          </a>
+          <a href={contact.phoneHref} class="hero-call">
+            <Icon name="phone" size={18} />
+            <span>{contact.phone}</span>
+          </a>
+        </div>
+        <p class="hero-footnote">Independent advice. Multiple carriers. One familiar team.</p>
+      </div>
+      <figure class="home-hero-art">
+        <Picture
+          src={art}
+          formats={['avif']}
+          fallbackFormat="webp"
+          widths={[480, 800, 1100, art.width]}
+          sizes="(max-width: 760px) 100vw, 55vw"
+          alt="Editorial illustration of a complete California bungalow and navy car surrounded by leafy trees"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <figcaption>
+          <span>
+            Life changes.
+            <br />
+            <strong>We’re here for it.</strong>
+          </span>
+          <span class="art-mark" aria-hidden="true">
+            O<span>↗</span>
+          </span>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="container hero-proof">
+      <div>
+        <strong>Since 1999</strong>
+        <span>A local relationship, built to last</span>
+      </div>
+      <div>
+        <strong>Your independent broker</strong>
+        <span>Options from multiple insurance carriers</span>
+      </div>
+      <div>
+        <strong>In your language</strong>
+        <span>English · Español · العربية</span>
+      </div>
+    </div>
+  </section>
+  <section class="section coverage-section" id="coverage">
+    <div class="container">
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">Insurance for the way you live</p>
+          <h2>
+            Find the coverage
+            <br />
+            you need.
+          </h2>
+        </div>
+        <div>
+          <p>
+            Start with what you need to insure. We’ll help you compare available policies, explain
+            the differences, and choose your next step.
+          </p>
+          <a href="/services" class="text-link">
+            Explore all coverage <Icon />
+          </a>
+        </div>
+      </div>
+      <div class="coverage-feature-grid">
+        {coverage.slice(0, 3).map((c, i) => (
+          <a
+            href={c.path}
+            class:list={['coverage-feature', i === 0 ? 'feature-large' : '']}
+            data-reveal
+          >
+            <div class="coverage-feature-image">
+              <Photo
+                src={c.image}
+                alt={c.alt}
+                sizes="(max-width: 760px) 38vw, (min-width: 1800px) 470px, 33vw"
+              />
+              <span class="image-index">0{i + 1}</span>
+            </div>
+            <div class="coverage-feature-caption">
+              <div>
+                <p>0{i + 1} / Coverage</p>
+                <h3>{c.name}</h3>
+                <p class="coverage-description">{c.description}</p>
+              </div>
+              <span class="round-arrow">
+                <Icon />
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <nav class="coverage-directory" aria-label="Additional coverage and office services">
+        <div class="directory-driver">
+          <h3>Driver requirements</h3>
+          <a href="/sr22-insurance-downey">
+            SR-22 filing help <Icon size={16} />
+          </a>
+          <a href="/no-license-auto-insurance-downey">
+            No-license & foreign-license options <Icon size={16} />
+          </a>
+        </div>
+        <div>
+          <h3>More insurance</h3>
+          {additional.slice(0, 4).map((service) => (
+            <a href={`/services#${service.id}`}>
+              {service.name}
+              <Icon size={16} />
+            </a>
+          ))}
+        </div>
+        <div>
+          <h3>Office services</h3>
+          {additional.slice(4).map((service) => (
+            <a href={`/services#${service.id}`}>
+              {service.name}
+              <Icon size={16} />
+            </a>
+          ))}
+        </div>
+      </nav>
+    </div>
+  </section>
+  <section class="personal-section section">
+    <div class="container personal-grid">
+      <div class="personal-photos" data-reveal>
+        <Photo
+          src="ois-storefront-real.jpg"
+          alt="The real Original Insurance Services storefront on Paramount Boulevard in Downey"
+        />
+        <div class="photo-note">
+          <span>YOUR LOCAL OFFICE</span>
+          <strong>
+            9907-B
+            <br />
+            Paramount Blvd.
+          </strong>
+          <a href="/locations">
+            Come say hello <Icon size={18} />
+          </a>
+        </div>
+      </div>
+      <div class="personal-copy">
+        <p class="eyebrow">Real people. Right here.</p>
+        <h2>
+          Your local
+          <br />
+          <em>Downey insurance team.</em>
+        </h2>
+        <p>
+          Call, text, or stop by our Paramount Boulevard office. We can help in English, Spanish,
+          and Arabic.
+        </p>
+        <p>
+          Since 1999, Original Insurance Services has helped individuals, families, and businesses
+          understand their options. We’re an independent Downey brokerage, so the conversation
+          starts with you.
+        </p>
+        <a href="/about" class="text-link">
+          Meet Original <Icon />
+        </a>
+        <div class="signature-line">
+          <span>Personal service.</span>
+          <span>That’s Original.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Process />
+  <Reviews />
+  <AreaLinks />
+  <section class="section">
+    <div class="container faq-grid">
+      <div>
+        <p class="eyebrow">A little less uncertainty</p>
+        <h2>
+          Before you
+          <br />
+          get a quote.
+        </h2>
+        <a href="/faq" class="text-link">
+          More insurance answers <Icon />
+        </a>
+        <aside class="question-note">
+          <p class="eyebrow">A useful starting point</p>
+          <div class="question-note-heading">
+            <h3>Have your current policy handy.</h3>
+            <PaintedAccent kind="renewal" size="small" />
+          </div>
+          <p>
+            It helps us compare the same limits and deductibles. If this is your first policy, we
+            can explain what information to gather.
+          </p>
+        </aside>
+      </div>
+      <FAQ
+        items={[
+          {
+            q: 'What does an independent insurance broker do?',
+            a: 'We compare available options from multiple carriers and explain how coverage, deductibles, and pricing differ. You choose the policy after reviewing the details.',
+          },
+          {
+            q: 'How do I get started?',
+            a: 'Request a quote online, call our office, or stop by in Downey. Have your current policy and vehicle or property information handy if available.',
+          },
+          {
+            q: 'Can I get help in Spanish or Arabic?',
+            a: 'Yes. Our Downey team provides service in English, Spanish, and Arabic. Tell us which language you prefer when you call or visit.',
+          },
+          {
+            q: 'Can you help after I buy a policy?',
+            a: 'Yes. Contact us about documents, renewals, and coverage questions. For claims, we can help you find the right carrier contact and understand the next steps; the insurer decides coverage and settlement.',
+          },
+        ]}
+      />
+    </div>
+  </section>
+  <CTA />
+</Base>

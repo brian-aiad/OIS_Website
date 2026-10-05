@@ -1,0 +1,39 @@
+---
+import Icon from './Icon.astro';
+import { contact, quotzalUrl } from '../data/site';
+---
+
+<dialog id="quote-dialog" class="quote-dialog quotzal-dialog" aria-labelledby="quote-title">
+  <div class="dialog-top">
+    <div>
+      <p class="eyebrow">Original Insurance / Your next step</p>
+      <h2 id="quote-title">Find your coverage.</h2>
+    </div>
+    <button class="icon-button" data-close-quote aria-label="Close quote form">
+      <Icon name="close" />
+    </button>
+  </div>
+  <div class="quotzal-help">
+    <p>Tell us what you need to protect.</p>
+    <a href={quotzalUrl} target="_blank" rel="noopener noreferrer">
+      Open form in a new tab <Icon name="diagonal" size={16} />
+    </a>
+  </div>
+  <div class="quotzal-frame">
+    <p class="quote-loading" data-quote-loading role="status">
+      Loading your quote form…
+      <span>If it takes a moment, you can also open the form in a new tab above.</span>
+    </p>
+    <iframe
+      data-quotzal-src={quotzalUrl}
+      title="Original Insurance quote request through Quotzal"
+      allow="clipboard-write"
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></iframe>
+  </div>
+  <div class="dialog-bottom">
+    <span>Prefer a conversation?</span>
+    <a href={contact.phoneHref}>{contact.phone}</a>
+    <a href="/privacy">Privacy details</a>
+  </div>
+</dialog>

@@ -1,0 +1,5 @@
+# Never upload local source photography, customer records, or QA artifacts.
+DSC_*.JPG
+OIS_CLIENT_EMAIL_LIST.xlsx
+output/
+.playwright-cli/

@@ -1,0 +1,631 @@
+[
+  {
+    "path": "/",
+    "title": "Independent Insurance Broker in Downey, CA | Original",
+    "description": "Personal insurance guidance from an independent Downey broker since 1999. Compare auto, home and business coverage in English, Spanish or Arabic.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/services",
+    "title": "Insurance Services in Downey, CA | Original Insurance",
+    "description": "Explore auto, home, renters, motorcycle, life, SR-22 and commercial insurance options from an independent Downey brokerage.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/locations",
+    "title": "Downey Insurance Office, Hours & Directions | Original",
+    "description": "Visit Original Insurance Services at 9907-B Paramount Boulevard in Downey. Find weekday hours, directions, parking and contact information.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/about",
+    "title": "About Original Insurance Services in Downey, CA",
+    "description": "Meet the independent Downey insurance brokerage serving southeast Los Angeles County since 1999 in English, Spanish and Arabic.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/contact",
+    "title": "Contact Original Insurance Services in Downey, CA",
+    "description": "Call, text, email or visit our Downey insurance office. Open Monday through Friday, 10:00 a.m. to 5:30 p.m. English, Spanish and Arabic.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/faq",
+    "title": "California Insurance FAQ | Original Insurance Services",
+    "description": "Clear answers about California auto insurance, SR-22 filings, foreign-license situations, proof of insurance, claims and required liability limits.",
+    "sections": [],
+    "faq": [
+      {
+        "id": "cost-coverage",
+        "heading": "Cost & Coverage",
+        "items": [
+          {
+            "q": "How much does car insurance cost in Downey?",
+            "a": "There is no reliable citywide price range. California auto premiums are individualized using factors such as driving history, years of experience, annual mileage, vehicle, coverage choices, discounts, and where the vehicle is garaged. We compare current quotes using the same limits and deductibles so the prices are genuinely comparable."
+          },
+          {
+            "q": "What is the difference between liability and full coverage?",
+            "a": "Liability helps address covered injuries and damage you cause to others. “Full coverage” is not a standardized policy term; it commonly refers to liability plus comprehensive and collision. Limits, deductibles, exclusions, and lender requirements still need a review."
+          },
+          {
+            "q": "What affects my car insurance rate?",
+            "a": "California auto quotes consider factors such as driving history, years of driving experience, annual mileage, vehicle details, coverage choices, and eligible discounts. We compare the same limits and deductibles so you can understand the differences."
+          },
+          {
+            "q": "What is California's minimum liability requirement?",
+            "a": "California’s standard minimum auto liability limits are 30/60/15: $30,000 for bodily injury per person, $60,000 per accident, and $15,000 for property damage. Minimum limits may not cover the full cost of a serious accident. Compare higher limits based on your needs."
+          }
+        ]
+      },
+      {
+        "id": "no-license",
+        "heading": "No-License & International-License",
+        "items": [
+          {
+            "q": "Can I insure a vehicle if I do not have a traditional California license?",
+            "a": "Possibly, depending on the carrier and disclosed facts. Some insurers may consider a non-driving vehicle owner, a foreign-license holder, an applicant using an ITIN, or a household with a different licensed primary driver. Insurance eligibility does not establish legal permission to drive, and every owner, household member, and actual driver must be disclosed accurately."
+          },
+          {
+            "q": "Do you work with foreign or international license holders?",
+            "a": "Some carriers may consider a valid license issued by another country. Acceptance, translations, identification, driving-history treatment, and residency requirements vary. California residents must follow DMV licensing rules; an International Driving Permit does not replace the underlying license or guarantee coverage."
+          },
+          {
+            "q": "What documents help you find coverage?",
+            "a": "Your current declarations page, vehicle registration, identification, and available license documents can help us review the situation. If another person is the actual primary driver, we need their information too. Call before sending sensitive documents so we can explain the appropriate submission method."
+          },
+          {
+            "q": "Can a vehicle owner who doesn't drive still be insured?",
+            "a": "Some carriers may consider a non-driving owner with a different licensed primary driver after reviewing ownership, household, garaging, and use. The application must identify the actual drivers, and an excluded person has no driving coverage under that policy."
+          }
+        ]
+      },
+      {
+        "id": "sr22",
+        "heading": "SR-22 & DMV Reinstatement",
+        "items": [
+          {
+            "q": "What is SR-22 insurance in California?",
+            "a": "An SR-22 is a filing — not a separate insurance policy. It is proof an insurer sends to the California DMV confirming required financial responsibility. Filing charges and the underlying policy cost vary by carrier. See our SR-22 page for a full walkthrough."
+          },
+          {
+            "q": "Who usually needs SR-22?",
+            "a": "An SR-22 may be required after certain license suspensions, uninsured accidents, DUI-related actions, or other DMV or court decisions. Not every incident creates the same requirement. Check your individual notice and confirm your next steps with the DMV."
+          },
+          {
+            "q": "How long do I need SR-22?",
+            "a": "The required period depends on the DMV or court action. California DMV materials commonly refer to a three-year period in certain cases. A lapse can affect driving privileges, so confirm your personal start and end dates directly with the DMV."
+          },
+          {
+            "q": "How quickly can an SR-22 be filed?",
+            "a": "Qualifying insurers can submit SR-22 proof electronically after a policy is bound. Processing time depends on the carrier, the time of day, and DMV systems; we explain the expected timing before you purchase."
+          },
+          {
+            "q": "How much does SR-22 cost?",
+            "a": "The filing charge and underlying insurance premium vary by carrier and driving history. We compare eligible carriers and show the filing charge, limits, deductibles, and policy price before you choose coverage."
+          }
+        ]
+      },
+      {
+        "id": "claims",
+        "heading": "Claims, Proof & After-Purchase Support",
+        "items": [
+          {
+            "q": "How fast can I get proof of insurance?",
+            "a": "After a carrier confirms that coverage is bound, proof of insurance is generally delivered electronically. Timing depends on the carrier, payment confirmation, required documents, and the type of policy. For SR-22 situations, we explain the carrier's filing process and expected timing before you purchase."
+          },
+          {
+            "q": "What do I do after an accident?",
+            "a": "First, make sure everyone is safe and call 911 if there are injuries. Then document the scene — photos, the other driver's license and insurance information, and the police report number if applicable. Notify your carrier's 24-hour claims line as soon as possible. Then call us — we can help you understand the process, communicate with adjusters, and follow up on the status of your claim."
+          },
+          {
+            "q": "How does your office help with claims?",
+            "a": "We help you locate the carrier's claims contact, understand requested documents, and follow up on communication questions. The carrier and assigned adjuster decide coverage and settlement under the policy; we do not replace the adjuster or make claim decisions."
+          },
+          {
+            "q": "Can I get help in Spanish or Arabic?",
+            "a": "Yes. Our Downey office provides service in English, Spanish, and Arabic. Ask for the language you prefer when you call, text, or visit so our team can explain the available options clearly."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "path": "/privacy",
+    "title": "Privacy & Data Handling | Original Insurance",
+    "description": "Learn how Original Insurance handles website inquiries, quote requests, analytics, and sensitive insurance information.",
+    "h1": "Your insurance information deserves careful handling.",
+    "intro": "This notice explains what our website collects, why it is used, and which channels are appropriate for sensitive information.",
+    "sections": [
+      {
+        "title": "How we handle your information",
+        "subheads": [
+          "Collect only what helps us respond",
+          "Keep sensitive details out of ordinary messages",
+          "Use information for the requested service",
+          "Limit access and third-party processing"
+        ],
+        "paragraphs": [
+          "Our general contact form asks for your name, contact information, topic, and message. Quote details are collected separately through our quote provider.",
+          "Do not send Social Security numbers, payment-card details, passwords, or full driver’s-license images through email, text, or the general contact form.",
+          "Information you provide is used to answer your inquiry, prepare or service coverage, and meet applicable insurance and recordkeeping obligations.",
+          "Information is handled by authorized personnel and service providers needed to operate the website, receive messages, process quote requests, and measure site reliability."
+        ]
+      },
+      {
+        "title": "Where information goes",
+        "subheads": [
+          "General messages",
+          "Quote requests",
+          "Site analytics",
+          "Calls, texts, and email"
+        ],
+        "paragraphs": [
+          "We use service providers for defined website functions. Their systems may process information under their own privacy terms.",
+          "The contact form uses Web3Forms to deliver your inquiry to our office.",
+          "Our insurance quote form is hosted by Quotzal and embedded on this website. Information you enter is processed through that service for your quote request. A quote request does not bind insurance coverage.",
+          "Google Analytics measures website visits and interactions. Vercel Analytics and Speed Insights collect technical and performance information to help us understand reliability and improve the site. These providers may process information under their own privacy terms.",
+          "Information sent through your phone or email provider is also subject to that provider’s terms and security."
+        ]
+      },
+      {
+        "title": "Questions, corrections, or privacy concerns",
+        "subheads": [],
+        "paragraphs": [
+          "Contact us to ask about information you submitted through this website or to request a correction. We may need to verify your identity before discussing policy or personal information.",
+          "For policy documents or identity information, call us first so we can direct you to the appropriate submission method."
+        ]
+      }
+    ],
+    "faq": []
+  },
+  {
+    "path": "/accessibility",
+    "title": "Accessibility | Original Insurance",
+    "description": "Original Insurance provides accessible online and offline ways to request insurance help in English, Spanish, and Arabic.",
+    "h1": "Insurance help should be easy to reach.",
+    "intro": "We are working to make our digital experience usable across devices and abilities, with direct human assistance whenever the website is not the best channel.",
+    "sections": [
+      {
+        "title": "Our accessibility approach",
+        "subheads": ["Keyboard access", "Readable structure", "Responsive layouts", "Human help"],
+        "paragraphs": [
+          "Navigation and interactive controls are designed to remain usable without a mouse.",
+          "Pages use descriptive headings, labels, link text, and image alternatives to support assistive technology.",
+          "Content is designed for phones, tablets, desktops, zoom, and reduced-motion preferences.",
+          "Our team can assist by phone, text, email, or in person in English, Spanish, and Arabic."
+        ]
+      },
+      {
+        "title": "Tell us what is not working",
+        "subheads": [],
+        "paragraphs": [
+          "If you encounter an accessibility barrier, tell us which page or task caused the problem and what device or assistive technology you were using. We will provide the information through another channel and use the report to improve the site."
+        ]
+      }
+    ],
+    "faq": []
+  },
+  {
+    "path": "/auto-insurance-downey-ca",
+    "title": "Auto Insurance in Downey, CA | Original Insurance",
+    "description": "Compare liability, collision, comprehensive and SR-22 auto insurance options with an independent broker in Downey, California.",
+    "sections": [
+      {
+        "title": "How much car insurance costs in Downey",
+        "subheads": [],
+        "paragraphs": [
+          "Car insurance rates in Downey depend on several factors: your driving history, the type of vehicle you drive, the coverage level you choose, your zip code (90240, 90241, or 90242), prior claims, annual mileage, and any lender requirements. A quote based on accurate details is more useful than a generic starting price.",
+          "California requires a minimum liability of 30/60/15 — $30,000 bodily injury per person, $60,000 per accident, and $15,000 property damage. Many Downey drivers choose more than this minimum because the limits are low relative to real-world costs. If you cause an accident with an expensive vehicle or medical bills that exceed your coverage, you can be personally responsible for the difference.",
+          "As an independent broker, we do not represent only one insurance company. We compare suitable carriers and explain differences in limits, deductibles, exclusions, and price. Factors such as bundling, eligible safety features, and continuous coverage may affect the premium.",
+          "Our team explains the proposed coverage, deductibles, payment terms, and any applicable charges before you choose a policy. Ask us about anything that is unclear in the quote."
+        ]
+      },
+      {
+        "title": "Coverage options for Downey drivers",
+        "subheads": [
+          "Liability-Only",
+          "Full Coverage",
+          "Uninsured Motorist",
+          "Comprehensive",
+          "Collision",
+          "Add-Ons"
+        ],
+        "paragraphs": [
+          "Your vehicle, budget, and any lender requirements help determine which coverage to compare. Each option has limits and exclusions.",
+          "Liability helps pay covered injury and property-damage claims made by others when you are responsible. It does not cover damage to your own vehicle. Compare limits as well as price.",
+          "“Full coverage” is not a standardized policy term. It commonly means liability plus comprehensive and collision. Financed or leased vehicles often require physical-damage coverage; check your contract and policy details.",
+          "Uninsured and underinsured motorist options can help with certain losses involving a driver with no insurance or insufficient limits. Coverage types, limits, and conditions should be reviewed with the quote.",
+          "Comprehensive can cover certain non-collision losses, such as theft, fire, vandalism, or weather damage, subject to the deductible and policy terms.",
+          "Collision can help pay for covered damage to your vehicle from a collision, subject to your deductible and policy terms. It does not mean every incident or expense is covered.",
+          "Ask about rental reimbursement and roadside assistance. Available benefits, daily limits, exclusions, and additional cost vary by carrier."
+        ]
+      },
+      {
+        "title": "SR-22 filing in Downey",
+        "subheads": [],
+        "paragraphs": [
+          "An SR-22 is a filing, not a separate insurance policy. It is proof an insurer sends to the California DMV confirming required financial responsibility. Some license suspensions, uninsured accidents, DUI-related actions, or court decisions can lead to a filing requirement. Your DMV or court notice determines what applies to you.",
+          "Qualifying insurers can file SR-22 proof electronically after coverage is bound. Helpful documents include your driver's license or DMV paperwork, vehicle VIN, current declarations page if available, and any court or DMV reference number. Processing time depends on the carrier and DMV systems.",
+          "The required filing period depends on the DMV or court action. If proof is no longer in force, the insurer may notify the DMV and driving privileges can be affected. Confirm your own dates with the DMV; we can compare carriers that accept the situation.",
+          "For full details on SR-22 cost, duration, and what to expect, visit our dedicated page."
+        ]
+      },
+      {
+        "title": "No-license, foreign-license, and international-license options",
+        "subheads": [],
+        "paragraphs": [
+          "Some vehicle owners need insurance without holding a traditional California driver’s license. Available options depend on who owns and drives the vehicle, the documents provided, and the insurer’s requirements.",
+          "Situations to discuss include a non-driving vehicle owner with a licensed primary driver, a foreign-license holder, or an applicant using an ITIN for identification. Disclose all actual drivers and household members accurately. An ITIN or insurance policy does not replace a driver’s license or establish permission to drive.",
+          "Not every insurer considers these situations. We can review available carrier options using accurate ownership, identification, household, and driver information. Bring any existing declarations page and the documents you have."
+        ]
+      },
+      {
+        "title": "Seguro de Auto en Downey, California",
+        "subheads": [],
+        "paragraphs": [
+          "En Original Insurance, le ayudamos a comparar opciones de seguro de auto y a entender los límites, deducibles y exclusiones. Nuestro equipo en Downey ofrece atención en español.",
+          "Si necesita un trámite SR-22, tiene una licencia extranjera o es propietario de un vehículo que no conduce, cuéntenos su situación. La disponibilidad depende de la aseguradora y de los documentos requeridos. Tener seguro no autoriza a conducir sin la licencia correspondiente.",
+          "Puede solicitar una cotización en línea, llamarnos o visitar nuestra oficina en 9907-B Paramount Blvd, Downey, CA 90240. Atendemos de lunes a viernes, de 10:00 a. m. a 5:30 p. m. Traiga su póliza actual y los documentos que tenga disponibles."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "How much does car insurance cost in Downey, CA?",
+        "a": "The cost varies by driving record, vehicle, coverage, ZIP code, annual mileage, claims history, discounts, and carrier. A quote using accurate details is the reliable way to compare current prices."
+      },
+      {
+        "q": "What is California's minimum car insurance requirement?",
+        "a": "California requires 30/60/15 liability: $30,000 bodily injury per person, $60,000 per accident, and $15,000 for property damage."
+      },
+      {
+        "q": "When will I receive proof of insurance?",
+        "a": "After the carrier confirms that coverage is bound, policy documents are generally delivered electronically. Timing for ID cards and any SR-22 filing depends on the carrier, payment, required documents, and DMV systems."
+      },
+      {
+        "q": "What discounts may be available for Downey auto insurance?",
+        "a": "Depending on the carrier and eligibility, discounts may include multi-car, home and auto bundles, continuous coverage, safety features, and qualifying driving history."
+      },
+      {
+        "q": "Do you offer insurance for drivers without a California license?",
+        "a": "Some insurers may consider a foreign-license holder or a non-driving vehicle owner with a licensed primary driver. Eligibility depends on the carrier, documentation, and accurate disclosure of all drivers. An ITIN does not replace a driver’s license, and insurance does not authorize anyone to drive without legal permission."
+      }
+    ]
+  },
+  {
+    "path": "/sr22-insurance-downey",
+    "title": "SR-22 Insurance in Downey, CA | Original Insurance",
+    "description": "Learn how California SR-22 filings work and compare qualifying auto insurance options with an independent broker in Downey. Call or visit our office.",
+    "sections": [
+      {
+        "title": "What is SR-22?",
+        "subheads": [],
+        "paragraphs": [
+          "An SR-22 is a filing — not a separate insurance policy. It is proof that your insurance company sends to the California DMV confirming required financial responsibility. California's minimum auto liability limits are currently 30/60/15. Filing charges and the underlying policy premium vary by carrier and situation.",
+          "The filing accompanies qualifying insurance coverage. If the required proof is no longer in force, the insurer may notify the DMV and your driving privileges may be affected. Confirm the filing and any remaining requirements with your insurer and the DMV."
+        ]
+      },
+      {
+        "title": "Who needs SR-22 in California?",
+        "subheads": [],
+        "paragraphs": [
+          "An SR-22 may be required after certain license suspensions, uninsured accidents, DUI-related actions, or other DMV or court decisions. Not every incident creates the same requirement.",
+          "Your individual notice is the starting point. Bring it to the quote conversation and confirm outstanding requirements directly with the DMV."
+        ]
+      },
+      {
+        "title": "How long do I need to carry SR-22?",
+        "subheads": [],
+        "paragraphs": [
+          "The required period depends on the DMV or court action. California DMV materials commonly refer to maintaining proof during a three-year period in certain cases, but that is not a universal start or end date. Use your notice and confirm the exact dates directly with the DMV.",
+          "Do not remove the filing based only on a general timeline. Ask the DMV whether the requirement has ended, then coordinate any policy change with your insurer so you do not create an unintended lapse."
+        ]
+      },
+      {
+        "title": "SR-22 cost in Downey",
+        "subheads": [],
+        "paragraphs": [
+          "The filing charge and the cost of the underlying auto insurance policy vary by carrier, driving history, vehicle, coverage, and other rating factors. We show both before you choose coverage.",
+          "Carrier eligibility and premiums vary for drivers with an SR-22 requirement. We compare available proposals using consistent liability limits, payment terms, and filing details so you can evaluate the differences before choosing.",
+          "When the DMV confirms that your filing requirement has ended, we can review the policy again and compare current options. Any change should be coordinated with the insurer to avoid a coverage gap."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "How long might I need an SR-22 in California?",
+        "a": "The required period depends on the DMV or court action. California DMV materials commonly refer to maintaining proof during a three-year period in certain cases, but confirm your own end date directly with the DMV."
+      },
+      {
+        "q": "What does an SR-22 filing cost in Downey, CA?",
+        "a": "Filing fees and the underlying insurance premium vary by carrier and driving history. We show the filing charge and policy cost before you choose coverage."
+      },
+      {
+        "q": "Can an SR-22 be filed electronically?",
+        "a": "Qualifying insurers can submit SR-22 proof electronically. Timing depends on when the policy is bound, carrier processing, and DMV systems."
+      },
+      {
+        "q": "What happens if my policy lapses while an SR-22 is required?",
+        "a": "The insurer may notify the DMV that proof is no longer in force, which can affect driving privileges. Contact the DMV and insurer promptly for instructions specific to your case."
+      },
+      {
+        "q": "Do I need SR-22 if I don't own a car?",
+        "a": "Vehicle ownership does not determine whether you need an SR-22 filing. If the DMV requires proof and you do not own a car, ask whether a non-owner policy fits your situation. Eligibility, covered use, and exclusions depend on the insurer and policy."
+      }
+    ]
+  },
+  {
+    "path": "/home-insurance-downey-ca",
+    "title": "Home & Renters Insurance in Downey | Original Insurance",
+    "description": "Compare homeowners, renters and condo insurance in Downey. Understand rebuilding limits, belongings, deductibles and exclusions with an independent broker.",
+    "sections": [
+      {
+        "title": "What home insurance covers in California",
+        "subheads": [],
+        "paragraphs": [
+          "A standard California homeowners policy (HO-3) protects your dwelling and your financial liability in one package. Coverage is organized into six components: dwelling (the structure), other structures (detached garage, fence, shed), personal property (your belongings), loss of use (hotel and living expenses if a covered loss displaces you), personal liability (injury or property damage claims against you), and medical payments (minor injuries to guests regardless of fault).",
+          "Policies commonly cover losses caused by fire, windstorm, theft, vandalism, and certain sudden water events, subject to the contract. Flood and earthquake damage are generally excluded from a standard homeowners policy and require separate coverage. We review the exclusions and available options rather than assuming every loss is covered.",
+          "The dwelling limit is based on estimated reconstruction cost rather than the home's sale price. We collect accurate property details and review the carrier's replacement-cost estimate with you; the selected limit, endorsements, deductible, and policy terms determine how a covered loss is handled.",
+          "As an independent broker, we compare coverage terms and exclusions across available carriers, along with price. A lower premium may come with a higher deductible, different personal-property limits, or actual-cash-value settlement instead of replacement cost. We explain those differences before you choose."
+        ]
+      },
+      {
+        "title": "Coverage we offer Downey homeowners",
+        "subheads": [
+          "Dwelling Coverage",
+          "Personal Property",
+          "Liability Protection",
+          "Loss of Use",
+          "Earthquake Coverage",
+          "Bundle Discount"
+        ],
+        "paragraphs": [
+          "Every property is different. We match coverage to your actual structure, belongings, and risk profile.",
+          "Protects the home's structure for covered losses, subject to limits and exclusions. We review the carrier's reconstruction estimate and available endorsements.",
+          "Can help cover belongings against specified losses, subject to limits and exclusions. Compare actual cash value with replacement-cost options and ask about special limits for valuables.",
+          "Can respond to covered bodily-injury or property-damage claims against you. Available limits and umbrella options vary by carrier and eligibility.",
+          "Can help pay additional living expenses when a covered loss makes your home uninhabitable. Review the limit, covered expenses, and any time restrictions.",
+          "Generally not included in standard policies. Availability through the California Earthquake Authority or other insurers depends on the property and qualifying home insurer.",
+          "Many carriers offer home and auto bundle discounts. We compare the combined price and coverage with separate-carrier options so you can evaluate the actual value."
+        ]
+      },
+      {
+        "title": "Renters insurance in Downey",
+        "subheads": [],
+        "paragraphs": [
+          "A landlord's policy generally covers the building, not a tenant's belongings. A renters policy can cover personal property, loss of use, personal liability, and medical payments for covered events. Price depends on the address, limits, deductible, claims history, discounts, and carrier, so we use current quotes instead of a generic monthly estimate.",
+          "A lease may require renters insurance or particular liability limits. After a carrier confirms binding and payment, policy documents are generally available electronically; delivery timing varies by carrier and the information still required.",
+          "Renters policies can also include personal liability coverage for covered claims. Limits, exclusions, animal-liability rules, and eligibility differ by carrier, so the declarations and policy language should be reviewed before purchase.",
+          "Some carriers offer an auto-and-renters discount. We compare the combined premium and coverage with separate-policy options because a bundle is not automatically the lowest total cost."
+        ]
+      },
+      {
+        "title": "Home + auto bundles in Downey",
+        "subheads": [],
+        "paragraphs": [
+          "Many carriers offer multi-policy discounts when you bundle home and auto, but the amount and eligibility vary. A lower combined premium is useful only when the limits, deductibles, exclusions, and service also fit your needs.",
+          "As an independent broker, we compare both the bundled price and separate-carrier options. Sometimes one insurer is more suitable for auto while another is more suitable for home. We show the resulting price and coverage differences so you can decide with full information.",
+          "Ask about other eligible multi-policy combinations, including auto and renters insurance. Availability and discounts depend on the carrier and the policies being considered."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "How much does home insurance cost in Downey, CA?",
+        "a": "Rates depend on replacement cost, construction, roof and home characteristics, coverage limits, deductibles, claims history, location, and carrier. A current quote using accurate property details is more reliable than a broad price range."
+      },
+      {
+        "q": "Is renters insurance worth it in Downey?",
+        "a": "Renters coverage can protect belongings from covered losses and provide personal liability and additional-living-expense coverage. A landlord's policy generally protects the building, not the tenant's belongings. Price depends on limits, deductible, location, and carrier."
+      },
+      {
+        "q": "What does home insurance cover in California?",
+        "a": "Homeowners policies commonly include dwelling, other structures, personal property, loss of use, personal liability, and medical-payments coverage, subject to the policy's limits and exclusions. Flood and earthquake damage generally require separate coverage."
+      },
+      {
+        "q": "Can bundling home and auto reduce the cost?",
+        "a": "Many carriers offer multi-policy discounts, but the amount varies. We compare the combined price and coverage with separate-carrier options because a bundle is not automatically the best overall value."
+      },
+      {
+        "q": "Do I need earthquake insurance in Downey, CA?",
+        "a": "Standard homeowners policies generally exclude earthquake damage. Earthquake coverage may be available through the California Earthquake Authority or another insurer, depending on the qualifying home insurer and property. We can explain the available quote options."
+      }
+    ]
+  },
+  {
+    "path": "/no-license-auto-insurance-downey",
+    "title": "Auto Insurance Options Without a CA License | Original",
+    "description": "Review lawful California auto insurance options for vehicle owners, foreign-license holders and households with a licensed primary driver. Eligibility varies.",
+    "sections": [
+      {
+        "title": "Common scenarios we help with",
+        "subheads": [
+          "Vehicle Owner Who Doesn't Drive",
+          "Foreign License Holder",
+          "International License Driver",
+          "Household Named-Insured Setup",
+          "ITIN-Based Applicants",
+          "Excluded Unlicensed Owner"
+        ],
+        "paragraphs": [
+          "Insurance eligibility and legal permission to drive are separate questions. Applicants must disclose every owner, household member, and actual driver accurately. The California DMV—not an insurance quote—determines licensing requirements, including when a new resident must obtain a California license.",
+          "You own the vehicle but do not operate it. Some carriers may consider an application that accurately lists the owner and licensed primary driver; ownership and household rules vary.",
+          "You present a valid license issued by another country. Carrier acceptance, documentation, and driving-history treatment vary, and California residents must follow DMV licensing rules.",
+          "You are temporarily in California and present your home-country license plus an International Driving Permit. An IDP is supporting documentation, not a guarantee of carrier eligibility or permission to drive.",
+          "The vehicle owner and primary driver are different household members. Some carriers may consider this structure after reviewing ownership, household, garaging, and actual-use details.",
+          "You use an Individual Taxpayer Identification Number rather than a Social Security number. Acceptance and alternative identification requirements vary by carrier.",
+          "Some carriers may permit a non-driving owner to be excluded while a licensed household member is listed as the driver. An excluded person has no driving coverage under that policy and must not operate the vehicle."
+        ]
+      },
+      {
+        "title": "Coverage guidance for non-standard license situations",
+        "subheads": [],
+        "paragraphs": [
+          "Some carriers do not accept every license or ownership situation. We compare lawful options for vehicle owners with foreign licenses, applicants using an ITIN, and households where a licensed primary driver operates the vehicle.",
+          "Our staff can explain available options in English, Spanish, or Arabic. Carrier requirements change, so we confirm current documentation and underwriting rules for the actual application. We do not advise anyone to operate a vehicle without legal permission to drive."
+        ]
+      },
+      {
+        "title": "What documents help us find coverage",
+        "subheads": [],
+        "paragraphs": [
+          "Bring your current policy, available identification, vehicle registration, and information about the actual drivers. We can explain any additional documents the insurer needs. Call before sending sensitive identity documents."
+        ]
+      },
+      {
+        "title": "Carrier access for non-standard license situations",
+        "subheads": [],
+        "paragraphs": [
+          "Foreign-license, ITIN, non-driving-owner, and international-license situations can require additional carrier review and documentation. A decline from one insurer does not establish what another insurer will do.",
+          "As an independent broker, we can ask multiple available carriers whether they will consider the disclosed situation. A quote is not guaranteed, and the carrier's application, underwriting decision, and policy documents control.",
+          "We explain the available proposals and any documentation or restrictions identified during the application. Review the policy terms and exclusions before deciding."
+        ]
+      },
+      {
+        "title": "We serve Downey and Southeast LA in English, Spanish, and Arabic",
+        "subheads": [],
+        "paragraphs": [
+          "Our Downey team provides service in English, Spanish, and Arabic. Ask for your preferred language when you call, text, or visit.",
+          "We explain the proposed coverage, exclusions, and your responsibilities as the policyholder. Bring your questions so we can review the details together."
+        ]
+      }
+    ],
+    "faq": []
+  },
+  {
+    "path": "/commercial-auto-insurance-downey",
+    "title": "Commercial Auto Insurance in Downey, CA | Original",
+    "description": "Compare commercial auto insurance for work trucks, vans and fleets in Downey. Review drivers, business use, limits and certificate requirements with our team.",
+    "sections": [
+      {
+        "title": "What commercial auto insurance can cover",
+        "subheads": [],
+        "paragraphs": [
+          "Business vehicle use needs a careful policy review. Describe deliveries, passengers, tools, employee driving, and other work use before a quote is prepared. Coverage and exclusions vary by policy.",
+          "Available options may include liability and physical damage, with hired and non-owned auto liability considered when appropriate. Review the proposal to understand who is insured, which vehicles qualify, and the applicable limits and deductibles."
+        ]
+      },
+      {
+        "title": "Vehicles and operations we review",
+        "subheads": [
+          "Work pickups and vans",
+          "Small fleets",
+          "For-hire and delivery vehicles",
+          "Specialty vehicles"
+        ],
+        "paragraphs": [
+          "Contractor pickups and vans may need commercial auto alongside separate tools, equipment, or general-liability coverage.",
+          "Provide a vehicle schedule, drivers, garaging locations, use, and loss history for a fleet submission.",
+          "Disclose delivery, courier, rideshare, and other for-hire use. Acceptance and coverage depend on the carrier and the actual operation.",
+          "NEMT, food trucks, and mobile-service operations may need additional information, coverage, and filings. Availability depends on underwriting."
+        ]
+      },
+      {
+        "title": "Contracts, certificates, and required filings",
+        "subheads": [],
+        "paragraphs": [
+          "Share contracts and insurance requirements before selecting a policy. A certificate of insurance is evidence of coverage; it does not replace or change the policy itself.",
+          "If your operation has federal or state financial-responsibility filing requirements, provide the relevant authority and paperwork. Applicability depends on the operation. We can discuss carrier availability and coordinate eligible filings; confirm regulatory requirements with the responsible agency."
+        ]
+      },
+      {
+        "title": "Comparing commercial auto quotes",
+        "subheads": [],
+        "paragraphs": [
+          "Use the same vehicle schedule, drivers, use, limits, and deductibles for each quote. Review exclusions, any filing charges, payment terms, and required documents before purchase.",
+          "A quote request or certificate request does not bind coverage. Confirm the effective date and completed requirements with the broker and insurer."
+        ]
+      }
+    ],
+    "faq": []
+  },
+  {
+    "path": "/insurance/downey",
+    "title": "Insurance Broker in Downey, CA | Original Insurance",
+    "description": "Compare auto, home, commercial, life and SR-22 coverage for Downey, CA with an independent Downey-based broker serving the area since 1999.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/insurance/norwalk",
+    "title": "Car Insurance Quotes in Norwalk, CA | Original Insurance",
+    "description": "Compare car insurance for Norwalk drivers with our independent Downey team. Review liability, deductibles and SR-22 options. Request a quote online or call.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/insurance/bellflower",
+    "title": "Auto Insurance in Bellflower, CA | Original Insurance",
+    "description": "Compare auto, renters, home and SR-22 coverage for Bellflower with an independent broker at our nearby Downey office on Paramount Boulevard.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/insurance/lynwood",
+    "title": "Car Insurance in Lynwood, CA | Original Insurance",
+    "description": "Car insurance and SR-22 help for Lynwood drivers from our Downey office. Compare available carriers with service in English, Spanish and Arabic.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/insurance/cerritos",
+    "title": "Auto Insurance in Cerritos, CA | Original Insurance",
+    "description": "Compare auto, home, umbrella and commercial insurance options for Cerritos with an independent Downey-area broker serving the 605 corridor.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/insurance/whittier",
+    "title": "Auto Insurance in Whittier, CA | Original Insurance",
+    "description": "Compare auto, home, SR-22 and commercial insurance options from Uptown to East Whittier with an independent Downey-based broker.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/insurance/lakewood",
+    "title": "Auto & Home Insurance in Lakewood, CA | Original",
+    "description": "Compare auto, home, renters and potential bundle options for Lakewood with an independent broker at our nearby Downey office.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/insurance/paramount",
+    "title": "Auto Insurance in Paramount, CA | Original Insurance",
+    "description": "Compare auto, home, SR-22 and commercial coverage for Paramount with an independent broker on nearby Paramount Boulevard in Downey.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/insurance/south-gate",
+    "title": "Auto Insurance in South Gate, CA | Original Insurance",
+    "description": "Compare auto, SR-22, renters and commercial insurance options for South Gate with an independent broker serving the 710 corridor.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/insurance/pico-rivera",
+    "title": "Auto Insurance in Pico Rivera, CA | Original Insurance",
+    "description": "Compare auto, SR-22, home and commercial insurance options for Pico Rivera with an independent broker based nearby in Downey.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/insurance/montebello",
+    "title": "Car Insurance Quotes in Montebello | Original Insurance",
+    "description": "Compare car insurance quotes for Montebello using matching limits and deductibles. Our independent Downey team explains coverage, pricing and eligible discounts.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/insurance/commerce",
+    "title": "Auto & Commercial Insurance in Commerce, CA | Original",
+    "description": "Compare personal auto, commercial auto, fleet and business insurance for the City of Commerce with an independent Downey-based broker.",
+    "sections": [],
+    "faq": []
+  }
+]

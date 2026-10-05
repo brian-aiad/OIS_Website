@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { contact, quotzalUrl } from '../data/site';
+---
+
+<Base
+  title="Request an insurance quote | Original Insurance"
+  description="Request auto, home or business coverage with Original Insurance Services using our established Quotzal quote form."
+  path="/quote"
+  noindex
+>
+  <section class="section quotzal-page">
+    <div class="container">
+      <div class="quotzal-page-heading">
+        <div>
+          <p class="eyebrow">Your coverage. Your next chapter.</p>
+          <h1>
+            Find your <em>fit.</em>
+          </h1>
+          <p>Start your request below. Our Downey team will help you review the options.</p>
+        </div>
+        <a href={contact.phoneHref} class="text-link">
+          <Icon name="phone" size={18} />
+          {contact.phone}
+        </a>
+      </div>
+      <div class="quotzal-page-form">
+        <div class="quotzal-help">
+          <p>Complete the form below to request your quote.</p>
+          <a href={quotzalUrl} target="_blank" rel="noopener noreferrer">
+            Open in a new tab <Icon name="diagonal" size={16} />
+          </a>
+        </div>
+        <iframe
+          src={quotzalUrl}
+          title="Original Insurance quote request through Quotzal"
+          allow="clipboard-write"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+      </div>
+      <p class="quotzal-note">
+        Need help? Call <a href={contact.phoneHref}>{contact.phone}</a>. Submitting a request does
+        not bind coverage. <a href="/privacy">Privacy details</a>.
+      </p>
+    </div>
+  </section>
+</Base>

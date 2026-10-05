@@ -1,0 +1,68 @@
+---
+interface Props {
+  type?: string;
+}
+const { type = 'auto' } = Astro.props;
+const home = type === 'home';
+const documents = type === 'sr22' || type === 'no-license';
+const labels = home
+  ? ['Your home', 'Your belongings', 'Your responsibility']
+  : type === 'commercial'
+    ? ['Your vehicles', 'Your operations', 'Your team']
+    : type === 'sr22'
+      ? ['Policy', 'Insurer filing', 'DMV review']
+      : type === 'no-license'
+        ? ['Vehicle owner', 'Actual drivers', 'Carrier eligibility']
+        : ['Other people', 'Your vehicle', 'Your choices'];
+---
+
+<div class="coverage-diagram" aria-label={labels.join(', ')}>
+  <div class="diagram-top">
+    <span class="eyebrow">The coverage picture</span>
+    <span>O / I</span>
+  </div>
+  <svg viewBox="0 0 480 240" aria-hidden="true" fill="none">
+    <path d="M30 206H450M50 222H430" stroke="currentColor" opacity=".25" />
+    {home ? (
+      <g stroke="currentColor" stroke-width="2">
+        <path d="m80 115 160-85 160 85M100 105v100h280V105M204 205v-80h70v80M126 125h50v40h-50zM300 125h50v40h-50zM150 74V40h25v20" />
+        <path d="M240 30v-9m-7 9h14" />
+        <path d="M126 145h50m-25-20v40m149-20h50m-25-20v40" opacity=".4" />
+      </g>
+    ) : documents ? (
+      <g stroke="currentColor" stroke-width="2">
+        <path d="M110 190V38h138l35 35v117H110ZM248 38v35h35M140 90h85m-85 22h112m-112 22h75M95 60H80v145h170v-15" />
+        <path d="m153 161 10 10 21-23" />
+        <rect x="282" y="109" width="113" height="72" rx="5" fill="var(--sage)" />
+        <circle cx="309" cy="132" r="9" />
+        <path d="M294 165v-10c0-13 30-13 30 0v10m16-34h40m-40 16h28" />
+      </g>
+    ) : type === 'commercial' ? (
+      <g stroke="currentColor" stroke-width="2">
+        <path d="M67 166V55h235v111m0-74h63l44 54v35h-28m-48 0H153m-48 0H67v-15m245-64v43h76l-34-43h-42ZM89 80h191m-191 19h191m-191 19h191" />
+        <circle cx="129" cy="180" r="25" />
+        <circle cx="357" cy="180" r="25" />
+        <circle cx="129" cy="180" r="10" />
+        <circle cx="357" cy="180" r="10" />
+      </g>
+    ) : (
+      <g stroke="currentColor" stroke-width="2">
+        <path d="m77 127 45-56h185l59 56 45 12v48h-41m-53 0H159m-52 0H65v-44l12-16Zm0 0h289M134 82l-30 37h101V82Zm87 0v37h112l-39-37ZM80 148h30m260 0h26" />
+        <circle cx="133" cy="183" r="26" />
+        <circle cx="344" cy="183" r="26" />
+        <circle cx="133" cy="183" r="11" />
+        <circle cx="344" cy="183" r="11" />
+      </g>
+    )}
+    <path d="M57 60h36M75 42v36M396 57h24m-12-12v24" stroke="currentColor" opacity=".35" />
+  </svg>
+  <div class="diagram-labels">
+    {labels.map((label, i) => (
+      <span>
+        <b>0{i + 1}</b>
+        {label}
+      </span>
+    ))}
+  </div>
+  <p>Different needs. One thoughtful review.</p>
+</div>

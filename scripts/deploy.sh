@@ -52,8 +52,8 @@ else
   ok "SEO lint passed"
 fi
 
-# ── Step 2: npm build (TypeScript + Vite + Playwright prerender) ─────────────
-log "Building with prerender (this takes ~60s)..."
+# ── Step 2: npm build (Astro type checking + static HTML + optimized images) ─────────────
+log "Building Astro static pages and optimized assets..."
 if $DRY_RUN; then
   dryrun "cd $APP_DIR && npm run build"
 else
@@ -75,7 +75,7 @@ else
 fi
 
 # ── Step 4: vercel build (creates .vercel/output structure) ──────────────────
-log "Running vercel build --target production (skips prerender, creates routing)..."
+log "Running vercel build --target production (creates deployment routing)..."
 if $DRY_RUN; then
   dryrun "cd $REPO_ROOT && vercel build --target production --yes"
 else
@@ -104,7 +104,8 @@ else
     cp "$f" "$STATIC_OUT/$reldir/index.html"
     COPIED=$((COPIED + 1))
   done < <(find "$PRERENDER_SNAPSHOT" -mindepth 2 -name "index.html" -print0)
-  cp "$PRERENDER_SNAPSHOT/index.html" "$STATIC_OUT/index.html"
+  # Publish the exact validated build, including hashed Astro assets and 404.html.
+  cp -R "$PRERENDER_SNAPSHOT/." "$STATIC_OUT/"
   # Also copy sitemap and robots (may have been updated by build)
   cp "$PRERENDER_SNAPSHOT/sitemap.xml" "$STATIC_OUT/sitemap.xml"
   cp "$PRERENDER_SNAPSHOT/robots.txt"  "$STATIC_OUT/robots.txt"

@@ -11,38 +11,39 @@
  * Exit code 0 = pass, 1 = failures found.
  */
 
-import { readdirSync, readFileSync, existsSync, statSync } from "fs";
-import { resolve, relative, join } from "path";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
+import { readdirSync, readFileSync, existsSync, statSync } from 'fs';
+import { resolve, relative, join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const DIST = resolve(__dirname, "..", "dist");
-const PROD_ORIGIN = "https://originalinsurance.net";
-const PREFERRED_HOME_IMAGE = `${PROD_ORIGIN}/images/ois-insurance-consultation-thumbnail-2026.jpg`;
+const DIST = resolve(__dirname, '..', 'dist');
+const PROD_ORIGIN = 'https://originalinsurance.net';
+const PREFERRED_HOME_IMAGE = `${PROD_ORIGIN}/images/ois-california-coverage-illustration-v2-2026.jpg`;
 
 // Pages that should NOT have BreadcrumbList (home only)
-const NO_BREADCRUMB = new Set(["/"]);
+const NO_BREADCRUMB = new Set(['/', '/quote']);
 
 // Google is deprecating FAQ rich results and review snippets are not valid for this site.
 // Keep visible FAQ/review content, but do not emit these JSON-LD types.
-const DEPRECATED_SCHEMA_TYPES = new Set(["FAQPage", "Review", "AggregateRating", "SearchAction"]);
+const DEPRECATED_SCHEMA_TYPES = new Set(['FAQPage', 'Review', 'AggregateRating', 'SearchAction']);
 
 // Pages that should have InsuranceAgency schema (homepage, city pages, money pages).
 // /faq, /about, /contact, /services explicitly excluded — see SKILL.md schema rules.
 const NO_INSURANCE_AGENCY = new Set([
-  "/faq",
-  "/about",
-  "/contact",
-  "/services",
-  "/privacy",
-  "/accessibility",
+  '/quote',
+  '/faq',
+  '/about',
+  '/contact',
+  '/services',
+  '/privacy',
+  '/accessibility',
 ]);
 
 // Pages where InsuranceAgency url must be the homepage (not the page's own URL).
 // City pages (/insurance/*) are allowed to have their own canonical URL.
 // All other pages with InsuranceAgency must use the homepage URL.
-const HOMEPAGE_URL = "https://originalinsurance.net/";
+const HOMEPAGE_URL = 'https://originalinsurance.net/';
 
 let totalFiles = 0;
 let failures = 0;
@@ -56,8 +57,8 @@ function collectHtmlFiles(dir, base = dir) {
     const full = join(dir, entry);
     if (statSync(full).isDirectory()) {
       results.push(...collectHtmlFiles(full, base));
-    } else if (entry === "index.html") {
-      results.push({ path: full, route: "/" + relative(base, dir).replace(/\\/g, "/") });
+    } else if (entry === 'index.html') {
+      results.push({ path: full, route: '/' + relative(base, dir).replace(/\\/g, '/') });
     }
   }
   return results;
@@ -99,7 +100,7 @@ if (!existsSync(DIST)) {
   process.exit(1);
 }
 
-console.log("\n--- Schema validation ---\n");
+console.log('\n--- Schema validation ---\n');
 
 const files = collectHtmlFiles(DIST);
 
@@ -107,44 +108,51 @@ const files = collectHtmlFiles(DIST);
 files.sort((a, b) => a.route.length - b.route.length);
 
 for (const { path: htmlPath, route } of files) {
-  const routeKey = route === "" ? "/" : "/" + route.replace(/^\//, "");
+  const routeKey = route === '' ? '/' : '/' + route.replace(/^\//, '');
   totalFiles++;
 
-  const html = readFileSync(htmlPath, "utf-8");
+  const html = readFileSync(htmlPath, 'utf-8');
   const blocks = extractJsonLd(html);
-  const types = blocks.flatMap(b => {
-    if (b.__parseError) return ["__parseError"];
-    const t = b["@type"];
+  const types = blocks.flatMap((b) => {
+    if (b.__parseError) return ['__parseError'];
+    const t = b['@type'];
     return Array.isArray(t) ? t : [t];
   });
 
   console.log(`\n  📄 ${routeKey} (${blocks.length} JSON-LD blocks)`);
 
   // 1. Must have at least one JSON-LD block
-  check(routeKey, blocks.length > 0, "No JSON-LD found");
+  check(routeKey, blocks.length > 0, 'No JSON-LD found');
 
   // 2. Must not have parse errors
-  check(routeKey, !types.includes("__parseError"), "JSON-LD parse error detected");
+  check(routeKey, !types.includes('__parseError'), 'JSON-LD parse error detected');
 
   // 3. No localhost URLs in JSON-LD
-  const rawJson = blocks.map(b => JSON.stringify(b)).join(" ");
+  const rawJson = blocks.map((b) => JSON.stringify(b)).join(' ');
   const hasLocalhost = /http:\/\/(localhost|127\.0\.0\.1)/.test(rawJson);
-  check(routeKey, !hasLocalhost, "Localhost URL found in JSON-LD");
+  check(routeKey, !hasLocalhost, 'Localhost URL found in JSON-LD');
 
   // 4. InsuranceAgency must be present on pages that need it, absent on pages that don't.
-  const hasInsuranceAgency = types.some(t =>
-    t === "InsuranceAgency" || t === "LocalBusiness" || t === "FinancialService"
+  const hasInsuranceAgency = types.some(
+    (t) => t === 'InsuranceAgency' || t === 'LocalBusiness' || t === 'FinancialService',
   );
   if (NO_INSURANCE_AGENCY.has(routeKey)) {
-    check(routeKey, !hasInsuranceAgency, "InsuranceAgency must NOT appear on this page (see SKILL.md)");
+    check(
+      routeKey,
+      !hasInsuranceAgency,
+      'InsuranceAgency must NOT appear on this page (see SKILL.md)',
+    );
   } else {
-    check(routeKey, hasInsuranceAgency, "Missing InsuranceAgency schema");
+    check(routeKey, hasInsuranceAgency, 'Missing InsuranceAgency schema');
     // For non-city pages, InsuranceAgency url must be homepage, not the page's own URL.
-    if (hasInsuranceAgency && !routeKey.startsWith("/insurance/")) {
-      const agencyBlock = blocks.find(b => b["@type"] === "InsuranceAgency");
+    if (hasInsuranceAgency && !routeKey.startsWith('/insurance/')) {
+      const agencyBlock = blocks.find((b) => b['@type'] === 'InsuranceAgency');
       if (agencyBlock && agencyBlock.url && agencyBlock.url !== HOMEPAGE_URL) {
-        check(routeKey, false,
-          `InsuranceAgency url="${agencyBlock.url}" must be homepage "${HOMEPAGE_URL}" on non-city pages`);
+        check(
+          routeKey,
+          false,
+          `InsuranceAgency url="${agencyBlock.url}" must be homepage "${HOMEPAGE_URL}" on non-city pages`,
+        );
       } else if (agencyBlock && agencyBlock.url) {
         pass(routeKey, `InsuranceAgency url="${agencyBlock.url}" ✓`);
       }
@@ -153,9 +161,9 @@ for (const { path: htmlPath, route } of files) {
 
   // 5. BreadcrumbList required on non-home pages
   if (!NO_BREADCRUMB.has(routeKey)) {
-    const hasBreadcrumb = types.includes("BreadcrumbList");
-    check(routeKey, hasBreadcrumb, "Missing BreadcrumbList");
-    if (hasBreadcrumb) pass(routeKey, "BreadcrumbList present");
+    const hasBreadcrumb = types.includes('BreadcrumbList');
+    check(routeKey, hasBreadcrumb, 'Missing BreadcrumbList');
+    if (hasBreadcrumb) pass(routeKey, 'BreadcrumbList present');
   }
 
   // 6. Deprecated/unsupported rich-result schema must not be emitted.
@@ -163,34 +171,55 @@ for (const { path: htmlPath, route } of files) {
     check(routeKey, !types.includes(blockedType), `${blockedType} schema must not be emitted`);
   }
 
-  const hasReviewSnippetFields = rawJson.includes('"aggregateRating"') || rawJson.includes('"reviewRating"');
-  check(routeKey, !hasReviewSnippetFields, "Review snippet fields must not be emitted");
-  check(routeKey, !rawJson.includes('"SearchAction"') && !rawJson.includes("search_term_string"), "SearchAction/query placeholders must not be emitted");
+  const hasReviewSnippetFields =
+    rawJson.includes('"aggregateRating"') || rawJson.includes('"reviewRating"');
+  check(routeKey, !hasReviewSnippetFields, 'Review snippet fields must not be emitted');
+  check(
+    routeKey,
+    !rawJson.includes('"SearchAction"') && !rawJson.includes('search_term_string'),
+    'SearchAction/query placeholders must not be emitted',
+  );
 
   // 7. Homepage needs WebSite identity schema without a query-based SearchAction.
-  if (routeKey === "/") {
-    const hasWebSite = types.includes("WebSite");
-    const hasWebPage = types.includes("WebPage");
-    check(routeKey, hasWebSite, "Homepage is missing WebSite schema");
-    check(routeKey, hasWebPage, "Homepage is missing WebPage schema");
-    check(routeKey, rawJson.includes('"primaryImageOfPage"') && rawJson.includes(PREFERRED_HOME_IMAGE), "Homepage preferred image schema is missing or incorrect");
-    check(routeKey, html.includes(`<meta property="og:image" content="${PREFERRED_HOME_IMAGE}">`), "Homepage og:image is missing or incorrect");
-    check(routeKey, html.includes('max-image-preview:large'), "Homepage must allow large image previews");
-    check(routeKey, html.includes('src="/images/ois-insurance-consultation-thumbnail-2026.jpg"'), "Homepage preferred image must be visibly embedded");
-    if (hasWebSite) pass(routeKey, "WebSite schema present");
-    pass(routeKey, `Types found: ${types.join(", ")}`);
+  if (routeKey === '/') {
+    const hasWebSite = types.includes('WebSite');
+    const hasWebPage = types.includes('WebPage');
+    check(routeKey, hasWebSite, 'Homepage is missing WebSite schema');
+    check(routeKey, hasWebPage, 'Homepage is missing WebPage schema');
+    check(
+      routeKey,
+      rawJson.includes('"primaryImageOfPage"') && rawJson.includes(PREFERRED_HOME_IMAGE),
+      'Homepage preferred image schema is missing or incorrect',
+    );
+    check(
+      routeKey,
+      html.includes(`<meta property="og:image" content="${PREFERRED_HOME_IMAGE}">`),
+      'Homepage og:image is missing or incorrect',
+    );
+    check(
+      routeKey,
+      html.includes('max-image-preview:large'),
+      'Homepage must allow large image previews',
+    );
+    check(
+      routeKey,
+      /<img[^>]+src="[^"]*california-coverage-editorial[^\"]*"/.test(html),
+      'Homepage preferred image must be visibly embedded',
+    );
+    if (hasWebSite) pass(routeKey, 'WebSite schema present');
+    pass(routeKey, `Types found: ${types.join(', ')}`);
   }
 
-  if (blocks.length > 0 && !types.includes("__parseError")) {
-    pass(routeKey, `Types: ${types.join(", ")}`);
+  if (blocks.length > 0 && !types.includes('__parseError')) {
+    pass(routeKey, `Types: ${types.join(', ')}`);
   }
 }
 
-console.log("\n" + "─".repeat(50));
+console.log('\n' + '─'.repeat(50));
 console.log(`\n  Checked ${totalFiles} pages`);
 
 if (failures === 0) {
-  console.log("  ✅ All schema checks passed.\n");
+  console.log('  ✅ All schema checks passed.\n');
   process.exit(0);
 } else {
   console.log(`  ❌ ${failures} check(s) failed. Fix before deploying.\n`);

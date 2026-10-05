@@ -1,6 +1,6 @@
 # Original Insurance Website
 
-React 19 + Vite 7 website for Original Insurance Services in Downey, California.
+Astro 7.3.5 static website for Original Insurance Services in Downey, California.
 
 ## Repo Layout
 
@@ -9,7 +9,7 @@ ois_website/
   AGENTS.md                         Codex instructions
   CLAUDE.md                         Claude instructions
   docs/                             handoffs, SEO notes, audits, brand sources
-  original-insurance/               Vite app
+  original-insurance/               Astro app
   scripts/                          repo-root deploy and live verification scripts
 ```
 
@@ -24,6 +24,8 @@ npm run seo-lint
 npm run build
 npm run validate:schema
 npm run deploy:check
+npm run test:site
+npm run format:check
 ```
 
 Run deployment and live verification from the repo root:
