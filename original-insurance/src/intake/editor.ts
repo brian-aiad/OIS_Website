@@ -17,16 +17,24 @@ export function editQuestion(
   type: string,
   section: Section,
   field: Field | undefined,
-  done: () => void,
+  done: (id?: string, sectionId?: string) => void,
 ) {
   const original = field?.custom ? config.custom[type].find((q) => q.id === field.id) : undefined;
   const custom = !field || !!field.custom;
   const dialog = document.createElement('dialog');
   dialog.className = 'question-dialog';
   dialog.setAttribute('aria-labelledby', 'question-editor-title');
-  dialog.innerHTML = `<form class="question-editor"><div class="question-editor-heading"><div><p class="eyebrow">${e(coverages.find((c) => c.id === type)!.label)} · ${e(section.label)}</p><h2 id="question-editor-title">${field ? 'Edit question' : 'Add a question'}</h2></div><button type="button" data-close aria-label="Close question editor">×</button></div><p class="editor-intro">${custom ? `Your question appears in this step${section.repeat ? ` for each ${section.repeat}` : ''}, in the customer's review, and in your email.` : 'Change the wording and help text. The answer format and validation stay connected to this standard question.'}</p><div class="field"><label for="question-label">Question wording</label><input id="question-label" required maxlength="120" value="${e(field?.label || '')}" placeholder="For example: Where do you usually park?" /></div><div class="field"><label for="question-hint">Help text <span class="optional">Optional</span></label><textarea id="question-hint" rows="2" maxlength="300" placeholder="A short explanation to help customers answer.">${e(field?.hint || '')}</textarea></div>${
+  dialog.innerHTML = `<form class="question-editor"><div class="question-editor-heading"><div><p class="eyebrow">${e(coverages.find((c) => c.id === type)!.label)} · ${e(section.label)}</p><h2 id="question-editor-title">${field ? 'Edit question' : 'Add a question'}</h2></div><button type="button" data-close aria-label="Close question editor">×</button></div><p class="editor-intro">${custom ? `Your question appears in the selected step, in the customer's review, and in your email. Driver and vehicle questions repeat for every entry.` : 'Change the wording and help text. The answer format and validation stay connected to this standard question.'}</p><div class="field"><label for="question-label">Question wording</label><input id="question-label" required maxlength="120" value="${e(field?.label || '')}" placeholder="For example: Where do you usually park?" /></div><div class="field"><label for="question-hint">Help text <span class="optional">Optional</span></label><textarea id="question-hint" rows="2" maxlength="300" placeholder="A short explanation to help customers answer.">${e(field?.hint || '')}</textarea></div>${
     custom
-      ? `<div class="field"><label for="question-kind">Answer type</label><select id="question-kind">${Object.entries(
+      ? `<div class="field"><label for="question-section">Form step</label><select id="question-section">${coverages
+          .find((c) => c.id === type)!
+          .sections.map(
+            (s) =>
+              `<option value="${s.id}" ${s.id === section.id ? 'selected' : ''}>${e(s.label)}${s.repeat ? ` — each ${s.repeat}` : ''}</option>`,
+          )
+          .join(
+            '',
+          )}</select><small>The question appears in the step you choose.</small></div><div class="field"><label for="question-kind">Answer type</label><select id="question-kind">${Object.entries(
           questionKinds,
         )
           .map(
@@ -43,8 +51,17 @@ export function editQuestion(
             .fields.find((f) => f.id === field!.id)!.label,
         )}. ${field?.fixed ? 'Always shown and required.' : 'Visibility and requirement are controlled in the question list.'}</p>`
   }<p class="error-banner" data-editor-error role="alert" hidden></p><div class="question-editor-actions">${!custom ? '<button type="button" class="text-button" data-reset>Restore original wording</button>' : '<span></span>'}<button class="secondary-button" type="button" data-close>Cancel</button><button class="primary-button" type="submit">${field ? 'Apply to draft' : 'Add to draft'} ${icon('check', 16)}</button></div><p class="fine-print">Then choose Save changes to update the customer form.</p></form>`;
+  let questionChanged = false;
+  dialog.addEventListener('input', () => {
+    questionChanged = true;
+  });
+  const warnBeforeLeaving = (event: BeforeUnloadEvent) => {
+    if (questionChanged) event.preventDefault();
+  };
+  window.addEventListener('beforeunload', warnBeforeLeaving);
   const restore = document.activeElement as HTMLElement | null;
   const close = () => {
+    window.removeEventListener('beforeunload', warnBeforeLeaving);
     dialog.close();
     dialog.remove();
     if (restore?.isConnected) restore.focus();
@@ -55,6 +72,7 @@ export function editQuestion(
     close();
   });
   dialog.querySelector('[data-reset]')?.addEventListener('click', () => {
+    questionChanged = true;
     const base = coverages
       .find((c) => c.id === type)!
       .sections.find((s) => s.id === section.id)!
@@ -74,6 +92,8 @@ export function editQuestion(
       label: dialog.querySelector<HTMLInputElement>('#question-label')!.value.trim(),
       hint: dialog.querySelector<HTMLTextAreaElement>('#question-hint')!.value.trim(),
     };
+    let focusId = field?.id;
+    let focusSection = section.id;
     try {
       if (custom) {
         if (!field && draft.custom[type].length >= maxCustomQuestions)
@@ -82,11 +102,13 @@ export function editQuestion(
         const q: CustomQuestion = {
           ...copy,
           id: field?.id || 'custom_' + crypto.randomUUID().replaceAll('-', '').slice(0, 16),
-          section: section.id,
+          section: dialog.querySelector<HTMLSelectElement>('#question-section')!.value,
           kind,
           show: original?.show ?? true,
           required: dialog.querySelector<HTMLInputElement>('#question-required')!.checked,
         };
+        focusId = q.id;
+        focusSection = q.section;
         if (q.required) q.show = true;
         if (kind === 'select')
           q.options = dialog
@@ -102,7 +124,7 @@ export function editQuestion(
       config.wording = validated.wording;
       config.custom = validated.custom;
       close();
-      done();
+      done(focusId, focusSection);
     } catch (err) {
       const box = dialog.querySelector<HTMLElement>('[data-editor-error]')!;
       box.hidden = false;

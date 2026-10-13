@@ -83,3 +83,5 @@ npm run validate:schema
 - Run `test:intake-server`, then local `test:intake` and `test:intake-stress` sequentially. The browser suites temporarily modify settings and restore them. Never point them at production.
 - No production customer archive or payment system exists. Local mode captures synthetic emails in an ignored directory. Do not promise that the email provider/mailbox retains no data.
 - Agency operational identity is in `src/intake/agency.ts`; brand assets/layouts still require adaptation for a future RIA installation.
+
+- The follow-up usability changes and verification are in `docs/ops/INTAKE_USABILITY_REVIEW.md`. `test:intake-usability` covers direct review corrections, question placement/movement, preview controls, sharing state, and conflict recovery; run it sequentially with the other local browser suites.

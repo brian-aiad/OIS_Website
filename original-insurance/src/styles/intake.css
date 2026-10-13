@@ -2770,3 +2770,158 @@ textarea:focus-visible {
     min-height: 44px;
   }
 }
+
+/* Workflow refinements: editing comes first; sharing expands on demand. */
+.share-card > summary {
+  list-style: none;
+  cursor: pointer;
+  min-height: 48px;
+}
+.share-card > summary::-webkit-details-marker {
+  display: none;
+}
+.share-card .share-top h2 {
+  font-family: var(--body);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.share-card .share-top p {
+  font-size: 12px;
+}
+.share-chevron {
+  margin-left: auto;
+}
+.share-card[open] .share-chevron {
+  transform: rotate(180deg);
+}
+.form-outline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding: 0 26px 20px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.form-outline strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.tab-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 4px;
+  margin-left: 5px;
+  background: var(--paper);
+  border-radius: 4px;
+  font-size: 10px;
+}
+.preview-step-picker {
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+  margin: 12px 0 16px;
+  color: var(--muted);
+}
+.preview-step-picker select {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: white;
+  color: var(--ink);
+  font-size: 14px;
+}
+.conditional-preview {
+  display: block;
+  color: #50664f;
+  background: #eff3eb;
+  padding: 6px 8px;
+  margin-top: 6px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+.required-guide {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 14px;
+}
+.progress-list li > button {
+  background: transparent;
+  border: 0;
+  padding: 8px 0;
+  text-align: left;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-decoration: underline;
+  text-decoration-color: #9da99d;
+  text-underline-offset: 4px;
+}
+@media (max-width: 760px) {
+  .share-card {
+    padding: 16px 20px;
+  }
+  .share-card .share-icon {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+  }
+  .share-card .share-top {
+    gap: 10px;
+    align-items: center;
+  }
+  .share-card .share-top h2 {
+    font-size: 15px;
+  }
+  .admin-coverage-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding-bottom: 18px;
+  }
+  .admin-coverage-grid .type-tab {
+    flex: 0 0 136px;
+    scroll-snap-align: start;
+    min-height: 76px;
+    gap: 5px;
+  }
+  .admin-coverage-grid .type-tab > span {
+    display: none;
+  }
+  .admin-coverage-grid .type-tab strong {
+    font-size: 12px;
+  }
+  .form-outline {
+    padding: 0 18px 18px;
+    gap: 7px 12px;
+  }
+  .preview-step-picker select {
+    font-size: 16px;
+  }
+  .progress-list li > button {
+    position: absolute;
+    inset: -8px;
+    font-size: 0;
+    border-radius: 6px;
+  }
+  .progress-list li {
+    position: relative;
+  }
+  .form-actions .primary-button {
+    white-space: nowrap;
+  }
+}
+@media (max-width: 760px) {
+  .progress-list li.complete .step-number {
+    pointer-events: none;
+  }
+  .progress-list li > button {
+    z-index: 2;
+    inset: -10px;
+  }
+}

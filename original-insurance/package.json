@@ -19,7 +19,8 @@
     "format:check": "prettier --check src astro.config.mjs eslint.config.js scripts/*.mjs",
     "test:intake": "node scripts/qa-intake.mjs",
     "test:intake-server": "node scripts/qa-intake-server.mjs",
-    "test:intake-stress": "node scripts/qa-intake-stress.mjs"
+    "test:intake-stress": "node scripts/qa-intake-stress.mjs",
+    "test:intake-usability": "node scripts/qa-intake-usability.mjs"
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "^5.3.0",

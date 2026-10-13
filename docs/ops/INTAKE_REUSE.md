@@ -14,11 +14,11 @@ OIS does not call Quotzal or require a Quotzal account. Quotzal's repository rem
 2. Pick an insurance type, then a form step: About you, Drivers, Vehicles, or the relevant category-specific step.
 3. Click a question's **Edit wording** control to change its label and help text. Standard question types and validation remain fixed. **Restore original wording** restores the original text inside the editor; apply and save to publish it.
 4. Use **Show** and **Required** to control visibility and requirement. Essential questions such as name/email and vehicle year/make/model stay enabled and required.
-5. Choose **Add custom question**. Select short answer, long answer, number, date, dropdown, or checkbox. Dropdowns accept 2–12 different choices. There are up to 10 custom questions per insurance type, placed in the selected step. A question in Drivers or Vehicles repeats for every entry.
+5. Choose **Add custom question**. Select short answer, long answer, number, date, dropdown, or checkbox. Dropdowns accept 2–12 different choices. There are up to 10 custom questions per insurance type, placed in the step chosen in the question editor. Existing custom questions can move to another step without being recreated. A question in Drivers or Vehicles repeats for every entry.
 6. A required checkbox must be checked; use a dropdown for Yes/No questions. Number questions accept nonnegative whole numbers up to 1,000,000. Custom questions do not support uploads, rich HTML, conditional logic, or calculations.
 7. Use the arrow buttons to reorder custom questions within their step. Remove has an Undo action until saving; standard questions can be hidden when optional but not deleted. Editing a hidden custom question preserves visibility unless it is explicitly made required.
-8. **Apply to draft** does not publish. Review the field preview; on phones use **Edit questions / Preview form**. **Save changes** publishes the whole draft. **Discard** restores the last loaded/saved draft. A stale-session conflict offers **Load latest saved form**; this explicitly replaces the draft.
-9. In the share card, choose all insurance types or a specific type. Copy the link or the ready-to-send invitation into your own email/text conversation. Nothing is sent automatically. Only saved, enabled categories are offered for sharing. A `?type=auto` link preselects Personal auto; the customer can still choose another enabled category.
+8. **Apply to draft** does not publish. Review the layout preview (it does not accept answers); on phones use **Edit questions / Preview form**. **Save changes** publishes the whole draft. **Discard** restores the last loaded/saved draft. A stale-session conflict offers **Load latest saved form**; this explicitly replaces the draft.
+9. Expand **Share your quote form**. In the share card, choose all insurance types or a specific type. Copy the link or the ready-to-send invitation into your own email/text conversation. Nothing is sent automatically. Only saved, enabled categories are offered for sharing. A `?type=auto` link preselects Personal auto; the customer can still choose another enabled category.
 
 Question wording is limited to 120 characters and help text to 300. Labels/help are plain text. Don't add sensitive-document, payment, SSN, or medical-record requests to an email intake flow. This is a quote request, not a binding or purchase flow.
 
@@ -28,7 +28,7 @@ Question wording is limited to 120 characters and help text to 300. Labels/help 
 - A lookup must return a zero-error VIN result before details are offered. Partial matches explicitly request manual completion. Lookup failure leaves manual entry available; differing existing details require **Use these details**. Late results cannot overwrite a changed VIN or a removed vehicle. VINs before the 17-character standard are handled through manual year/make/model entry, leaving VIN blank.
 - First-driver shortcut copies the customer's name and relationship. Up to ten drivers and ten vehicles, collapsible entry summaries, removal undo, and driver association updates.
 - In-memory answers survive backward navigation and switching insurance types within the page. They do not survive closing/reloading the page; an unsaved-work browser warning is provided when answers exist. No localStorage/sessionStorage customer drafts.
-- Preferred contact method/time, optional requested coverage start, conditional existing-policy questions, and review/edit before submission.
+- Preferred contact method/time, optional requested coverage start, conditional existing-policy questions, and review/edit before submission. Corrections made from review return directly to review after validation. Completed progress steps are clickable.
 - Emails include an at-a-glance summary, driver/vehicle counts, clear sections, resolved driver names, all visible custom answers, and reply-to set to the customer's email. Hidden/stale answers are filtered on the server.
 
 ## Architecture / files to carry forward
@@ -74,3 +74,5 @@ This can be offered as the agency's **branded quote intake and form management**
 ## Verification and launch status
 
 See [INTAKE_SETUP.md](INTAKE_SETUP.md) for environment variables, launch blockers, commands, and the recorded verification. Screenshots and synthetic mail are local QA artifacts under the ignored `output/playwright/` and `.intake-local/mail/` directories. No deployment was made as part of this update.
+
+Usability follow-up: [INTAKE_USABILITY_REVIEW.md](INTAKE_USABILITY_REVIEW.md) records the reviewed workflows, findings, refinements, and regression checks. Preview has its own step selector; the editor shows question counts and repeat-entry context.

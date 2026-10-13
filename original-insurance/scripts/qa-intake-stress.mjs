@@ -139,6 +139,7 @@ try {
       .count(),
     1,
   );
+  await page.locator('[data-share] > summary').click();
   await page.locator('#share-type').selectOption('auto');
   await page.locator('[data-copy]').click();
   assert.equal(

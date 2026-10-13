@@ -79,6 +79,7 @@ npm run test:intake  # requires the running local dev server and setup above
 npm run test:site    # production HTML regression checks
 npm run test:intake-server # backend tests with fake provider/Redis responses; no network
 npm run test:intake-stress # local browser stress suite; run separately from test:intake
+npm run test:intake-usability # editor/navigation usability regressions
 ```
 
 The intake browser suite tests sign-in, forged sessions, cross-origin denial, rate limits, stale saves, protected fields, saved configuration, live preview, five viewport widths, accessibility, all eight coverage payloads, two drivers/two vehicles, conditional questions, retries, and local email contents. It restores pre-test form settings in a finally block. Captured test messages and screenshots are Git-ignored.
@@ -109,3 +110,5 @@ Implementation references: [Vercel Node functions](https://vercel.com/docs/funct
 VIN provider reference: [NHTSA vPIC API](https://vpic.nhtsa.dot.gov/api/). Only VIN is sent on an explicit lookup; the app stores no lookup history. Existing saved form settings are hydrated with new optional fields without resetting visibility choices.
 
 Run the intake suites sequentially because both temporarily change local settings and restore them in `finally`. The browser tests capture synthetic messages locally. Automated accessibility and layout checks cover the exercised states; they are not a claim of exhaustive device or assistive-technology certification.
+
+See [INTAKE_USABILITY_REVIEW.md](INTAKE_USABILITY_REVIEW.md) for the subsequent editor/customer workflow review and improvements. Run all browser suites sequentially.

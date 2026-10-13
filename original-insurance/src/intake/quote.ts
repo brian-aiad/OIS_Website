@@ -4,6 +4,7 @@ import {
   toggle,
   fieldVisible,
   fieldError,
+  validateAnswers,
   type FormConfig,
   type Answers,
   type Field,
@@ -36,6 +37,7 @@ let busy = false;
 let consent = false;
 let requestId = crypto.randomUUID();
 let sent = false;
+let editingReview = false;
 let removed: { section: string; index: number; row: Row; links: string[] } | undefined;
 const type = () => coverages.find((c) => c.id === selected)!;
 const sections = () => (selected ? visibleSections(config, type()) : []);
@@ -182,9 +184,16 @@ function render(focus = false) {
   const last = step === steps.length - 1;
   const s = currentSection();
   document.body.dataset.quoteStep = step === 0 ? 'coverage' : last ? 'review' : 'details';
-  progress.innerHTML = `<ol class="progress-list">${steps.map((label, i) => `<li class="${i === step ? 'current' : i < step ? 'complete' : ''}" ${i === step ? 'aria-current="step"' : ''}><span class="step-number">${i < step ? icon('check', 14) : i + 1}</span><span>${label}</span></li>`).join('')}</ol>`;
+  progress.innerHTML = `<ol class="progress-list">${steps.map((label, i) => `<li class="${i === step ? 'current' : i < step ? 'complete' : ''}" ${i === step ? 'aria-current="step"' : ''}><span class="step-number">${i < step ? icon('check', 14) : i + 1}</span>${i < step ? `<button type="button" data-progress="${i}" aria-label="Go back to ${e(label)}">${label}</button>` : `<span>${label}</span>`}</li>`).join('')}</ol>`;
+  progress.querySelectorAll<HTMLElement>('[data-progress]').forEach((b) =>
+    b.addEventListener('click', () => {
+      if (busy) return;
+      editingReview = last && +b.dataset.progress! > 0;
+      navigate(+b.dataset.progress!);
+    }),
+  );
   root.removeAttribute('aria-busy');
-  root.innerHTML = `${local ? '<div class="local-banner">Local preview · requests create test emails only.</div>' : ''}<div class="form-card"><div class="form-meta"><span>${selected ? e(type().label.toUpperCase()) : 'YOUR QUOTE REQUEST'}</span><span>Step ${step + 1} of ${steps.length}</span></div><div class="form-progress"><span style="width:${((step + 1) / steps.length) * 100}%"></span></div><form novalidate><div class="step-heading"><span class="step-emblem">${icon(step === 0 ? 'shield' : last ? 'check' : type().icon, 25)}</span><h2 tabindex="-1">${step === 0 ? 'What would you like to protect?' : last ? 'Everything look right?' : e(s.label)}</h2><p>${step === 0 ? 'Choose a starting point. We’ll take it from here.' : last ? 'Review your details, then send them to our team.' : s.repeat ? `Add each ${s.repeat} you’d like included in your quote.` : s.id === 'contact' ? 'So our team can get back to you with the next steps.' : 'A few details help us understand the coverage you need.'}</p></div><div data-error class="error-banner" role="alert" tabindex="-1" hidden></div>${
+  root.innerHTML = `${local ? '<div class="local-banner">Local preview · requests create test emails only.</div>' : ''}<div class="form-card"><div class="form-meta"><span>${selected ? e(type().label.toUpperCase()) : 'YOUR QUOTE REQUEST'}</span><span>Step ${step + 1} of ${steps.length}</span></div><div class="form-progress"><span style="width:${((step + 1) / steps.length) * 100}%"></span></div><form novalidate><div class="step-heading"><span class="step-emblem">${icon(step === 0 ? 'shield' : last ? 'check' : type().icon, 25)}</span><h2 tabindex="-1">${step === 0 ? 'What would you like to protect?' : last ? 'Everything look right?' : e(s.label)}</h2><p>${step === 0 ? 'Choose a starting point. We’ll take it from here.' : last ? 'Review your details, then send them to our team.' : s.repeat ? `Add each ${s.repeat} you’d like included in your quote.` : s.id === 'contact' ? 'So our team can get back to you with the next steps.' : 'A few details help us understand the coverage you need.'}</p>${step > 0 && !last ? '<small class="required-guide">Fields marked * are required. You can leave optional answers blank.</small>' : ''}</div><div data-error class="error-banner" role="alert" tabindex="-1" hidden></div>${
     step === 0
       ? `<div class="coverage-grid" role="radiogroup" aria-label="Insurance type">${coverages
           .filter((c) => config.enabled.includes(c.id))
@@ -196,7 +205,7 @@ function render(focus = false) {
       : last
         ? `${review()}<label class="consent"><input type="checkbox" name="consent" ${consent ? 'checked' : ''} /><span>I agree that ${e(agency.name)} may contact me about this request. I’ve read the <a href="/privacy" target="_blank" rel="noopener">privacy notice</a>.</span></label><p class="fine-print">This is a request for a quote, not a purchase. Coverage starts only after confirmation from your insurance provider.</p><div class="honeypot" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off" /></label></div>`
         : sectionMarkup(s)
-  }<div class="form-actions">${step > 0 ? '<button class="secondary-button" type="button" data-back>← Back</button>' : '<span class="form-reassurance">No obligation.<br />Just possibilities.</span>'}<button class="primary-button" type="submit">${last ? 'Send quote request' : 'Continue'} ${icon('arrow', 18)}</button></div></form></div>`;
+  }<div class="form-actions">${step > 0 ? '<button class="secondary-button" type="button" data-back>← Back</button>' : '<span class="form-reassurance">No obligation.<br />Just possibilities.</span>'}<button class="primary-button" type="submit">${last ? 'Send quote request' : editingReview ? 'Back to review' : 'Continue'} ${icon('arrow', 18)}</button></div></form></div>`;
   wire();
   if (focus) {
     root.querySelector<HTMLElement>('h2')?.focus({ preventScroll: true });
@@ -204,6 +213,7 @@ function render(focus = false) {
   }
 }
 function navigate(next: number) {
+  if (busy) return;
   step = next;
   removed = undefined;
   render(true);
@@ -319,7 +329,25 @@ async function submit(form: HTMLFormElement) {
   if (busy) return;
   if (step === 0 && !selected) return setError('Choose the type of insurance you need.');
   if (!validateStep()) return;
-  if (step < sections().length + 1) return navigate(step + 1);
+  if (step < sections().length + 1) {
+    if (editingReview) {
+      try {
+        validateAnswers(answers, config, type());
+      } catch (err) {
+        const message = (err as Error).message;
+        const target = sections().findIndex((s) =>
+          message.toLowerCase().includes(s.label.toLowerCase()),
+        );
+        editingReview = false;
+        navigate(target >= 0 ? target + 1 : 1);
+        setError(message);
+        return;
+      }
+      editingReview = false;
+      return navigate(sections().length + 1);
+    }
+    return navigate(step + 1);
+  }
   if (!consent) return setError('Please agree to be contacted about your quote request.');
   busy = true;
   const button = root.querySelector<HTMLButtonElement>('[type="submit"]')!;
@@ -346,6 +374,7 @@ async function submit(form: HTMLFormElement) {
           selected = '';
           answers = {};
         }
+        editingReview = false;
         step = selected ? 1 : 0;
         render(true);
       } catch {
@@ -412,6 +441,7 @@ function wire() {
       if (selected) drafts.set(selected, answers);
       const contact = answers.contact;
       selected = input.value;
+      editingReview = false;
       answers = drafts.get(selected) || (contact ? { contact: structuredClone(contact) } : {});
       consent = false;
       changed();
@@ -420,10 +450,16 @@ function wire() {
     }
     if (input.dataset.field === 'insured') preserveFocus();
   });
-  root.querySelector('[data-back]')?.addEventListener('click', () => navigate(step - 1));
-  root
-    .querySelectorAll<HTMLElement>('[data-edit]')
-    .forEach((b) => b.addEventListener('click', () => navigate(+b.dataset.edit!)));
+  root.querySelector('[data-back]')?.addEventListener('click', () => {
+    editingReview = false;
+    navigate(step - 1);
+  });
+  root.querySelectorAll<HTMLElement>('[data-edit]').forEach((b) =>
+    b.addEventListener('click', () => {
+      editingReview = true;
+      navigate(+b.dataset.edit!);
+    }),
+  );
   root.querySelectorAll<HTMLDetailsElement>('[data-row]').forEach((details) => {
     const row = answers[section.id][+details.dataset.row!];
     details.addEventListener('toggle', () => {
