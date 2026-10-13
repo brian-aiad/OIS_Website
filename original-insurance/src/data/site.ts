@@ -32,8 +32,8 @@ export const coverage = [
     short: 'For everyday driving.',
     description:
       'Compare liability, comprehensive, collision, and available discounts around the way you drive.',
-    image: 'auto-coverage-editorial-v3.png',
-    alt: 'Conceptual illustration of a navy sedan on a California street',
+    image: 'auto-coverage-editorial-v4.png',
+    alt: 'Conceptual illustration of a silver crossover viewed from behind on a California residential street',
   },
   {
     key: 'home',

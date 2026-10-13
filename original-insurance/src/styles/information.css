@@ -26,16 +26,16 @@
   align-items: center;
   padding: 14px 0;
   min-height: 48px;
-  border-bottom: 1px solid #d4d0c4;
+  border-bottom: 1px solid var(--color-border);
   color: #142b44;
   text-decoration: none;
   font-size: 12px;
   line-height: 1.45;
-  transition: color 0.2s ease;
+  transition: color var(--duration-fast) var(--ease-standard);
 }
 .information-topic-number {
   font-size: 10px;
-  color: #826537;
+  color: var(--color-text-muted);
   flex-shrink: 0;
 }
 .information-topics > a > span:nth-child(2) {
@@ -43,16 +43,16 @@
 }
 .information-topics > a > svg {
   flex-shrink: 0;
-  transition: transform 0.2s ease;
+  transition: transform var(--duration-fast) var(--ease-standard);
 }
 .information-topics > a:hover {
-  color: #80612b;
+  color: var(--color-brand-blue);
 }
 .information-topics > a:hover > svg {
   transform: translateX(3px);
 }
 .information-topics > a:focus-visible {
-  outline: 2px solid #886b36;
+  outline: 2px solid var(--color-brand-blue);
   outline-offset: 4px;
 }
 .information-help {
@@ -110,7 +110,7 @@
   font-family: var(--body);
   font-size: 44px;
   line-height: 1;
-  color: #886b36;
+  color: var(--color-brand-blue);
   min-width: 43px;
   font-style: italic;
   letter-spacing: -0.055em;
@@ -118,7 +118,7 @@
 .information-group-heading .eyebrow {
   font-size: 9px;
   margin: 0 0 7px;
-  color: #62716b;
+  color: var(--color-text-muted);
 }
 .information-group-heading h2 {
   font-size: clamp(26px, 2.5vw, 37px);
@@ -128,7 +128,7 @@
 }
 .information-reading > section {
   scroll-margin-top: 115px;
-  border-top: 1px solid #d4d0c4;
+  border-top: 1px solid var(--color-border);
   padding-top: 24px;
   margin: 0 0 32px;
 }
@@ -168,7 +168,7 @@
     gap: 22px;
   }
   .information-topics > a {
-    font-size: 11px;
+    font-size: 13px;
     gap: 7px;
     padding: 11px 0;
   }
@@ -225,7 +225,7 @@
     grid-column: 1/-1;
   }
   .information-topics > a {
-    font-size: 11px;
+    font-size: 13px;
     min-height: 58px;
     align-items: flex-start;
   }
@@ -262,13 +262,13 @@
     margin-bottom: 7px;
   }
   .information-help > p:not(.eyebrow) {
-    font-size: 11px;
+    font-size: 13px;
     line-height: 1.5;
     margin-bottom: 4px;
     max-width: none;
   }
   .information-help .text-link {
-    font-size: 11px;
+    font-size: 13px;
     min-height: 38px;
     justify-self: start;
   }

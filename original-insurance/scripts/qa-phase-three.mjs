@@ -4,7 +4,7 @@ import AxeBuilder from '@axe-core/playwright';
 import assert from 'node:assert/strict';
 import { mkdirSync, writeFileSync } from 'node:fs';
 const base = 'http://127.0.0.1:3002';
-const out = 'output/playwright/phase-three';
+const out = process.env.OIS_SCREENSHOT_DIR || 'output/playwright/phase-three';
 mkdirSync(out, { recursive: true });
 const browser = await chromium.launch();
 const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
@@ -106,6 +106,21 @@ try {
         route === '/'
           ? 'home'
           : route.replaceAll('/', '-').replaceAll('?', '-').replaceAll('=', '-').replace(/^-/, '');
+      // Full-page evidence must include offscreen lazy images, not empty placeholders.
+      await page.locator('img').evaluateAll(async (images) => {
+        for (const image of images) image.loading = 'eager';
+        await Promise.all(images.map((image) => image.decode().catch(() => undefined)));
+      });
+      assert.equal(
+        await page
+          .locator('img')
+          .evaluateAll(
+            (images) =>
+              images.filter((image) => !image.complete || image.naturalWidth === 0).length,
+          ),
+        0,
+        `${route}: broken image`,
+      );
       await page.screenshot({ path: `${out}/${name}-${width}.png`, fullPage: true });
       rows.push({ route, viewport: width, ...size });
       console.log('PASS', width, route, size.height);

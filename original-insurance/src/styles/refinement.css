@@ -462,18 +462,7 @@ h2 em {
 .editorial-trust {
   background: var(--white);
 }
-.site-footer .footer-phone {
-  font: 500 clamp(25px, 3.5vw, 46px)/1.15 var(--body);
-  letter-spacing: -0.03em;
-}
-.site-footer .footer-phone svg {
-  width: 28px;
-  height: 28px;
-}
-.site-footer .footer-opening .eyebrow {
-  max-width: 320px;
-  font-size: 15px;
-}
+
 .page-hero {
   background: var(--color-surface-soft);
   padding-bottom: 36px;
@@ -918,9 +907,6 @@ h2 em {
   }
   .information-section {
     padding-top: 32px;
-  }
-  .site-footer .footer-phone {
-    font-size: 28px;
   }
 }
 @media (max-width: 380px) {

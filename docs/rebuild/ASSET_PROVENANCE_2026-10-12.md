@@ -44,6 +44,16 @@ Prompt:
 
 > Use case: stylized-concept. Asset type: landscape 3:2 commercial auto insurance editorial illustration for Original Insurance Services. A white unbranded work van and smaller navy service pickup parked in front of a modest Southern California light-industrial workshop with a simple flat roof and garage door. No people, no logos, no wording or signs. Refined commissioned architectural illustration with crisp fine navy drafting outlines, flat gouache-like material texture, realistic vehicle proportions and perspective, clear strong silhouettes. Palette cool off-white #eef3f7, deep navy #142b44, slate blue #245da0, tiny muted ochre building material accents. Vehicles and practical business building fill frame, uncluttered paved foreground. Clearly conceptual illustration, not a real business photograph. No shipping terminal, enormous fleet, cartoon city, glossy 3D, miniature isometric world, beige watercolor, floating cards, vegetation decorations, or fantasy architecture. Visually cohesive with premium understated architectural house and sedan illustrations.
 
+### Auto variation — October 13, 2026
+
+Saved: `src/assets/photos/auto-coverage-editorial-v4.png`. Generated with the built-in image generation tool. Replaces v3 in the shared auto coverage data (homepage explorer, Services, Auto guide, and related coverage). The homepage hero is unchanged. The previous source is retained for provenance. This is conceptual illustration, not a real customer vehicle or verified location.
+
+The silver crossover, rear three-quarter angle, and residential setting differentiate the auto panel from the hero's front-facing navy sedan. Responsive AVIF/WebP delivery continues through Astro.
+
+Prompt:
+
+> Use case: stylized-concept. Create a finished landscape 3:2 editorial illustration for the auto insurance coverage panel of Original Insurance Services, a sophisticated Southern California independent insurance agency. This is ONLY the illustration asset, not a website screenshot, layout, or mockup. Subject: a contemporary silver-gray compact crossover SUV, viewed from rear three-quarter angle, nose pointing toward the RIGHT, all wheels and vehicle fully inside frame. Distinct from a navy sedan viewed from the front. Scene: a believable quiet Southern California residential street, low understated mid-century homes set back behind modest drought-tolerant landscaping, simple sidewalk, a few mature shade trees. No ocean, no mansion, no prominent palm trees. Vehicle is main subject but occupies roughly half the width, with ample environmental breathing room and crop-safe margins. Style: carefully art-directed semi-realistic painted editorial illustration, crisp architectural forms, restrained brush texture, matte finish, natural soft daylight. Cool navy shadows, pale blue-gray atmosphere, silver bodywork, subdued green vegetation and white architectural surfaces. Premium but ordinary and believable, not a glossy car advertisement. No people, no text, no lettering, no readable license plate, no logos or car badges, no watermark. Correct wheels, windows, road perspective, architectural geometry and realistic proportions. No fantasy architecture, excessive golden light, dramatic lens blur, glowing effects, glass UI, or decorative graphics.
+
 ## Official carrier assets
 
 The relationship and category inventory comes from the user's explicit list of 24 companies/markets, not logo availability. Asset access alone does not establish a carrier relationship or guarantee a product's availability.
@@ -63,3 +73,15 @@ Astro optimizes these to small WebP output with intrinsic dimensions. `CarrierLo
 `BrokerConnection`, `CoverageDiagram`, `LineMotif`, `LineAccent` and `ServiceAreaMap` use code-native SVG. `scripts/generate-social.mjs` generates seven 1200×630 SVG/JPEG pairs in `public/images/social/`: original-insurance, auto, home, commercial, sr22, license and es. These are template graphics, not image-generation outputs.
 
 Insurance explanations were checked against [CDI auto guidance](https://www.insurance.ca.gov/01-consumers/105-type/95-guides/01-auto/auto101.cfm), [CDI residential guidance](https://www.insurance.ca.gov/01-consumers/105-type/95-guides/03-res/res-ins-guide.cfm) and [DMV financial responsibility guidance](https://www.dmv.ca.gov/portal/handbook/california-driver-handbook/financial-responsibility-insurance-requirements-and-collisions/). Language architecture follows [Google localized-page guidance](https://developers.google.com/search/docs/specialty/international/localized-versions); an assistance hub is not represented as an equivalent translation of every source page.
+
+## Official carrier artwork — October 13 refinement
+
+The post Phase Three pass added 18 authentic carrier logo assets, bringing the implemented visual-logo count to 21 of 24 names. These are official supplied graphics, not generated illustrations. SVG rasterization and responsive image conversion preserve their artwork; no carrier identity was reconstructed or recolored. Existing Chubb, Foremost, and Bristol West assets remain.
+
+See the category records for exact official source pages, URLs/inline selectors, processing, and exceptions:
+
+- [Auto logo sources](CARRIER_LOGO_SOURCES_2026-10-13_AUTO.md)
+- [Property logo sources](CARRIER_LOGO_SOURCES_2026-10-13_PROPERTY.md)
+- [Commercial logo sources](CARRIER_LOGO_SOURCES_2026-10-13_COMMERCIAL.md)
+
+Progressive, CNA, and Attune remain text pending agency-authorized artwork/permission; source verification alone is not an approval grant. NEXT's current ERGO | NEXT artwork is used without changing the encoded relationship name. No assets were deployed in this pass.

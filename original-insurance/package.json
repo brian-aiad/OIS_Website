@@ -25,7 +25,8 @@
     "test:responsive": "node scripts/qa-responsive-extra.mjs",
     "test:seo-browser": "node scripts/qa-seo-browser.mjs",
     "generate:social": "node scripts/generate-social.mjs",
-    "test:phase-three": "node scripts/qa-phase-three.mjs"
+    "test:phase-three": "node scripts/qa-phase-three.mjs",
+    "test:refinement": "node scripts/qa-refinement.mjs"
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "^5.3.0",

@@ -1,6 +1,7 @@
 ---
 import { contact, coverage } from '../data/site';
 import Icon from './Icon.astro';
+import '../styles/footer.css';
 const spanish = Astro.url.pathname === '/es';
 const companyLinks = [
   { href: '/insurance-markets', label: 'Insurance companies & markets' },
@@ -9,9 +10,6 @@ const companyLinks = [
   { href: '/locations', label: 'Our Downey office' },
   { href: '/faq', label: 'Common questions' },
   { href: '/contact', label: 'Contact & support' },
-  { href: 'https://g.page/original-insurance', label: 'Google reviews ↗' },
-  { href: 'https://www.facebook.com/157258154314691/', label: 'Facebook ↗' },
-  { href: 'https://www.linkedin.com/company/original-insurance-services/', label: 'LinkedIn ↗' },
 ];
 ---
 
@@ -60,10 +58,13 @@ const companyLinks = [
     <footer class="site-footer" lang="en">
       <div class="container">
         <div class="footer-opening">
-          <p class="eyebrow">Coverage questions? Call our Downey team.</p>
+          <div class="footer-invitation">
+            <p>New coverage or an existing policy?</p>
+            <span>Talk with our Downey team.</span>
+          </div>
           <a href={contact.phoneHref} class="footer-phone">
             {contact.phone}
-            <Icon name="diagonal" size={54} />
+            <Icon name="diagonal" size={28} />
           </a>
         </div>
         <div class="footer-columns">
@@ -79,10 +80,10 @@ const companyLinks = [
               <br />
               Downey, CA 90240 <span aria-hidden="true">↗</span>
             </a>
-            <a href={contact.phoneHref}>{contact.phone}</a>
+            <a href={contact.textHref}>Text our team</a>
             <a href={contact.emailHref}>{contact.email}</a>
             <p>
-              Mon–Fri · 10 AM–5:30 PM
+              Mon–Fri · 10 AM–5:30 PM Pacific
               <br />
               English · Spanish · Arabic
             </p>
@@ -95,7 +96,7 @@ const companyLinks = [
             <a href="/services">All services</a>
           </nav>
           <nav aria-label="Footer company">
-            <h2>Get to know us</h2>
+            <h2>Company & help</h2>
             {companyLinks.map((link) => (
               <a
                 href={link.href}
@@ -110,7 +111,7 @@ const companyLinks = [
           </nav>
         </div>
         <nav class="footer-areas" aria-label="Service areas">
-          <span>At home in Southeast LA</span>
+          <span>Serving Southeast LA from Downey</span>
           <div>
             <a href="/locations#service-areas">All service areas</a>
             <a href="/insurance/downey">Insurance in Downey</a>
@@ -130,10 +131,18 @@ const companyLinks = [
           </details>
           <details>
             <summary>
-              Get to know us <span aria-hidden="true">+</span>
+              Company & help <span aria-hidden="true">+</span>
             </summary>
             <div>
-              {companyLinks.map((link) => (
+              {[
+                ...companyLinks,
+                { href: 'https://g.page/original-insurance', label: 'Google reviews ↗' },
+                { href: 'https://www.facebook.com/157258154314691/', label: 'Facebook ↗' },
+                {
+                  href: 'https://www.linkedin.com/company/original-insurance-services/',
+                  label: 'LinkedIn ↗',
+                },
+              ].map((link) => (
                 <a
                   href={link.href}
                   lang={link.href === '/es' ? 'es' : undefined}
@@ -156,6 +165,21 @@ const companyLinks = [
             </div>
           </details>
         </nav>
+        <nav class="footer-social" aria-label="Reviews and social media">
+          <a href="https://g.page/original-insurance" target="_blank" rel="noreferrer">
+            Google reviews ↗
+          </a>
+          <a href="https://www.facebook.com/157258154314691/" target="_blank" rel="noreferrer">
+            Facebook ↗
+          </a>
+          <a
+            href="https://www.linkedin.com/company/original-insurance-services/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LinkedIn ↗
+          </a>
+        </nav>
         <div class="footer-legal">
           <span>© {new Date().getFullYear()} Original Insurance Services</span>
           <div>
@@ -171,127 +195,3 @@ const companyLinks = [
     </footer>
   </>
 )}
-
-<style>
-  .footer-mobile-links {
-    display: none;
-  }
-  @media (max-width: 760px) {
-    .site-footer {
-      padding: 25px 0 18px;
-    }
-    .footer-opening {
-      padding-bottom: 16px;
-      gap: 0;
-    }
-    .footer-opening .eyebrow {
-      display: none;
-    }
-    .footer-phone {
-      font-size: 40px;
-      justify-content: space-between;
-      width: 100%;
-      gap: 20px;
-      white-space: nowrap;
-    }
-    .footer-phone svg {
-      width: 28px;
-      height: 28px;
-    }
-    .footer-columns {
-      display: block;
-      padding: 18px 0 16px;
-    }
-    .footer-columns > nav,
-    .footer-areas {
-      display: none;
-    }
-    .footer-office {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3px;
-    }
-    .footer-office .footer-brand {
-      margin: 0 0 6px;
-      font-size: 16px;
-      grid-column: auto;
-    }
-    .footer-office .footer-intro {
-      display: none;
-    }
-    .footer-office > a {
-      font-size: 13px;
-      max-width: 100%;
-      padding: 5px 0;
-      line-height: 1.55;
-    }
-    .footer-office > a[href^='mailto:'] {
-      overflow-wrap: normal;
-      white-space: nowrap;
-    }
-    .footer-office p:not(.footer-brand) {
-      margin: 5px 0 0;
-      font-size: 13px;
-      line-height: 1.65;
-    }
-    .footer-mobile-links {
-      display: block;
-      border-top: 1px solid #ffffff25;
-    }
-    .footer-mobile-links details {
-      border-bottom: 1px solid #ffffff25;
-    }
-    .footer-mobile-links summary {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      min-height: 46px;
-      list-style: none;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--paper);
-      cursor: pointer;
-    }
-    .footer-mobile-links summary::-webkit-details-marker {
-      display: none;
-    }
-    .footer-mobile-links summary > span {
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--gold-light);
-      transition: transform 0.2s;
-    }
-    .footer-mobile-links details[open] summary > span {
-      transform: rotate(45deg);
-    }
-    .footer-mobile-links details > div {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 18px;
-      padding: 0 0 12px;
-    }
-    .footer-mobile-links details a {
-      display: flex;
-      align-items: center;
-      min-height: 42px;
-      font-size: 12px;
-      line-height: 1.5;
-      padding: 6px 0;
-    }
-    .footer-legal {
-      margin-top: 15px;
-      gap: 7px;
-      font-size: 12px;
-    }
-    .footer-legal > div {
-      gap: 6px 17px;
-    }
-    .footer-legal a {
-      min-height: 30px;
-      display: inline-flex;
-      align-items: center;
-      padding: 3px 0;
-    }
-  }
-</style>

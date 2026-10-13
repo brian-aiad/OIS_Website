@@ -7,30 +7,35 @@ import Icon from './Icon.astro';
   data-reveal
   aria-label="You tell Original Insurance what you need. Our team explores available insurance markets with you."
 >
-  <div>
-    <Icon name="user" size={25} />
-    <strong>You</strong>
-    <span>Your coverage needs</span>
+  <div class="connection-needs">
+    <span class="connection-stage">01 · Your needs</span>
+    <strong>Start with what you need to insure.</strong>
+    <span>Your vehicle, property, or business.</span>
   </div>
-  <svg viewBox="0 0 140 40" fill="none" aria-hidden="true">
-    <path pathLength="1" d="M0 20H132m-8-7 8 7-8 7" />
+  <svg viewBox="0 0 100 24" fill="none" aria-hidden="true">
+    <path pathLength="1" d="M0 12H96m-7-7 7 7-7 7" />
   </svg>
   <div class="connection-agency">
-    <span class="connection-monogram" aria-hidden="true">
-      OI
-    </span>
+    <span class="connection-stage">02 · Your independent agency</span>
     <strong>Original Insurance</strong>
-    <span>One team to help compare</span>
+    <span>We explain the available options. You choose.</span>
   </div>
-  <svg viewBox="0 0 140 100" fill="none" aria-hidden="true">
+  <svg viewBox="0 0 100 80" fill="none" aria-hidden="true">
     <path
       pathLength="1"
-      d="M0 50H55Q70 50 70 35V20Q70 10 85 10H132M55 50H132M55 50Q70 50 70 65V80Q70 90 85 90H132"
+      d="M0 40H30Q45 40 45 25V14Q45 8 55 8H96M30 40H96M30 40Q45 40 45 55V66Q45 72 55 72H96"
     />
   </svg>
   <div class="connection-markets">
-    <span>Auto markets</span>
-    <span>Property markets</span>
-    <span>Business markets</span>
+    <span class="connection-stage">03 · Available markets</span>
+    <span>
+      <Icon name="car" size={19} /> Auto
+    </span>
+    <span>
+      <Icon name="home" size={19} /> Property
+    </span>
+    <span>
+      <Icon name="file" size={19} /> Business
+    </span>
   </div>
 </div>

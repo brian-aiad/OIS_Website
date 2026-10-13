@@ -12,12 +12,23 @@ const assets = import.meta.glob<{ default: ImageMetadata }>('../assets/carriers/
 const source = carrier.logo ? assets[`../assets/carriers/${carrier.logo}`]?.default : undefined;
 ---
 
-<span class="carrier-logo">
+<span
+  class="carrier-logo"
+  data-logo-shape={
+    source
+      ? source.width / source.height > 6
+        ? 'wide'
+        : source.width / source.height < 2.5
+          ? 'compact'
+          : 'standard'
+      : 'text'
+  }
+>
   {source ? (
     <Image
       src={source}
       alt={carrier.name}
-      width={Math.min(145, source.width)}
+      width={Math.min(source.width / source.height > 6 ? 175 : 145, source.width)}
       densities={[1, 2]}
       format="webp"
       loading="lazy"

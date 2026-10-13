@@ -80,9 +80,6 @@ body.intake {
   .intake .quote-aside {
     padding-top: 16px;
   }
-  .intake .quote-aside h1 {
-    font-size: 30px;
-  }
 }
 /* Password visibility is a real touch control, not a tiny inline word. */
 .intake .password-wrap [data-show] {
@@ -91,36 +88,396 @@ body.intake {
   padding: 8px;
 }
 
-.selected-coverage {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--space-4);
-  border-block: 1px solid var(--color-border);
-  padding-block: var(--space-6);
+/* Request workspace: visible choices, readable progress, and quiet feedback. */
+.intake .form-card,
+.intake .login-card,
+.intake .editor-card,
+.intake .share-card {
+  border-color: var(--color-border);
 }
-.selected-coverage-icon {
+.intake .form-meta {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+.intake .form-meta > span:last-child {
+  font-size: 12px;
+}
+.intake .form-progress,
+.intake .preview-progress {
+  background: var(--color-surface-soft);
+}
+.intake .form-progress span,
+.intake .preview-progress span {
+  background: var(--color-brand-blue);
+  transition: width var(--duration-standard) var(--ease-standard);
+}
+.intake .step-emblem,
+.intake .coverage-title > span,
+.intake .share-icon {
+  color: var(--color-brand-blue);
+  background: var(--color-surface-soft);
+  border-color: var(--color-border);
+}
+.intake .step-heading h2 {
+  font-size: clamp(25px, 2.5vw, 32px);
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+.intake .step-heading p,
+.intake .aside-bottom strong,
+.intake .aside-bottom p {
+  font-size: 13px;
+}
+.intake .progress-list li {
+  font-size: 14px;
+}
+.intake .step-number {
+  border-color: var(--color-border);
+  background: var(--white);
+}
+.intake .current .step-number {
+  color: var(--white);
+  background: var(--color-brand-blue);
+  border-color: var(--color-brand-blue);
+}
+.intake .complete .step-number {
+  color: var(--color-brand-blue);
+  background: var(--color-surface-soft);
+}
+.intake .progress-list li:not(:last-child)::after {
+  border-color: var(--color-border);
+}
+.intake .small-seal {
+  color: var(--color-brand-blue);
+  border-color: var(--color-border);
+  border-radius: var(--radius-medium);
+  font-size: 20px;
+  font-weight: 600;
+}
+.intake .selected-coverage {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  padding: var(--space-6);
+  border: 1px solid var(--color-brand-blue);
+  border-radius: var(--radius-medium);
+  background: var(--color-surface-soft);
+}
+.intake .selected-coverage-icon {
   color: var(--color-brand-blue);
 }
-.selected-coverage h3 {
-  margin: 4px 0 8px;
-  font-size: 24px;
-}
-.selected-coverage p {
+.intake .selected-coverage p {
   margin: 0;
   font-size: 14px;
   color: var(--color-text-muted);
 }
-.selected-coverage > button {
-  grid-column: 2;
+.intake .selected-coverage h3 {
+  font-size: 22px;
+  margin: 3px 0 0;
+}
+.intake .selected-coverage > button {
+  grid-column: auto;
   justify-self: start;
   min-height: 44px;
+  color: var(--color-brand-blue);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
-.broker-handoff {
+.intake .selected-coverage p:last-child:not(:first-child) {
+  margin-top: 6px;
+}
+.intake .broker-handoff {
   margin-top: var(--space-6);
   font-size: 14px;
   line-height: 1.6;
+  border-left: 2px solid var(--color-border);
+  padding-left: var(--space-4);
 }
-.broker-handoff p {
+.intake .broker-handoff p {
   color: var(--color-text-muted);
-  margin-bottom: 0;
+  margin: 4px 0 0;
+}
+.intake .quote-footer,
+.intake .form-reassurance {
+  font-size: 12px;
+}
+.intake[data-quote-step='coverage'] .step-emblem {
+  display: none;
+}
+.intake .field input,
+.intake .field select,
+.intake .field textarea {
+  transition:
+    border-color var(--duration-fast),
+    box-shadow var(--duration-fast);
+}
+.intake .field input:focus,
+.intake .field select:focus,
+.intake .field textarea:focus {
+  border-color: var(--color-brand-blue);
+  box-shadow: 0 0 0 3px #245da014;
+}
+.intake .review-section {
+  border-color: var(--color-border);
+}
+.intake .success-summary,
+.intake .next-steps {
+  background: var(--color-surface-soft);
+}
+
+/* Coverage selection keeps status color separate from the brand's selection color. */
+.intake .coverage-option:hover .coverage-content,
+.intake .coverage-option input:checked + .coverage-content {
+  border-color: var(--color-brand-blue);
+  background: var(--color-surface-soft);
+}
+.intake .coverage-option input:checked + .coverage-content {
+  box-shadow: inset 0 0 0 1px var(--color-brand-blue);
+}
+.intake .coverage-option input:checked + .coverage-content .selection-dot {
+  background: var(--color-brand-blue);
+  border-color: var(--color-brand-blue);
+}
+.intake .coverage-icon {
+  color: var(--color-brand-blue);
+}
+.intake .field-row > label {
+  min-height: 44px;
+}
+
+/* Agency studio: practical density and the same blue selection language. */
+.intake .studio-heading h1 {
+  font-size: clamp(26px, 2.6vw, 36px);
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  margin: 8px 0;
+}
+.intake .studio-heading .eyebrow {
+  color: var(--color-text-muted);
+  font-size: 11px;
+}
+.intake .studio-heading p:not(.eyebrow),
+.intake .card-heading p {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.intake .studio-heading {
+  margin-bottom: var(--space-6);
+}
+.intake .share-card {
+  padding: var(--space-4) var(--space-6);
+  margin-bottom: var(--space-6);
+}
+.intake .type-tab {
+  padding: 12px;
+  gap: 6px;
+  border-color: var(--color-border);
+  transition:
+    background var(--duration-fast),
+    border-color var(--duration-fast);
+}
+.intake .type-tab strong {
+  font-size: 12px;
+}
+.intake .type-tab small,
+.intake .subtle-label,
+.intake .field-table-header {
+  font-size: 10px;
+}
+.intake .type-tab > span {
+  color: var(--color-brand-blue);
+}
+.intake .type-tab:hover,
+.intake .type-tab.selected {
+  background: var(--color-surface-soft);
+}
+.intake .type-tab.selected {
+  border-color: var(--color-brand-blue);
+  box-shadow: inset 0 0 0 1px var(--color-brand-blue);
+}
+.intake .section-tabs button {
+  min-height: 44px;
+  font-size: 12px;
+}
+.intake .section-tabs button[aria-selected='true'] {
+  color: var(--color-brand-blue);
+  border-color: var(--color-brand-blue);
+}
+.intake .tab-count,
+.intake .mobile-view-tabs,
+.intake .custom-question-footer {
+  background: var(--color-surface-soft);
+}
+.intake .question-edit span,
+.intake .text-button,
+.intake .share-url {
+  color: var(--color-brand-blue);
+}
+.intake .field-row {
+  padding-block: 12px;
+}
+.intake .field-row strong {
+  font-size: 13px;
+}
+.intake .field-row small {
+  font-size: 11px;
+}
+.intake .question-list-intro {
+  padding-block: 16px;
+}
+.intake .save-status {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+.intake .save-controls:has([data-save]:enabled) .save-status {
+  color: var(--color-brand-blue);
+  font-weight: 600;
+}
+.intake .save-controls:has([data-save]:enabled) .save-status::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  margin-right: 7px;
+}
+.intake .logout {
+  min-width: 44px;
+  min-height: 44px;
+}
+.intake .login-story h1 {
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.15;
+}
+.intake .login-card {
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-small);
+}
+.intake .login-card h2 {
+  font-size: 30px;
+}
+.intake .login-card > p:not(.eyebrow) {
+  font-size: 14px;
+}
+.intake .password-wrap button {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 1150px) and (min-width: 761px) {
+  .intake .studio-grid {
+    grid-template-columns: minmax(0, 1fr) 260px;
+  }
+  .intake .selected-coverage {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  .intake .selected-coverage > button {
+    grid-column: 2;
+  }
+}
+@media (max-width: 760px) {
+  .intake .quote-layout {
+    padding-top: var(--space-4);
+    gap: var(--space-4);
+  }
+  .intake .quote-aside h1 {
+    font-size: 28px;
+    margin-block: 10px;
+  }
+  .intake .form-card {
+    padding: 22px 18px;
+  }
+  .intake .form-progress {
+    margin-block: 16px 22px;
+  }
+  .intake .step-heading {
+    margin-bottom: var(--space-6);
+  }
+  .intake .step-heading h2 {
+    margin-top: 0;
+  }
+  .intake .selected-coverage {
+    grid-template-columns: 28px minmax(0, 1fr);
+    padding: var(--space-4);
+    gap: 8px 12px;
+  }
+  .intake .selected-coverage h3 {
+    font-size: 21px;
+  }
+  .intake .selected-coverage > button {
+    grid-column: 2;
+    padding: 6px 0;
+  }
+  .intake .selected-coverage p {
+    font-size: 13px;
+  }
+  .intake .form-actions {
+    gap: var(--space-3);
+  }
+  .intake .form-reassurance {
+    font-size: 11px;
+  }
+  .intake .studio-heading {
+    display: block;
+  }
+  .intake .studio-heading .status-pill {
+    margin-top: 12px;
+  }
+  .intake .admin-topbar {
+    display: block;
+    padding: 10px 16px;
+  }
+  .intake .admin-topbar > span {
+    display: none;
+  }
+  .intake .save-controls {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+  }
+  .intake .save-status {
+    display: inline;
+    margin-right: auto;
+    font-size: 11px;
+  }
+  .intake .save-controls .compact {
+    min-height: 44px;
+  }
+  .intake .share-card {
+    padding: var(--space-4);
+  }
+  .intake .mobile-view-tabs {
+    margin-top: var(--space-4);
+  }
+  .intake .card-heading h2 {
+    font-size: 16px;
+  }
+  .intake .field-table-header,
+  .intake .field-row {
+    grid-template-columns: minmax(0, 1fr) 38px 58px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .intake .step-heading,
+  .intake .success-seal {
+    animation: intake-step-in var(--duration-standard) var(--ease-out) both;
+  }
+  .intake .share-chevron,
+  .intake .primary-button svg {
+    transition: transform var(--duration-fast) var(--ease-standard);
+  }
+  .intake .primary-button:hover svg {
+    transform: translateX(3px);
+  }
+  @keyframes intake-step-in {
+    from {
+      transform: translateY(5px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
 }

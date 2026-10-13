@@ -80,7 +80,7 @@ try {
     .getByLabel('Admin password')
     .fill(readFileSync(resolve(app, '.intake-local-password'), 'utf8').trim());
   await page.getByRole('button', { name: 'Sign in', exact: true }).click();
-  await page.getByRole('heading', { name: 'Your form. Your way.' }).waitFor();
+  await page.getByRole('heading', { name: 'Quote form settings' }).waitFor();
   loggedIn = true;
   const cookie = (await ctx.cookies()).find((c) => c.name === 'ois_admin');
   assert.equal(cookie.httpOnly, true);
@@ -103,7 +103,7 @@ try {
   const latest = (await (await fetch(base + '/api/intake?action=config')).json()).config;
   assert.equal(latest.fields.auto['contact.language'].show, false);
   await page.reload();
-  await page.getByRole('heading', { name: 'Your form. Your way.' }).waitFor();
+  await page.getByRole('heading', { name: 'Quote form settings' }).waitFor();
   assert.equal(
     await page.getByRole('checkbox', { name: 'Show Preferred language', exact: true }).isChecked(),
     false,

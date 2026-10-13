@@ -4,6 +4,29 @@
  */
 export type MarketCategory = 'auto' | 'property' | 'commercial';
 export type Carrier = { name: string; logo?: string; width?: number; height?: number };
+const officialLogos: Record<string, string> = {
+  Kemper: 'kemper' + '.png',
+  'National General': 'national-general' + '.png',
+  MAPFRE: 'mapfre' + '.png',
+  Hagerty: 'hagerty' + '.png',
+  Aspire: 'aspire' + '.png',
+  Bridger: 'bridger' + '.png',
+  Aegis: 'aegis' + '.png',
+  'American Modern': 'american-modern' + '.png',
+  'Pacific Specialty': 'pacific-specialty' + '.png',
+  'Cabrillo Coastal': 'cabrillo-coastal' + '.png',
+  Arrowhead: 'arrowhead' + '.png',
+  Bamboo: 'bamboo' + '.png',
+  Delos: 'delos' + '.png',
+  Lightspeed: 'lightspeed' + '.png',
+  'NEXT Insurance': 'next-insurance' + '.png',
+  Hiscox: 'hiscox' + '.png',
+  THREE: 'three' + '.png',
+  Blitz: 'blitz' + '.png',
+  'Bristol West': 'bristol-west' + '.png',
+  Foremost: 'foremost' + '.png',
+  Chubb: 'chubb' + '.png',
+};
 export const markets: {
   id: MarketCategory;
   label: string;
@@ -27,7 +50,7 @@ export const markets: {
       'Bridger',
     ].map((name) => ({
       name,
-      ...(name === 'Bristol West' ? { logo: 'bristol-west.png', width: 1410, height: 506 } : {}),
+      ...(officialLogos[name] ? { logo: officialLogos[name] } : {}),
     })),
   },
   {
@@ -47,7 +70,7 @@ export const markets: {
       'Lightspeed',
     ].map((name) => ({
       name,
-      ...(name === 'Foremost' ? { logo: 'foremost.png', width: 274, height: 40 } : {}),
+      ...(officialLogos[name] ? { logo: officialLogos[name] } : {}),
     })),
   },
   {
@@ -58,7 +81,7 @@ export const markets: {
     carriers: ['Chubb', 'NEXT Insurance', 'Hiscox', 'CNA', 'THREE', 'Attune', 'Blitz'].map(
       (name) => ({
         name,
-        ...(name === 'Chubb' ? { logo: 'chubb.png', width: 3034, height: 307 } : {}),
+        ...(officialLogos[name] ? { logo: officialLogos[name] } : {}),
       }),
     ),
   },

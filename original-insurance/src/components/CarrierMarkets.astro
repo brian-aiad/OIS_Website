@@ -3,6 +3,7 @@ import { markets, type MarketCategory } from '../data/carriers';
 import CarrierLogo from './CarrierLogo.astro';
 import Icon from './Icon.astro';
 import BrokerConnection from './BrokerConnection.astro';
+import { quoteHref, quoteLabel } from '../intake/context';
 interface Props {
   category?: MarketCategory;
   full?: boolean;
@@ -44,7 +45,7 @@ const groups = category ? markets.filter((group) => group.id === category) : mar
         </button>
         {groups.map((group) => (
           <button type="button" data-market={group.id} aria-pressed="false">
-            {group.label}
+            {group.label} <span aria-hidden="true">{group.carriers.length}</span>
           </button>
         ))}
       </div>
@@ -56,16 +57,23 @@ const groups = category ? markets.filter((group) => group.id === category) : mar
             <h3>
               {group.label} <span class="market-count">{group.carriers.length} relationships</span>
             </h3>
+            <p>{group.description}</p>
             <a href={group.link}>
               See {group.label.toLowerCase()} coverage <Icon size={17} />
             </a>
+            <a
+              class="market-quote"
+              href={group.id === 'commercial' ? '/quote?type=other' : quoteHref(group.link)}
+            >
+              {group.id === 'commercial' ? 'Ask about business coverage' : quoteLabel(group.link)}{' '}
+              <Icon size={17} />
+            </a>
           </div>
           <div class="carrier-line">
-            {group.carriers.slice(0, full || category ? undefined : 4).map((carrier) => (
+            {group.carriers.map((carrier) => (
               <CarrierLogo carrier={carrier} />
             ))}
           </div>
-          <p>{group.description}</p>
         </div>
       ))}
     </div>
