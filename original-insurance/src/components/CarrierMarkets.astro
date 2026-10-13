@@ -1,0 +1,91 @@
+---
+import { markets, type MarketCategory } from '../data/carriers';
+import CarrierLogo from './CarrierLogo.astro';
+import Icon from './Icon.astro';
+import BrokerConnection from './BrokerConnection.astro';
+interface Props {
+  category?: MarketCategory;
+  full?: boolean;
+  explain?: boolean;
+}
+const { category, full = false, explain = false } = Astro.props;
+const groups = category ? markets.filter((group) => group.id === category) : markets;
+---
+
+<section
+  class:list={['market-section', 'section', { 'market-compact': !!category }]}
+  aria-label="Insurance companies and markets"
+>
+  <div class="container" data-markets data-market-default={full || category ? 'all' : 'auto'}>
+    <div class="market-heading">
+      <div>
+        <p class="eyebrow">Independent insurance markets</p>
+        <h2>
+          {full ? (
+            'Our insurance market relationships.'
+          ) : (
+            <>
+              More options. <br />
+              One local team.
+            </>
+          )}
+        </h2>
+      </div>
+      <p>
+        Original Insurance works with multiple insurance companies and markets. We help you
+        understand available options, then you decide how to move forward.
+      </p>
+    </div>
+    {explain && <BrokerConnection />}
+    {!category && (
+      <div class="market-filters" aria-label="Filter insurance markets" hidden>
+        <button type="button" data-market="all" aria-pressed="true">
+          All markets
+        </button>
+        {groups.map((group) => (
+          <button type="button" data-market={group.id} aria-pressed="false">
+            {group.label}
+          </button>
+        ))}
+      </div>
+    )}
+    <div class="market-groups">
+      {groups.map((group) => (
+        <div class="market-group" data-market-group={group.id} data-reveal>
+          <div class="market-group-heading">
+            <h3>
+              {group.label} <span class="market-count">{group.carriers.length} relationships</span>
+            </h3>
+            <a href={group.link}>
+              See {group.label.toLowerCase()} coverage <Icon size={17} />
+            </a>
+          </div>
+          <div class="carrier-line">
+            {group.carriers.slice(0, full || category ? undefined : 4).map((carrier) => (
+              <CarrierLogo carrier={carrier} />
+            ))}
+          </div>
+          <p>{group.description}</p>
+        </div>
+      ))}
+    </div>
+    <div class="market-footnote">
+      <p>
+        Availability depends on the product, location, and underwriting requirements. A listed
+        market may not offer every type of coverage or accept every applicant.
+      </p>
+      {!full && (
+        <a class="text-link" href="/insurance-markets">
+          View our insurance markets <Icon />
+        </a>
+      )}
+    </div>
+    {full && (
+      <p class="trademark-note">
+        Company names and logos belong to their respective owners. The Chubb logo and name are
+        registered trademarks of Chubb. Listings describe our insurance market access and do not
+        imply endorsement.
+      </p>
+    )}
+  </div>
+</section>

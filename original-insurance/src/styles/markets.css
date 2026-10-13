@@ -1,0 +1,135 @@
+/* Insurance-market presentation. Responsive adjustments remain in acquisition.css until migrated. */
+.market-section {
+  background: var(--color-surface-soft);
+}
+.market-heading {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: end;
+  margin-bottom: var(--space-8);
+}
+.market-heading > p {
+  max-width: 520px;
+}
+.market-heading h2 {
+  margin: 0;
+}
+.market-heading .eyebrow {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--type-small);
+}
+.market-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.market-filters[hidden],
+.market-group[hidden] {
+  display: none;
+}
+.market-filters button {
+  min-height: 44px;
+  padding: 8px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-small);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    background var(--duration-fast),
+    color var(--duration-fast);
+}
+.market-filters button[aria-pressed='true'] {
+  background: var(--ink);
+  color: white;
+  border-color: var(--ink);
+}
+.market-group {
+  border-top: 1px solid var(--line);
+  padding: 24px 0;
+}
+.market-group-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+.market-group-heading h3 {
+  font-size: 20px;
+  margin: 0;
+}
+.market-group-heading a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+.carrier-line {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0 24px;
+  border-block: 1px solid var(--line);
+}
+.carrier-logo {
+  min-height: 94px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+  font-size: clamp(16px, 1.7vw, 22px);
+  font-weight: 650;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.carrier-logo img {
+  width: auto;
+  height: auto;
+  max-width: 145px;
+  max-height: 42px;
+  object-fit: contain;
+}
+.market-group > p {
+  font-size: 14px;
+  margin: 16px 0 0;
+}
+.market-footnote {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+.market-footnote p,
+.trademark-note {
+  font-size: 13px;
+  max-width: 720px;
+  color: var(--muted);
+  margin: 0;
+}
+.market-footnote a {
+  flex-shrink: 0;
+}
+.trademark-note {
+  margin-top: 20px;
+}
+.market-intro {
+  padding-bottom: 32px;
+}
+.market-intro h1 {
+  max-width: 850px;
+}
+.market-intro .lede {
+  max-width: 660px;
+}
+.reading-width {
+  max-width: var(--container-reading);
+}

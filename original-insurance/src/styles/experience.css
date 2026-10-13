@@ -1,7 +1,4 @@
 /* The second pass: tighter editorial rhythm and purposeful, native interactions. */
-:root {
-  --section: clamp(46px, 5.5vw, 78px);
-}
 .section-heading {
   margin-bottom: 30px;
 }
@@ -369,7 +366,7 @@
   }
 }
 
-/* Quotzal stays the quote provider; the surrounding experience belongs to Original. */
+/* Coverage imagery and supporting office content share the same layout family. */
 .coverage-section {
   background: var(--paper);
   border-top: 1px solid var(--line);

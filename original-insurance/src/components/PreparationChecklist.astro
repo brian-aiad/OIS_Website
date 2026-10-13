@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import PaintedAccent from './PaintedAccent.astro';
+import LineAccent from './LineAccent.astro';
 interface Props {
   items: string[];
   kind?: 'home' | 'business' | 'renewal' | 'policy';
@@ -15,7 +15,7 @@ const { items, kind = 'policy' } = Astro.props;
       <h2>What to have ready.</h2>
     </div>
     <figure aria-hidden="true">
-      <PaintedAccent kind={kind} />
+      <LineAccent kind={kind} />
     </figure>
   </div>
   <p>Bring what you have. If something is missing, we can explain what’s needed next.</p>

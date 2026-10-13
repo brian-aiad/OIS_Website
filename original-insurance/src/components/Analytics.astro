@@ -1,0 +1,42 @@
+---
+import { origin } from '../data/site';
+const pageLocation = origin + Astro.url.pathname;
+---
+
+<script is:inline define:vars={{ pageLocation }}>
+  window.dataLayer = window.dataLayer || [];
+  window.gtag =
+    window.gtag ||
+    function (...args) {
+      window.dataLayer.push(args);
+    };
+  let referrer = '';
+  try {
+    const url = new URL(document.referrer);
+    referrer = url.origin + url.pathname;
+  } catch {
+    /* An empty referrer is valid for direct visits. */
+  }
+  // Strip query strings before the tag can observe them. Never put quote answers in events.
+  gtag('set', { page_location: pageLocation, page_referrer: referrer });
+  gtag('js', new Date());
+  gtag('config', 'G-ZDREMBRV97', {
+    page_location: pageLocation,
+    page_referrer: referrer,
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+  });
+  if (/^(?:www\.)?originalinsurance\.net$/.test(location.hostname))
+    window.addEventListener(
+      'load',
+      () => {
+        window.setTimeout(() => {
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-ZDREMBRV97';
+          document.head.appendChild(script);
+        }, 4000);
+      },
+      { once: true },
+    );
+</script>

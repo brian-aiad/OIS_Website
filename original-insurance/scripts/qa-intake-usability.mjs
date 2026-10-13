@@ -85,7 +85,7 @@ try {
   const axe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
   assert.deepEqual(axe.violations, []);
   await page.goto(base + '/quote?type=auto');
-  await page.getByRole('heading', { name: 'What would you like to protect?' }).waitFor();
+  await page.getByRole('heading', { name: 'Ready to start your request?' }).waitFor();
   await next();
   for (const [id, value] of Object.entries({
     name: 'Synthetic UX',

@@ -1,0 +1,126 @@
+/* Presentation only: shared identity without changing intake/editor behavior. */
+body.intake {
+  background: var(--color-surface-soft);
+}
+.intake .intake-header {
+  background: var(--white);
+}
+.intake .quote-aside h1 {
+  font-family: var(--body);
+  font-size: clamp(32px, 3.4vw, 48px);
+  font-weight: 550;
+  line-height: 1.12;
+}
+.intake h2,
+.intake h3 {
+  font-family: var(--body);
+  font-weight: 550;
+}
+.intake .eyebrow {
+  letter-spacing: 0.06em;
+}
+.intake .form-card {
+  box-shadow: var(--shadow-small);
+  border-radius: var(--radius-medium);
+}
+.intake :focus-visible {
+  outline-color: var(--color-brand-blue);
+}
+.quote-intent,
+.language-assistance {
+  padding: 14px 16px;
+  background: var(--color-surface-soft);
+  border-left: 3px solid var(--color-brand-blue);
+  margin-bottom: 22px;
+  font-size: 13px;
+}
+.quote-intent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+}
+.quote-intent button {
+  border: 0;
+  background: transparent;
+  text-decoration: underline;
+  min-height: 44px;
+}
+.language-assistance p {
+  margin-top: 5px;
+}
+@media (max-width: 760px) {
+  .intake .coverage-content {
+    min-height: 88px;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 8px;
+    align-content: center;
+  }
+  .intake .coverage-content strong {
+    font-size: 13px;
+  }
+  .intake .coverage-content small {
+    display: none;
+  }
+  .intake .coverage-icon {
+    margin: 0;
+  }
+  .intake .coverage-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  .intake .coverage-content .selection-dot {
+    top: 7px;
+    right: 7px;
+    width: 12px;
+    height: 12px;
+  }
+  .intake .quote-aside {
+    padding-top: 16px;
+  }
+  .intake .quote-aside h1 {
+    font-size: 30px;
+  }
+}
+/* Password visibility is a real touch control, not a tiny inline word. */
+.intake .password-wrap [data-show] {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px;
+}
+
+.selected-coverage {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-4);
+  border-block: 1px solid var(--color-border);
+  padding-block: var(--space-6);
+}
+.selected-coverage-icon {
+  color: var(--color-brand-blue);
+}
+.selected-coverage h3 {
+  margin: 4px 0 8px;
+  font-size: 24px;
+}
+.selected-coverage p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+.selected-coverage > button {
+  grid-column: 2;
+  justify-self: start;
+  min-height: 44px;
+}
+.broker-handoff {
+  margin-top: var(--space-6);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.broker-handoff p {
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+}

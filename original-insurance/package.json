@@ -20,7 +20,12 @@
     "test:intake": "node scripts/qa-intake.mjs",
     "test:intake-server": "node scripts/qa-intake-server.mjs",
     "test:intake-stress": "node scripts/qa-intake-stress.mjs",
-    "test:intake-usability": "node scripts/qa-intake-usability.mjs"
+    "test:intake-usability": "node scripts/qa-intake-usability.mjs",
+    "test:acquisition": "node scripts/qa-acquisition.mjs",
+    "test:responsive": "node scripts/qa-responsive-extra.mjs",
+    "test:seo-browser": "node scripts/qa-seo-browser.mjs",
+    "generate:social": "node scripts/generate-social.mjs",
+    "test:phase-three": "node scripts/qa-phase-three.mjs"
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "^5.3.0",

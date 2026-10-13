@@ -1,3 +1,4 @@
+import { cleanContext, type QuoteContext } from '../intake/context';
 import { quoteEmail } from './email';
 import { agency } from '../intake/agency';
 import { decodeVin, VinLookupError } from './vin';
@@ -164,8 +165,8 @@ async function limit(req: Request, action: string, maximum: number) {
 export function formatEmail(type: Coverage, answers: Answers, id: string) {
   return quoteEmail(type, answers, id).text;
 }
-async function send(type: Coverage, answers: Answers, id: string) {
-  const formatted = quoteEmail(type, answers, id);
+async function send(type: Coverage, answers: Answers, id: string, context: QuoteContext) {
+  const formatted = quoteEmail(type, answers, id, context);
   const message = {
     from: process.env.INTAKE_EMAIL_FROM,
     to: [process.env.INTAKE_EMAIL_TO || agency.email],
@@ -298,7 +299,9 @@ export async function handleIntake(req: Request): Promise<Response> {
       } catch (e) {
         throw new HttpError(400, (e as Error).message);
       }
-      await send(configuredCoverage(config, type), answers, body.id);
+      const context = cleanContext(body.context);
+      if (type.id !== 'auto') delete context.need;
+      await send(configuredCoverage(config, type), answers, body.id, context);
       return json({ ok: true, reference: body.id, local: local() });
     }
     throw new HttpError(404, 'Not found.');

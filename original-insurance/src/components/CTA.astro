@@ -1,7 +1,33 @@
 ---
 import Icon from './Icon.astro';
-import JourneyLine from './JourneyLine.astro';
-import { quoteUrl, contact } from '../data/site';
+import LineMotif from './LineMotif.astro';
+import { intentRoutes } from '../intake/context';
+const intent = intentRoutes[Astro.url.pathname];
+const variant = intent ? 'service' : Astro.url.pathname === '/' ? 'home' : 'compact';
+const kind = intent?.need
+  ? 'document'
+  : intent?.type === 'home'
+    ? 'home'
+    : intent?.type === 'commercial'
+      ? 'business'
+      : intent?.type === 'auto'
+        ? 'auto'
+        : 'route';
+const action =
+  intent?.need === 'sr22'
+    ? 'Ask about SR-22'
+    : intent?.need === 'license'
+      ? 'Ask about your options'
+      : intent?.type === 'auto'
+        ? 'Get an auto quote'
+        : intent?.type === 'home'
+          ? 'Request home coverage'
+          : intent?.type === 'commercial'
+            ? 'Get a commercial auto quote'
+            : 'Get a quote';
+import { contact } from '../data/site';
+import { quoteHref } from '../intake/context';
+const quoteUrl = quoteHref(Astro.url.pathname);
 interface Props {
   title?: string;
   text?: string;
@@ -12,23 +38,21 @@ const {
 } = Astro.props;
 ---
 
-<section class="cta-section illustrated-cta" data-reveal>
+<section class:list={['cta-section', 'conversion-cta', `cta-${variant}`]} data-reveal>
   <div class="container cta-inner">
     <div>
-      <p class="eyebrow">Let’s make insurance personal</p>
+      <p class="eyebrow">Your next step</p>
       <h2>{title}</h2>
       <p>{text}</p>
     </div>
     <div class="cta-actions">
       <a href={quoteUrl} data-quote class="button button-ink">
-        Get a quote <Icon />
+        {action} <Icon />
       </a>
       <a href={contact.phoneHref} class="text-link">
         Or call {contact.phone}
       </a>
     </div>
   </div>
-  <div class="container cta-landscape">
-    <JourneyLine />
-  </div>
+  <LineMotif kind={kind} />
 </section>

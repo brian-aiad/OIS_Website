@@ -13,11 +13,17 @@ import Icon from '../components/Icon.astro';
     <span class="error-number" aria-hidden="true">
       404
     </span>
-    <h1>A turn we didn’t expect.</h1>
-    <p>This page isn’t here. Let’s get you back to a useful place.</p>
+    <h1>Page not found.</h1>
+    <p>The link may have changed. Explore our coverage or contact our team for help.</p>
     <div class="actions">
-      <a href="/" class="button button-ink">
-        Back to home <Icon />
+      <a href="/" class="text-link">
+        Home <Icon />
+      </a>
+      <a href="/quote" class="text-link">
+        Get a quote <Icon />
+      </a>
+      <a href="/services" class="button button-ink">
+        Explore coverage <Icon />
       </a>
       <a href="/contact" class="button button-outline">
         Contact our team

@@ -212,8 +212,8 @@
   },
   {
     "path": "/auto-insurance-downey-ca",
-    "title": "Auto Insurance in Downey, CA | Original Insurance",
-    "description": "Compare liability, collision, comprehensive and SR-22 auto insurance options with an independent broker in Downey, California.",
+    "title": "Auto Insurance Quotes in Downey | Original Insurance",
+    "description": "Compare auto coverage from multiple insurance markets with our Downey team. Get help with limits, deductibles and your next quote. Spanish assistance available.",
     "sections": [
       {
         "title": "How much car insurance costs in Downey",
@@ -299,8 +299,8 @@
   },
   {
     "path": "/sr22-insurance-downey",
-    "title": "SR-22 Insurance in Downey, CA | Original Insurance",
-    "description": "Learn how California SR-22 filings work and compare qualifying auto insurance options with an independent broker in Downey. Call or visit our office.",
+    "title": "SR-22 Filing & Auto Insurance Help in Downey | Original",
+    "description": "Need an SR-22? Understand the insurer’s filing and your California DMV requirements. Request auto coverage or speak with our independent Downey team.",
     "sections": [
       {
         "title": "What is SR-22?",
@@ -546,8 +546,8 @@
   },
   {
     "path": "/insurance/downey",
-    "title": "Insurance Broker in Downey, CA | Original Insurance",
-    "description": "Compare auto, home, commercial, life and SR-22 coverage for Downey, CA with an independent Downey-based broker serving the area since 1999.",
+    "title": "Insurance Help from Our Downey Office | Original Insurance",
+    "description": "Visit our Paramount Boulevard office in Downey or get help by phone. Explore auto, home and business coverage, hours, and what to prepare for a quote.",
     "sections": [],
     "faq": []
   },
@@ -574,15 +574,15 @@
   },
   {
     "path": "/insurance/cerritos",
-    "title": "Auto Insurance in Cerritos, CA | Original Insurance",
-    "description": "Compare auto, home, umbrella and commercial insurance options for Cerritos with an independent Downey-area broker serving the 605 corridor.",
+    "title": "Auto & Household Coverage in Cerritos | Original",
+    "description": "Review household drivers, vehicles, and home or renters coverage with our independent Downey team. Call or request a quote from Cerritos.",
     "sections": [],
     "faq": []
   },
   {
     "path": "/insurance/whittier",
-    "title": "Auto Insurance in Whittier, CA | Original Insurance",
-    "description": "Compare auto, home, SR-22 and commercial insurance options from Uptown to East Whittier with an independent Downey-based broker.",
+    "title": "Insurance Options for Whittier Drivers | Original",
+    "description": "Review auto coverage and renewal changes with Original Insurance. Our Downey office serves Whittier by phone, text and online, with Spanish assistance.",
     "sections": [],
     "faq": []
   },
@@ -602,8 +602,8 @@
   },
   {
     "path": "/insurance/south-gate",
-    "title": "Auto Insurance in South Gate, CA | Original Insurance",
-    "description": "Compare auto, SR-22, renters and commercial insurance options for South Gate with an independent broker serving the 710 corridor.",
+    "title": "Auto Insurance Options in South Gate | Original",
+    "description": "Compare coverage limits and deductibles for South Gate drivers. Get personal help by phone or from our Downey office. Request an auto quote online.",
     "sections": [],
     "faq": []
   },
@@ -625,6 +625,20 @@
     "path": "/insurance/commerce",
     "title": "Auto & Commercial Insurance in Commerce, CA | Original",
     "description": "Compare personal auto, commercial auto, fleet and business insurance for the City of Commerce with an independent Downey-based broker.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/insurance-markets",
+    "title": "Insurance Companies & Markets | Original Insurance, Downey",
+    "description": "See the auto, property and commercial insurance markets Original Insurance works with. Get help comparing available options from our independent Downey team.",
+    "sections": [],
+    "faq": []
+  },
+  {
+    "path": "/es",
+    "title": "Seguros en Downey: atención en español | Original Insurance",
+    "description": "Hable en español con Original Insurance Services en Downey. Consulte opciones de seguro de auto, casa o negocio, trámite de SR-22 y ayuda con su póliza.",
     "sections": [],
     "faq": []
   }

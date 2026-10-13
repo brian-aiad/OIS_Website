@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import CarrierMarkets from '../components/CarrierMarkets.astro';
+import BrokerConnection from '../components/BrokerConnection.astro';
+import CTA from '../components/CTA.astro';
+---
+
+<Base
+  title="Insurance Companies & Markets | Original Insurance, Downey"
+  description="See the auto, property and commercial insurance markets Original Insurance works with. Get help comparing available options from our independent Downey team."
+  path="/insurance-markets"
+  label="Insurance markets"
+>
+  <section class="section market-intro">
+    <div class="container">
+      <p class="eyebrow">Your independent Downey agency</p>
+      <h1>
+        One conversation.
+        <br />
+        More insurance options.
+      </h1>
+      <p class="lede">
+        You don’t need to figure out every company on your own. Tell us what you need to insure.
+        We’ll explain the options available for your situation.
+      </p>
+      <BrokerConnection />
+    </div>
+  </section>
+  <CarrierMarkets full />
+  <section class="section">
+    <div class="container reading-width">
+      <h2>Compare the coverage, too.</h2>
+      <p>
+        Price is part of the decision. Limits, deductibles, exclusions, and how the policy fits your
+        needs matter as well. Our team can help you review those differences before you choose.
+      </p>
+      <p>
+        Companies, programs, and availability can change. Contact us to confirm current options.
+        Business insurance markets are listed as a group; this does not mean every listed company
+        offers commercial auto or every business product.
+      </p>
+    </div>
+  </section>
+  <CTA />
+</Base>

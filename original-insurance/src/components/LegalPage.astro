@@ -2,9 +2,7 @@
 import type { PageData } from '../data/content';
 import PageHero from './PageHero.astro';
 import { contact } from '../data/site';
-import Photo from './Photo.astro';
 import Icon from './Icon.astro';
-import '../styles/information.css';
 interface Props {
   page: PageData;
 }
@@ -37,12 +35,6 @@ const privacy = page.path === '/privacy';
         </a>
       </nav>
       <div class="information-help">
-        <Photo
-          src={privacy ? 'policy-folder-accent.png' : 'citrus-branch-accent.png'}
-          alt=""
-          class="information-help-art"
-          sizes="150px"
-        />
         <p class="eyebrow">{privacy ? 'Privacy questions' : 'Need assistance?'}</p>
         <h2>{privacy ? 'Talk to our office.' : 'A person can help.'}</h2>
         <p>

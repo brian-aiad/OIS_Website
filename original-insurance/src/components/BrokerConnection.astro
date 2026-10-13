@@ -1,0 +1,36 @@
+---
+import Icon from './Icon.astro';
+---
+
+<div
+  class="broker-connection"
+  data-reveal
+  aria-label="You tell Original Insurance what you need. Our team explores available insurance markets with you."
+>
+  <div>
+    <Icon name="user" size={25} />
+    <strong>You</strong>
+    <span>Your coverage needs</span>
+  </div>
+  <svg viewBox="0 0 140 40" fill="none" aria-hidden="true">
+    <path pathLength="1" d="M0 20H132m-8-7 8 7-8 7" />
+  </svg>
+  <div class="connection-agency">
+    <span class="connection-monogram" aria-hidden="true">
+      OI
+    </span>
+    <strong>Original Insurance</strong>
+    <span>One team to help compare</span>
+  </div>
+  <svg viewBox="0 0 140 100" fill="none" aria-hidden="true">
+    <path
+      pathLength="1"
+      d="M0 50H55Q70 50 70 35V20Q70 10 85 10H132M55 50H132M55 50Q70 50 70 65V80Q70 90 85 90H132"
+    />
+  </svg>
+  <div class="connection-markets">
+    <span>Auto markets</span>
+    <span>Property markets</span>
+    <span>Business markets</span>
+  </div>
+</div>

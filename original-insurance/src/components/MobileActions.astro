@@ -1,0 +1,34 @@
+---
+import { contact } from '../data/site';
+import { quoteHref } from '../intake/context';
+import Icon from './Icon.astro';
+interface Props {
+  lang?: 'en' | 'es';
+}
+const { lang = 'en' } = Astro.props;
+const policyHelp = Astro.url.pathname === '/contact';
+---
+
+<nav
+  class="mobile-actions"
+  aria-label={lang === 'es' ? 'Contactar a Original Insurance' : 'Contact Original Insurance'}
+>
+  <a href={contact.phoneHref}>
+    <Icon name="phone" size={18} />
+    {lang === 'es' ? 'Llamar' : 'Call'}
+  </a>
+  <a href={contact.textHref}>
+    <Icon name="mail" size={18} />
+    {lang === 'es' ? 'Mensaje' : 'Text'}
+  </a>
+  <a
+    class="mobile-quote"
+    href={
+      policyHelp ? '#contact-form' : lang === 'es' ? '/es#opciones' : quoteHref(Astro.url.pathname)
+    }
+    data-quote={lang === 'es' || policyHelp ? undefined : true}
+  >
+    {policyHelp ? 'Policy help' : lang === 'es' ? 'Opciones' : 'Get a quote'}
+    <Icon size={18} />
+  </a>
+</nav>

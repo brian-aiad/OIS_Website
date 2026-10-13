@@ -121,7 +121,7 @@ try {
   await page.screenshot({ path: resolve(out, 'ois-quote-desktop.png'), fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.screenshot({ path: resolve(out, 'ois-quote-mobile.png'), fullPage: true });
-  await page.getByRole('radio', { name: 'Personal auto Everyday miles, covered.' }).check();
+  await page.getByRole('radio', { name: /^Personal auto/ }).check();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   assert.equal(await page.locator('#contact-0-name').getAttribute('aria-invalid'), 'true');

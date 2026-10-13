@@ -29,30 +29,30 @@ export const coverage = [
     key: 'auto',
     name: 'Auto insurance',
     path: '/auto-insurance-downey-ca',
-    short: 'For the everyday miles.',
+    short: 'For everyday driving.',
     description:
       'Compare liability, comprehensive, collision, and available discounts around the way you drive.',
-    image: 'coverage-auto-illustration-v2.png',
-    alt: 'Editorial illustration of a navy car on a palm-lined California street',
+    image: 'auto-coverage-editorial-v3.png',
+    alt: 'Conceptual illustration of a navy sedan on a California street',
   },
   {
     key: 'home',
     name: 'Home & renters',
     path: '/home-insurance-downey-ca',
-    short: 'For your place in the world.',
-    description: 'Coverage for your home, belongings, and the life you have built around them.',
-    image: 'coverage-home-illustration-v2.png',
-    alt: 'Editorial illustration of a California bungalow and garden',
+    short: 'For the place you live.',
+    description: 'Review coverage for your home or rental, belongings, and personal liability.',
+    image: 'home-coverage-editorial-v3.png',
+    alt: 'Conceptual illustration of a California bungalow',
   },
   {
     key: 'commercial',
     name: 'Commercial auto',
     path: '/commercial-auto-insurance-downey',
-    short: 'For what you’re building.',
+    short: 'For vehicles used for work.',
     description:
       'Coverage for work trucks, vans, and business vehicles, based on how you use them.',
-    image: 'coverage-commercial-illustration.png',
-    alt: 'Editorial illustration of work vehicles outside a local business',
+    image: 'commercial-coverage-editorial-v3.png',
+    alt: 'Conceptual illustration of a work van and pickup outside a workshop',
   },
   {
     key: 'sr22',
@@ -126,3 +126,12 @@ export const resources = [
     url: 'https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/driver-licenses-dl/',
   },
 ];
+
+/** Existing physical-access copy retained pending direct business confirmation. */
+export const officeVisit = {
+  weekdayHours: '10:00 AM–5:30 PM',
+  timeZone: 'Pacific',
+  parkingAndAccess:
+    'Free on-site parking and street parking on Paramount Boulevard. The office has a wheelchair-accessible entrance, parking, and seating.',
+  accessVerification: 'Business confirmation pending',
+} as const;

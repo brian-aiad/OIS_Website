@@ -11,6 +11,7 @@ export default defineConfig({
     plugins: [intakeDev()],
     server: {
       strictPort: true,
+      watch: { ignored: ['**/output/**', '**/.intake-local/**'] },
       fs: {
         deny: [
           '.env',

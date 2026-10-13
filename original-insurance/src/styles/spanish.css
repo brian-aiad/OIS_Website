@@ -1,0 +1,125 @@
+/* Spanish assistance page; shared typography, tokens and buttons remain global. */
+.spanish-intro {
+  background: var(--sand);
+}
+.spanish-intro .lede {
+  max-width: 750px;
+}
+.spanish-intro h1 {
+  max-width: 900px;
+}
+.spanish-intro .actions {
+  margin-bottom: 24px;
+}
+.spanish-context {
+  border-left: 3px solid var(--color-brand-blue);
+  padding: 16px 20px;
+  background: white;
+  max-width: 750px;
+}
+.assistance-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 48px;
+  margin-top: 32px;
+}
+.assistance-options > div {
+  border-top: 1px solid var(--line);
+  padding: 24px 0;
+}
+.assistance-options h3 {
+  margin-top: 0;
+}
+.assistance-options a {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-weight: 650;
+}
+.assistance-options a span {
+  font-weight: 400;
+  font-size: 14px;
+}
+.spanish-help {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+.spanish-help address {
+  font-style: normal;
+  font-size: 22px;
+}
+.spanish-next {
+  background: var(--ink);
+  color: white;
+}
+.spanish-next h2,
+.spanish-next p,
+.spanish-next a {
+  color: inherit;
+}
+.spanish-next ol {
+  padding-left: 24px;
+}
+.spanish-next li {
+  margin-bottom: 12px;
+}
+.spanish-next p {
+  max-width: 760px;
+}
+@media (max-width: 760px) {
+  .assistance-options,
+  .spanish-help {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .spanish-help > div + div {
+    border-top: 1px solid var(--line);
+    padding-top: 32px;
+    margin-top: 24px;
+  }
+}
+
+.assistance-options > div > .line-motif {
+  width: 92px;
+  height: 50px;
+  float: right;
+  margin: 0 0 8px 16px;
+  color: var(--color-brand-blue);
+}
+.spanish-footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding-block: 32px;
+}
+.spanish-footer-grid address {
+  font-style: normal;
+}
+.spanish-footer-grid nav {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+.spanish-footer-grid a {
+  padding-block: 10px;
+}
+.spanish-footer-grid p,
+.spanish-footer-grid address {
+  font-size: 14px;
+}
+@media (max-width: 760px) {
+  .spanish-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+@media (max-width: 760px) {
+  .site-footer.spanish-footer .footer-phone {
+    font-size: clamp(24px, 7vw, 36px);
+    gap: 12px;
+  }
+  .site-footer.spanish-footer .footer-phone svg {
+    flex-shrink: 0;
+  }
+}

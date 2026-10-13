@@ -1,0 +1,50 @@
+---
+interface Props {
+  kind?: 'auto' | 'home' | 'business' | 'document' | 'route';
+}
+const { kind = 'route' } = Astro.props;
+---
+
+<svg
+  class={`line-motif motif-${kind}`}
+  viewBox="0 0 240 130"
+  fill="none"
+  aria-hidden="true"
+  focusable="false"
+>
+  <g stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    {kind === 'auto' ? (
+      <>
+        <path d="M24 79 52 47h90l33 32 29 8v23h-23M155 110H76m-24 0H22V87l2-8Zm10 0h140M66 51v28m57-28 22 28" />
+        <circle cx="64" cy="110" r="12" />
+        <circle cx="168" cy="110" r="12" />
+      </>
+    ) : kind === 'home' ? (
+      <>
+        <path d="m34 62 84-44 89 44M47 56v60h149V56M101 116V73h34v43M65 72h22v22H65zm87 0h23v22h-23zM22 123h196" />
+        <path d="M118 18V8M34 62H16" opacity=".35" />
+      </>
+    ) : kind === 'business' ? (
+      <>
+        <path d="M26 116V24h116v92M45 43h21v20H45zm39 0h21v20H84zm-39 37h21v20H45zm39 0h21v20H84zM142 63h43l31 34v19h-17m-27 0h-30m12-42v22h42l-21-22z" />
+        <circle cx="186" cy="116" r="11" />
+      </>
+    ) : kind === 'document' ? (
+      <>
+        <path d="M64 113V13h82l27 27v73ZM146 13v27h27M84 57h66m-66 16h43m-43 16h51M50 30H39v95h105" />
+        <path class="motif-check" pathLength="1" d="m153 91 12 12 30-35" />
+      </>
+    ) : (
+      <>
+        <path
+          class="motif-route"
+          pathLength="1"
+          d="M12 101h53q20 0 20-20V49q0-20 20-20h27q20 0 20 20v32q0 20 20 20h49"
+        />
+        <circle cx="12" cy="101" r="5" />
+        <circle cx="221" cy="101" r="5" />
+        <path d="m128 24 5 5-5 5m88 62 5 5-5 5" />
+      </>
+    )}
+  </g>
+</svg>

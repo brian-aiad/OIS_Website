@@ -1,16 +1,10 @@
 ---
-import Photo from './Photo.astro';
+import LineMotif from './LineMotif.astro';
 interface Props {
   kind?: 'home' | 'business' | 'renewal' | 'policy';
   size?: 'small' | 'medium';
 }
 const { kind = 'renewal', size = 'medium' } = Astro.props;
-const images = {
-  home: 'home-keys-accent.png',
-  business: 'business-van-accent.png',
-  renewal: 'renewal-papers-accent.png',
-  policy: 'policy-folder-accent.png',
-};
 ---
 
 <span
@@ -18,12 +12,7 @@ const images = {
   aria-hidden="true"
   data-motion="art"
 >
-  <Photo
-    src={images[kind]}
-    alt=""
-    widths={[160, 240, 400, 640]}
-    sizes={size === 'small' ? '110px' : '(max-width:760px) 130px, 190px'}
-  />
+  <LineMotif kind={kind === 'home' ? 'home' : kind === 'business' ? 'business' : 'document'} />
 </span>
 
 <style>
@@ -34,7 +23,7 @@ const images = {
     flex-shrink: 0;
     pointer-events: none;
   }
-  .painted-accent :global(img) {
+  .painted-accent :global(svg) {
     display: block;
     width: 100%;
     height: auto;

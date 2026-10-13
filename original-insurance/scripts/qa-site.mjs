@@ -101,7 +101,7 @@ try {
     assert.equal(meta.noindex, false);
     assert.deepEqual(meta.canonical, ['https://originalinsurance.net' + item.path]);
     for (const link of meta.links.filter((l) => l.startsWith('/') && !l.startsWith('//'))) {
-      const target = link.split('#')[0] || item.path;
+      const target = new URL(link, base + item.path).pathname;
       assert.ok(
         target === '/quote' || pages.some((p) => p.path === target),
         item.path + ' broken link ' + link,
@@ -128,7 +128,7 @@ try {
     // Measure contrast after entrance animations reach their final visual state.
     await page.waitForTimeout(2000);
     const axe = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa', 'wcag22aa'])
       .analyze();
     const violations = axe.violations.map((v) => ({
       id: v.id,
@@ -248,6 +248,37 @@ try {
   assert.equal(await review.locator('[data-review-count]').innerText(), '02 / 04');
   await review.locator('[data-review-prev]').click();
   assert.equal(await review.locator('[data-review-count]').innerText(), '01 / 04');
+  // Coverage choices work with click, arrow keys, and direct guide links.
+  const explorer = page.locator('[data-coverage-explorer]');
+  const tabs = explorer.getByRole('tab');
+  await tabs.nth(0).focus();
+  await page.keyboard.press('ArrowRight');
+  assert.equal(await tabs.nth(1).getAttribute('aria-selected'), 'true');
+  assert.equal(await tabs.nth(1).evaluate((el) => el === document.activeElement), true);
+  assert.equal(await explorer.locator('[role="tabpanel"]:visible').count(), 1);
+  assert.equal(
+    await explorer.locator('[role="tabpanel"]:visible .text-link').getAttribute('href'),
+    '/home-insurance-downey-ca',
+  );
+  await page.keyboard.press('End');
+  assert.equal(await tabs.nth(2).getAttribute('aria-selected'), 'true');
+  await page.keyboard.press('Home');
+  assert.equal(await tabs.nth(0).getAttribute('aria-selected'), 'true');
+  await tabs.nth(2).click();
+  assert.equal(
+    await explorer.locator('[role="tabpanel"]:visible .text-link').getAttribute('href'),
+    '/commercial-auto-insurance-downey',
+  );
+  for (let i = 0; i < 4; i++) {
+    const visibleReviews = await review.locator('figure:visible blockquote').allTextContents();
+    assert.equal(visibleReviews.length, 3);
+    assert.equal(
+      new Set(visibleReviews).size,
+      3,
+      'Featured review must not repeat in supporting reviews',
+    );
+    await review.locator('[data-review-next]').click();
+  }
   // Form validation, mocked success/failure. No real customer messages are sent.
   await page.goto(base + '/contact');
   await page.locator('button[type="submit"]').click();
@@ -304,6 +335,10 @@ try {
       .innerText()
       .then((t) => t.length > 1000),
   );
+  await staticPage.goto(base);
+  assert.equal(await staticPage.locator('[data-coverage-panel]:visible').count(), 3);
+  assert.equal(await staticPage.locator('[data-review]:visible').count(), 4);
+  assert.equal(await staticPage.locator('.review-support:visible').count(), 0);
   await nojs.close();
   assert.equal(errors.length, 0, 'Browser errors: ' + errors.join('; '));
   writeFileSync(
@@ -322,8 +357,9 @@ try {
     ),
   );
   const findings = checks.reduce((sum, c) => sum + c.violations.length, 0);
+  assert.equal(findings, 0, 'Accessibility findings must be resolved; see saved report.');
   console.log(
-    `Completed 25 routes × 11 widths. ${findings} accessibility findings. Interaction, routing, reduced-motion, no-JS and mocked form checks passed.`,
+    `Completed ${pages.length} routes × 11 widths. ${findings} accessibility findings. Interaction, routing, reduced-motion, no-JS and mocked form checks passed.`,
   );
   if (findings) process.exitCode = 1;
 } catch (error) {

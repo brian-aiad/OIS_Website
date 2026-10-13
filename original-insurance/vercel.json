@@ -149,6 +149,16 @@
       "source": "/admin/",
       "destination": "/admin",
       "permanent": true
+    },
+    {
+      "source": "/insurance-markets/",
+      "destination": "/insurance-markets",
+      "permanent": true
+    },
+    {
+      "source": "/es/",
+      "destination": "/es",
+      "permanent": true
     }
   ],
   "rewrites": [

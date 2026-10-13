@@ -1,9 +1,11 @@
 ---
 import PageHero from './PageHero.astro';
 import Photo from './Photo.astro';
+import LineMotif from './LineMotif.astro';
 import Icon from './Icon.astro';
-import { contact, quoteUrl } from '../data/site';
-import '../styles/contact.css';
+import { contact } from '../data/site';
+import { quoteHref } from '../intake/context';
+const quoteUrl = quoteHref(Astro.url.pathname);
 const key = import.meta.env.PUBLIC_WEB3FORMS_KEY || import.meta.env.VITE_WEB3FORMS_KEY || '';
 ---
 
@@ -14,8 +16,11 @@ const key = import.meta.env.PUBLIC_WEB3FORMS_KEY || import.meta.env.VITE_WEB3FOR
   quote={false}
 >
   <div class="actions contact-intro-actions">
-    <a href="#contact-form" class="button button-ink">
-      Send us a message <Icon />
+    <a href={contact.phoneHref} class="button button-ink">
+      Call our team <Icon name="phone" />
+    </a>
+    <a href="#contact-form" class="text-link">
+      Ask a question <Icon />
     </a>
     <a href={quoteUrl} data-quote class="text-link">
       Looking for a quote? <Icon />
@@ -25,6 +30,7 @@ const key = import.meta.env.PUBLIC_WEB3FORMS_KEY || import.meta.env.VITE_WEB3FOR
 <section class="section contact-workspace" aria-label="Contact options and message form">
   <div class="container contact-layout">
     <div class="contact-direct">
+      <h2 class="sr-only">Ways to reach our team</h2>
       <p class="eyebrow">Your local team, within reach</p>
       <div class="contact-channels">
         <a href={contact.phoneHref}>
@@ -76,7 +82,7 @@ const key = import.meta.env.PUBLIC_WEB3FORMS_KEY || import.meta.env.VITE_WEB3FOR
             Start a quote <Icon />
           </a>
         </div>
-        <Photo src="policy-folder-accent.png" alt="" sizes="(max-width: 760px) 110px, 160px" />
+        <LineMotif kind="document" />
       </div>
       <figure class="contact-office-image">
         <Photo
@@ -91,6 +97,13 @@ const key = import.meta.env.PUBLIC_WEB3FORMS_KEY || import.meta.env.VITE_WEB3FOR
         <p class="eyebrow">Questions & policy support</p>
         <h2>How can we help?</h2>
         <p>Tell us a little about what you need. Our team will follow up during office hours.</p>
+      </div>
+      <div class="policy-support">
+        <strong>Already a customer?</strong>
+        <p>
+          Use this form for policy questions, documents, billing, or help finding the right claims
+          contact. Requests do not change coverage until confirmed by the agency or insurer.
+        </p>
       </div>
       <p class="contact-required-note">Required fields are marked with an asterisk (*).</p>
       <form
@@ -141,6 +154,8 @@ const key = import.meta.env.PUBLIC_WEB3FORMS_KEY || import.meta.env.VITE_WEB3FOR
           <select id="topic" name="topic" required>
             <option value="">Choose a topic</option>
             <option>Question about my policy</option>
+            <option>Proof of insurance or documents</option>
+            <option>Request a policy change</option>
             <option>Help with a claim</option>
             <option>Coverage question</option>
             <option>Billing question</option>

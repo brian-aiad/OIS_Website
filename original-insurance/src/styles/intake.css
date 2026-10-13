@@ -1,20 +1,9 @@
 /* The agency's paper-and-ink identity, with compact controls for daily work. */
+/* Palette and typography are owned by tokens.css. */
 :root {
-  --ink: #142b44;
-  --ink-deep: #0d2033;
-  --paper: #f6f3ed;
-  --white: #fff;
-  --sand: #e9e3d7;
-  --gold: #d8b46d;
-  --text: #263a49;
-  --muted: #657078;
-  --line: #dedfdc;
-  --green: #356653;
-  --error: #a72e2a;
-  --display: 'Newsreader Variable', Georgia, serif;
-  --body: 'DM Sans Variable', Arial, sans-serif;
-  color-scheme: light;
+  --green: var(--color-success);
 }
+
 * {
   box-sizing: border-box;
 }

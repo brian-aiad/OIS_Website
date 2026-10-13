@@ -9,16 +9,20 @@ if (import.meta.env.PROD && hostedSite) {
   injectSpeedInsights();
 }
 
-// Measure next steps without sending phone numbers, email addresses, or form fields.
-const trackAction = (name: string, parameters: Record<string, string> = {}) => {
-  if (!/^(?:www\.)?originalinsurance\.net$/.test(location.hostname)) return;
-  const analytics = window as Window & { gtag?: (...args: unknown[]) => void };
-  analytics.gtag?.('event', name, parameters);
-};
+import { trackAction } from './analytics';
+import { intentRoutes, navigationContext, contextHref } from '../intake/context';
+const referral = navigationContext(location.pathname, location.search);
+document.querySelectorAll<HTMLAnchorElement>('a[href^="/"]').forEach((link) => {
+  link.setAttribute('href', contextHref(link.getAttribute('href')!, referral));
+});
+if (intentRoutes[location.pathname])
+  trackAction('coverage_view', { coverage: intentRoutes[location.pathname].type });
 document.addEventListener('click', (event) => {
   const link = (event.target as Element | null)?.closest<HTMLAnchorElement>('a[href]');
   const scheme = link?.getAttribute('href')?.split(':')[0];
   if (scheme && ['tel', 'sms', 'mailto'].includes(scheme)) {
+    if (scheme === 'tel' || scheme === 'sms')
+      trackAction(scheme === 'tel' ? 'phone_click' : 'text_click');
     trackAction('contact_click', {
       contact_method: scheme === 'tel' ? 'phone' : scheme === 'sms' ? 'text' : 'email',
     });
@@ -50,9 +54,29 @@ document.addEventListener('keydown', (event) => {
 });
 
 // Preserve anonymous quote-open analytics while keeping normal link navigation.
-document
-  .querySelectorAll('[data-quote]')
-  .forEach((link) => link.addEventListener('click', () => trackAction('quote_open')));
+document.querySelectorAll('[data-quote]').forEach((link) =>
+  link.addEventListener('click', () =>
+    trackAction('quote_open', {
+      placement: link.closest('header')
+        ? 'header'
+        : link.closest('footer')
+          ? 'footer'
+          : link.closest('.mobile-actions')
+            ? 'mobile'
+            : link.closest('[data-coverage-explorer]')
+              ? 'explorer'
+              : link.closest('[data-markets]')
+                ? 'markets'
+                : location.pathname === '/es'
+                  ? 'spanish'
+                  : location.pathname.startsWith('/insurance/')
+                    ? 'city'
+                    : link.closest('.home-hero,.page-hero')
+                      ? 'hero'
+                      : 'content',
+    }),
+  ),
+);
 window.addEventListener('openQuoteModal', () => {
   location.assign('/quote');
 });
@@ -95,42 +119,26 @@ const setupMotion = () => {
       el.style.setProperty('--motion-delay', `${Math.min(i % 4, 3) * 55}ms`);
     }),
   );
-  document.querySelectorAll('.neighborhood-art').forEach((svg) => {
-    svg.querySelector(':scope > g:last-of-type')?.classList.add('motion-neighborhood-car');
-    svg.querySelector(':scope > path:last-child')?.classList.add('motion-neighborhood-car');
-    svg
-      .querySelectorAll('g[fill="#61715c"] > path')
-      .forEach((palm) => palm.classList.add('motion-neighborhood-palms'));
-  });
   const artSelector =
-    '.page-hero-image,.broker-policy-art,.story-botanical,.information-help-art,.guide-preparation-heading figure,.contact-quote-note figure,[data-motion="art"]';
+    '.page-hero-image,.broker-policy-art,.information-help-art,.guide-preparation-heading figure,.contact-quote-note figure,[data-motion="art"]';
   const targets = new Set<Element>(
     document.querySelectorAll(
       [
         '[data-reveal]',
         '[data-motion]',
-        '.section-heading',
+        '.coverage-explorer',
+        '.footer-opening',
         '.coverage-diagram',
-        '.guide-chapter > h2',
-        '.city-guide',
-        '.additional-services article',
         '.broker-steps > li',
-        '.neighborhood-scene',
-        '.neighborhood-heading',
         '.customer-stories-heading',
         '.original-story-heading',
         '.original-history-line > li',
-        '.information-group-heading',
         '.information-help',
         '.locations-prepare',
         '.locations-hours',
         '.locations-practical',
         '.contact-quote-note',
-        '.contact-form-heading',
         '.guide-preparation',
-        '.service-related-options > a',
-        '.city-service-links > a',
-        '.coverage-directory > div',
         artSelector,
       ].join(','),
     ),
@@ -147,11 +155,7 @@ const setupMotion = () => {
   );
   targets.forEach((el) => {
     const target = el as HTMLElement;
-    target.dataset.motionKind = el.matches('.neighborhood-scene')
-      ? 'scene'
-      : el.matches(artSelector)
-        ? 'art'
-        : 'content';
+    target.dataset.motionKind = el.matches(artSelector) ? 'art' : 'content';
     // Unobserving after entry keeps scrolling back through the page quiet.
     if (!el.classList.contains('reveal-enter')) motionObserver?.observe(el);
   });
@@ -184,6 +188,7 @@ form?.addEventListener('submit', async (event) => {
     const result = await response.json();
     if (!response.ok || !result.success) throw new Error('submission failed');
     trackAction('contact_message_sent');
+    trackAction('contact_submit');
     status.dataset.state = 'success';
     status.textContent =
       'Thank you. Your message has been received. Our team will follow up during office hours.';
@@ -215,3 +220,118 @@ document
   });
 
 import './quote';
+
+// A static set of linked coverage panels becomes a keyboard-operable tab interface.
+document.querySelectorAll<HTMLElement>('[data-coverage-explorer]').forEach((explorer) => {
+  const tablist = explorer.querySelector<HTMLElement>('.explorer-tabs')!;
+  const tabs = [...explorer.querySelectorAll<HTMLButtonElement>('[data-coverage-tab]')];
+  const panels = [...explorer.querySelectorAll<HTMLElement>('[data-coverage-panel]')];
+  tablist.hidden = false;
+  tablist.setAttribute('role', 'tablist');
+  const mobileTabs = matchMedia('(max-width: 760px)');
+  const orient = () =>
+    tablist.setAttribute('aria-orientation', mobileTabs.matches ? 'horizontal' : 'vertical');
+  orient();
+  mobileTabs.addEventListener('change', orient);
+  explorer.dataset.enhanced = '';
+  const select = (index: number) => {
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-selected', String(i === index));
+      tab.tabIndex = i === index ? 0 : -1;
+      panels[i].setAttribute('role', 'tabpanel');
+      panels[i].setAttribute('aria-labelledby', tab.id);
+      panels[i].hidden = i !== index;
+      panels[i].classList.toggle('coverage-selected', i === index);
+    });
+  };
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => select(index));
+    tab.addEventListener('keydown', (event) => {
+      let next: number;
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp')
+        next = (index - 1 + tabs.length) % tabs.length;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = tabs.length - 1;
+      else return;
+      event.preventDefault();
+      select(next);
+      tabs[next].focus();
+    });
+  });
+  select(0);
+});
+
+// All market groups remain visible and indexable without JavaScript.
+document.querySelectorAll<HTMLElement>('[data-markets]').forEach((section) => {
+  const filters = section.querySelector<HTMLElement>('.market-filters');
+  if (!filters) return;
+  filters.hidden = false;
+  const initial = section.dataset.marketDefault || 'all';
+  filters
+    .querySelectorAll<HTMLButtonElement>('[data-market]')
+    .forEach((button) =>
+      button.setAttribute('aria-pressed', String(button.dataset.market === initial)),
+    );
+  section.querySelectorAll<HTMLElement>('[data-market-group]').forEach((group) => {
+    group.hidden = initial !== 'all' && group.dataset.marketGroup !== initial;
+  });
+  filters.querySelectorAll<HTMLButtonElement>('[data-market]').forEach((button) =>
+    button.addEventListener('click', () => {
+      filters
+        .querySelectorAll('button')
+        .forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+      section.querySelectorAll<HTMLElement>('[data-market-group]').forEach((group) => {
+        group.hidden =
+          button.dataset.market !== 'all' && group.dataset.marketGroup !== button.dataset.market;
+      });
+      trackAction('carrier_section_interaction', { category: button.dataset.market! });
+    }),
+  );
+});
+
+document
+  .querySelectorAll('[data-spanish]')
+  .forEach((link) => link.addEventListener('click', () => trackAction('spanish_switch')));
+document
+  .querySelectorAll('a[href*="maps.google.com"], a[href*="google.com/maps"]')
+  .forEach((link) => link.addEventListener('click', () => trackAction('directions_click')));
+
+// Jump links open server-rendered guide chapters before moving focus.
+function openGuideHash() {
+  const id = location.hash.slice(1);
+  if (!/^guide-\d+$/.test(id)) return;
+  const chapter = document.getElementById(id);
+  if (chapter instanceof HTMLDetailsElement) {
+    chapter.open = true;
+    chapter.scrollIntoView({ block: 'start' });
+  }
+}
+window.addEventListener('hashchange', openGuideHash);
+if (location.hash) openGuideHash();
+const faqSearch = document.querySelector<HTMLInputElement>('#faq-search');
+if (faqSearch) {
+  faqSearch.closest<HTMLElement>('.faq-search')!.hidden = false;
+  faqSearch.addEventListener('input', () => {
+    const term = faqSearch.value.trim().toLocaleLowerCase();
+    let count = 0;
+    document.querySelectorAll<HTMLElement>('.information-group').forEach((group) => {
+      let visible = 0;
+      group.querySelectorAll<HTMLDetailsElement>('.faq-list > details').forEach((answer) => {
+        const match = !term || answer.textContent!.toLocaleLowerCase().includes(term);
+        answer.hidden = !match;
+        if (match) {
+          visible++;
+          count++;
+        }
+      });
+      group.hidden = !visible;
+    });
+    document.querySelector('#faq-search-status')!.textContent = term
+      ? count
+        ? `${count} matching answers. Choose a question to read more.`
+        : 'No matching answers. Try a different word or call our team.'
+      : '';
+  });
+}

@@ -10,7 +10,9 @@ import {
   type Field,
   type Section,
 } from './schema';
+import { trackAction } from '../scripts/analytics';
 import { agency } from './agency';
+import { cleanContext, type QuoteContext } from './context';
 import { normalizeVin, validVin, vehicleLabel, type DecodedVehicle } from './vin';
 import { api, ApiError, escape as e, icon } from './ui';
 
@@ -30,6 +32,7 @@ const openRows = new WeakMap<Row, boolean>();
 const drafts = new Map<string, Answers>();
 let config: FormConfig;
 let selected = '';
+let choosingCoverage = true;
 let step = 0;
 let answers: Answers = {};
 let local = false;
@@ -38,6 +41,8 @@ let consent = false;
 let requestId = crypto.randomUUID();
 let sent = false;
 let editingReview = false;
+let context: QuoteContext = {};
+let sr22Prefill: Row | undefined;
 let removed: { section: string; index: number; row: Row; links: string[] } | undefined;
 const type = () => coverages.find((c) => c.id === selected)!;
 const sections = () => (selected ? visibleSections(config, type()) : []);
@@ -170,7 +175,7 @@ function showSuccess(reference: string, test: boolean) {
   sent = true;
   document.body.dataset.quoteStep = 'complete';
   progress.innerHTML = `<div class="progress-finished">${icon('check', 20)} Request ${test ? 'tested' : 'sent'}</div>`;
-  root.innerHTML = `<div class="form-card success-card"><span class="success-seal">${icon('check', 36)}</span><p class="eyebrow">${test ? 'TEST REQUEST COMPLETE' : 'YOUR NEXT CHAPTER STARTS HERE'}</p><h2 tabindex="-1">${test ? 'Your preview is ready.' : 'You’re in good hands.'}</h2><p>${test ? 'A test email was saved locally. No email was sent to the agency.' : `Your request has been sent to ${e(agency.name)}. Our team will review your details and contact you about the next steps.`}</p><div class="success-summary"><span>${e(type().label)}</span><strong>${e(answers.contact[0].name)}</strong><small>Reference ${e(reference.slice(0, 8).toUpperCase())}</small></div><div class="next-steps"><strong>What happens next?</strong><p>Our team reviews your information, follows up on any questions, and helps you compare your coverage options.</p></div><a class="primary-button" href="/">Back to ${e(agency.name)} ${icon('arrow', 18)}</a><p class="fine-print">Need to add something? Call <a href="${agency.phoneHref}">${e(agency.phone)}</a>.</p></div>`;
+  root.innerHTML = `<div class="form-card success-card"><span class="success-seal">${icon('check', 36)}</span><p class="eyebrow">${test ? 'TEST REQUEST COMPLETE' : 'REQUEST RECEIVED'}</p><h2 tabindex="-1">${test ? 'Your preview is ready.' : 'Thank you. We have your request.'}</h2><p>${test ? 'A test email was saved locally. No email was sent to the agency.' : `Your request has been received for review by ${e(agency.name)}. Our team will review your details and follow up using your contact information.`}</p><div class="success-summary"><span>${e(type().label)}</span><strong>${e(answers.contact[0].name)}</strong><small>Reference ${e(reference.slice(0, 8).toUpperCase())}</small></div><div class="next-steps"><strong>What happens next?</strong><p>Our team reviews your information, follows up on any questions, and helps you compare your coverage options.</p></div><a class="primary-button" href="/">Back to ${e(agency.name)} ${icon('arrow', 18)}</a><p class="fine-print">Need to add something? Call <a href="${agency.phoneHref}">${e(agency.phone)}</a>.</p></div>`;
   root.querySelector<HTMLElement>('h2')?.focus();
   answers = {};
   drafts.clear();
@@ -184,7 +189,9 @@ function render(focus = false) {
   const last = step === steps.length - 1;
   const s = currentSection();
   document.body.dataset.quoteStep = step === 0 ? 'coverage' : last ? 'review' : 'details';
-  progress.innerHTML = `<ol class="progress-list">${steps.map((label, i) => `<li class="${i === step ? 'current' : i < step ? 'complete' : ''}" ${i === step ? 'aria-current="step"' : ''}><span class="step-number">${i < step ? icon('check', 14) : i + 1}</span>${i < step ? `<button type="button" data-progress="${i}" aria-label="Go back to ${e(label)}">${label}</button>` : `<span>${label}</span>`}</li>`).join('')}</ol>`;
+  progress.innerHTML = !selected
+    ? `<p class="quote-start-note">Choose your coverage to see the questions for your request.</p>`
+    : `<ol class="progress-list">${steps.map((label, i) => `<li class="${i === step ? 'current' : i < step ? 'complete' : ''}" ${i === step ? 'aria-current="step"' : ''}><span class="step-number">${i < step ? icon('check', 14) : i + 1}</span>${i < step ? `<button type="button" data-progress="${i}" aria-label="Go back to ${e(label)}">${label}</button>` : `<span>${label}</span>`}</li>`).join('')}</ol>`;
   progress.querySelectorAll<HTMLElement>('[data-progress]').forEach((b) =>
     b.addEventListener('click', () => {
       if (busy) return;
@@ -193,19 +200,21 @@ function render(focus = false) {
     }),
   );
   root.removeAttribute('aria-busy');
-  root.innerHTML = `${local ? '<div class="local-banner">Local preview · requests create test emails only.</div>' : ''}<div class="form-card"><div class="form-meta"><span>${selected ? e(type().label.toUpperCase()) : 'YOUR QUOTE REQUEST'}</span><span>Step ${step + 1} of ${steps.length}</span></div><div class="form-progress"><span style="width:${((step + 1) / steps.length) * 100}%"></span></div><form novalidate><div class="step-heading"><span class="step-emblem">${icon(step === 0 ? 'shield' : last ? 'check' : type().icon, 25)}</span><h2 tabindex="-1">${step === 0 ? 'What would you like to protect?' : last ? 'Everything look right?' : e(s.label)}</h2><p>${step === 0 ? 'Choose a starting point. We’ll take it from here.' : last ? 'Review your details, then send them to our team.' : s.repeat ? `Add each ${s.repeat} you’d like included in your quote.` : s.id === 'contact' ? 'So our team can get back to you with the next steps.' : 'A few details help us understand the coverage you need.'}</p>${step > 0 && !last ? '<small class="required-guide">Fields marked * are required. You can leave optional answers blank.</small>' : ''}</div><div data-error class="error-banner" role="alert" tabindex="-1" hidden></div>${
-    step === 0
-      ? `<div class="coverage-grid" role="radiogroup" aria-label="Insurance type">${coverages
-          .filter((c) => config.enabled.includes(c.id))
-          .map(
-            (c) =>
-              `<label class="coverage-option"><input type="radio" name="coverage" value="${c.id}" ${selected === c.id ? 'checked' : ''} /><span class="coverage-content"><span class="coverage-icon">${icon(c.icon, 29)}</span><strong>${c.label}</strong><small>${c.short}</small><span class="selection-dot">${icon('check', 11)}</span></span></label>`,
-          )
-          .join('')}</div>`
-      : last
-        ? `${review()}<label class="consent"><input type="checkbox" name="consent" ${consent ? 'checked' : ''} /><span>I agree that ${e(agency.name)} may contact me about this request. I’ve read the <a href="/privacy" target="_blank" rel="noopener">privacy notice</a>.</span></label><p class="fine-print">This is a request for a quote, not a purchase. Coverage starts only after confirmation from your insurance provider.</p><div class="honeypot" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off" /></label></div>`
-        : sectionMarkup(s)
-  }<div class="form-actions">${step > 0 ? '<button class="secondary-button" type="button" data-back>← Back</button>' : '<span class="form-reassurance">No obligation.<br />Just possibilities.</span>'}<button class="primary-button" type="submit">${last ? 'Send quote request' : editingReview ? 'Back to review' : 'Continue'} ${icon('arrow', 18)}</button></div></form></div>`;
+  root.innerHTML = `${local ? '<div class="local-banner">Local preview · requests create test emails only.</div>' : ''}<div class="form-card"><div class="form-meta"><span>${selected ? e(type().label.toUpperCase()) : 'YOUR QUOTE REQUEST'}</span><span>${selected ? `Step ${step + 1} of ${steps.length}` : 'Getting started'}</span></div><div class="form-progress"><span style="width:${selected ? ((step + 1) / steps.length) * 100 : 0}%"></span></div><form novalidate>${context.language === 'es' ? `<div class="language-assistance" lang="es"><strong>¿Prefiere hablar en español?</strong><p>Este formulario está en inglés. Puede completarlo o <a href="${agency.phoneHref}">llamar para recibir ayuda en español</a>. Su preferencia de idioma se enviará al equipo.</p></div>` : ''}${context.need && selected === 'auto' ? `<div class="quote-intent"><span>${context.need === 'sr22' ? 'You’re asking about SR-22 filing.' : 'You’re asking about license or vehicle-ownership options.'}</span><button type="button" data-clear-intent>Remove</button></div>` : ''}<div class="step-heading"><span class="step-emblem">${icon(step === 0 ? 'shield' : last ? 'check' : type().icon, 25)}</span><h2 tabindex="-1">${step === 0 ? (selected && !choosingCoverage ? 'Ready to start your request?' : 'What would you like to protect?') : last ? 'Everything look right?' : e(s.label)}</h2><p>${step === 0 ? (selected && !choosingCoverage ? 'Your coverage choice is selected below.' : 'Choose a starting point. We’ll take it from here.') : last ? 'Review your details, then send them to our team.' : s.repeat ? `Add each ${s.repeat} you’d like included in your quote.` : s.id === 'contact' ? 'So our team can get back to you with the next steps.' : 'A few details help us understand the coverage you need.'}</p>${step > 0 && !last ? '<small class="required-guide">Fields marked * are required. You can leave optional answers blank.</small>' : ''}</div><div data-error class="error-banner" role="alert" tabindex="-1" hidden></div>${
+    step === 0 && selected && !choosingCoverage
+      ? `<div class="selected-coverage"><span class="selected-coverage-icon">${icon(type().icon, 32)}</span><div><p>Your quote request</p><h3>${e(type().label)}</h3><p>Continue with this coverage, or choose a different type.</p></div><button type="button" class="text-button" data-change-coverage>Change coverage</button><input type="radio" name="coverage" value="${e(selected)}" checked hidden /></div>`
+      : step === 0
+        ? `<div class="coverage-grid" role="radiogroup" aria-label="Insurance type">${coverages
+            .filter((c) => config.enabled.includes(c.id))
+            .map(
+              (c) =>
+                `<label class="coverage-option"><input type="radio" name="coverage" value="${c.id}" ${selected === c.id ? 'checked' : ''} /><span class="coverage-content"><span class="coverage-icon">${icon(c.icon, 29)}</span><strong>${c.label}</strong><small>${c.short}</small><span class="selection-dot">${icon('check', 11)}</span></span></label>`,
+            )
+            .join('')}</div>`
+        : last
+          ? `${review()}<label class="consent"><input type="checkbox" name="consent" ${consent ? 'checked' : ''} /><span>I agree that ${e(agency.name)} may contact me about this request. I’ve read the <a href="/privacy" target="_blank" rel="noopener">privacy notice</a>.</span></label><p class="fine-print">This is a request for a quote, not a purchase. Coverage starts only after confirmation from your insurance provider.</p><div class="honeypot" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off" /></label></div>`
+          : sectionMarkup(s)
+  } ${step === 0 ? '<div class="broker-handoff"><strong>Reviewed by our team.</strong><p>A broker reviews your details, explores available options, and follows up. This form does not calculate an instant price.</p></div>' : ''}<div class="form-actions">${step > 0 ? '<button class="secondary-button" type="button" data-back>← Back</button>' : '<span class="form-reassurance">Request a quote.<br />No purchase required.</span>'}<button class="primary-button" type="submit">${last ? 'Send quote request' : editingReview ? 'Back to review' : 'Continue'} ${icon('arrow', 18)}</button></div></form></div>`;
   wire();
   if (focus) {
     root.querySelector<HTMLElement>('h2')?.focus({ preventScroll: true });
@@ -330,6 +339,7 @@ async function submit(form: HTMLFormElement) {
   if (step === 0 && !selected) return setError('Choose the type of insurance you need.');
   if (!validateStep()) return;
   if (step < sections().length + 1) {
+    trackAction('quote_step_completed', { coverage: selected, step });
     if (editingReview) {
       try {
         validateAnswers(answers, config, type());
@@ -362,8 +372,10 @@ async function submit(form: HTMLFormElement) {
       answers,
       consent,
       id: requestId,
+      context,
       website: (form.elements.namedItem('website') as HTMLInputElement).value,
     });
+    trackAction('quote_submit', { coverage: selected });
     showSuccess(result.reference, result.local);
   } catch (err) {
     if (err instanceof ApiError && err.status === 409) {
@@ -393,6 +405,20 @@ async function submit(form: HTMLFormElement) {
 function wire() {
   const form = root.querySelector('form')!;
   const section = currentSection();
+  root.querySelector('[data-change-coverage]')?.addEventListener('click', () => {
+    choosingCoverage = true;
+    render();
+    root.querySelector<HTMLInputElement>('input[name="coverage"]:checked')?.focus();
+  });
+  root.querySelector('[data-clear-intent]')?.addEventListener('click', () => {
+    delete context.need;
+    if (sr22Prefill) {
+      delete sr22Prefill.sr22;
+      sr22Prefill = undefined;
+    }
+    changed();
+    render();
+  });
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     void submit(form);
@@ -416,12 +442,15 @@ function wire() {
           button.innerHTML = `Find vehicle ${icon('arrow', 16)}`;
         }
       }
+      if (input.dataset.field === 'sr22' && row === sr22Prefill) sr22Prefill = undefined;
       row[input.dataset.field] =
         input instanceof HTMLInputElement && input.type === 'checkbox'
           ? input.checked
             ? 'Yes'
             : 'No'
           : input.value;
+      if (input.dataset.field === 'language')
+        context.language = input.value === 'Spanish' ? 'es' : undefined;
       changed();
       const title = root.querySelector<HTMLElement>(`[data-row-title="${input.dataset.index}"]`);
       if (title && section?.repeat)
@@ -441,6 +470,8 @@ function wire() {
       if (selected) drafts.set(selected, answers);
       const contact = answers.contact;
       selected = input.value;
+      trackAction('quote_coverage_selected', { coverage: selected });
+      if (selected !== 'auto') delete context.need;
       editingReview = false;
       answers = drafts.get(selected) || (contact ? { contact: structuredClone(contact) } : {});
       consent = false;
@@ -546,7 +577,22 @@ async function init() {
     config = data.config;
     local = data.local;
     const preset = new URLSearchParams(location.search).get('type');
-    if (preset && config.enabled.includes(preset)) selected = preset;
+    if (preset && config.enabled.includes(preset)) {
+      selected = preset;
+      choosingCoverage = false;
+    }
+    const params = new URLSearchParams(location.search);
+    context = cleanContext({
+      need: selected === 'auto' ? params.get('need') : undefined,
+      city: params.get('city'),
+      language: params.get('lang'),
+    });
+    if (context.language) answers.contact = [{ language: 'Spanish' }];
+    if (context.need === 'sr22') {
+      sr22Prefill = { sr22: 'Yes' };
+      answers.drivers = [sr22Prefill];
+    }
+    trackAction('quote_start', { coverage: selected });
     render();
   } catch (err) {
     root.removeAttribute('aria-busy');

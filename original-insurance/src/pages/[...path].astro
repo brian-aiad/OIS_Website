@@ -12,7 +12,7 @@ import ServicePage from '../components/ServicePage.astro';
 import CityPage from '../components/CityPage.astro';
 export function getStaticPaths() {
   return pages
-    .filter((p) => p.path !== '/')
+    .filter((p) => !['/', '/insurance-markets', '/es'].includes(p.path))
     .map((page) => ({ params: { path: page.path.slice(1) }, props: { page } }));
 }
 interface Props {

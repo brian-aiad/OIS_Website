@@ -1,13 +1,12 @@
 ---
 import type { PageData } from '../data/content';
-import { cities, contact, coverage, quoteUrl } from '../data/site';
+import { cities, contact, coverage } from '../data/site';
+import { quoteHref, contextHref } from '../intake/context';
+const quoteUrl = quoteHref(Astro.url.pathname);
 import PageHero from './PageHero.astro';
-import CoverageDiagram from './CoverageDiagram.astro';
 import Icon from './Icon.astro';
-import AreaLinks from './AreaLinks.astro';
 import CTA from './CTA.astro';
-import Reviews from './Reviews.astro';
-import PaintedAccent from './PaintedAccent.astro';
+import LineAccent from './LineAccent.astro';
 interface Props {
   page: PageData;
 }
@@ -17,10 +16,10 @@ const city = cities.find((c) => c.slug === slug)!;
 const local = slug === 'downey';
 const focus =
   slug === 'commerce'
-    ? 'business vehicles and everyday driving'
+    ? 'business owners and drivers'
     : slug === 'lakewood'
-      ? 'home, renters, and auto coverage'
-      : 'drivers, families, and everyday life';
+      ? 'homeowners, renters, and drivers'
+      : 'drivers, households, and businesses';
 const unique: Record<string, string> = {
   norwalk:
     'If you commute, share a household vehicle, or have a student driver, tell us who uses each car and where it is kept. The actual driver and garaging details belong in the quote.',
@@ -51,19 +50,15 @@ const unique: Record<string, string> = {
 
 <PageHero
   label={`${city.name}, California`}
-  title={
-    local
-      ? 'Your local insurance people. Right here in Downey.'
-      : `Insurance for your life in ${city.name}.`
-  }
+  title={`Insurance in ${city.name}, California.`}
   text={
     local
       ? 'Independent insurance guidance from our Paramount Boulevard office since 1999. Compare coverage for your home, vehicles, family, and business.'
       : `Personal help for ${city.name} ${focus}, from our nearby Downey office. Compare available carriers with a team that explains your options.`
   }
-  image={`city-${slug}-illustration.png`}
-  imageCaption={`${city.name} service area`}
-  alt={`California neighborhood illustration for our ${city.name} service-area guide; not a photograph of a local property`}
+  image="ois-storefront-real.jpg"
+  imageCaption={local ? 'Our Downey office' : `Serving ${city.name} from Downey`}
+  alt="The real Original Insurance Services office on Paramount Boulevard in Downey"
   variant="city-hero"
 />
 <div class="city-ribbon">
@@ -80,7 +75,7 @@ const unique: Record<string, string> = {
     <div>
       <p class="eyebrow">A useful place to begin</p>
       <h2>
-        {local ? 'Local guidance. A wider choice.' : `A thoughtful comparison for ${city.name}.`}
+        {local ? 'Insurance help from our Downey office.' : `Compare coverage in ${city.name}.`}
       </h2>
       <p>{unique[slug]}</p>
       <p>
@@ -127,7 +122,7 @@ const unique: Record<string, string> = {
           Plan your visit <Icon size={18} />
         </a>
         <div class="city-note-art">
-          <PaintedAccent
+          <LineAccent
             kind={
               slug === 'commerce' || slug === 'paramount'
                 ? 'business'
@@ -142,7 +137,7 @@ const unique: Record<string, string> = {
   </div>
   <div class="container city-service-links">
     {[coverage[0], coverage[1], coverage[2]].map((c, i) => (
-      <a href={c.path}>
+      <a href={contextHref(c.path, { city: slug })}>
         <Icon name={i === 0 ? 'car' : i === 1 ? 'home' : 'file'} size={27} />
         <h3>{c.name}</h3>
         <p>{c.description}</p>
@@ -153,71 +148,32 @@ const unique: Record<string, string> = {
     ))}
   </div>
 </section>
-<section class="section">
-  <div class="container overview-grid">
-    <div class="overview-copy">
-      <p class="eyebrow">Coverage before price</p>
-      <h2>
-        Compare what
-        <br />
-        you’re protecting.
-      </h2>
-      <p>
-        {slug === 'lakewood'
-          ? 'Your home, belongings, and personal liability need different protections. We can help compare homeowners or renters coverage alongside your auto policy, including limits, deductibles, and exclusions.'
-          : slug === 'commerce'
-            ? 'Work vehicles need a policy that reflects their actual use. We review your drivers, operations, travel radius, and contract requirements before comparing commercial auto options.'
-            : 'Liability, protection for your own vehicle, and optional coverage all play different roles. We explain those differences so you can compare quotes on the same basis.'}
-      </p>
-      <a
-        href={
-          slug === 'lakewood'
-            ? '/home-insurance-downey-ca'
-            : slug === 'commerce'
-              ? '/commercial-auto-insurance-downey'
-              : '/auto-insurance-downey-ca'
-        }
-        class="text-link"
-        style="margin-top:20px"
-      >
-        Explore{' '}
-        {slug === 'lakewood' ? 'home & renters' : slug === 'commerce' ? 'commercial auto' : 'auto'}{' '}
-        coverage <Icon />
+<section class="section city-practical-help">
+  <div class="container">
+    <h2>Need a different kind of help?</h2>
+    <nav class="city-help-links" aria-label="Special coverage and local help">
+      <a href={contextHref('/sr22-insurance-downey', { city: slug })}>
+        SR-22 filing questions <Icon />
       </a>
-    </div>
-    <CoverageDiagram
-      type={slug === 'lakewood' ? 'home' : slug === 'commerce' ? 'commercial' : 'auto'}
-    />
-  </div>
-  <div class="container city-next-guides">
-    <section class="city-guide">
-      <h2>SR-22 help for {city.name} drivers</h2>
-      <p>
-        An SR-22 is an insurer’s filing of financial responsibility. If the DMV or a court requires
-        it, bring your notice so we can compare qualifying policies. Carrier filing and DMV
-        reinstatement are separate steps; timing depends on your situation.
-      </p>
-      <a href="/sr22-insurance-downey" class="text-link">
-        Understand the SR-22 process <Icon />
+      <a href={contextHref('/no-license-auto-insurance-downey', { city: slug })}>
+        License-related insurance questions <Icon />
       </a>
-    </section>
-    <section class="city-guide">
-      <h2>A non-standard license situation?</h2>
-      <p>
-        Some insurers may consider a foreign-license holder or a non-driving vehicle owner with a
-        licensed primary driver. Eligibility depends on the carrier and complete, accurate
-        information. Insurance does not establish legal permission to drive.
-      </p>
-      <a href="/no-license-auto-insurance-downey" class="text-link">
-        Explore license-related options <Icon />
+      <a href={`/es?city=${slug}`} lang="es">
+        Atención en español <Icon />
       </a>
-    </section>
+      <a href="/contact">
+        Questions about an existing policy <Icon />
+      </a>
+    </nav>
+    <p>
+      Our only office is in Downey.{' '}
+      <a href="/locations#service-areas">View our office and all service areas.</a>
+    </p>
   </div>
 </section>
-<AreaLinks current={slug} />
-<Reviews />
+
 <CTA
-  title={`Let’s talk about life in ${city.name}.`}
+  title={`Compare insurance in ${city.name}.`}
   text="Share your coverage needs with our Downey team. We’ll explain the available choices and what to have ready."
 />
 <style>

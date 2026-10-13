@@ -1,0 +1,71 @@
+---
+import { serviceArea } from '../data/service-area';
+interface Props {
+  current?: string;
+}
+const { current } = Astro.props;
+const downey = serviceArea.find((city) => city.slug === 'downey')!;
+---
+
+<figure class="service-area-map" data-reveal>
+  <div class="map-canvas" role="region" aria-label="Interactive service-area map" tabindex="0">
+    <svg
+      viewBox="0 0 760 720"
+      role="group"
+      aria-label="Service-area diagram: Downey is our office city, with surrounding communities shown in their geographic positions."
+    >
+      <defs>
+        <pattern id="area-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M40 0H0V40" fill="none" stroke="currentColor" opacity=".06" />
+        </pattern>
+      </defs>
+      <rect width="760" height="720" fill="url(#area-grid)" />
+      <g class="area-connections" fill="none" stroke="currentColor" opacity=".23">
+        {serviceArea
+          .filter((city) => city.slug !== 'downey')
+          .map((city) => (
+            <path pathLength="1" d={`M${downey.x} ${downey.y}L${city.x} ${city.y}`} />
+          ))}
+      </g>
+      <g transform="translate(680 38)" aria-hidden="true">
+        <path d="M0 40V0m-6 8 6-8 6 8" fill="none" stroke="currentColor" />
+        <text x="0" y="-10" text-anchor="middle">
+          N
+        </text>
+      </g>
+      {serviceArea.map((city) => (
+        <a
+          href={`/insurance/${city.slug}`}
+          aria-label={`${city.name}${city.slug === 'downey' ? ', our office city' : ', service area'}`}
+          class:list={[
+            'area-point',
+            { 'area-office': city.slug === 'downey', 'area-current': city.slug === current },
+          ]}
+        >
+          <circle cx={city.x} cy={city.y} r={city.slug === 'downey' ? 13 : 6} />
+          <text x={city.x + 17} y={city.y + 5}>
+            {city.name}
+          </text>
+          {city.slug === 'downey' && (
+            <text class="area-office-label" x={city.x + 17} y={city.y + 27}>
+              Our office city
+            </text>
+          )}
+          <rect
+            x={city.x - 15}
+            y={city.y - 20}
+            width={city.name.length * 10 + 50}
+            height="48"
+            fill="transparent"
+            stroke="none"
+          />
+        </a>
+      ))}
+    </svg>
+  </div>
+  <p class="map-swipe-hint">Choose a city from the list for coverage and contact options.</p>
+  <figcaption>
+    City positions shown for orientation. Connections are not driving routes. Our only office is at
+    9907-B Paramount Blvd in Downey.
+  </figcaption>
+</figure>

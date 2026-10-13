@@ -1,4 +1,4 @@
-﻿import { readFileSync, readdirSync, existsSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import assert from 'node:assert/strict';
 const root = resolve(import.meta.dirname, '..');
@@ -11,6 +11,8 @@ const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 const expected = [
   '/',
   '/services',
+  '/insurance-markets',
+  '/es',
   '/locations',
   '/about',
   '/contact',
@@ -38,15 +40,19 @@ const expected = [
   ].map((c) => '/insurance/' + c),
 ];
 assert.deepEqual(new Set(pages.map((p) => p.path)), new Set(expected), 'Route inventory changed');
-assert.equal(pages.length, 25);
-assert.equal(urls.length, 25);
+assert.equal(pages.length, expected.length);
+assert.equal(urls.length, expected.length);
 assert.deepEqual(
   new Set(urls),
   new Set(expected.map((p) => origin + p)),
   'Sitemap and route manifest differ',
 );
-assert.equal(new Set(pages.map((p) => p.title)).size, 25, 'Duplicate titles');
-assert.equal(new Set(pages.map((p) => p.description)).size, 25, 'Duplicate descriptions');
+assert.equal(new Set(pages.map((p) => p.title)).size, expected.length, 'Duplicate titles');
+assert.equal(
+  new Set(pages.map((p) => p.description)).size,
+  expected.length,
+  'Duplicate descriptions',
+);
 for (const page of pages) {
   assert.ok(page.title && page.description, 'Missing metadata: ' + page.path);
   assert.ok(page.path === '/' || !page.path.endsWith('/'), 'Trailing slash canonical');
@@ -131,11 +137,11 @@ for (const file of files) {
   );
   assert.ok(!/href=["']\/[^"']+\/["']/.test(text), 'Trailing slash internal link: ' + file);
 }
-const preferred = origin + '/images/ois-california-coverage-illustration-v2-2026.jpg';
+const preferred = origin + '/images/southern-california-insurance-v3.webp';
 assert.ok(sitemap.includes('<image:loc>' + preferred + '</image:loc>'));
 assert.ok(
-  existsSync(join(root, 'public/images/ois-california-coverage-illustration-v2-2026.jpg')) &&
-    read('src/pages/index.astro').includes('california-coverage-editorial-v2.png'),
+  existsSync(join(root, 'public/images/southern-california-insurance-v3.webp')) &&
+    read('src/pages/index.astro').includes('southern-california-auto-home-business-v3.png'),
 );
 const security = read('public/.well-known/security.txt');
 const expiry = Date.parse(security.match(/^Expires:\s*(.+)$/m)?.[1]);
@@ -143,5 +149,5 @@ assert.ok(expiry > Date.now() && expiry < Date.now() + 366 * 86400000, 'security
 assert.ok(security.includes('Contact: mailto:contact@originalinsurance.net'));
 assert.ok(existsSync(join(root, '../.vercel/project.json')), 'Vercel project link missing');
 console.log(
-  'SEO source checks passed: all 25 routes, metadata, sitemap, static architecture, 24 slash redirects, legacy redirects, query cleanup, 410, 404, schema safeguards, images, and security.txt.',
+  'SEO source checks passed: all 27 routes, metadata, sitemap, static architecture, 26 slash redirects, legacy redirects, query cleanup, 410, 404, schema safeguards, images, and security.txt.',
 );

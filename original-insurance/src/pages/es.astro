@@ -1,0 +1,187 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Photo from '../components/Photo.astro';
+import LineMotif from '../components/LineMotif.astro';
+import { contact } from '../data/site';
+const options = [
+  ['auto', 'Seguro de auto', 'Para su vehículo personal. Díganos quién lo maneja y cómo lo usa.'],
+  [
+    'home',
+    'Casa o departamento',
+    'Opciones para propietarios e inquilinos, según la propiedad y sus necesidades.',
+  ],
+  [
+    'commercial',
+    'Vehículos de trabajo',
+    'Cuéntenos cómo usa sus camionetas, autos o vehículos en el negocio.',
+  ],
+  [
+    'sr22',
+    'Trámite de SR-22',
+    'Le ayudamos a entender el seguro y la constancia que puede requerir el DMV.',
+  ],
+  [
+    'license',
+    'Preguntas sobre su licencia',
+    'Consulte opciones si tiene licencia extranjera o es dueño de un vehículo que no maneja. Tener seguro no autoriza a conducir sin una licencia válida.',
+  ],
+  [
+    'other',
+    'Otro seguro o servicio',
+    'Pregunte por seguros de negocio, vida, motocicleta y servicios de oficina.',
+  ],
+];
+---
+
+<Base
+  lang="es"
+  title="Seguros en Downey: atención en español | Original Insurance"
+  description="Hable en español con Original Insurance Services en Downey. Consulte opciones de seguro de auto, casa o negocio, trámite de SR-22 y ayuda con su póliza."
+  path="/es"
+  label="Atención en español"
+>
+  <section class="section spanish-intro">
+    <div class="container spanish-hero-grid">
+      <div>
+        <p class="eyebrow">Original Insurance Services · Downey, California</p>
+        <h1>
+          Sus preguntas.
+          <br />
+          En su idioma.
+        </h1>
+        <p class="lede">
+          Hable con nuestro equipo en español sobre su seguro de auto, casa o negocio. Somos una
+          agencia independiente: le explicamos las opciones disponibles para que pueda decidir.
+        </p>
+        <div class="actions">
+          <a class="button button-ink" href={contact.phoneHref}>
+            Llamar en español <Icon name="phone" />
+          </a>
+          <a class="text-link" href={contact.textHref}>
+            Enviar un mensaje <Icon />
+          </a>
+        </div>
+        <p>Lunes a viernes, 10:00 a. m.–5:30 p. m., hora del Pacífico.</p>
+        <p class="spanish-context" role="status" hidden></p>
+      </div>
+      <figure class="spanish-office-visual" data-motion="art">
+        <Photo
+          src="ois-storefront-real.jpg"
+          alt="Nuestra oficina de Original Insurance Services en Paramount Boulevard, Downey"
+          eager
+        />
+        <figcaption>Una oficina en Downey. Atención en español.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="section spanish-options" id="opciones">
+    <div class="container">
+      <h2>¿En qué podemos ayudarle?</h2>
+      <p>
+        Puede llamar o enviarnos un mensaje. Si prefiere empezar por internet, el formulario de
+        cotización está en inglés. Le indicaremos al equipo que prefiere atención en español.
+      </p>
+      <div class="assistance-options">
+        {options.map(([key, title, text]) => (
+          <div>
+            <LineMotif
+              kind={
+                key === 'auto'
+                  ? 'auto'
+                  : key === 'home'
+                    ? 'home'
+                    : key === 'commercial'
+                      ? 'business'
+                      : 'document'
+              }
+            />
+            <h3>{title}</h3>
+            <p>{text}</p>
+            <a
+              href={`/quote?type=${key === 'sr22' || key === 'license' ? 'auto' : key}&lang=es${key === 'sr22' || key === 'license' ? `&need=${key}` : ''}`}
+              data-quote
+            >
+              Empezar en línea <span>(formulario en inglés)</span>
+              <Icon size={18} />
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container spanish-help">
+      <div id="ayuda">
+        <h2>¿Ya tiene una póliza?</h2>
+        <p>
+          Para preguntas sobre pagos, documentos, renovaciones o cambios en su póliza, comuníquese
+          con nosotros. No necesita llenar una nueva solicitud de cotización.
+        </p>
+        <a class="text-link" href={contact.phoneHref}>
+          Llamar al {contact.phone} <Icon />
+        </a>
+        <p>
+          No envíe números de Seguro Social, datos de pago ni documentos de identidad por mensaje de
+          texto.
+        </p>
+      </div>
+      <div id="oficina">
+        <h2>Visítenos en Downey.</h2>
+        <address>{contact.address}</address>
+        <p>
+          Atendemos a clientes de Downey y las comunidades cercanas desde esta oficina. También
+          puede comunicarse por teléfono o mensaje.
+        </p>
+        <a class="button button-ink" href={contact.maps} target="_blank" rel="noreferrer">
+          Cómo llegar <Icon name="pin" />
+        </a>
+        <p>El horario puede cambiar en días festivos. Llame antes de su visita.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section spanish-next">
+    <div class="container">
+      <h2>¿Qué pasa después?</h2>
+      <ol>
+        <li>Cuéntenos qué necesita asegurar.</li>
+        <li>Revisamos los datos y las opciones disponibles.</li>
+        <li>Le explicamos la cobertura y los siguientes pasos.</li>
+      </ol>
+      <p>
+        La disponibilidad y el precio dependen de la aseguradora, el tipo de seguro y los requisitos
+        de la solicitud. Pedir una cotización no activa una póliza.
+      </p>
+      <a href="/" lang="en" class="text-link" data-return-english>
+        Continue to the English website <Icon />
+      </a>
+    </div>
+  </section>
+</Base>
+<script>
+  import { intentRoutes, citySlugs } from '../intake/context';
+  const from = new URLSearchParams(location.search).get('from') || '';
+  const intent = intentRoutes[from];
+  const city = from.startsWith('/insurance/') ? from.split('/').at(-1) : undefined;
+  const knownCity = !!city && citySlugs.includes(city);
+  if (intent || knownCity)
+    document.querySelector<HTMLAnchorElement>('[data-return-english]')!.href = from;
+  if (knownCity)
+    document.querySelectorAll<HTMLAnchorElement>('a[data-quote]').forEach((link) => {
+      const url = new URL(link.href);
+      url.searchParams.set('city', city!);
+      link.href = url.pathname + url.search;
+    });
+  if (intent) {
+    const names: Record<string, string> = {
+      auto: 'seguro de auto',
+      home: 'seguro de casa o departamento',
+      commercial: 'seguro para vehículos de trabajo',
+      sr22: 'el trámite de SR-22',
+      license: 'opciones relacionadas con su licencia',
+    };
+    const note = document.querySelector<HTMLElement>('.spanish-context')!;
+    note.hidden = false;
+    note.textContent = `¿Busca ayuda con ${names[intent.need || intent.type]}? Llámenos y díganos qué necesita. También puede elegir esa opción más abajo para empezar en línea.`;
+  }
+</script>

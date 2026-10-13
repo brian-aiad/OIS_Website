@@ -76,3 +76,13 @@ This can be offered as the agency's **branded quote intake and form management**
 See [INTAKE_SETUP.md](INTAKE_SETUP.md) for environment variables, launch blockers, commands, and the recorded verification. Screenshots and synthetic mail are local QA artifacts under the ignored `output/playwright/` and `.intake-local/mail/` directories. No deployment was made as part of this update.
 
 Usability follow-up: [INTAKE_USABILITY_REVIEW.md](INTAKE_USABILITY_REVIEW.md) records the reviewed workflows, findings, refinements, and regression checks. Preview has its own step selector; the editor shows question counts and repeat-entry context.
+
+## Acquisition integration (October 12 follow-up)
+
+Carry `src/intake/context.ts` with the module and replace its route/city allowlists for each agency. Use `quoteHref()` for every contextual CTA; do not concatenate arbitrary query strings. Preserve editable coverage and removable request context. The server must clean context independently; a source-city page is not proof of the customer's address. Broker email context is an optional fourth argument to the email builder.
+
+`lang=es` means a Spanish assistance preference, not a translated workflow. OIS's `/es` page explicitly says the online form is English. For a new agency, verify actual language service and translate the entire form before claiming a Spanish form. New default phone requirements are optional except for a call/text preference; existing saved agency settings take precedence.
+
+The safe analytics module records only approved actions/routes/categories/steps/placements. Never pass answers, VINs, contact details, special license needs or raw query strings. Review account-side analytics settings separately. Keep `Analytics.astro` off admin.
+
+Adapt shared tokens and `intake-brand.css`, but keep marketing animation out of the form studio. Verify all eight paths and context links with `test:acquisition` in addition to the existing intake suites. See [the acquisition handoff](../handoffs/ACQUISITION_REBUILD_2026-10-12.md).

@@ -1,14 +1,16 @@
 ---
+import Analytics from '../components/Analytics.astro';
+import MobileActions from '../components/MobileActions.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import EditorialTrust from '../components/EditorialTrust.astro';
+import { intentRoutes } from '../intake/context';
 import { origin, contact, cities, coverage } from '../data/site';
 import '@fontsource-variable/dm-sans';
-import '@fontsource-variable/newsreader';
-import '@fontsource-variable/newsreader/wght-italic.css';
-import displayFont from '@fontsource-variable/newsreader/files/newsreader-latin-wght-normal.woff2?url';
+import displayFont from '@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url';
 import '../styles/index.css';
 interface Props {
+  lang?: 'en' | 'es';
   title: string;
   description: string;
   path?: string;
@@ -18,16 +20,19 @@ interface Props {
   image?: string;
 }
 const {
+  lang = 'en',
   title,
   description,
   path = Astro.url.pathname,
   label = '',
   editorial = false,
   noindex = false,
-  image = '/images/ois-california-coverage-illustration-v2-2026.jpg',
+  image,
 } = Astro.props;
 const canonical = origin + (path === '/' ? '/' : path.replace(/\/$/, ''));
-const imageUrl = origin + image;
+const intent = intentRoutes[path];
+const socialKey = lang === 'es' ? 'es' : intent?.need || intent?.type || 'original-insurance';
+const imageUrl = origin + (image || `/images/social/${socialKey}.jpg`);
 const agency = ![
   '/faq',
   '/about',
@@ -37,6 +42,8 @@ const agency = ![
   '/accessibility',
   '/404',
   '/quote',
+  '/es',
+  '/insurance-markets',
 ].includes(path);
 const schemas: Record<string, unknown>[] = [
   {
@@ -46,9 +53,15 @@ const schemas: Record<string, unknown>[] = [
     url: canonical,
     name: title,
     description,
-    inLanguage: 'en',
+    inLanguage: lang,
     ...(path === '/'
-      ? { thumbnailUrl: imageUrl, primaryImageOfPage: { '@type': 'ImageObject', url: imageUrl } }
+      ? {
+          thumbnailUrl: imageUrl,
+          primaryImageOfPage: {
+            '@type': 'ImageObject',
+            url: origin + '/images/southern-california-insurance-v3.webp',
+          },
+        }
       : {}),
   },
 ];
@@ -58,11 +71,11 @@ if (agency && !noindex)
     '@type': 'InsuranceAgency',
     '@id': origin + '/#agency',
     name: 'Original Insurance Services',
-    url: path.startsWith('/insurance/') ? canonical : origin + '/',
+    url: origin + '/',
     telephone: '+1-310-538-8666',
     email: contact.email,
     foundingDate: '1999',
-    image: [imageUrl, origin + '/images/ois-storefront-real.jpg'],
+    image: [origin + '/images/ois-storefront-real.jpg'],
     logo: origin + '/logo.png',
     address: {
       '@type': 'PostalAddress',
@@ -136,7 +149,7 @@ if (path !== '/' && !noindex)
 ---
 
 <!doctype html>
-<html lang="en" id="top">
+<html lang={lang} id="top">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -161,13 +174,13 @@ if (path !== '/' && !noindex)
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={imageUrl} />
     <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta
       property="og:image:alt"
       content="Insurance coverage and personal service from Original Insurance in Downey"
     />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={lang === 'es' ? 'es_US' : 'en_US'} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
@@ -180,27 +193,7 @@ if (path !== '/' && !noindex)
         set:html={JSON.stringify(schema).replaceAll('<', '\\u003c')}
       />
     ))}
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(...args) {
-        window.dataLayer.push(args);
-      }
-      gtag('js', new Date());
-      gtag('config', 'G-ZDREMBRV97');
-      if (/^(?:www\.)?originalinsurance\.net$/.test(location.hostname))
-        window.addEventListener(
-          'load',
-          () => {
-            window.setTimeout(() => {
-              const s = document.createElement('script');
-              s.async = true;
-              s.src = 'https://www.googletagmanager.com/gtag/js?id=G-ZDREMBRV97';
-              document.head.appendChild(s);
-            }, 4000);
-          },
-          { once: true },
-        );
-    </script>
+    <Analytics />
   </head>
   <body>
     <Navigation />
@@ -209,6 +202,7 @@ if (path !== '/' && !noindex)
     </main>
     {editorial && <EditorialTrust />}
     <Footer />
+    {!noindex && <MobileActions lang={lang} />}
 
     <script src="../scripts/site.ts"></script>
   </body>

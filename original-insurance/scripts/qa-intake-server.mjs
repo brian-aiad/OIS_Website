@@ -157,6 +157,24 @@ try {
   assert.ok(!submittedEmail.html.includes('<img '));
   assert.ok(submittedEmail.html.includes('&lt;script&gt;'));
   assert.equal(idempotency, 'ois-quote-' + payload.id);
+  const contextual = {
+    ...payload,
+    id: crypto.randomUUID(),
+    context: { need: 'sr22', city: 'downey', language: 'es', email: 'PrivateCanary' },
+  };
+  assert.equal((await call('submit', contextual)).status, 200);
+  assert.match(submittedEmail.text, /SR-22/);
+  assert.match(submittedEmail.text, /Spanish/);
+  assert.match(submittedEmail.text, /Service-area page/);
+  assert.ok(!submittedEmail.text.includes('PrivateCanary'));
+  const maliciousContext = {
+    ...payload,
+    id: crypto.randomUUID(),
+    context: { need: '<script>', city: 'PrivateCanary', language: 'xx' },
+  };
+  assert.equal((await call('submit', maliciousContext)).status, 200);
+  assert.ok(!submittedEmail.text.includes('PrivateCanary'));
+  assert.ok(!submittedEmail.text.includes('Asked about:'));
   failEmail = true;
   assert.equal(
     (await call('submit', payload)).status,

@@ -2,8 +2,7 @@
 import PageHero from './PageHero.astro';
 import AreaLinks from './AreaLinks.astro';
 import Icon from './Icon.astro';
-import { contact } from '../data/site';
-import '../styles/locations.css';
+import { contact, officeVisit } from '../data/site';
 ---
 
 <PageHero
@@ -13,25 +12,32 @@ import '../styles/locations.css';
   image="ois-storefront-real.jpg"
   alt="The Original Insurance Services office on Paramount Boulevard"
   quote={false}
-/>
+>
+  <div class="visit-at-a-glance">
+    <address>{contact.address}</address>
+    <p>
+      Monday–Friday · 10 AM–5:30 PM Pacific
+      <br />
+      Closed Saturday & Sunday
+    </p>
+    <div class="actions">
+      <a class="button button-ink" href={contact.maps} target="_blank" rel="noreferrer">
+        Get directions <Icon name="pin" />
+      </a>
+      <a class="text-link" href={contact.phoneHref}>
+        Call before your visit <Icon name="phone" size={17} />
+      </a>
+    </div>
+  </div>
+</PageHero>
 <section class="section locations-visit" aria-label="Plan your visit">
   <div class="container visit-layout">
     <div class="locations-map-column">
       <p class="eyebrow">One local office. A personal welcome.</p>
-      <h2>Address & directions</h2>
-      <address class="visit-address">
-        9907-B Paramount Blvd
-        <br />
-        Downey, CA 90240
-      </address>
-      <div class="actions">
-        <a href={contact.maps} target="_blank" rel="noreferrer" class="button button-ink">
-          Get directions <Icon name="diagonal" />
-        </a>
-        <button class="text-link" data-copy-address={contact.address}>
-          Copy address
-        </button>
-      </div>
+      <h2>Find our office.</h2>
+      <button class="text-link" data-copy-address={contact.address}>
+        Copy office address <Icon />
+      </button>
       <p id="copy-status" role="status" class="form-note"></p>
       <div class="office-map">
         <div class="locations-map-fallback" aria-hidden="true">
@@ -73,7 +79,7 @@ import '../styles/locations.css';
             (day, i) => (
               <div>
                 <dt>{day}</dt>
-                <dd>{i < 5 ? '10:00 AM–5:30 PM' : 'Closed'}</dd>
+                <dd>{i < 5 ? officeVisit.weekdayHours : 'Closed'}</dd>
               </div>
             ),
           )}
@@ -86,10 +92,7 @@ import '../styles/locations.css';
         <Icon name="pin" size={24} />
         <div>
           <h3>Parking & access</h3>
-          <p>
-            Free on-site parking and street parking on Paramount Boulevard. The office has a
-            wheelchair-accessible entrance, parking, and seating.
-          </p>
+          <p>{officeVisit.parkingAndAccess}</p>
           <p>Need help planning your visit? Call us so we can assist.</p>
         </div>
       </div>

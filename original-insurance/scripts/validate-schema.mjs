@@ -19,7 +19,7 @@ import { dirname } from 'path';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST = resolve(__dirname, '..', 'dist');
 const PROD_ORIGIN = 'https://originalinsurance.net';
-const PREFERRED_HOME_IMAGE = `${PROD_ORIGIN}/images/ois-california-coverage-illustration-v2-2026.jpg`;
+const PREFERRED_HOME_IMAGE = `${PROD_ORIGIN}/images/southern-california-insurance-v3.webp`;
 
 // Pages that should NOT have BreadcrumbList (home only)
 const NO_BREADCRUMB = new Set(['/', '/quote', '/admin']);
@@ -32,6 +32,8 @@ const DEPRECATED_SCHEMA_TYPES = new Set(['FAQPage', 'Review', 'AggregateRating',
 // /faq, /about, /contact, /services explicitly excluded — see SKILL.md schema rules.
 const NO_INSURANCE_AGENCY = new Set([
   '/admin',
+  '/es',
+  '/insurance-markets',
   '/quote',
   '/faq',
   '/about',
@@ -146,13 +148,13 @@ for (const { path: htmlPath, route } of files) {
   } else {
     check(routeKey, hasInsuranceAgency, 'Missing InsuranceAgency schema');
     // For non-city pages, InsuranceAgency url must be homepage, not the page's own URL.
-    if (hasInsuranceAgency && !routeKey.startsWith('/insurance/')) {
+    if (hasInsuranceAgency) {
       const agencyBlock = blocks.find((b) => b['@type'] === 'InsuranceAgency');
       if (agencyBlock && agencyBlock.url && agencyBlock.url !== HOMEPAGE_URL) {
         check(
           routeKey,
           false,
-          `InsuranceAgency url="${agencyBlock.url}" must be homepage "${HOMEPAGE_URL}" on non-city pages`,
+          `InsuranceAgency url="${agencyBlock.url}" must be homepage "${HOMEPAGE_URL}" for the one Downey office`,
         );
       } else if (agencyBlock && agencyBlock.url) {
         pass(routeKey, `InsuranceAgency url="${agencyBlock.url}" ✓`);
@@ -194,7 +196,9 @@ for (const { path: htmlPath, route } of files) {
     );
     check(
       routeKey,
-      html.includes(`<meta property="og:image" content="${PREFERRED_HOME_IMAGE}">`),
+      html.includes(
+        `<meta property="og:image" content="${PROD_ORIGIN}/images/social/original-insurance.jpg">`,
+      ),
       'Homepage og:image is missing or incorrect',
     );
     check(
@@ -204,7 +208,7 @@ for (const { path: htmlPath, route } of files) {
     );
     check(
       routeKey,
-      /<img[^>]+src="[^"]*california-coverage-editorial[^\"]*"/.test(html),
+      /<img[^>]+src="[^"]*southern-california-auto-home-business-v3[^\"]*"/.test(html),
       'Homepage preferred image must be visibly embedded',
     );
     if (hasWebSite) pass(routeKey, 'WebSite schema present');

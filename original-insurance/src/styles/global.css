@@ -1,30 +1,5 @@
-/* Original Insurance — navy ink, warm paper, quiet gold. */
-:root {
-  --ink: #142b44;
-  --ink-deep: #0d2033;
-  --paper: #f6f3ed;
-  --white: #fff;
-  --sand: #e9e3d7;
-  --gold: #d8b46d;
-  --gold-light: #f0dfbd;
-  --sage: #d9e0d5;
-  --text: #263a49;
-  --muted: #58646a;
-  --line: #d6d6cc;
-  --error: #a72e2a;
-  --success: #2e6244;
-  --display: 'Newsreader Variable', Georgia, serif;
-  --body: 'DM Sans Variable', Arial, sans-serif;
-  --radius: 3px;
-  --ease: cubic-bezier(0.2, 0.65, 0.2, 1);
-  --duration: 240ms;
-  --section: clamp(64px, 7.6vw, 112px);
-  --container: 1280px;
-  --shadow: 0 16px 48px #142b4415;
-  --z-header: 30;
-  --z-dialog: 100;
-  color-scheme: light;
-}
+/* Marketing layout primitives. Shared design decisions live in tokens.css. */
+
 *,
 *::before,
 *::after {
@@ -101,16 +76,16 @@ h3 {
 h1,
 h2 {
   font-family: var(--display);
-  font-weight: 450;
+  font-weight: 550;
   letter-spacing: -0.035em;
-  line-height: 1.05;
+  line-height: 1.1;
   text-wrap: balance;
 }
 h1 {
-  font-size: clamp(44px, 5.5vw, 76px);
+  font-size: var(--type-h1);
 }
 h2 {
-  font-size: clamp(35px, 4.1vw, 57px);
+  font-size: var(--type-h2);
 }
 h3 {
   font-size: 20px;
@@ -1903,15 +1878,6 @@ summary::-webkit-details-marker {
 dialog[open] {
   animation: dialog-in 220ms var(--ease);
 }
-@view-transition {
-  navigation: auto;
-}
-::view-transition-old(root) {
-  animation-duration: 140ms;
-}
-::view-transition-new(root) {
-  animation-duration: 180ms;
-}
 @media (min-width: 1800px) {
   :root {
     --container: 1440px;
@@ -2767,11 +2733,6 @@ dialog[open] {
   .reveal-enter {
     opacity: 1;
     transform: none;
-  }
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    animation: none !important;
   }
 }
 @media print {

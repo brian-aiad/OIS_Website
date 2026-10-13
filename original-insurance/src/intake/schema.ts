@@ -27,7 +27,7 @@ const contact: Section = {
   fields: [
     { id: 'name', label: 'Full name', fixed: true, required: true },
     { id: 'email', label: 'Email address', kind: 'email', fixed: true, required: true },
-    { id: 'phone', label: 'Phone number', kind: 'tel', required: true },
+    { id: 'phone', label: 'Phone number', kind: 'tel' },
     { id: 'zip', label: 'ZIP code', kind: 'zip', required: true },
     {
       id: 'method',

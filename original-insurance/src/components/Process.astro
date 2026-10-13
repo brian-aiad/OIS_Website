@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import Photo from './Photo.astro';
+import BrokerConnection from './BrokerConnection.astro';
 const steps = [
   {
     n: '01',
@@ -31,10 +31,8 @@ const steps = [
         </h2>
         <p>We help you understand the choices, so you can make the decision.</p>
       </div>
-      <figure class="broker-policy-art" data-reveal aria-hidden="true">
-        <Photo src="policy-folder-accent.png" alt="" sizes="(max-width: 760px) 40vw, 28vw" />
-      </figure>
     </div>
+    <BrokerConnection />
     <ol class="broker-steps">
       {steps.map((step) => (
         <li data-reveal>

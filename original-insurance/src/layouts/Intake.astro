@@ -1,8 +1,9 @@
 ---
+import Analytics from '../components/Analytics.astro';
 import '@fontsource-variable/dm-sans';
-import '@fontsource-variable/newsreader';
-import '@fontsource-variable/newsreader/wght-italic.css';
 import '../styles/intake.css';
+import '../styles/tokens.css';
+import '../styles/intake-brand.css';
 import { agency } from '../intake/agency';
 const origin = agency.origin;
 interface Props {
@@ -26,6 +27,7 @@ const { title, path, admin = false } = Astro.props;
     <link rel="canonical" href={origin + path} />
     <link rel="icon" href="/favicon.png" />
     <title>{title} | {agency.name}</title>
+    {!admin && <Analytics />}
     <script
       type="application/ld+json"
       set:html={JSON.stringify({

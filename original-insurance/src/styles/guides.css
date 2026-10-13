@@ -28,7 +28,7 @@
 }
 .guide-preparation {
   position: relative;
-  background: #eee5d2;
+  background: var(--color-surface-soft);
   border: 1px solid #b299632f;
   border-top: 3px solid var(--gold);
   padding: clamp(22px, 3vw, 38px);
@@ -239,4 +239,25 @@
   .service-editorial-guide .guide-nav .button {
     display: none;
   }
+}
+
+.guide-index summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 48px;
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+}
+.guide-index summary::-webkit-details-marker {
+  display: none;
+}
+.guide-index[open] summary svg {
+  transform: rotate(45deg);
+}
+.guide-index {
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 12px;
 }

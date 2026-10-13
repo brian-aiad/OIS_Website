@@ -187,7 +187,7 @@ try {
   for (const baseType of coverages) {
     const c = configuredCoverage(config, baseType);
     await page.goto(base + '/quote?type=' + c.id);
-    await page.getByRole('heading', { name: 'What would you like to protect?' }).waitFor();
+    await page.getByRole('heading', { name: 'Ready to start your request?' }).waitFor();
     await next();
     await page.locator('#contact-0-name').waitFor();
     for (const section of c.sections) {

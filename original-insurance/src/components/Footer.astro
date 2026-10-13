@@ -1,7 +1,10 @@
 ---
-import { contact, coverage, cities } from '../data/site';
+import { contact, coverage } from '../data/site';
 import Icon from './Icon.astro';
+const spanish = Astro.url.pathname === '/es';
 const companyLinks = [
+  { href: '/insurance-markets', label: 'Insurance companies & markets' },
+  { href: '/es', label: 'Atención en español' },
   { href: '/about', label: 'Our story' },
   { href: '/locations', label: 'Our Downey office' },
   { href: '/faq', label: 'Common questions' },
@@ -12,116 +15,162 @@ const companyLinks = [
 ];
 ---
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-opening">
-      <p class="eyebrow">Your life. Your coverage. Your people.</p>
-      <a href={contact.phoneHref} class="footer-phone">
-        Let’s talk.
-        <Icon name="diagonal" size={54} />
-      </a>
-    </div>
-    <div class="footer-columns">
-      <div class="footer-office">
-        <p class="footer-brand">Original Insurance Services</p>
-        <p class="footer-intro">
-          Independent in Downey.
-          <br />
-          Here for you since 1999.
-        </p>
-        <a href={contact.maps} target="_blank" rel="noreferrer">
-          9907-B Paramount Blvd
-          <br />
-          Downey, CA 90240 <span aria-hidden="true">↗</span>
+{spanish ? (
+  <footer class="site-footer spanish-footer" lang="es">
+    <div class="container">
+      <div class="footer-opening">
+        <p>¿Tiene preguntas? Hable con nuestro equipo.</p>
+        <a href={contact.phoneHref} class="footer-phone">
+          {contact.phone}
+          <Icon name="diagonal" size={32} />
         </a>
-        <a href={contact.phoneHref}>{contact.phone}</a>
-        <a href={contact.emailHref}>{contact.email}</a>
-        <p>
-          Mon–Fri · 10 AM–5:30 PM
-          <br />
-          English · Spanish · Arabic
-        </p>
       </div>
-      <nav aria-label="Footer coverage">
-        <h2>Coverage</h2>
-        {coverage.map((c) => (
-          <a href={c.path}>{c.name}</a>
-        ))}
-        <a href="/services">All services</a>
-      </nav>
-      <nav aria-label="Footer company">
-        <h2>Get to know us</h2>
-        {companyLinks.map((link) => (
-          <a
-            href={link.href}
-            target={link.href.startsWith('https:') ? '_blank' : undefined}
-            rel={link.href.startsWith('https:') ? 'noreferrer' : undefined}
-          >
-            {link.label}
+      <div class="spanish-footer-grid">
+        <div>
+          <p class="footer-brand">Original Insurance Services</p>
+          <address>{contact.address}</address>
+          <p>Lunes a viernes · 10:00 a. m.–5:30 p. m., hora del Pacífico.</p>
+          <a href={contact.textHref}>Enviar un mensaje</a>
+        </div>
+        <nav aria-label="Ayuda y contacto">
+          <a href="/es#opciones">Opciones de seguro</a>
+          <a href="/es#ayuda">Ayuda con su póliza</a>
+          <a href={contact.maps} target="_blank" rel="noreferrer">
+            Cómo llegar a la oficina
           </a>
-        ))}
-      </nav>
-    </div>
-    <nav class="footer-areas" aria-label="Service areas">
-      <span>At home in Southeast LA</span>
-      <div>
-        {cities.map((c) => (
-          <a href={`/insurance/${c.slug}`}>{c.name}</a>
-        ))}
+          <a href="/quote?lang=es" data-quote>
+            Cotización (formulario en inglés)
+          </a>
+        </nav>
       </div>
-    </nav>
-    <nav class="footer-mobile-links" aria-label="Footer navigation">
-      <details>
-        <summary>
-          Coverage <span aria-hidden="true">+</span>
-        </summary>
+      <div class="footer-legal">
+        <span>© {new Date().getFullYear()} Original Insurance Services</span>
         <div>
-          {coverage.map((c) => (
-            <a href={c.path}>{c.name}</a>
-          ))}
-          <a href="/services">All services</a>
+          <a href="/privacy">Privacidad (en inglés)</a>
+          <a href="/accessibility">Accesibilidad (en inglés)</a>
+          <a href="/" lang="en">
+            English website
+          </a>
         </div>
-      </details>
-      <details>
-        <summary>
-          Get to know us <span aria-hidden="true">+</span>
-        </summary>
-        <div>
-          {companyLinks.map((link) => (
-            <a
-              href={link.href}
-              target={link.href.startsWith('https:') ? '_blank' : undefined}
-              rel={link.href.startsWith('https:') ? 'noreferrer' : undefined}
-            >
-              {link.label}
+      </div>
+    </div>
+  </footer>
+) : (
+  <>
+    <footer class="site-footer" lang="en">
+      <div class="container">
+        <div class="footer-opening">
+          <p class="eyebrow">Coverage questions? Call our Downey team.</p>
+          <a href={contact.phoneHref} class="footer-phone">
+            {contact.phone}
+            <Icon name="diagonal" size={54} />
+          </a>
+        </div>
+        <div class="footer-columns">
+          <div class="footer-office">
+            <p class="footer-brand">Original Insurance Services</p>
+            <p class="footer-intro">
+              Independent in Downey.
+              <br />
+              Here for you since 1999.
+            </p>
+            <a href={contact.maps} target="_blank" rel="noreferrer">
+              9907-B Paramount Blvd
+              <br />
+              Downey, CA 90240 <span aria-hidden="true">↗</span>
             </a>
-          ))}
+            <a href={contact.phoneHref}>{contact.phone}</a>
+            <a href={contact.emailHref}>{contact.email}</a>
+            <p>
+              Mon–Fri · 10 AM–5:30 PM
+              <br />
+              English · Spanish · Arabic
+            </p>
+          </div>
+          <nav aria-label="Footer coverage">
+            <h2>Coverage</h2>
+            {coverage.map((c) => (
+              <a href={c.path}>{c.name}</a>
+            ))}
+            <a href="/services">All services</a>
+          </nav>
+          <nav aria-label="Footer company">
+            <h2>Get to know us</h2>
+            {companyLinks.map((link) => (
+              <a
+                href={link.href}
+                lang={link.href === '/es' ? 'es' : undefined}
+                data-spanish={link.href === '/es' ? true : undefined}
+                target={link.href.startsWith('https:') ? '_blank' : undefined}
+                rel={link.href.startsWith('https:') ? 'noreferrer' : undefined}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
         </div>
-      </details>
-      <details>
-        <summary>
-          Service areas <span aria-hidden="true">+</span>
-        </summary>
-        <div>
-          {cities.map((c) => (
-            <a href={`/insurance/${c.slug}`}>{c.name}</a>
-          ))}
+        <nav class="footer-areas" aria-label="Service areas">
+          <span>At home in Southeast LA</span>
+          <div>
+            <a href="/locations#service-areas">All service areas</a>
+            <a href="/insurance/downey">Insurance in Downey</a>
+          </div>
+        </nav>
+        <nav class="footer-mobile-links" aria-label="Footer navigation">
+          <details>
+            <summary>
+              Coverage <span aria-hidden="true">+</span>
+            </summary>
+            <div>
+              {coverage.map((c) => (
+                <a href={c.path}>{c.name}</a>
+              ))}
+              <a href="/services">All services</a>
+            </div>
+          </details>
+          <details>
+            <summary>
+              Get to know us <span aria-hidden="true">+</span>
+            </summary>
+            <div>
+              {companyLinks.map((link) => (
+                <a
+                  href={link.href}
+                  lang={link.href === '/es' ? 'es' : undefined}
+                  data-spanish={link.href === '/es' ? true : undefined}
+                  target={link.href.startsWith('https:') ? '_blank' : undefined}
+                  rel={link.href.startsWith('https:') ? 'noreferrer' : undefined}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </details>
+          <details>
+            <summary>
+              Service areas <span aria-hidden="true">+</span>
+            </summary>
+            <div>
+              <a href="/locations#service-areas">All service areas</a>
+              <a href="/insurance/downey">Insurance in Downey</a>
+            </div>
+          </details>
+        </nav>
+        <div class="footer-legal">
+          <span>© {new Date().getFullYear()} Original Insurance Services</span>
+          <div>
+            <a href="/privacy">Privacy</a>
+            <a href="/accessibility">Accessibility</a>
+            <a href="https://cdicloud.insurance.ca.gov/cal/" target="_blank" rel="noreferrer">
+              Verify a license ↗
+            </a>
+            <a href="#top">Back to top ↑</a>
+          </div>
         </div>
-      </details>
-    </nav>
-    <div class="footer-legal">
-      <span>© {new Date().getFullYear()} Original Insurance Services</span>
-      <div>
-        <a href="/privacy">Privacy</a>
-        <a href="/accessibility">Accessibility</a>
-        <a href="https://cdicloud.insurance.ca.gov/cal/" target="_blank" rel="noreferrer">
-          Verify a license ↗
-        </a>
-        <a href="#top">Back to top ↑</a>
       </div>
-    </div>
-  </div>
-</footer>
+    </footer>
+  </>
+)}
 
 <style>
   .footer-mobile-links {
@@ -182,7 +231,7 @@ const companyLinks = [
     }
     .footer-office p:not(.footer-brand) {
       margin: 5px 0 0;
-      font-size: 11px;
+      font-size: 13px;
       line-height: 1.65;
     }
     .footer-mobile-links {
@@ -233,7 +282,7 @@ const companyLinks = [
     .footer-legal {
       margin-top: 15px;
       gap: 7px;
-      font-size: 10px;
+      font-size: 12px;
     }
     .footer-legal > div {
       gap: 6px 17px;

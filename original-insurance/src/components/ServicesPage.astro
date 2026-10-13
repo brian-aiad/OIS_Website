@@ -2,12 +2,11 @@
 import PageHero from './PageHero.astro';
 import Photo from './Photo.astro';
 import Icon from './Icon.astro';
-import Process from './Process.astro';
+import LineMotif from './LineMotif.astro';
+import { quoteHref, quoteLabel } from '../intake/context';
 import CTA from './CTA.astro';
-import Reviews from './Reviews.astro';
-import PaintedAccent from './PaintedAccent.astro';
+import LineAccent from './LineAccent.astro';
 import { coverage, additional } from '../data/site';
-import '../styles/catalog.css';
 const audiences = [
   'For daily drivers, family vehicles, and your next car.',
   'For homeowners and renters, with options for the place and belongings you protect.',
@@ -30,6 +29,9 @@ const audiences = [
           <Icon size={15} />
         </a>
       ))}
+      <a href="#office-services">
+        Office services <Icon size={15} />
+      </a>
     </nav>
     {coverage.slice(0, 3).map((c, i) => (
       <article class="catalog-row" id={c.key} data-reveal>
@@ -37,13 +39,18 @@ const audiences = [
           <Photo src={c.image} alt={c.alt} sizes="(max-width: 760px) 92vw, 38vw" />
         </a>
         <div class="catalog-copy">
-          <p class="eyebrow">0{i + 1} / Coverage options</p>
+          <p class="eyebrow">{i === 2 ? 'Business insurance' : 'Personal insurance'}</p>
           <h2>{c.name}</h2>
           <p class="catalog-audience">{audiences[i]}</p>
           <p>{c.description}</p>
-          <a href={c.path} class="text-link">
-            Explore {c.name.toLowerCase()} <Icon />
-          </a>
+          <div class="actions">
+            <a href={quoteHref(c.path)} data-quote class="button button-ink">
+              {quoteLabel(c.path)} <Icon />
+            </a>
+            <a href={c.path} class="text-link">
+              Coverage guide <Icon />
+            </a>
+          </div>
         </div>
       </article>
     ))}
@@ -58,7 +65,7 @@ const audiences = [
         Tell us about your situation. We can explain what insurers may need and which requirements
         to confirm with the DMV.
       </p>
-      <Photo src={coverage[3].image} alt={coverage[3].alt} sizes="(max-width: 760px) 92vw, 35vw" />
+      <LineMotif kind="document" />
     </div>
     <div class="catalog-guidance-links">
       {coverage.slice(3).map((c) => (
@@ -81,31 +88,58 @@ const audiences = [
   <div class="container">
     <div class="catalog-extra-heading">
       <div>
-        <p class="eyebrow">Also at our Downey office</p>
-        <h2>
-          More coverage.
-          <br />
-          Practical everyday help.
-        </h2>
+        <p class="eyebrow">More insurance options</p>
+        <h2>Beyond auto and home.</h2>
       </div>
-      <PaintedAccent kind="renewal" />
+      <LineAccent kind="renewal" />
     </div>
     <div class="additional-services">
-      {additional.map((s, i) => (
+      {additional.slice(0, 4).map((s) => (
         <article id={s.id}>
-          <span class="service-number">0{i + 1}</span>
           <div>
             <h3>{s.name}</h3>
             <p>{s.text}</p>
-            <a href="/contact">Ask our team about {s.name.toLowerCase()} ↗</a>
+            {s.id === 'recreational' ? (
+              <div class="actions">
+                <a href="/quote?type=rv" data-quote>
+                  Get an RV quote ↗
+                </a>
+                <a href="/quote?type=boat" data-quote>
+                  Get a boat quote ↗
+                </a>
+              </div>
+            ) : (
+              <a href={`/quote?type=${s.id === 'business' ? 'other' : s.id}`} data-quote>
+                {s.id === 'business' ? 'Ask about business coverage' : `Get a ${s.id} quote`} ↗
+              </a>
+            )}
           </div>
         </article>
       ))}
     </div>
   </div>
 </section>
-<Process />
-<Reviews />
+<section class="section catalog-office" id="office-services">
+  <div class="container">
+    <h2>Services at our Downey office.</h2>
+    <p>
+      Not insurance products—practical help from our local office. Contact us to confirm what to
+      bring.
+    </p>
+    <div class="additional-services">
+      {additional.slice(4).map((s) => (
+        <article id={s.id}>
+          <div>
+            <h3>{s.name}</h3>
+            <p>{s.text}</p>
+            <a href="/contact">Ask about {s.name.toLowerCase()} ↗</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
 <CTA />
 <style>
   .catalog-extra-heading {

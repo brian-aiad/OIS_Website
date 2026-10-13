@@ -70,11 +70,11 @@ npm run validate:schema
 ## Current rebuild (2026-10-05)
 
 - See `docs/handoffs/REBUILD_2026-10-05.md` for the route inventory, issue matrix, validation and remaining external work.
-- `src/data/pages.json` preserves the 25 canonical routes; `src/data/site.ts` owns business contact details.
+- `src/data/pages.json` preserves the original 25 canonical routes (now 27 with the assistance and market pages); `src/data/site.ts` owns business contact details.
 - Quote requests use the native `/quote` intake flow and `/api/intake`; `/admin` manages field settings. Web3Forms remains the general contact form only. See `docs/ops/INTAKE_SETUP.md`.
 - Quote buttons navigate to `/quote`. The intake and admin require JavaScript; the quote page provides a phone fallback without JavaScript.
 - Public email: `contact@originalinsurance.net`. Mailbox setup and the Web3Forms recipient are account-side configuration.
-- Preserve the warm ivory/navy/gold editorial style and matching illustrated coverage assets. Real office photographs identify the actual business.
+- Follow `docs/ops/VISUAL_SYSTEM_2026-10-12.md`: navy, white, and blue-gray surfaces; DM Sans throughout, with technical line illustrations; consistent framed coverage illustrations. Real office photographs identify the actual business. Do not restore the previous beige/oversized-serif review treatment.
 
 ## Quote module handoff (2026-10-12)
 
@@ -85,3 +85,19 @@ npm run validate:schema
 - Agency operational identity is in `src/intake/agency.ts`; brand assets/layouts still require adaptation for a future RIA installation.
 
 - The follow-up usability changes and verification are in `docs/ops/INTAKE_USABILITY_REVIEW.md`. `test:intake-usability` covers direct review corrections, question placement/movement, preview controls, sharing state, and conflict recovery; run it sequentially with the other local browser suites.
+
+## Visual refinement (2026-10-12)
+
+- Shared design tokens live in `src/styles/tokens.css`; the marketing stylesheet entry is `src/styles/index.css`, with family rules before `refinement.css`. Keep this import order stable.
+- `CoverageExplorer.astro` progressively enhances three static, linked coverage panels into keyboard-accessible tabs. Keep no-JavaScript guide access.
+- `Reviews.astro` preserves supplied review text. One featured review and two distinct supporting reviews are manually controlled; no autoplay, invented rating, or review schema.
+- Intake presentation uses `intake-brand.css` and shared tokens. Its operational behavior remains separate from marketing scripts.
+- The checkout was already missing repo-root `.vercel/project.json` at the start of this pass. SEO lint reaches that final assertion and fails there. Do not fabricate project IDs or bypass the check; restore the correct existing project link before deployment.
+
+## Acquisition rebuild (2026-10-12, authoritative follow-up)
+
+- Read `docs/handoffs/ACQUISITION_REBUILD_2026-10-12.md` and `docs/rebuild/ASSET_PROVENANCE_2026-10-12.md`. These supersede earlier visual notes where they differ.
+- 27 content routes; `/es` is Spanish human-assistance content, not a full translated form. `/insurance-markets` contains the user-supplied 24-market network.
+- All contextual quote links use `src/intake/context.ts`; server cleaning is mandatory. Do not leak form values into analytics.
+- Styles end with `acquisition.css`; DM Sans is the only loaded type family. Conceptual coverage illustrations, actual office photography and technical SVG graphics are the three visual modes.
+- New checks: `test:acquisition`, `test:responsive`, `test:seo-browser`. See handoff for lab performance and final validation. No deployment performed; the missing Vercel project link remains an external setup gate.

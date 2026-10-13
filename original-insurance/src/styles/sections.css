@@ -261,43 +261,6 @@
   font-size: 13px;
   line-height: 1.6;
 }
-.illustrated-cta {
-  padding-bottom: 16px;
-  overflow: hidden;
-}
-.cta-landscape {
-  margin-top: 5px;
-  color: #6f602f;
-}
-.journey-line {
-  width: 100%;
-  height: 105px;
-}
-.illustrated-cta.reveal-enter .journey-car {
-  animation: journey-arrive 1.4s var(--ease) both;
-}
-.illustrated-cta.reveal-enter .journey-road {
-  stroke-dasharray: 1100;
-  animation: journey-road 1.5s var(--ease) both;
-}
-@keyframes journey-arrive {
-  from {
-    transform: translateX(-70px);
-    opacity: 0.3;
-  }
-  to {
-    transform: none;
-    opacity: 1;
-  }
-}
-@keyframes journey-road {
-  from {
-    stroke-dashoffset: 1100;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
 @media (min-width: 1800px) {
   :root {
     --container: 1480px;
@@ -459,18 +422,6 @@
   .question-note h3 {
     font-size: 24px;
   }
-  .illustrated-cta {
-    padding-bottom: 12px;
-  }
-  .journey-line {
-    height: 75px;
-    width: 125%;
-    max-width: none;
-    margin-left: -12%;
-  }
-  .cta-landscape {
-    margin-top: 18px;
-  }
 }
 @media (max-width: 390px) {
   .broker-process-opening {
@@ -492,13 +443,6 @@
   }
   .customer-stage {
     min-height: 320px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .journey-car,
-  .journey-road {
-    animation: none !important;
-    stroke-dashoffset: 0 !important;
   }
 }
 

@@ -6,14 +6,42 @@ const { type = 'auto' } = Astro.props;
 const home = type === 'home';
 const documents = type === 'sr22' || type === 'no-license';
 const labels = home
-  ? ['Your home', 'Your belongings', 'Your responsibility']
+  ? ['Dwelling', 'Personal property', 'Personal liability']
   : type === 'commercial'
     ? ['Your vehicles', 'Your operations', 'Your team']
     : type === 'sr22'
       ? ['Policy', 'Insurer filing', 'DMV review']
       : type === 'no-license'
         ? ['Vehicle owner', 'Actual drivers', 'Carrier eligibility']
-        : ['Other people', 'Your vehicle', 'Your choices'];
+        : ['Liability', 'Collision & comprehensive', 'Limits & deductibles'];
+const explanations: Record<string, string[]> = {
+  auto: [
+    'Liability helps pay for injury or damage you cause to other people, subject to the policy’s limits and terms.',
+    'Collision and comprehensive address different kinds of damage to your own car. Deductibles and exclusions apply.',
+    'Compare limits and deductibles alongside the price. Ask what is included and what is excluded.',
+  ],
+  home: [
+    'Dwelling coverage addresses covered damage to the home’s structure. Review the rebuilding limit and policy exclusions.',
+    'Personal property coverage helps with covered losses to belongings. Special limits may apply to certain valuables.',
+    'Personal liability addresses covered claims involving injury or damage to others. Ask about limits and exclusions.',
+  ],
+  commercial: [
+    'List the vehicles, who owns them, and their actual use. A personal policy may not fit the work being done.',
+    'Describe deliveries, job sites, operating radius, and any contracts. These details help the agency explore suitable options.',
+    'Provide the drivers who use the vehicles. Eligibility and coverage depend on the insurer and policy terms.',
+  ],
+  sr22: [
+    'An SR-22 is evidence of financial responsibility, not a separate kind of auto policy. Start with the insurance appropriate to your situation.',
+    'If required, the insurer files the certificate. Ask whether the insurer offers the filing before purchasing.',
+    'The DMV determines your reinstatement requirements. A filing by itself does not restore driving privileges.',
+  ],
+  'no-license': [
+    'Explain who owns the car and why coverage is needed. Some situations involve an owner who does not drive.',
+    'Identify every actual driver and their license status accurately. Never list someone as a driver only to obtain a quote.',
+    'Options depend on the insurer’s rules. Insurance does not authorize anyone to drive without a valid license.',
+  ],
+};
+const details = explanations[type] || explanations.auto;
 ---
 
 <div class="coverage-diagram" aria-label={labels.join(', ')}>
@@ -28,6 +56,18 @@ const labels = home
         <path d="m80 115 160-85 160 85M100 105v100h280V105M204 205v-80h70v80M126 125h50v40h-50zM300 125h50v40h-50zM150 74V40h25v20" />
         <path d="M240 30v-9m-7 9h14" />
         <path d="M126 145h50m-25-20v40m149-20h50m-25-20v40" opacity=".4" />
+      </g>
+    ) : type === 'no-license' ? (
+      <g stroke="currentColor" stroke-width="2">
+        <rect x="30" y="70" width="110" height="95" rx="4" />
+        <path d="m46 117 15-20h43l19 20v21H45v-21Zm4 0h65" />
+        <circle cx="61" cy="138" r="7" />
+        <circle cx="108" cy="138" r="7" />
+        <path pathLength="1" d="M145 118h35m-7-6 7 6-7 6M299 118h35m-7-6 7 6-7 6" />
+        <rect x="187" y="70" width="105" height="95" rx="4" />
+        <circle cx="239" cy="98" r="13" />
+        <path d="M214 146v-12c0-25 50-25 50 0v12" />
+        <path d="M343 165V70h62l25 25v70Zm62-95v25h25m-67 20h47m-47 17h35m-35 17h42" />
       </g>
     ) : documents ? (
       <g stroke="currentColor" stroke-width="2">
@@ -54,15 +94,18 @@ const labels = home
         <circle cx="344" cy="183" r="11" />
       </g>
     )}
-    <path d="M57 60h36M75 42v36M396 57h24m-12-12v24" stroke="currentColor" opacity=".35" />
   </svg>
-  <div class="diagram-labels">
+  <div class="diagram-explanations">
     {labels.map((label, i) => (
-      <span>
-        <b>0{i + 1}</b>
-        {label}
-      </span>
+      <details>
+        <summary>
+          <span>0{i + 1}</span>
+          {label}
+          <b aria-hidden="true">+</b>
+        </summary>
+        <p>{details[i]}</p>
+      </details>
     ))}
   </div>
-  <p>Different needs. One thoughtful review.</p>
+  <p class="diagram-instruction">Choose a topic to see how it fits.</p>
 </div>

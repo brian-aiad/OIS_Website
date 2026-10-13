@@ -1,10 +1,16 @@
 document.querySelectorAll<HTMLElement>('[data-review-gallery]').forEach((gallery) => {
   const reviews = [...gallery.querySelectorAll<HTMLElement>('[data-review]')];
+  const supporting = [...gallery.querySelectorAll<HTMLElement>('[data-support-review]')];
+  const support = gallery.querySelector<HTMLElement>('.review-support');
+  if (support) support.hidden = false;
   let index = 0;
   const show = () => {
     reviews.forEach((review, i) => {
       review.hidden = i !== index;
       if (i === index) review.classList.add('review-enter');
+    });
+    supporting.forEach((review, i) => {
+      review.hidden = i !== (index + 1) % reviews.length && i !== (index + 2) % reviews.length;
     });
     gallery.querySelector('[data-review-count]')!.textContent =
       `0${index + 1} / 0${reviews.length}`;

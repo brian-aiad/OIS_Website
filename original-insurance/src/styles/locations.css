@@ -1,5 +1,5 @@
 .locations-visit {
-  background: #faf8f2;
+  background: var(--color-surface-soft);
   border-block: 1px solid var(--line);
 }
 .locations-visit .visit-layout {
@@ -97,7 +97,7 @@
   max-width: 470px;
 }
 .locations-visit .locations-hours {
-  background: #ede6d6;
+  background: var(--color-surface-soft);
   padding: 27px 30px;
   border: 1px solid #d2c8b5;
   border-top: 3px solid var(--gold);
