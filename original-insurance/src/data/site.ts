@@ -1,6 +1,5 @@
 export const origin = 'https://originalinsurance.net';
 export const quoteUrl = '/quote';
-export const quotzalUrl = 'https://quotzal.com/f/original-insurance';
 export const contact = {
   phone: '(310) 538-8666',
   phoneHref: 'tel:+13105388666',

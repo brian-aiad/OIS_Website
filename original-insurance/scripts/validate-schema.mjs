@@ -22,7 +22,7 @@ const PROD_ORIGIN = 'https://originalinsurance.net';
 const PREFERRED_HOME_IMAGE = `${PROD_ORIGIN}/images/ois-california-coverage-illustration-v2-2026.jpg`;
 
 // Pages that should NOT have BreadcrumbList (home only)
-const NO_BREADCRUMB = new Set(['/', '/quote']);
+const NO_BREADCRUMB = new Set(['/', '/quote', '/admin']);
 
 // Google is deprecating FAQ rich results and review snippets are not valid for this site.
 // Keep visible FAQ/review content, but do not emit these JSON-LD types.
@@ -31,6 +31,7 @@ const DEPRECATED_SCHEMA_TYPES = new Set(['FAQPage', 'Review', 'AggregateRating',
 // Pages that should have InsuranceAgency schema (homepage, city pages, money pages).
 // /faq, /about, /contact, /services explicitly excluded — see SKILL.md schema rules.
 const NO_INSURANCE_AGENCY = new Set([
+  '/admin',
   '/quote',
   '/faq',
   '/about',

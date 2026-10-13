@@ -34,7 +34,7 @@ menuButton?.addEventListener('click', () => {
 document.querySelector('[data-close-menu]')?.addEventListener('click', () => menu?.close());
 menu?.addEventListener('close', () => {
   menuButton?.setAttribute('aria-expanded', 'false');
-  if (!document.querySelector<HTMLDialogElement>('#quote-dialog')?.open) menuButton?.focus();
+  menuButton?.focus();
 });
 menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => menu.close()));
 
@@ -49,36 +49,13 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-const quote = document.querySelector<HTMLDialogElement>('#quote-dialog');
-const quoteFrame = quote?.querySelector<HTMLIFrameElement>('[data-quotzal-src]');
-const quoteLoading = quote?.querySelector<HTMLElement>('[data-quote-loading]');
-quoteFrame?.addEventListener('load', () => {
-  if (!quoteFrame.hasAttribute('src')) return;
-  if (quoteLoading) quoteLoading.hidden = true;
-  quoteFrame.removeAttribute('aria-busy');
+// Preserve anonymous quote-open analytics while keeping normal link navigation.
+document
+  .querySelectorAll('[data-quote]')
+  .forEach((link) => link.addEventListener('click', () => trackAction('quote_open')));
+window.addEventListener('openQuoteModal', () => {
+  location.assign('/quote');
 });
-let quoteTrigger: HTMLElement | null = null;
-const openQuote = () => {
-  if (quoteFrame && !quoteFrame.hasAttribute('src')) {
-    if (quoteLoading) quoteLoading.hidden = false;
-    quoteFrame.setAttribute('aria-busy', 'true');
-    quoteFrame.src = quoteFrame.dataset.quotzalSrc!;
-  }
-  quote?.showModal();
-  trackAction('quote_open');
-};
-document.querySelectorAll<HTMLAnchorElement>('[data-quote]').forEach((link) =>
-  link.addEventListener('click', (event) => {
-    if (event.ctrlKey || event.metaKey || event.shiftKey || !quote) return;
-    event.preventDefault();
-    if (menu?.open) menu.close();
-    quoteTrigger = menu?.contains(link) ? menuButton : link;
-    openQuote();
-  }),
-);
-window.addEventListener('openQuoteModal', openQuote);
-document.querySelector('[data-close-quote]')?.addEventListener('click', () => quote?.close());
-quote?.addEventListener('close', () => quoteTrigger?.focus());
 document.querySelectorAll<HTMLDialogElement>('dialog').forEach((dialog) =>
   dialog.addEventListener('click', (event) => {
     if (event.target !== dialog) return;

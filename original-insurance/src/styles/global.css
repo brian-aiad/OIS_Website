@@ -1104,16 +1104,6 @@ summary::-webkit-details-marker {
 .footer-legal a {
   padding: 5px 0;
 }
-.quote-dialog {
-  width: min(1080px, calc(100% - 36px));
-  max-height: 92dvh;
-  padding: 0;
-  border: 0;
-  color: var(--ink);
-  background: var(--paper);
-  box-shadow: 0 20px 100px #0005;
-  border-radius: 4px;
-}
 .dialog-top {
   display: flex;
   justify-content: space-between;
@@ -1125,18 +1115,6 @@ summary::-webkit-details-marker {
 .dialog-top h2 {
   font-size: 36px;
   margin-top: 7px;
-}
-.quote-loading {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  pointer-events: none;
-  background: var(--paper);
-  font-size: 14px;
-}
-.quote-loading[hidden] {
-  display: none;
 }
 .dialog-bottom {
   display: flex;
@@ -2627,10 +2605,6 @@ dialog[open] {
     gap: 5px 10px;
     font-size: 11px;
   }
-  .quote-dialog {
-    max-height: 95dvh;
-    width: calc(100% - 20px);
-  }
 }
 @media (max-width: 390px) {
   .container {
@@ -2775,9 +2749,6 @@ dialog[open] {
     font-size: 24px;
     padding: 12px 0;
   }
-  .quote-dialog {
-    max-height: 95dvh;
-  }
   .dialog-top h2 {
     font-size: 26px;
   }
@@ -2807,7 +2778,6 @@ dialog[open] {
   .site-header,
   .utility-bar,
   .site-footer,
-  .quote-dialog,
   .cta-section,
   .guide-nav {
     display: none;

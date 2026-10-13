@@ -370,106 +370,6 @@
 }
 
 /* Quotzal stays the quote provider; the surrounding experience belongs to Original. */
-.quotzal-dialog {
-  width: min(1000px, calc(100% - 32px));
-  height: 92dvh;
-  max-height: 92dvh;
-  padding: 0;
-  overflow: hidden;
-  background: var(--paper);
-}
-.quotzal-dialog[open] {
-  display: flex;
-  flex-direction: column;
-}
-.quotzal-dialog .dialog-top {
-  flex-shrink: 0;
-  background: var(--ink);
-  color: var(--paper);
-  padding: 18px 25px;
-}
-.quotzal-dialog .dialog-top h2 {
-  color: var(--paper);
-  font-size: 34px;
-}
-.quotzal-dialog .dialog-top .eyebrow {
-  color: var(--gold-light);
-  font-size: 9px;
-}
-.quotzal-dialog .icon-button {
-  color: var(--paper);
-  border-color: #ffffff60;
-}
-.quotzal-dialog .icon-button:hover {
-  background: #ffffff20;
-}
-.quotzal-help {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 24px;
-  border-bottom: 1px solid var(--line);
-  font-size: 12px;
-  flex-shrink: 0;
-}
-.quotzal-help a {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  min-height: 32px;
-}
-.quotzal-frame {
-  flex: 1;
-  min-height: 0;
-  background: white;
-}
-.quotzal-frame iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-  background: white;
-}
-.quotzal-dialog .dialog-bottom {
-  flex-shrink: 0;
-  padding: 10px 24px;
-}
-.quotzal-page-heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 30px;
-  margin-bottom: 30px;
-}
-.quotzal-page-heading h1 {
-  margin: 13px 0 18px;
-}
-.quotzal-page-form {
-  border: 1px solid var(--line);
-  border-top: 3px solid var(--gold);
-  background: var(--paper);
-  max-width: 1000px;
-  margin: auto;
-}
-.quotzal-page-form > iframe {
-  display: block;
-  width: 100%;
-  height: 850px;
-  max-height: none;
-  border: 0;
-  background: white;
-}
-.quotzal-note {
-  font-size: 12px;
-  margin-top: 18px;
-  text-align: center;
-}
-.quotzal-note a {
-  text-decoration: underline;
-}
 .coverage-section {
   background: var(--paper);
   border-top: 1px solid var(--line);
@@ -510,46 +410,6 @@
   border-top: 1px solid var(--line);
 }
 @media (max-width: 760px) {
-  .quotzal-dialog {
-    width: 100%;
-    height: 100dvh;
-    max-height: 100dvh;
-    max-width: 100%;
-    margin: 0;
-    border-radius: 0;
-  }
-  .quotzal-dialog .dialog-top {
-    padding: 12px 16px;
-  }
-  .quotzal-dialog .dialog-top h2 {
-    font-size: 28px;
-  }
-  .quotzal-help {
-    padding: 8px 16px;
-    font-size: 11px;
-    flex-wrap: wrap;
-    gap: 0 14px;
-  }
-  .quotzal-help p {
-    display: none;
-  }
-  .quotzal-dialog .dialog-bottom {
-    padding: 8px 16px;
-    font-size: 10px;
-    gap: 6px 14px;
-  }
-  .quotzal-page-heading {
-    display: block;
-  }
-  .quotzal-page-heading .text-link {
-    margin-top: 12px;
-  }
-  .quotzal-page-form > iframe {
-    height: 900px;
-  }
-  .quotzal-page .container {
-    width: calc(100% - 24px);
-  }
   .coverage-feature-grid {
     gap: 22px 16px;
   }
@@ -567,21 +427,6 @@
   }
   .coverage-feature-caption h3 {
     font-size: 23px;
-  }
-}
-@media (max-height: 500px) and (orientation: landscape) {
-  .quotzal-dialog .dialog-top {
-    padding: 7px 16px;
-  }
-  .quotzal-dialog .dialog-top .eyebrow,
-  .quotzal-dialog .dialog-bottom {
-    display: none;
-  }
-  .quotzal-dialog .dialog-top h2 {
-    font-size: 25px;
-  }
-  .quotzal-help {
-    padding-block: 0;
   }
 }
 
@@ -636,31 +481,6 @@
   .personal-copy h2 {
     font-size: 36px;
   }
-}
-
-.quotzal-frame {
-  position: relative;
-}
-.quote-loading {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  align-content: center;
-  justify-items: center;
-  text-align: center;
-  padding: 24px;
-  gap: 10px;
-  background: var(--paper);
-  font-weight: 600;
-  z-index: 1;
-}
-.quote-loading span {
-  font-size: 12px;
-  font-weight: 400;
-  max-width: 300px;
-}
-.quote-loading[hidden] {
-  display: none;
 }
 
 .coverage-feature-grid {

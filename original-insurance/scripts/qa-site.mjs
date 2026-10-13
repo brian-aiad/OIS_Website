@@ -70,7 +70,15 @@ await context.route('**/*', (route) => {
 });
 const page = await context.newPage();
 const errors = [];
-page.on('pageerror', (e) => errors.push(e.message));
+page.on('pageerror', (e) => {
+  // Chromium can report a cancelled native cross-document transition during rapid QA navigation.
+  // This browser-generated cancellation is not a script exception; retain all other errors.
+  if (
+    e.message === 'Transition was aborted because of invalid state. ViewTransition opt-in disabled'
+  )
+    return;
+  errors.push(e.message);
+});
 const checks = [];
 const widths = [320, 360, 375, 390, 430, 768, 1024, 1280, 1440, 1920, 2560];
 try {
@@ -210,7 +218,7 @@ try {
   // Keyboard menu, native dialog focus restoration, and no eager third-party iframe.
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(base);
-  assert.equal(await page.locator('#quote-dialog iframe').getAttribute('src'), null);
+  assert.equal(await page.locator('#quote-dialog').count(), 0);
   await page.locator('.menu-toggle').click();
   assert.equal(await page.locator('#mobile-nav').evaluate((d) => d.open), true);
   await page.keyboard.press('Escape');
@@ -220,22 +228,9 @@ try {
     true,
   );
   await page.locator('.nav-quote').click();
-  assert.equal(await page.locator('#quote-dialog').evaluate((d) => d.open), true);
-  assert.equal(
-    await page.locator('#quote-dialog iframe').getAttribute('src'),
-    'https://quotzal.com/f/original-insurance',
-  );
-  await page.keyboard.press('Escape');
-  assert.equal(await page.locator('#quote-dialog').evaluate((d) => d.open), false);
-  assert.equal(
-    await page.locator('.nav-quote').evaluate((e) => e === document.activeElement),
-    true,
-  );
-  await page.goto(base + '/quote');
-  assert.equal(
-    await page.locator('main iframe').getAttribute('src'),
-    'https://quotzal.com/f/original-insurance',
-  );
+  await page.waitForURL(base + '/quote');
+  assert.equal(await page.locator('main iframe').count(), 0);
+  assert.equal(await page.locator('#quote-root').count(), 1);
   assert.ok(
     (await page.locator('meta[name="robots"]').getAttribute('content')).includes('noindex'),
   );
@@ -261,6 +256,10 @@ try {
   await page.locator('#email').fill('qa@example.com');
   await page.locator('#topic').selectOption('General question');
   await page.locator('#message').fill('Mocked browser test, never sent.');
+  // This static checkout need not contain production contact credentials. The request is mocked below.
+  await page.locator('[name="access_key"]').evaluate((input) => {
+    input.value = 'qa-mocked-contact-key';
+  });
   let requestCount = 0;
   await page.route('https://api.web3forms.com/submit', async (route) => {
     requestCount++;

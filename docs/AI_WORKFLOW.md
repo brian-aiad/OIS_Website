@@ -22,7 +22,7 @@ npm run build
 npm run validate:schema
 ```
 
-`npm run build` performs Astro/TypeScript checking and builds 25 canonical content routes plus `/quote` (noindex) and a real 404 page. `npm run test:site` checks the production output with Playwright and axe.
+`npm run build` performs Astro/TypeScript checking and builds 25 canonical content routes plus `/quote` and `/admin` (both noindex) and a real 404 page. `npm run test:site` checks the production output with Playwright and axe.
 
 ## Deployment Rules
 
@@ -71,7 +71,15 @@ npm run validate:schema
 
 - See `docs/handoffs/REBUILD_2026-10-05.md` for the route inventory, issue matrix, validation and remaining external work.
 - `src/data/pages.json` preserves the 25 canonical routes; `src/data/site.ts` owns business contact details.
-- Quote requests MUST use `https://quotzal.com/f/original-insurance`. Do not substitute Web3Forms for the quote integration. Web3Forms remains the general contact form only.
-- Quote buttons lazy-load Quotzal in a native dialog; `/quote` is the no-JavaScript fallback.
+- Quote requests use the native `/quote` intake flow and `/api/intake`; `/admin` manages field settings. Web3Forms remains the general contact form only. See `docs/ops/INTAKE_SETUP.md`.
+- Quote buttons navigate to `/quote`. The intake and admin require JavaScript; the quote page provides a phone fallback without JavaScript.
 - Public email: `contact@originalinsurance.net`. Mailbox setup and the Web3Forms recipient are account-side configuration.
 - Preserve the warm ivory/navy/gold editorial style and matching illustrated coverage assets. Real office photographs identify the actual business.
+
+## Quote module handoff (2026-10-12)
+
+- Read `docs/ops/INTAKE_SETUP.md` and `docs/ops/INTAKE_REUSE.md` before changing the intake module.
+- Standard question IDs and validation are stable; custom questions/wording are part of saved settings. Use the configured catalog in rendering, validation, and email so custom answers cannot disappear.
+- Run `test:intake-server`, then local `test:intake` and `test:intake-stress` sequentially. The browser suites temporarily modify settings and restore them. Never point them at production.
+- No production customer archive or payment system exists. Local mode captures synthetic emails in an ignored directory. Do not promise that the email provider/mailbox retains no data.
+- Agency operational identity is in `src/intake/agency.ts`; brand assets/layouts still require adaptation for a future RIA installation.

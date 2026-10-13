@@ -3,3 +3,8 @@ DSC_*.JPG
 OIS_CLIENT_EMAIL_LIST.xlsx
 output/
 .playwright-cli/
+
+# Never upload local intake credentials, configuration, or captured test emails.
+**/.env*
+**/.intake-local/
+**/.intake-local-password

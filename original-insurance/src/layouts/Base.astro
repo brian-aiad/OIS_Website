@@ -1,7 +1,6 @@
 ---
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
-import QuoteDialog from '../components/QuoteDialog.astro';
 import EditorialTrust from '../components/EditorialTrust.astro';
 import { origin, contact, cities, coverage } from '../data/site';
 import '@fontsource-variable/dm-sans';
@@ -210,7 +209,7 @@ if (path !== '/' && !noindex)
     </main>
     {editorial && <EditorialTrust />}
     <Footer />
-    {path !== '/quote' && <QuoteDialog />}
+
     <script src="../scripts/site.ts"></script>
   </body>
 </html>

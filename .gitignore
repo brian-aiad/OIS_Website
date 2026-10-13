@@ -14,3 +14,10 @@ output/
 # Local source photography and customer records are not website assets.
 /DSC_*.JPG
 /OIS_CLIENT_EMAIL_LIST.xlsx
+
+# Intake secrets and local test messages
+.env*
+!.env.example
+.intake-local/
+
+.intake-local-password

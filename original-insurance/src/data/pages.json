@@ -167,7 +167,7 @@
         "paragraphs": [
           "We use service providers for defined website functions. Their systems may process information under their own privacy terms.",
           "The contact form uses Web3Forms to deliver your inquiry to our office.",
-          "Our insurance quote form is hosted by Quotzal and embedded on this website. Information you enter is processed through that service for your quote request. A quote request does not bind insurance coverage.",
+          "Our quote form collects contact information and the insurance details you choose to provide. Completed requests are sent to Original Insurance Services through our email delivery provider. We do not maintain a separate submission dashboard; your request is retained in our agency email and may be used to prepare your quote. When you choose Find vehicle, we send the VIN to the National Highway Traffic Safety Administration (NHTSA) to look up vehicle details. We do not send your name or contact information with that lookup. A quote request does not bind insurance coverage.",
           "Google Analytics measures website visits and interactions. Vercel Analytics and Speed Insights collect technical and performance information to help us understand reliability and improve the site. These providers may process information under their own privacy terms.",
           "Information sent through your phone or email provider is also subject to that provider’s terms and security."
         ]

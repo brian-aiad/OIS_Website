@@ -1,48 +1,76 @@
 ---
-import Base from '../layouts/Base.astro';
-import Icon from '../components/Icon.astro';
-import { contact, quotzalUrl } from '../data/site';
+import { Image } from 'astro:assets';
+import logo from '../assets/logo-badge.webp';
+import Intake from '../layouts/Intake.astro';
+import { agency } from '../intake/agency';
 ---
 
-<Base
-  title="Request an insurance quote | Original Insurance"
-  description="Request auto, home or business coverage with Original Insurance Services using our established Quotzal quote form."
-  path="/quote"
-  noindex
->
-  <section class="section quotzal-page">
-    <div class="container">
-      <div class="quotzal-page-heading">
+<Intake title="Let’s find your coverage" path="/quote">
+  <header class="intake-header">
+    <a class="brand" href="/" aria-label={agency.name + ' home'}>
+      <Image src={logo} alt="" width={46} height={46} />
+      <span>
+        {agency.name}
+        <small>SERVICES · EST. {agency.established}</small>
+      </span>
+    </a>
+    <a class="header-help" href={agency.phoneHref}>
+      <span>A person, when you need one.</span>
+      <strong>{agency.phone}</strong>
+    </a>
+  </header>
+  <main id="main" class="quote-layout">
+    <aside class="quote-aside">
+      <div>
+        <p class="eyebrow">YOUR NEXT CHAPTER</p>
+        <h1>
+          A little about you.
+          <br />
+          <em>
+            A better fit
+            <br /> for your life.
+          </em>
+        </h1>
+        <p class="aside-intro">
+          Tell us what you’d like to protect. We’ll help you explore the options.
+        </p>
+      </div>
+      <nav aria-label="Quote progress" id="quote-progress"></nav>
+      <div class="aside-bottom">
+        <span class="small-seal" aria-hidden="true">
+          {agency.initials}
+        </span>
         <div>
-          <p class="eyebrow">Your coverage. Your next chapter.</p>
-          <h1>
-            Find your <em>fit.</em>
-          </h1>
-          <p>Start your request below. Our Downey team will help you review the options.</p>
+          <strong>Local people. Personal guidance.</strong>
+          <p>
+            {agency.location}
+            <br />
+            {agency.languages}
+          </p>
         </div>
-        <a href={contact.phoneHref} class="text-link">
-          <Icon name="phone" size={18} />
-          {contact.phone}
+      </div>
+    </aside>
+    <div class="quote-workspace">
+      <div id="quote-root" aria-busy="true">
+        <div class="loading-card" role="status">
+          <span class="loading-dot"></span>Getting your form ready…
+        </div>
+      </div>
+      <noscript>
+        <div class="form-card">
+          Please enable JavaScript to complete this guided form, or call{' '}
+          <a href={agency.phoneHref}>{agency.phone}</a> for help with a quote.
+        </div>
+      </noscript>
+      <footer class="quote-footer">
+        <span>Your information goes to {agency.name}.</span>
+        <a href="/privacy" target="_blank" rel="noopener">
+          Privacy notice ↗
         </a>
-      </div>
-      <div class="quotzal-page-form">
-        <div class="quotzal-help">
-          <p>Complete the form below to request your quote.</p>
-          <a href={quotzalUrl} target="_blank" rel="noopener noreferrer">
-            Open in a new tab <Icon name="diagonal" size={16} />
-          </a>
-        </div>
-        <iframe
-          src={quotzalUrl}
-          title="Original Insurance quote request through Quotzal"
-          allow="clipboard-write"
-          referrerpolicy="strict-origin-when-cross-origin"
-        ></iframe>
-      </div>
-      <p class="quotzal-note">
-        Need help? Call <a href={contact.phoneHref}>{contact.phone}</a>. Submitting a request does
-        not bind coverage. <a href="/privacy">Privacy details</a>.
-      </p>
+      </footer>
     </div>
-  </section>
-</Base>
+  </main>
+  <script>
+    import '../intake/quote';
+  </script>
+</Intake>

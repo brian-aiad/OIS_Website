@@ -1,0 +1,45 @@
+---
+import '@fontsource-variable/dm-sans';
+import '@fontsource-variable/newsreader';
+import '@fontsource-variable/newsreader/wght-italic.css';
+import '../styles/intake.css';
+import { agency } from '../intake/agency';
+const origin = agency.origin;
+interface Props {
+  title: string;
+  path: string;
+  admin?: boolean;
+}
+const { title, path, admin = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="description"
+      content={`A simpler way to request coverage from ${agency.legalName} in ${agency.location}.`}
+    />
+    <link rel="canonical" href={origin + path} />
+    <link rel="icon" href="/favicon.png" />
+    <title>{title} | {agency.name}</title>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        url: origin + path,
+        name: title,
+      })}
+    />
+  </head>
+  <body class={admin ? 'intake admin-page' : 'intake quote-page'}>
+    <a href="#main" class="skip-link">
+      Skip to content
+    </a>
+    <slot />
+  </body>
+</html>

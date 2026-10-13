@@ -58,10 +58,6 @@
   .service-related-options a:is(:hover, :focus-visible) svg {
     transform: translateX(4px);
   }
-  .quote-dialog[open] {
-    animation: original-dialog-arrive 220ms var(--ease) both;
-  }
-  .quote-dialog[open]::backdrop,
   .mobile-menu[open]::backdrop {
     animation: original-backdrop-arrive 180ms ease-out both;
   }

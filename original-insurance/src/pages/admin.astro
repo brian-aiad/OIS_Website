@@ -1,0 +1,19 @@
+---
+import Intake from '../layouts/Intake.astro';
+---
+
+<Intake title="Form studio" path="/admin" admin>
+  <div id="admin-root">
+    <main id="main" class="admin-loading">
+      <div class="loading-card" role="status">
+        <span class="loading-dot"></span>Opening your workspace…
+      </div>
+    </main>
+  </div>
+  <noscript>
+    <p class="notice">Please enable JavaScript to sign in and manage your form.</p>
+  </noscript>
+  <script>
+    import '../intake/admin';
+  </script>
+</Intake>
